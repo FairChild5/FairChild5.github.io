@@ -5,15 +5,20 @@
   
 
   
-  <title>Archives: 2019 | Hexo</title>
+  <title>2019-05-06 Android-yii | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/page/2/index.html">
+  <meta name="description" content="今天完成了Android大作业的界面Activity之间的通信startActicityForResult方法（intent,requstCode）其中requstCode用来帮助判断是调用者的哪个请求onActicityResult方法：被调用的ACticity finish()之后会回调调用者的这个方法Intent.putExtra方法中可以放好多key-valueresultCode:可以帮">
+<meta name="keywords" content="Android yii">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019-05-06 Android-yii">
+<meta property="og:url" content="http://yoursite.com/2019/05/06/2019-05-06-Android-yii/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="今天完成了Android大作业的界面Activity之间的通信startActicityForResult方法（intent,requstCode）其中requstCode用来帮助判断是调用者的哪个请求onActicityResult方法：被调用的ACticity finish()之后会回调调用者的这个方法Intent.putExtra方法中可以放好多key-valueresultCode:可以帮">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-06T09:39:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="2019-05-06 Android-yii">
+<meta name="twitter:description" content="今天完成了Android大作业的界面Activity之间的通信startActicityForResult方法（intent,requstCode）其中requstCode用来帮助判断是调用者的哪个请求onActicityResult方法：被调用的ACticity finish()之后会回调调用者的这个方法Intent.putExtra方法中可以放好多key-valueresultCode:可以帮">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,64 +65,59 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/02/21/2019-02-21-HTML/" class="archive-article-date">
-  <time datetime="2019-02-21T02:28:28.000Z" itemprop="datePublished">Feb 21</time>
+        <section id="main"><article id="post-2019-05-06-Android-yii" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/06/2019-05-06-Android-yii/" class="article-date">
+  <time datetime="2019-05-06T14:09:28.000Z" itemprop="datePublished">2019-05-06</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/21/2019-02-21-HTML/">2019-02-21 HTML</a>
+    <h1 class="article-title" itemprop="name">
+      2019-05-06 Android-yii
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/02/20/2019-02-20/" class="archive-article-date">
-  <time datetime="2019-02-20T01:03:28.000Z" itemprop="datePublished">Feb 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/20/2019-02-20/">2019-02-20</a>
-    </h1>
-  
+        <h2 id="今天完成了Android大作业的界面"><a href="#今天完成了Android大作业的界面" class="headerlink" title="今天完成了Android大作业的界面"></a><p>今天完成了Android大作业的界面</p></h2><p></p><h2>Activity之间的通信</h2><br>startActicityForResult方法（intent,requstCode）其中requstCode用来帮助判断是调用者的哪个请求<br><br>onActicityResult方法：被调用的ACticity finish()之后会回调调用者的这个方法<br><br>Intent.putExtra方法中可以放好多key-value<br><br>resultCode:可以帮助调用者判断这是第几次被调用<p></p>
+<p></p><h2>Android 广播(Broadcast和BroadcaseReceiver)</h2><p></p>
+<p></p><h3>自定义广播</h3><br>一开始所有的BroadcaseReceiver都是处于休眠状态，当有一个信号时，操作系统会遍历BroadcaseReceiver的链表，查看谁关心就叫醒他<br><br><b>广播</b>：Context.sendBroadcast()、sendOrderBroadcast()、sendStickyBroadcast()方法把Intent对象以广播的形式发送出去，双方都可以有权限限制<br><br><b>Receiver</b>:需要注册(在注册时可以设置action)，onReceive()方法进行接收<br><br>需要通过<b>intent</b>发送，其中有action用来过滤（匹配）<br><br>接收广播不需要界面<br><br><b>注册方法</b>分为静态注册和动态注册，主要区别是：静态注册时，即使APP从来没有被执行过，onReceive方法依然会被执行；动态注册时，当Context对象被销毁时，Receiver也随之被销毁(也可以设置过滤等操作)<br><p></p>
+<p></p><h3>接受系统广播（电量低、时区改变等）</h3><p></p>
+<p></p><h2>Service :后台运行（例如：下载音乐）和跨进程访问<br>Context.startService()和Context.bindService()<br><br>Service不能自己启动，需要Activity使用startService()方法（只能调用stopService()方法结束）。而使用bindService（）方法启用服务，调用者与服务绑定在了一起。（使用onUnbind方法解除绑定）<p></p>
+<h4>创建Service:onCreate()方法  可以设置使用权限</h4>
+</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/06/2019-05-06-Android-yii/" data-id="cjvcd1x2b000d14sh3e5ar25n" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-yii/">Android yii</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
   
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/archives/2019/">&laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span>
-  </nav>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/05/2019-05-05-Android-yii/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2019-05-05 Android-yii</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
