@@ -5,20 +5,20 @@
   
 
   
-  <title>2019-05-10 yii | Hexo</title>
+  <title>2019-05-11 数据库 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="权限管理 ACF方式在controller代码中的behaviors()方法中添加如下代码：‘access’ =&amp;gt; [                ‘class’ =&amp;gt; AccessControl::className(),                ‘rules’ =&amp;gt;                [                    [">
-<meta name="keywords" content="yii">
+  <meta name="description" content="先总结一下今天干了什么：差不多把博客的前后台完成了（总算），感觉html乱七八糟东西好多，还是Android友好一点，明天再完善一下，做一个东西还是做出点样子来比较好！ 使用（求最小函数依赖集的方法）分解数据库表参看网站：https://blog.csdn.net/prdslf001001/article/details/80336835一共有三步，还挺麻烦">
+<meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2019-05-10 yii">
-<meta property="og:url" content="http://yoursite.com/2019/05/10/2019-05-10-yii/index.html">
+<meta property="og:title" content="2019-05-11 数据库">
+<meta property="og:url" content="http://yoursite.com/2019/05/11/2019-05-11-数据库知识i/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="权限管理 ACF方式在controller代码中的behaviors()方法中添加如下代码：‘access’ =&amp;gt; [                ‘class’ =&amp;gt; AccessControl::className(),                ‘rules’ =&amp;gt;                [                    [">
+<meta property="og:description" content="先总结一下今天干了什么：差不多把博客的前后台完成了（总算），感觉html乱七八糟东西好多，还是Android友好一点，明天再完善一下，做一个东西还是做出点样子来比较好！ 使用（求最小函数依赖集的方法）分解数据库表参看网站：https://blog.csdn.net/prdslf001001/article/details/80336835一共有三步，还挺麻烦">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-10T12:05:38.000Z">
+<meta property="og:updated_time" content="2019-05-11T14:07:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019-05-10 yii">
-<meta name="twitter:description" content="权限管理 ACF方式在controller代码中的behaviors()方法中添加如下代码：‘access’ =&amp;gt; [                ‘class’ =&amp;gt; AccessControl::className(),                ‘rules’ =&amp;gt;                [                    [">
+<meta name="twitter:title" content="2019-05-11 数据库">
+<meta name="twitter:description" content="先总结一下今天干了什么：差不多把博客的前后台完成了（总算），感觉html乱七八糟东西好多，还是Android友好一点，明天再完善一下，做一个东西还是做出点样子来比较好！ 使用（求最小函数依赖集的方法）分解数据库表参看网站：https://blog.csdn.net/prdslf001001/article/details/80336835一共有三步，还挺麻烦">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2019-05-10-yii" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2019-05-11-数据库知识i" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/05/10/2019-05-10-yii/" class="article-date">
-  <time datetime="2019-05-10T14:09:28.000Z" itemprop="datePublished">2019-05-10</time>
+    <a href="/2019/05/11/2019-05-11-数据库知识i/" class="article-date">
+  <time datetime="2019-05-11T14:09:28.000Z" itemprop="datePublished">2019-05-11</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      2019-05-10 yii
+      2019-05-11 数据库
     </h1>
   
 
@@ -87,16 +87,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p></p><h3>权限管理</h3><p></p>
-<h4>ACF方式</h4><br>在controller代码中的behaviors()方法中添加如下代码：<br>‘access’ =&gt; [<br>                ‘class’ =&gt; AccessControl::className(),<br>                ‘rules’ =&gt;<br>                [<br>                    [<br>                        ‘actions’ =&gt; [‘index’,’view’],<br>                        ‘allow’ =&gt; true,<br>                        ‘roles’ =&gt; [‘?’],<br>                    ],<br>                    [<br>                        ‘actions’ =&gt; [‘index’,’view’,’create’,’update’],<br>                        ‘allow’ =&gt; true,<br>                        ‘roles’ =&gt; [‘@’],<br>                    ],<br>                ],<br><br>问号表示游客，@表示登录用户<br><h4>RBAC方式：基于角色的权限管理方式</h4>
+        <p>先总结一下今天干了什么：差不多把博客的前后台完成了（总算），感觉html乱七八糟东西好多，还是Android友好一点，明天再完善一下，做一个东西还是做出点样子来比较好！</p>
+<p></p><h4>使用（求最小函数依赖集的方法）分解数据库表</h4><br>参看网站：<a href="https://blog.csdn.net/prdslf001001/article/details/80336835" target="_blank" rel="noopener">https://blog.csdn.net/prdslf001001/article/details/80336835</a><br><br>一共有三步，还挺麻烦<p></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/10/2019-05-10-yii/" data-id="cjvi1c5tm000r53shy7hputjv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/11/2019-05-11-数据库知识i/" data-id="cjvjl41h000004fshhf5ylngt" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yii/">yii</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
 
     </footer>
   </div>
@@ -104,19 +104,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/05/11/2019-05-11-数据库知识i/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          2019-05-11 数据库
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/05/09/2019-05-09-yii/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/05/10/2019-05-10-yii/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">2019-05-09 yii</div>
+      <div class="article-nav-title">2019-05-10 yii</div>
     </a>
   
 </nav>
