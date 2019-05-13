@@ -5,15 +5,20 @@
   
 
   
-  <title>Tag: sxr | Hexo</title>
+  <title>2019-05-13 Android | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/sxr/index.html">
+  <meta name="description" content="Service和Activity很像，区别在于Service没有界面onCreate()方法：当service被多次启动时，真正运行的service只有一个onStartCommand()方法：会生成一个notificationonDestory()方法：关闭serviceSTICKY:当android程序被无缘无故kill掉时，设置属性STICKY的程序会自动重启 将service绑定到acti">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019-05-13 Android">
+<meta property="og:url" content="http://yoursite.com/2019/05/13/2019-05-13-Android/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Service和Activity很像，区别在于Service没有界面onCreate()方法：当service被多次启动时，真正运行的service只有一个onStartCommand()方法：会生成一个notificationonDestory()方法：关闭serviceSTICKY:当android程序被无缘无故kill掉时，设置属性STICKY的程序会自动重启 将service绑定到acti">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-13T09:36:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="2019-05-13 Android">
+<meta name="twitter:description" content="Service和Activity很像，区别在于Service没有界面onCreate()方法：当service被多次启动时，真正运行的service只有一个onStartCommand()方法：会生成一个notificationonDestory()方法：关闭serviceSTICKY:当android程序被无缘无故kill掉时，设置属性STICKY的程序会自动重启 将service绑定到acti">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,40 +65,58 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/12/2019-05-12-sxr/" class="archive-article-date">
-  <time datetime="2019-05-12T14:09:28.000Z" itemprop="datePublished">May 12</time>
+        <section id="main"><article id="post-2019-05-13-Android" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/13/2019-05-13-Android/" class="article-date">
+  <time datetime="2019-05-13T14:09:28.000Z" itemprop="datePublished">2019-05-13</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/12/2019-05-12-sxr/">2019-05-12 sxr</a>
+    <h1 class="article-title" itemprop="name">
+      2019-05-13 Android
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h3>Service</h3><br>和Activity很像，区别在于Service没有界面<br><br>onCreate()方法：当service被多次启动时，真正运行的service只有一个<br><br>onStartCommand()方法：会生成一个notification<br><br>onDestory()方法：关闭service<br><br>STICKY:当android程序被无缘无故kill掉时，设置属性STICKY的程序会自动重启<p></p>
+<p>将service绑定到activity：onBind()方法<br><br>在主activity的onServiceConnected()方法会被回调,另外，activity中还有onServiceDisconnected()方法，可以把一些善后工作放在这个方法中执行</p>
+<p>创建前台Service(很少见)：在创建到前台中时会有Notification</p>
+<p>因为activity和service都是运行在主线程中的，应当避免在onStartCommand()方法中执行费时的操作。当service要处理较为耗时的操作时，使用IntentService，它是单独一个线程，使用时要重写onHandleIntent()方法</p>
+<p>获取系统服务：getSystemService() 闹铃服务(AlarmManager)<br>补充：PendingIntent是Intent的进一步封装</p>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/13/2019-05-13-Android/" data-id="cjvm6ayb20000mvsh8tjxsx8r" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/12/2019-05-12-sxr/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2019-05-12 sxr</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
