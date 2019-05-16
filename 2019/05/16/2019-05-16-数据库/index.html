@@ -5,19 +5,20 @@
   
 
   
-  <title>Hello World | Hexo</title>
+  <title>2019-05-16 数据库 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="昨天交了大作业太激动了，忘记更新博客了😢，今天继续，现总结一下这次数据库的作业吧 存储过程在数据库里面建立存储过程基本就是这个框架 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_update_tag`(IN post_id INT) begin     DECLARE new_tag VARCHAR(255);     DECLARE old_f">
+<meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/12/05/hello-world/index.html">
+<meta property="og:title" content="2019-05-16 数据库">
+<meta property="og:url" content="http://yoursite.com/2019/05/16/2019-05-16-数据库/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="昨天交了大作业太激动了，忘记更新博客了😢，今天继续，现总结一下这次数据库的作业吧 存储过程在数据库里面建立存储过程基本就是这个框架 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_update_tag`(IN post_id INT) begin     DECLARE new_tag VARCHAR(255);     DECLARE old_f">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-05T14:10:16.000Z">
+<meta property="og:updated_time" content="2019-05-16T01:44:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="2019-05-16 数据库">
+<meta name="twitter:description" content="昨天交了大作业太激动了，忘记更新博客了😢，今天继续，现总结一下这次数据库的作业吧 存储过程在数据库里面建立存储过程基本就是这个框架 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_update_tag`(IN post_id INT) begin     DECLARE new_tag VARCHAR(255);     DECLARE old_f">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -64,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2019-05-16-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/12/05/hello-world/" class="article-date">
-  <time datetime="2018-12-05T14:10:16.000Z" itemprop="datePublished">2018-12-05</time>
+    <a href="/2019/05/16/2019-05-16-数据库/" class="article-date">
+  <time datetime="2019-05-16T14:09:28.000Z" itemprop="datePublished">2019-05-16</time>
 </a>
     
   </div>
@@ -78,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      2019-05-16 数据库
     </h1>
   
 
@@ -86,37 +87,78 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>昨天交了大作业太激动了，忘记更新博客了😢，今天继续，现总结一下这次数据库的作业吧</p>
+<p></p><h3>存储过程</h3><br>在数据库里面建立存储过程基本就是这个框架<p></p>
+<pre><code>CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_update_tag`(IN post_id INT)
+begin
+    DECLARE new_tag VARCHAR(255);
+    DECLARE old_fre INT;
+    DECLARE new_fre INT;
+    DECLARE t_error INT;
+    DECLARE    CONTINUE HANDLER FOR SQLEXCEPTION SET t_error = 1;
+
+    SELECT tags  into new_tag FROM post WHERE id = post_id;
+
+    IF (!isNULL(new_tag)) then
+    BEGIN
+    SELECT frequency into old_fre FROM tag WHERE name = new_tag;
+                    SET new_fre = old_fre + 1;
+                    UPDATE tag SET frequency = new_fre WHERE name = new_tag;    
+    END
+    ELSE 
+                    signal sqlstate &apos;HY000&apos; set message_text=&apos;标签不能为空！！&apos;;    
+    END IF;
+    IF t_error = 1 THEN
+ROLLBACK;
+ELSE
+COMMIT;
+END IF;
+    END
+</code></pre><p>里面的语法规则真的好多，哪里加分号，哪里不加好麻烦。<br><br>其他几个需要注意的地方：声明变量类型是char或者varchar时，要指明长度；注意赋值语句的格式；SQL里面有函数可以用（比如上面的判断str是否为空）<br></p>
+<h4>在php中调用过程</h4>
+
+<pre><code>try
+       {
+            $sql = &quot;call sp_update_tag($id);&quot;;
+            $connection=Yii::$app-&gt;db;
+            $command=$connection-&gt;createCommand($sql);
+            $result=$command-&gt;execute();
+        }catch(Exception $e)
+        {
+            echo $e-&gt;getMessage();
+        }
+</code></pre><p>  </p><h3>视图view</h3><br>  在使用过程中，其实可以将视图当成一张表，但是在yii中，不能用gii给他生成model…创建视图可以通过navicat直接创建（在rsViews目录下面），同时也可以看到对应的SQL语句<br>  <h4>在php中调用视图</h4><p></p>
+<pre><code> $sql = &quot;select title from user_post
+       WHERE id = $id
+&quot;;
+   $result = Yii::$app-&gt;db-&gt;createCommand($sql)-&gt;query();
+
+   foreach($result as $re)
+   {
+       echo $re[&apos;title&apos;];
+       echo &apos;                         &apos;;
+   }
+</code></pre><p>总结一下数据库大作业，我觉得做的很不顺利，主要是因为对SQL语句不是很熟悉，接下来要多练习，⛽️</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/05/hello-world/" data-id="cjvpzs41n0008rosh7wyjlpkc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjvpzs41i0003roshv9icb8hk" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2019/05/12/2019-05-12-sxr/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          2019-05-12 sxr
-        
-      </div>
-    </a>
   
+    <a href="/2019/05/15/2019-05-15-数据库/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2019-05-15 数据库</div>
+    </a>
   
 </nav>
 

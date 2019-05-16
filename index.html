@@ -62,6 +62,140 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-05-16-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/16/2019-05-16-数据库/" class="article-date">
+  <time datetime="2019-05-16T14:09:28.000Z" itemprop="datePublished">2019-05-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/16/2019-05-16-数据库/">2019-05-16 数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>昨天交了大作业太激动了，忘记更新博客了😢，今天继续，现总结一下这次数据库的作业吧</p>
+<p></p><h3>存储过程</h3><br>在数据库里面建立存储过程基本就是这个框架<p></p>
+<pre><code>CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_update_tag`(IN post_id INT)
+begin
+    DECLARE new_tag VARCHAR(255);
+    DECLARE old_fre INT;
+    DECLARE new_fre INT;
+    DECLARE t_error INT;
+    DECLARE    CONTINUE HANDLER FOR SQLEXCEPTION SET t_error = 1;
+
+    SELECT tags  into new_tag FROM post WHERE id = post_id;
+
+    IF (!isNULL(new_tag)) then
+    BEGIN
+    SELECT frequency into old_fre FROM tag WHERE name = new_tag;
+                    SET new_fre = old_fre + 1;
+                    UPDATE tag SET frequency = new_fre WHERE name = new_tag;    
+    END
+    ELSE 
+                    signal sqlstate &apos;HY000&apos; set message_text=&apos;标签不能为空！！&apos;;    
+    END IF;
+    IF t_error = 1 THEN
+ROLLBACK;
+ELSE
+COMMIT;
+END IF;
+    END
+</code></pre><p>里面的语法规则真的好多，哪里加分号，哪里不加好麻烦。<br><br>其他几个需要注意的地方：声明变量类型是char或者varchar时，要指明长度；注意赋值语句的格式；SQL里面有函数可以用（比如上面的判断str是否为空）<br></p>
+<h4>在php中调用过程</h4>
+
+<pre><code>try
+       {
+            $sql = &quot;call sp_update_tag($id);&quot;;
+            $connection=Yii::$app-&gt;db;
+            $command=$connection-&gt;createCommand($sql);
+            $result=$command-&gt;execute();
+        }catch(Exception $e)
+        {
+            echo $e-&gt;getMessage();
+        }
+</code></pre><p>  </p><h3>视图view</h3><br>  在使用过程中，其实可以将视图当成一张表，但是在yii中，不能用gii给他生成model…创建视图可以通过navicat直接创建（在rsViews目录下面），同时也可以看到对应的SQL语句<br>  <h4>在php中调用视图</h4><p></p>
+<pre><code> $sql = &quot;select title from user_post
+       WHERE id = $id
+&quot;;
+   $result = Yii::$app-&gt;db-&gt;createCommand($sql)-&gt;query();
+
+   foreach($result as $re)
+   {
+       echo $re[&apos;title&apos;];
+       echo &apos;                         &apos;;
+   }
+</code></pre><p>总结一下数据库大作业，我觉得做的很不顺利，主要是因为对SQL语句不是很熟悉，接下来要多练习，⛽️</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjvpzs41i0003roshv9icb8hk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-05-15-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/15/2019-05-15-数据库/" class="article-date">
+  <time datetime="2019-05-15T14:09:28.000Z" itemprop="datePublished">2019-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/15/2019-05-15-数据库/">2019-05-15 数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先补充一下触发器的内容。需求时：当满足条件时插入，不满足时插入失败，系统报错<br><br>实现方法：在创建触发器时mysql抛出异常</p>
+<pre><code>else
+    signal sqlstate &apos;HY000&apos; set message_text=&apos;您暂时已被禁止发布文章！&apos;;
+END IF ;
+</code></pre><p>然后在php中try-catch就可以啦</p>
+<p></p><h3>MYSQL 存储过程</h3><br>存储过程是为了完成特定功能的SQL语句集，经编译创建并保存在数据库中，用户可通过指定存储过程的名字并给定参数(需要时)来调用执行。存储过程思想上很简单，就是数据库 SQL 语言层面的代码<b>封装</b>与<b>重用</b>。<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/15/2019-05-15-数据库/" data-id="cjvpzs41e0001roshm5om1jz0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-05-14-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/14/2019-05-14-数据库/" class="article-date">
@@ -145,7 +279,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/14/2019-05-14-数据库/" data-id="cjvnrmfq80000lqsht58c994k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/14/2019-05-14-数据库/" data-id="cjvpzs4170000rosh8ybxfyyw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -188,7 +322,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/13/2019-05-13-Android/" data-id="cjvm6bbut0001nbshfw6hcwoa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/13/2019-05-13-Android/" data-id="cjvpzs41j0004roshj3qr8iz0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -227,7 +361,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/12/2019-05-12-sxr/" data-id="cjvm6bbup0000nbshpbccxpf8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/12/2019-05-12-sxr/" data-id="cjvpzs41k0005roshmhnl4sdk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
@@ -274,7 +408,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/05/hello-world/" data-id="cjvm6bbuw0003nbshu6errncz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/05/hello-world/" data-id="cjvpzs41n0008rosh7wyjlpkc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -307,7 +441,7 @@ end;
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/sxr/" style="font-size: 10px;">sxr</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/sxr/" style="font-size: 10px;">sxr</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a>
     </div>
   </div>
 
@@ -329,6 +463,14 @@ end;
       <ul>
         
           <li>
+            <a href="/2019/05/16/2019-05-16-数据库/">2019-05-16 数据库</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/15/2019-05-15-数据库/">2019-05-15 数据库</a>
+          </li>
+        
+          <li>
             <a href="/2019/05/14/2019-05-14-数据库/">2019-05-14 数据库</a>
           </li>
         
@@ -338,10 +480,6 @@ end;
         
           <li>
             <a href="/2019/05/12/2019-05-12-sxr/">2019-05-12 sxr</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/05/hello-world/">Hello World</a>
           </li>
         
       </ul>
