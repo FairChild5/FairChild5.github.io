@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>2019-05-17 数据库 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天没有学一些课外知识，最近可能就一直备战考试了。 SQL中In和Exist的区别首先，查询中涉及到的两个表，一个user和一个order表，具体表的内容如下： 　　　　user表： 　　　　 　　　　order表： 　　　　 　　in　　　　确定给定的值是否与子查询或列表中的值相匹配。in在查询的时候，首先查询子查询的表，然后将内表和外表做一个笛卡尔积，然后按照条件进行筛选。所以相对内表比较小的">
+<meta name="keywords" content="数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019-05-17 数据库">
+<meta property="og:url" content="http://yoursite.com/2019/05/17/2019-05-17-数据库/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="今天没有学一些课外知识，最近可能就一直备战考试了。 SQL中In和Exist的区别首先，查询中涉及到的两个表，一个user和一个order表，具体表的内容如下： 　　　　user表： 　　　　 　　　　order表： 　　　　 　　in　　　　确定给定的值是否与子查询或列表中的值相匹配。in在查询的时候，首先查询子查询的表，然后将内表和外表做一个笛卡尔积，然后按照条件进行筛选。所以相对内表比较小的">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-17T14:10:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2019-05-17 数据库">
+<meta name="twitter:description" content="今天没有学一些课外知识，最近可能就一直备战考试了。 SQL中In和Exist的区别首先，查询中涉及到的两个表，一个user和一个order表，具体表的内容如下： 　　　　user表： 　　　　 　　　　order表： 　　　　 　　in　　　　确定给定的值是否与子查询或列表中的值相匹配。in在查询的时候，首先查询子查询的表，然后将内表和外表做一个笛卡尔积，然后按照条件进行筛选。所以相对内表比较小的">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2019-05-17-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/17/2019-05-17-数据库/" class="article-date">
+  <time datetime="2019-05-17T14:09:28.000Z" itemprop="datePublished">2019-05-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      2019-05-17 数据库
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天没有学一些课外知识，最近可能就一直备战考试了。</p>
+<p></p><h3>SQL中In和Exist的区别</h3><br>首先，查询中涉及到的两个表，一个user和一个order表，具体表的内容如下：<p></p>
+<p>　　　　user表：</p>
+<p>　　　　</p>
+<p>　　　　order表：</p>
+<p>　　　　</p>
+<p>　　in<br>　　　　确定给定的值是否与子查询或列表中的值相匹配。in在查询的时候，首先查询子查询的表，然后将内表和外表做一个笛卡尔积，然后按照条件进行筛选。所以相对内表比较小的时候，in的速度较快。</p>
+<p>　　　　具体sql语句如下：</p>
+<p>复制代码<br> 1 SELECT<br> 2     *<br> 3 FROM<br> 4     <code>user</code><br> 5 WHERE<br> 6     <code>user</code>.id IN (<br> 7         SELECT<br> 8             <code>order</code>.user_id<br> 9         FROM<br>10             <code>order</code><br>11     )<br>复制代码<br>　　　　这条语句很简单，通过子查询查到的user_id 的数据，去匹配user表中的id然后得到结果。该语句执行结果如下：</p>
+<p>　　　　</p>
+<p>　　　　它的执行流程是什么样子的呢？让我们一起来看一下。</p>
+<p>　　　　首先，在数据库内部，查询子查询，执行如下代码：</p>
+<pre><code>SELECT
+    `order`.user_id
+FROM
+    `order`
+</code></pre><p>　　　　执行完毕后，得到结果如下：</p>
+<p>　　　　</p>
+<p>　　　　此时，将查询到的结果和原有的user表做一个笛卡尔积，结果如下：</p>
+<p>　　　　</p>
+<p>　　　　此时，再根据我们的user.id IN order.user_id的条件，将结果进行筛选（既比较id列和user_id 列的值是否相等，将不相等的删除）。最后，得到两条符合条件的数据。
+　　　　</p>
+<p>　　exists<br>　　　　指定一个子查询，检测行的存在。遍历循环外表，然后看外表中的记录有没有和内表的数据一样的。匹配上就将结果放入结果集中。</p>
+<p>　　　　具体sql语句如下：</p>
+<p>复制代码<br> 1 SELECT<br> 2     <code>user</code>.*<br> 3 FROM<br> 4     <code>user</code><br> 5 WHERE<br> 6     EXISTS (<br> 7         SELECT<br> 8             <code>order</code>.user_id<br> 9         FROM<br>10             <code>order</code><br>11         WHERE<br>12             <code>user</code>.id = <code>order</code>.user_id<br>13     )<br>复制代码<br>　　　　这条sql语句的执行结果和上面的in的执行结果是一样的。</p>
+<p>　　　　</p>
+<p>　　　　但是，不一样的是它们的执行流程完全不一样：</p>
+<p>　　　　使用exists关键字进行查询的时候，首先，我们先查询的不是子查询的内容，而是查我们的主查询的表，也就是说，我们先执行的sql语句是：</p>
+<p>　　　　 SELECT <code>user</code>.* FROM <code>user</code> </p>
+<p>　　　　得到的结果如下：</p>
+<p>　　　　</p>
+<p>　　　　然后，根据表的每一条记录，执行以下语句，依次去判断where后面的条件是否成立：</p>
+<p>复制代码<br>EXISTS (<br>        SELECT<br>            <code>order</code>.user_id<br>        FROM<br>            <code>order</code><br>        WHERE<br>            <code>user</code>.id = <code>order</code>.user_id<br>    )<br>复制代码<br>　　　　如果成立则返回true不成立则返回false。如果返回的是true的话，则该行结果保留，如果返回的是false的话，则删除该行，最后将得到的结果返回。</p>
+<p>　　区别及应用场景<br>　　　　in 和 exists的区别: 如果子查询得出的结果集记录较少，主查询中的表较大且又有索引时应该用in, 反之如果外层的主查询记录较少，子查询中的表大，又有索引时使用exists。其实我们区分in和exists主要是造成了驱动顺序的改变(这是性能变化的关键)，如果是exists，那么以外层表为驱动表，先被访问，如果是IN，那么先执行子查询，所以我们会以驱动表的快速返回为目标，那么就会考虑到索引及结果集的关系了 ，另外IN时不对NULL进行处理。</p>
+<p>　　　　in 是把外表和内表作hash 连接，而exists是对外表作loop循环，每次loop循环再对内表进行查询。一直以来认为exists比in效率高的说法是不准确的。</p>
+<p>　　not in 和not exists<br>　　　　如果查询语句使用了not in 那么内外表都进行全表扫描，没有用到索引；而not extsts 的子查询依然能用到表上的索引。所以无论那个表大，用not exists都比not in要快。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="cjvs5v9hu00005ksh2qmcaj7q" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/16/2019-05-16-数据库/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2019-05-16 数据库</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/sxr/" style="font-size: 10px;">sxr</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/05/17/2019-05-17-数据库/">2019-05-17 数据库</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/16/2019-05-16-数据库/">2019-05-16 数据库</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/15/2019-05-15-数据库/">2019-05-15 数据库</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/14/2019-05-14-数据库/">2019-05-14 数据库</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/13/2019-05-13-Android/">2019-05-13 Android</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

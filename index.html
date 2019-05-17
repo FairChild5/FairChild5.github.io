@@ -62,6 +62,80 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-05-17-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/17/2019-05-17-数据库/" class="article-date">
+  <time datetime="2019-05-17T14:09:28.000Z" itemprop="datePublished">2019-05-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/17/2019-05-17-数据库/">2019-05-17 数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天没有学一些课外知识，最近可能就一直备战考试了。</p>
+<p></p><h3>SQL中In和Exist的区别</h3><br>首先，查询中涉及到的两个表，一个user和一个order表，具体表的内容如下：<p></p>
+<p>　　　　user表：</p>
+<p>　　　　</p>
+<p>　　　　order表：</p>
+<p>　　　　</p>
+<p>　　in<br>　　　　确定给定的值是否与子查询或列表中的值相匹配。in在查询的时候，首先查询子查询的表，然后将内表和外表做一个笛卡尔积，然后按照条件进行筛选。所以相对内表比较小的时候，in的速度较快。</p>
+<p>　　　　具体sql语句如下：</p>
+<p>复制代码<br> 1 SELECT<br> 2     *<br> 3 FROM<br> 4     <code>user</code><br> 5 WHERE<br> 6     <code>user</code>.id IN (<br> 7         SELECT<br> 8             <code>order</code>.user_id<br> 9         FROM<br>10             <code>order</code><br>11     )<br>复制代码<br>　　　　这条语句很简单，通过子查询查到的user_id 的数据，去匹配user表中的id然后得到结果。该语句执行结果如下：</p>
+<p>　　　　</p>
+<p>　　　　它的执行流程是什么样子的呢？让我们一起来看一下。</p>
+<p>　　　　首先，在数据库内部，查询子查询，执行如下代码：</p>
+<pre><code>SELECT
+    `order`.user_id
+FROM
+    `order`
+</code></pre><p>　　　　执行完毕后，得到结果如下：</p>
+<p>　　　　</p>
+<p>　　　　此时，将查询到的结果和原有的user表做一个笛卡尔积，结果如下：</p>
+<p>　　　　</p>
+<p>　　　　此时，再根据我们的user.id IN order.user_id的条件，将结果进行筛选（既比较id列和user_id 列的值是否相等，将不相等的删除）。最后，得到两条符合条件的数据。
+　　　　</p>
+<p>　　exists<br>　　　　指定一个子查询，检测行的存在。遍历循环外表，然后看外表中的记录有没有和内表的数据一样的。匹配上就将结果放入结果集中。</p>
+<p>　　　　具体sql语句如下：</p>
+<p>复制代码<br> 1 SELECT<br> 2     <code>user</code>.*<br> 3 FROM<br> 4     <code>user</code><br> 5 WHERE<br> 6     EXISTS (<br> 7         SELECT<br> 8             <code>order</code>.user_id<br> 9         FROM<br>10             <code>order</code><br>11         WHERE<br>12             <code>user</code>.id = <code>order</code>.user_id<br>13     )<br>复制代码<br>　　　　这条sql语句的执行结果和上面的in的执行结果是一样的。</p>
+<p>　　　　</p>
+<p>　　　　但是，不一样的是它们的执行流程完全不一样：</p>
+<p>　　　　使用exists关键字进行查询的时候，首先，我们先查询的不是子查询的内容，而是查我们的主查询的表，也就是说，我们先执行的sql语句是：</p>
+<p>　　　　 SELECT <code>user</code>.* FROM <code>user</code> </p>
+<p>　　　　得到的结果如下：</p>
+<p>　　　　</p>
+<p>　　　　然后，根据表的每一条记录，执行以下语句，依次去判断where后面的条件是否成立：</p>
+<p>复制代码<br>EXISTS (<br>        SELECT<br>            <code>order</code>.user_id<br>        FROM<br>            <code>order</code><br>        WHERE<br>            <code>user</code>.id = <code>order</code>.user_id<br>    )<br>复制代码<br>　　　　如果成立则返回true不成立则返回false。如果返回的是true的话，则该行结果保留，如果返回的是false的话，则删除该行，最后将得到的结果返回。</p>
+<p>　　区别及应用场景<br>　　　　in 和 exists的区别: 如果子查询得出的结果集记录较少，主查询中的表较大且又有索引时应该用in, 反之如果外层的主查询记录较少，子查询中的表大，又有索引时使用exists。其实我们区分in和exists主要是造成了驱动顺序的改变(这是性能变化的关键)，如果是exists，那么以外层表为驱动表，先被访问，如果是IN，那么先执行子查询，所以我们会以驱动表的快速返回为目标，那么就会考虑到索引及结果集的关系了 ，另外IN时不对NULL进行处理。</p>
+<p>　　　　in 是把外表和内表作hash 连接，而exists是对外表作loop循环，每次loop循环再对内表进行查询。一直以来认为exists比in效率高的说法是不准确的。</p>
+<p>　　not in 和not exists<br>　　　　如果查询语句使用了not in 那么内外表都进行全表扫描，没有用到索引；而not extsts 的子查询依然能用到表上的索引。所以无论那个表大，用not exists都比not in要快。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="cjvs5v9hu00005ksh2qmcaj7q" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-05-16-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/16/2019-05-16-数据库/" class="article-date">
@@ -140,7 +214,7 @@ END IF;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjvpzs41i0003roshv9icb8hk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjvpzsfag0005s8shff60eq4e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -184,7 +258,7 @@ END IF ;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/15/2019-05-15-数据库/" data-id="cjvpzs41e0001roshm5om1jz0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/15/2019-05-15-数据库/" data-id="cjvpzsfaa0001s8shk96q0aue" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -279,7 +353,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/14/2019-05-14-数据库/" data-id="cjvpzs4170000rosh8ybxfyyw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/14/2019-05-14-数据库/" data-id="cjvpzsfaf0004s8shz5g2xuuh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -322,7 +396,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/13/2019-05-13-Android/" data-id="cjvpzs41j0004roshj3qr8iz0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/13/2019-05-13-Android/" data-id="cjvpzsfad0003s8shixgzwjp4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -361,7 +435,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/12/2019-05-12-sxr/" data-id="cjvpzs41k0005roshmhnl4sdk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/12/2019-05-12-sxr/" data-id="cjvpzsfa60000s8sh40nx6v76" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
@@ -408,7 +482,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/05/hello-world/" data-id="cjvpzs41n0008rosh7wyjlpkc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/05/hello-world/" data-id="cjvpzsfah0008s8shdvtcpvmk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -463,6 +537,10 @@ end;
       <ul>
         
           <li>
+            <a href="/2019/05/17/2019-05-17-数据库/">2019-05-17 数据库</a>
+          </li>
+        
+          <li>
             <a href="/2019/05/16/2019-05-16-数据库/">2019-05-16 数据库</a>
           </li>
         
@@ -476,10 +554,6 @@ end;
         
           <li>
             <a href="/2019/05/13/2019-05-13-Android/">2019-05-13 Android</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/12/2019-05-12-sxr/">2019-05-12 sxr</a>
           </li>
         
       </ul>
