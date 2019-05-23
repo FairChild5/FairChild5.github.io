@@ -5,20 +5,20 @@
   
 
   
-  <title>2019-05-06 Android-yii | Hexo</title>
+  <title>2019-05-23 Android | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="今天完成了Android大作业的界面Activity之间的通信startActicityForResult方法（intent,requstCode）其中requstCode用来帮助判断是调用者的哪个请求onActicityResult方法：被调用的ACticity finish()之后会回调调用者的这个方法Intent.putExtra方法中可以放好多key-valueresultCode:可以帮">
-<meta name="keywords" content="Android yii">
+  <meta name="description" content="今天写了好久的安卓大作业，学到了好多东西🌈但是把shift键按坏了😷好不方便 给服务端发消息  OkGo.&amp;lt;String&amp;gt;post(AppConst.BaseUrl + &amp;quot;teacher/new-register&amp;quot;)                             .params(&amp;quot;token&amp;quot;, token)">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2019-05-06 Android-yii">
-<meta property="og:url" content="http://yoursite.com/2019/05/06/2019-05-06-Android-yii/index.html">
+<meta property="og:title" content="2019-05-23 Android">
+<meta property="og:url" content="http://yoursite.com/2019/05/23/2019-05-22-Android/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="今天完成了Android大作业的界面Activity之间的通信startActicityForResult方法（intent,requstCode）其中requstCode用来帮助判断是调用者的哪个请求onActicityResult方法：被调用的ACticity finish()之后会回调调用者的这个方法Intent.putExtra方法中可以放好多key-valueresultCode:可以帮">
+<meta property="og:description" content="今天写了好久的安卓大作业，学到了好多东西🌈但是把shift键按坏了😷好不方便 给服务端发消息  OkGo.&amp;lt;String&amp;gt;post(AppConst.BaseUrl + &amp;quot;teacher/new-register&amp;quot;)                             .params(&amp;quot;token&amp;quot;, token)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-06T09:39:42.000Z">
+<meta property="og:updated_time" content="2019-05-23T14:42:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019-05-06 Android-yii">
-<meta name="twitter:description" content="今天完成了Android大作业的界面Activity之间的通信startActicityForResult方法（intent,requstCode）其中requstCode用来帮助判断是调用者的哪个请求onActicityResult方法：被调用的ACticity finish()之后会回调调用者的这个方法Intent.putExtra方法中可以放好多key-valueresultCode:可以帮">
+<meta name="twitter:title" content="2019-05-23 Android">
+<meta name="twitter:description" content="今天写了好久的安卓大作业，学到了好多东西🌈但是把shift键按坏了😷好不方便 给服务端发消息  OkGo.&amp;lt;String&amp;gt;post(AppConst.BaseUrl + &amp;quot;teacher/new-register&amp;quot;)                             .params(&amp;quot;token&amp;quot;, token)">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2019-05-06-Android-yii" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2019-05-22-Android" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/05/06/2019-05-06-Android-yii/" class="article-date">
-  <time datetime="2019-05-06T14:09:28.000Z" itemprop="datePublished">2019-05-06</time>
+    <a href="/2019/05/23/2019-05-22-Android/" class="article-date">
+  <time datetime="2019-05-23T14:09:28.000Z" itemprop="datePublished">2019-05-23</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      2019-05-06 Android-yii
+      2019-05-23 Android
     </h1>
   
 
@@ -87,20 +87,124 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="今天完成了Android大作业的界面"><a href="#今天完成了Android大作业的界面" class="headerlink" title="今天完成了Android大作业的界面"></a><p>今天完成了Android大作业的界面</p></h2><p></p><h2>Activity之间的通信</h2><br>startActicityForResult方法（intent,requstCode）其中requstCode用来帮助判断是调用者的哪个请求<br><br>onActicityResult方法：被调用的ACticity finish()之后会回调调用者的这个方法<br><br>Intent.putExtra方法中可以放好多key-value<br><br>resultCode:可以帮助调用者判断这是第几次被调用<p></p>
-<p></p><h2>Android 广播(Broadcast和BroadcaseReceiver)</h2><p></p>
-<p></p><h3>自定义广播</h3><br>一开始所有的BroadcaseReceiver都是处于休眠状态，当有一个信号时，操作系统会遍历BroadcaseReceiver的链表，查看谁关心就叫醒他<br><br><b>广播</b>：Context.sendBroadcast()、sendOrderBroadcast()、sendStickyBroadcast()方法把Intent对象以广播的形式发送出去，双方都可以有权限限制<br><br><b>Receiver</b>:需要注册(在注册时可以设置action)，onReceive()方法进行接收<br><br>需要通过<b>intent</b>发送，其中有action用来过滤（匹配）<br><br>接收广播不需要界面<br><br><b>注册方法</b>分为静态注册和动态注册，主要区别是：静态注册时，即使APP从来没有被执行过，onReceive方法依然会被执行；动态注册时，当Context对象被销毁时，Receiver也随之被销毁(也可以设置过滤等操作)<br><p></p>
-<p></p><h3>接受系统广播（电量低、时区改变等）</h3><p></p>
-<p></p><h2>Service :后台运行（例如：下载音乐）和跨进程访问<br>Context.startService()和Context.bindService()<br><br>Service不能自己启动，需要Activity使用startService()方法（只能调用stopService()方法结束）。而使用bindService（）方法启用服务，调用者与服务绑定在了一起。（使用onUnbind方法解除绑定）<p></p>
-<h4>创建Service:onCreate()方法  可以设置使用权限</h4>
-</h2>
+        <p>今天写了好久的安卓大作业，学到了好多东西🌈但是把shift键按坏了😷好不方便</p>
+<h4>给服务端发消息</h4>
+
+<pre><code>OkGo.&lt;String&gt;post(AppConst.BaseUrl + &quot;teacher/new-register&quot;)
+                            .params(&quot;token&quot;, token)
+                            .params(&quot;lid&quot;, 2)
+                            .params(&quot;gps&quot;,gps)
+                            .execute(new StringCallback() {
+                                @Override
+                                public void onSuccess(Response&lt;String&gt; response) {
+                                    String string = response.body();
+                                    try {
+                                        JSONObject object = new JSONObject(string);
+
+                                        Toast.makeText(MainActivity.this, &quot;提交成功&quot;, Toast.LENGTH_SHORT).show();
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+</code></pre><h4>关于pdf的下载和读取</h4>
+
+<pre><code>@Override
+protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.question);
+    //下载并预览pdf
+    findViewById(R.id.buttonsummit).setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+            new Thread(){
+                @Override
+                public void run() {
+                    super.run();
+                    downFile();
+                }
+            }.start();
+        }
+    });
+        //发送答案
+    //init();
+}
+
+
+private void downFile(){
+    String urlString = &quot;http://47.95.200.233/search-homework/Documentation.pdf&quot;;
+    try {
+        URL url = new URL(urlString);
+        HttpURLConnection connection = (HttpURLConnection)
+                url.openConnection();
+        connection.setRequestMethod(&quot;GET&quot;);
+        connection.setDoInput(true);
+        connection.setDoOutput(true);
+        connection.setUseCaches(false);
+        connection.setConnectTimeout(5000);
+        connection.setReadTimeout(5000);
+        //实现连接
+        connection.connect();
+
+        if (connection.getResponseCode() == 200) {
+            InputStream is = connection.getInputStream();
+            //以下为下载操作
+            byte[] arr = new byte[1];
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            BufferedOutputStream bos = new BufferedOutputStream(baos);
+            int n = is.read(arr);
+            while (n &gt; 0) {
+                bos.write(arr);
+                n = is.read(arr);
+            }
+            bos.close();
+            String path = Environment.getExternalStorageDirectory()
+                    + &quot;/download/&quot;;
+            String[] name = urlString.split(&quot;/&quot;);
+            path = path + name[name.length - 1];
+            File file = new File(path);
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(baos.toByteArray());
+            fos.close();
+            //关闭网络连接
+            connection.disconnect();
+            Log.d(&quot;下载完成&quot;,&quot;下载完成&quot;);
+            //openPDF(file);//打开PDF文件
+        }
+    } catch (Exception e) {
+        // TODO: handle exception
+        System.out.println(e.getMessage());
+    }
+
+}
+
+private void openPDF(File file) {
+    if (file.exists()) {
+        Log.d(&quot;打开&quot;,&quot;打开&quot;);
+        Uri path1 = Uri.fromFile(file);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(path1, &quot;application/pdf&quot;);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        try {
+            startActivity(intent);
+        }
+        catch (Exception e) {
+            Log.d(&quot;打开失败&quot;,&quot;打开失败&quot;);
+        }
+    }
+
+}
+</code></pre><h4>
+</h4>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/06/2019-05-06-Android-yii/" data-id="cjvxsvyac000jt5shtpc41pzk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjw0rndye00002vshu4in7w46" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-yii/">Android yii</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 
     </footer>
   </div>
@@ -108,19 +212,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/05/07/2019-05-07-yii-git/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          2019-05-07 git-yii
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/05/05/2019-05-05-Android-yii/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/05/21/2019-05-21-算法/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">2019-05-05 Android-yii</div>
+      <div class="article-nav-title">2019-05-21 算法</div>
     </a>
   
 </nav>
