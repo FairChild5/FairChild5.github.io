@@ -62,6 +62,202 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-05-24-Android" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/24/2019-05-24-Android/" class="article-date">
+  <time datetime="2019-05-24T14:09:28.000Z" itemprop="datePublished">2019-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/24/2019-05-24-Android/">2019-05-24 Android</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天写完了算法大作业😄基本完成了android端的学生界面🌈</p>
+<h3>根据url下载图片并显示</h3>
+
+<pre><code>private Button summitButton;
+private RadioButton ra,rb,rc,rd;
+private String answer;
+//设置提交次数
+private int count=0;
+
+public static final int DOWNLOAD_CODE = 10001;
+public static final int DOWNLOAD_FAIL = 300;
+public static final int CONNECT_TIMEOUT = 2000;
+private ImageView image_download;
+
+private Handler handler;
+private String path=&quot;http://47.95.200.233/search-homework/static/img/logo.b5d9053.png&quot;;
+
+private int fileLength;
+
+private Bitmap mBitmap;
+
+
+
+@Override
+protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.question);
+    //下载并显示图片
+    image_download=findViewById(R.id.question_img);
+
+
+    new Thread(new GetPictThread(handler,path)).start();
+
+
+    //接收子线程的消息
+    handler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what){
+                case DOWNLOAD_CODE:
+                    /*
+                     * 更新UI
+                     * 提取消息中的bitmap,并设置ImageView
+                     * */
+                    Bitmap bitmap=(Bitmap) msg.obj;
+                    if (bitmap!=null){
+                        image_download.setImageBitmap(bitmap);//disPlay image
+                    }
+                    break;
+                case DOWNLOAD_FAIL:
+                    Toast.makeText(Answer.this,&quot;下载失败&quot;,Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
+    };
+
+
+
+
+}
+
+
+private class GetPictThread implements Runnable{
+    //定义handler和path
+    public Handler handler;
+    public String path;
+
+    //带参构造
+    public GetPictThread(Handler handler, String path) {
+        this.handler = handler;
+        this.path = path;
+    }
+
+    //在run方法中实现图片下载
+    @Override
+    public void run() {
+        //通过Get方法请求获取网络图片
+        try {
+            URL url=new URL(path);
+            HttpURLConnection connection=(HttpURLConnection) url.openConnection();
+
+            //设置请求方式
+            connection.setRequestMethod(&quot;GET&quot;);
+            //设置超时时间
+            connection.setConnectTimeout(30*1000);
+            //发起连接
+            connection.connect();
+
+            //获取状态码
+            int requestCode=connection.getResponseCode();
+            System.out.println(requestCode);
+
+            if (requestCode==HttpURLConnection.HTTP_OK){
+                /*
+                 * 1.获得文件长度
+                 * 2.通过缓冲输入流
+                 * 3.将输入流转换成字节数组
+                 * 4.将字节数组转换成位图
+                 * */
+                fileLength=connection.getContentLength();
+
+                InputStream is=new BufferedInputStream(connection.getInputStream());
+
+                //获取到字节数组
+                byte[] arr=streamToArr(is);
+
+                //将字节数组转换成位图
+                mBitmap= BitmapFactory.decodeByteArray(arr,0,arr.length);
+
+                /*
+                 * 下载完成后将消息发送出去
+                 * 通知主线程，更新UI
+                 * */
+                Message message=Message.obtain();
+                message.what=DOWNLOAD_CODE;
+                message.obj=mBitmap;
+                handler.sendMessage(message);
+
+            }else {
+                Log.e(&quot;TAG&quot;, &quot;run:error &quot;+requestCode);
+            }
+        }catch (MalformedURLException e){
+            e.printStackTrace();
+            handler.sendEmptyMessage(DOWNLOAD_FAIL);
+        }catch (IOException e){
+            e.printStackTrace();
+            handler.sendEmptyMessage(DOWNLOAD_FAIL);
+        }
+    }
+}
+
+
+
+public byte[] streamToArr(InputStream inputStream){
+
+    try {
+        ByteArrayOutputStream baos=new ByteArrayOutputStream();
+        byte[] buffer=new byte[1024];
+        int len;
+
+        while ((len=inputStream.read(buffer))!=-1){
+            baos.write(buffer,0,len);
+        }
+
+        //关闭输出流
+        baos.close();
+        //关闭输入流
+        inputStream.close();
+        //返回字节数组
+        return baos.toByteArray();
+    }catch (IOException e){
+        e.printStackTrace();
+        //若失败，则返回空
+        return null;
+    }
+}
+</code></pre><p>参考网站：<a href="https://blog.csdn.net/cjhloveandroid/article/details/82811236" target="_blank" rel="noopener">https://blog.csdn.net/cjhloveandroid/article/details/82811236</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjw1ymrap0000awshtzt756ah" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-05-22-Android" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/23/2019-05-22-Android/" class="article-date">
@@ -198,7 +394,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjw0rndye00002vshu4in7w46" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjw0rns8r001a3bshe1sbob15" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -237,7 +433,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="cjvxsvyam0016t5sh1i8eo4ii" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="cjw0rns8q00183bshsleikafq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -282,7 +478,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="cjvxsvyal0014t5shc26kq6gw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="cjw0rns8p00163bsh3f8ygmx9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -324,7 +520,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="cjvxsvyao001at5shedad7r1k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="cjw0rns8o00143bshcre0l77s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -393,7 +589,7 @@ EXISTS (
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="cjvxsvyak0012t5shn11dpzxn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="cjw0rns8m00123bsh7nfjfd5z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -483,7 +679,7 @@ END IF;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjvxsvyak0010t5shfvdz8hw9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjw0rns8k000z3bshjeal63co" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -527,7 +723,7 @@ END IF ;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/15/2019-05-15-数据库/" data-id="cjvxsvyaj000zt5shfxa8f3k5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/15/2019-05-15-数据库/" data-id="cjw0rns8l00103bshi8eh4t0r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -622,7 +818,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/14/2019-05-14-数据库/" data-id="cjvxsvyai000wt5shhenjeocq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/14/2019-05-14-数据库/" data-id="cjw0rns8j000w3bshac44k13i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -665,49 +861,10 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/13/2019-05-13-Android/" data-id="cjvxsvyah000vt5shzvae36s0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/13/2019-05-13-Android/" data-id="cjw0rns8i000v3bshqi2foc23" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-12-sxr" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/12/2019-05-12-sxr/" class="article-date">
-  <time datetime="2019-05-12T14:09:28.000Z" itemprop="datePublished">2019-05-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/12/2019-05-12-sxr/">2019-05-12 sxr</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>打一个假卡，今天早上不舒服，起来就10点半了。下午去听金融的讲座，顺便写完了离散作业，然后想到的算法问题（PPT文本框自适应文本）和老师讲的太雷同了被抛弃了。再想一个吧，总之今天挺不顺利的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/12/2019-05-12-sxr/" data-id="cjvxsvyag000st5shi24u1yvh" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
 
     </footer>
   </div>
@@ -744,7 +901,7 @@ end;
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 16.67px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 13.33px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 10px;">sxr</a> <a href="/tags/yii/" style="font-size: 16.67px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
+      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 15px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 10px;">sxr</a> <a href="/tags/yii/" style="font-size: 15px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
     </div>
   </div>
 
@@ -766,6 +923,10 @@ end;
       <ul>
         
           <li>
+            <a href="/2019/05/24/2019-05-24-Android/">2019-05-24 Android</a>
+          </li>
+        
+          <li>
             <a href="/2019/05/23/2019-05-22-Android/">2019-05-23 Android</a>
           </li>
         
@@ -779,10 +940,6 @@ end;
         
           <li>
             <a href="/2019/05/19/2019-05-18-数据库/">2019-05-19 数据库</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/17/2019-05-17-数据库/">2019-05-17 数据库</a>
           </li>
         
       </ul>
