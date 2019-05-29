@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="周五要数据库上机，复习一下SQL🐟句 JOIN的用法  inner join left join:将左表的所有记录列出，右表中只要符合on条件的，与左表记录相拼合，不符合条件的，填以null值 将右表的所有记录列出，左表中只要符合on条件的，与右表记录相拼合，不符合条件的，填以null值 full join:综合left和right（但是在mysql中没有这个操作，需要用Union） 数据库查询">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-29T13:41:58.000Z">
+<meta property="og:updated_time" content="2019-05-29T14:15:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019-05-29 SQL">
 <meta name="twitter:description" content="周五要数据库上机，复习一下SQL🐟句 JOIN的用法  inner join left join:将左表的所有记录列出，右表中只要符合on条件的，与左表记录相拼合，不符合条件的，填以null值 将右表的所有记录列出，左表中只要符合on条件的，与右表记录相拼合，不符合条件的，填以null值 full join:综合left和right（但是在mysql中没有这个操作，需要用Union） 数据库查询">
@@ -96,11 +96,18 @@
 <p><li>full join:综合left和right（但是在mysql中没有这个操作，需要用Union）<br></li></p>
 <p></p><h4>数据库查询中的函数</h4><br>参考网站：<a href="https://blog.csdn.net/qq_43501509/article/details/84933178" target="_blank" rel="noopener">https://blog.csdn.net/qq_43501509/article/details/84933178</a><p></p>
 <p>IF(expr,v1,v2)    如果expr表达式为true返回v1,否则返回v2<br><br>IFNULL(v1,v2)    如果v1不为NULL返回v1,否则返回v2<br></p>
+<p>⚠️1、是count还是count* 如果是count的话要count哪个字段<br>     2、注意join的格式</p>
+<pre><code>SELECT distinct Category.catid,count(Workson.proid) as proNum
+from Category LEFT outer JOIN Project on Project.catid=Category.catid 
+LEFT outer JOIN Workson on Project.proid = Workson.proid
+AND empid=&apos;10102&apos;
+GROUP BY Category.catid;
+</code></pre><p>⚠️对于多对多的关系进行多表连接的时候要注意，可以先select*查看一下结果</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjw9a5lzm0000kwsht0p9123k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjw9a5zph001gldsh1e4nhtwl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
