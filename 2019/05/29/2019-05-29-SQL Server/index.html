@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>2019-05-29 MAC上使用SQL Server | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="步骤: 打开Docker 打开终端  sudo docker stop sql1 sudo docker rm sql1  sudo docker run -e &amp;apos;ACCEPT_EULA=Y&amp;apos; -e &amp;apos;SA_PASSWORD=&amp;lt;Sxr878231&amp;apos; \        -p 1433:1433 --name sql1 \        -d mcr.mi">
+<meta name="keywords" content="SQL Server">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019-05-29 MAC上使用SQL Server">
+<meta property="og:url" content="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="步骤: 打开Docker 打开终端  sudo docker stop sql1 sudo docker rm sql1  sudo docker run -e &amp;apos;ACCEPT_EULA=Y&amp;apos; -e &amp;apos;SA_PASSWORD=&amp;lt;Sxr878231&amp;apos; \        -p 1433:1433 --name sql1 \        -d mcr.mi">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-29T04:36:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2019-05-29 MAC上使用SQL Server">
+<meta name="twitter:description" content="步骤: 打开Docker 打开终端  sudo docker stop sql1 sudo docker rm sql1  sudo docker run -e &amp;apos;ACCEPT_EULA=Y&amp;apos; -e &amp;apos;SA_PASSWORD=&amp;lt;Sxr878231&amp;apos; \        -p 1433:1433 --name sql1 \        -d mcr.mi">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2019-05-29-SQL Server" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/29/2019-05-29-SQL Server/" class="article-date">
+  <time datetime="2019-05-29T14:09:28.000Z" itemprop="datePublished">2019-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      2019-05-29 MAC上使用SQL Server
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>步骤:</p>
+<p>打开Docker</p>
+<p>打开终端 </p>
+<pre><code>sudo docker stop sql1
+sudo docker rm sql1
+
+sudo docker run -e &apos;ACCEPT_EULA=Y&apos; -e &apos;SA_PASSWORD=&lt;Sxr878231&apos; \
+       -p 1433:1433 --name sql1 \
+       -d mcr.microsoft.com/mssql/server:2017-latest
+
+       sudo docker exec -it sql1 &quot;bash&quot;
+       /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P &apos;Sxr878231&apos;
+</code></pre><p> 打开Navicat</p>
+<p> 连接localhost</p>
+<p> 执行查询</p>
+<pre><code> USE master;  
+GO  
+IF DB_ID (N&apos;MyOptionsTest&apos;) IS NOT NULL  
+DROP DATABASE MyOptionsTest;  
+GO  
+CREATE DATABASE MyOptionsTest  
+COLLATE Chinese_PRC_CS_AI_WS;  
+GO  
+
+--Verify the collation setting.  
+SELECT name, collation_name  
+FROM sys.databases  
+WHERE name = N&apos;MyOptionsTest&apos;;  
+GO  
+</code></pre><p>插入表</p>
+<p>CREATE TABLE Department<br>(<br>depid    varchar(20)    not null    PRIMARY KEY,<br>depname    varchar(20)    not null,<br>location    varchar(20)    not null,<br>)<br>CREATE TABLE Employee<br>(<br>empid    varchar(20)    not null    PRIMARY KEY,<br>empname    varchar(20)    not null,<br>age int not null,<br>sex varchar(10) not null,<br>depid    varchar(20)    not null    foreign key(depid) references Department(depid)<br>)<br>CREATE TABLE Category<br>(<br>catid    varchar(20)    not null    PRIMARY KEY,<br>catname    varchar(20)    not null<br>)<br>CREATE TABLE Project<br>(<br>proid        varchar(20)    not null    PRIMARY KEY,<br>projectname varchar(20) not null,<br>budget    int    not null,<br>catid    varchar(20)    not null    foreign key(catid) references Category(catid)<br>)<br>CREATE TABLE Workson<br>(<br>empid    varchar(20)    not null    foreign key(empid) references Employee(empid),<br>proid        varchar(20)    not null    foreign key(proid) references Project(proid),<br>job    varchar(20)    ,<br>enterdate    date    not null,<br>PRIMARY KEY (empid,proid)<br>)<br>INSERT INTO Department<br>SELECT ‘d1’, ‘开发部’, ‘天津’ union<br>SELECT ‘d2’, ‘财务部’, ‘北京’ union<br>SELECT ‘d3’, ‘市场部’, ‘广州’ union<br>SELECT ‘d4’, ‘人才管理部’, ‘天津’<br>INSERT INTO Employee<br>SELECT ‘10102’, ‘张三’, 34, ‘男’,’d1’ union<br>SELECT ‘10211’, ‘李飞’, 24, ‘男’,’d2’ union<br>SELECT ‘18316’, ‘王玲’, 29, ‘女’,’d4’ union<br>SELECT ‘22020’, ‘周城’, 39, ‘男’,’d2’ union<br>SELECT ‘22135’, ‘徐晶’, 35, ‘女’,’d3’ union<br>SELECT ‘25348’, ‘冯昕’, 27, ‘男’,’d1’ union<br>SELECT ‘28559’, ‘李风’, 41, ‘女’,’d3’ union<br>SELECT ‘29346’, ‘王新’, 32, ‘男’,’d1’ union<br>SELECT ‘30678’, ‘孙浩文’, 28, ‘女’,’d4’ </p>
+<p>INSERT INTO Category<br>SELECT ‘c1’, ‘设计类’ union<br>SELECT ‘c2’, ‘采购类’ union<br>SELECT ‘c3’, ‘营销类’ union<br>SELECT ‘c4’, ‘软件类’ union<br>SELECT ‘c5’, ‘硬件类’</p>
+<p>INSERT INTO Project<br>SELECT ‘p1’,’产品推广’, 120000, ‘c3’ union<br>SELECT ‘p2’, ‘广告设计’,40000, ‘c1’ union<br>SELECT ‘p3’, ‘软件升级’, 185000, ‘c4’ union<br>SELECT ‘p4’, ‘服务器采购’,150000, ‘c2’ union<br>SELECT ‘p5’, ‘办公用品采购’,80000, ‘c2’ union<br>SELECT ‘p6’, ‘软件开发’,85000, ‘c4’ </p>
+<p>INSERT INTO Workson<br>SELECT ‘10211’, ‘p1’, ‘分析员’, ‘2017-01-01’ union<br>SELECT ‘25348’, ‘p6’, ‘职员’, ‘2018-02-01’ union<br>SELECT ‘10102’, ‘p3’, ‘管理员’, ‘2018-08-05’ union<br>SELECT ‘25348’, ‘p4’, ‘职员’, ‘2018-03-23’ union<br>SELECT ‘22020’, ‘p6’, ‘管理员’, ‘2019-03-01’ union<br>SELECT ‘28559’, ‘p5’, ‘职员’, ‘2019-02-20’ union<br>SELECT ‘29346’, ‘p5’,  null, ‘2018-04-12’ union<br>SELECT ‘25348’, ‘p1’,  null, ‘2017-06-04’ union<br>SELECT ‘25348’, ‘p2’,  null, ‘2018-11-15’ union<br>SELECT ‘22020’, ‘p3’, ‘职员’, ‘2017-07-16’ union<br>SELECT ‘22135’, ‘p2’, ‘管理员’, ‘2017-12-18’ union<br>SELECT ‘18316’, ‘p5’, ‘职员’, ‘2018-06-22’ union<br>SELECT ‘10102’, ‘p4’, ‘管理员’, ‘2018-10-29’ union<br>SELECT ‘28559’, ‘p1’, ‘管理员’, ‘2019-02-11’ union<br>SELECT ‘10102’, ‘p5’, ‘职员’, ‘2018-12-10’ union<br>SELECT ‘18316’, ‘p1’, ‘职员’, ‘2017-09-28’ union<br>SELECT ‘10211’, ‘p6’, ‘分析员’, ‘2018-05-27’ union<br>SELECT ‘10102’, ‘p2’, ‘职员’, ‘2018-11-27’ union<br>SELECT ‘29346’, ‘p2’, ‘职员’, ‘2018-02-03’ union<br>SELECT ‘18316’, ‘p6’, ‘职员’, ‘2018-05-01’ </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjw8qmpi300007cshx8x3dkcb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/24/2019-05-24-Android/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2019-05-24 Android</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 15px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 10px;">sxr</a> <a href="/tags/yii/" style="font-size: 15px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/05/29/2019-05-29-SQL Server/">2019-05-29 MAC上使用SQL Server</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/24/2019-05-24-Android/">2019-05-24 Android</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/23/2019-05-22-Android/">2019-05-23 Android</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/21/2019-05-21-算法/">2019-05-21 算法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/20/2019-05-20-Android/">2019-05-20 Android</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

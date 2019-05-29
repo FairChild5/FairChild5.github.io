@@ -62,6 +62,78 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-05-29-SQL Server" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/29/2019-05-29-SQL Server/" class="article-date">
+  <time datetime="2019-05-29T14:09:28.000Z" itemprop="datePublished">2019-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/29/2019-05-29-SQL Server/">2019-05-29 MAC上使用SQL Server</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>步骤:</p>
+<p>打开Docker</p>
+<p>打开终端 </p>
+<pre><code>sudo docker stop sql1
+sudo docker rm sql1
+
+sudo docker run -e &apos;ACCEPT_EULA=Y&apos; -e &apos;SA_PASSWORD=&lt;Sxr878231&apos; \
+       -p 1433:1433 --name sql1 \
+       -d mcr.microsoft.com/mssql/server:2017-latest
+
+       sudo docker exec -it sql1 &quot;bash&quot;
+       /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P &apos;Sxr878231&apos;
+</code></pre><p> 打开Navicat</p>
+<p> 连接localhost</p>
+<p> 执行查询</p>
+<pre><code> USE master;  
+GO  
+IF DB_ID (N&apos;MyOptionsTest&apos;) IS NOT NULL  
+DROP DATABASE MyOptionsTest;  
+GO  
+CREATE DATABASE MyOptionsTest  
+COLLATE Chinese_PRC_CS_AI_WS;  
+GO  
+
+--Verify the collation setting.  
+SELECT name, collation_name  
+FROM sys.databases  
+WHERE name = N&apos;MyOptionsTest&apos;;  
+GO  
+</code></pre><p>插入表</p>
+<p>CREATE TABLE Department<br>(<br>depid    varchar(20)    not null    PRIMARY KEY,<br>depname    varchar(20)    not null,<br>location    varchar(20)    not null,<br>)<br>CREATE TABLE Employee<br>(<br>empid    varchar(20)    not null    PRIMARY KEY,<br>empname    varchar(20)    not null,<br>age int not null,<br>sex varchar(10) not null,<br>depid    varchar(20)    not null    foreign key(depid) references Department(depid)<br>)<br>CREATE TABLE Category<br>(<br>catid    varchar(20)    not null    PRIMARY KEY,<br>catname    varchar(20)    not null<br>)<br>CREATE TABLE Project<br>(<br>proid        varchar(20)    not null    PRIMARY KEY,<br>projectname varchar(20) not null,<br>budget    int    not null,<br>catid    varchar(20)    not null    foreign key(catid) references Category(catid)<br>)<br>CREATE TABLE Workson<br>(<br>empid    varchar(20)    not null    foreign key(empid) references Employee(empid),<br>proid        varchar(20)    not null    foreign key(proid) references Project(proid),<br>job    varchar(20)    ,<br>enterdate    date    not null,<br>PRIMARY KEY (empid,proid)<br>)<br>INSERT INTO Department<br>SELECT ‘d1’, ‘开发部’, ‘天津’ union<br>SELECT ‘d2’, ‘财务部’, ‘北京’ union<br>SELECT ‘d3’, ‘市场部’, ‘广州’ union<br>SELECT ‘d4’, ‘人才管理部’, ‘天津’<br>INSERT INTO Employee<br>SELECT ‘10102’, ‘张三’, 34, ‘男’,’d1’ union<br>SELECT ‘10211’, ‘李飞’, 24, ‘男’,’d2’ union<br>SELECT ‘18316’, ‘王玲’, 29, ‘女’,’d4’ union<br>SELECT ‘22020’, ‘周城’, 39, ‘男’,’d2’ union<br>SELECT ‘22135’, ‘徐晶’, 35, ‘女’,’d3’ union<br>SELECT ‘25348’, ‘冯昕’, 27, ‘男’,’d1’ union<br>SELECT ‘28559’, ‘李风’, 41, ‘女’,’d3’ union<br>SELECT ‘29346’, ‘王新’, 32, ‘男’,’d1’ union<br>SELECT ‘30678’, ‘孙浩文’, 28, ‘女’,’d4’ </p>
+<p>INSERT INTO Category<br>SELECT ‘c1’, ‘设计类’ union<br>SELECT ‘c2’, ‘采购类’ union<br>SELECT ‘c3’, ‘营销类’ union<br>SELECT ‘c4’, ‘软件类’ union<br>SELECT ‘c5’, ‘硬件类’</p>
+<p>INSERT INTO Project<br>SELECT ‘p1’,’产品推广’, 120000, ‘c3’ union<br>SELECT ‘p2’, ‘广告设计’,40000, ‘c1’ union<br>SELECT ‘p3’, ‘软件升级’, 185000, ‘c4’ union<br>SELECT ‘p4’, ‘服务器采购’,150000, ‘c2’ union<br>SELECT ‘p5’, ‘办公用品采购’,80000, ‘c2’ union<br>SELECT ‘p6’, ‘软件开发’,85000, ‘c4’ </p>
+<p>INSERT INTO Workson<br>SELECT ‘10211’, ‘p1’, ‘分析员’, ‘2017-01-01’ union<br>SELECT ‘25348’, ‘p6’, ‘职员’, ‘2018-02-01’ union<br>SELECT ‘10102’, ‘p3’, ‘管理员’, ‘2018-08-05’ union<br>SELECT ‘25348’, ‘p4’, ‘职员’, ‘2018-03-23’ union<br>SELECT ‘22020’, ‘p6’, ‘管理员’, ‘2019-03-01’ union<br>SELECT ‘28559’, ‘p5’, ‘职员’, ‘2019-02-20’ union<br>SELECT ‘29346’, ‘p5’,  null, ‘2018-04-12’ union<br>SELECT ‘25348’, ‘p1’,  null, ‘2017-06-04’ union<br>SELECT ‘25348’, ‘p2’,  null, ‘2018-11-15’ union<br>SELECT ‘22020’, ‘p3’, ‘职员’, ‘2017-07-16’ union<br>SELECT ‘22135’, ‘p2’, ‘管理员’, ‘2017-12-18’ union<br>SELECT ‘18316’, ‘p5’, ‘职员’, ‘2018-06-22’ union<br>SELECT ‘10102’, ‘p4’, ‘管理员’, ‘2018-10-29’ union<br>SELECT ‘28559’, ‘p1’, ‘管理员’, ‘2019-02-11’ union<br>SELECT ‘10102’, ‘p5’, ‘职员’, ‘2018-12-10’ union<br>SELECT ‘18316’, ‘p1’, ‘职员’, ‘2017-09-28’ union<br>SELECT ‘10211’, ‘p6’, ‘分析员’, ‘2018-05-27’ union<br>SELECT ‘10102’, ‘p2’, ‘职员’, ‘2018-11-27’ union<br>SELECT ‘29346’, ‘p2’, ‘职员’, ‘2018-02-03’ union<br>SELECT ‘18316’, ‘p6’, ‘职员’, ‘2018-05-01’ </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjw8qmpi300007cshx8x3dkcb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-05-24-Android" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/24/2019-05-24-Android/" class="article-date">
@@ -246,7 +318,7 @@ public byte[] streamToArr(InputStream inputStream){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjw1ymrap0000awshtzt756ah" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjw1yne74001cbfsh5usa7dgk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -394,7 +466,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjw0rns8r001a3bshe1sbob15" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjw1yne72001abfshc46rm8t8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -433,7 +505,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="cjw0rns8q00183bshsleikafq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="cjw1yne710018bfsh5rw01rec" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -478,7 +550,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="cjw0rns8p00163bsh3f8ygmx9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="cjw1yne700016bfsh81lv96u7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -520,7 +592,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="cjw0rns8o00143bshcre0l77s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="cjw1yne6y0014bfsh40zscsg6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -589,7 +661,7 @@ EXISTS (
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="cjw0rns8m00123bsh7nfjfd5z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="cjw1yne6x0012bfsh18sm9an4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -679,7 +751,7 @@ END IF;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjw0rns8k000z3bshjeal63co" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjw1yne6w0010bfshzdcw69qy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -723,7 +795,7 @@ END IF ;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/15/2019-05-15-数据库/" data-id="cjw0rns8l00103bshi8eh4t0r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/15/2019-05-15-数据库/" data-id="cjw1yne6v000zbfshpmhwej4l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -818,53 +890,10 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/14/2019-05-14-数据库/" data-id="cjw0rns8j000w3bshac44k13i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/14/2019-05-14-数据库/" data-id="cjw1yne6u000wbfsh8syoaey9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-13-Android" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/13/2019-05-13-Android/" class="article-date">
-  <time datetime="2019-05-13T14:09:28.000Z" itemprop="datePublished">2019-05-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/13/2019-05-13-Android/">2019-05-13 Android</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h3>Service</h3><br>和Activity很像，区别在于Service没有界面<br><br>onCreate()方法：当service被多次启动时，真正运行的service只有一个<br><br>onStartCommand()方法：会生成一个notification<br><br>onDestory()方法：关闭service<br><br>STICKY:当android程序被无缘无故kill掉时，设置属性STICKY的程序会自动重启<p></p>
-<p>将service绑定到activity：onBind()方法<br><br>在主activity的onServiceConnected()方法会被回调,另外，activity中还有onServiceDisconnected()方法，可以把一些善后工作放在这个方法中执行</p>
-<p>创建前台Service(很少见)：在创建到前台中时会有Notification</p>
-<p>因为activity和service都是运行在主线程中的，应当避免在onStartCommand()方法中执行费时的操作。当service要处理较为耗时的操作时，使用IntentService，它是单独一个线程，使用时要重写onHandleIntent()方法</p>
-<p>获取系统服务：getSystemService() 闹铃服务(AlarmManager)<br>补充：PendingIntent是Intent的进一步封装</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/13/2019-05-13-Android/" data-id="cjw0rns8i000v3bshqi2foc23" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 
     </footer>
   </div>
@@ -891,7 +920,7 @@ end;
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li></ul>
     </div>
   </div>
 
@@ -901,7 +930,7 @@ end;
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 15px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 10px;">sxr</a> <a href="/tags/yii/" style="font-size: 15px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
+      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 15px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 10px;">sxr</a> <a href="/tags/yii/" style="font-size: 15px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
     </div>
   </div>
 
@@ -923,6 +952,10 @@ end;
       <ul>
         
           <li>
+            <a href="/2019/05/29/2019-05-29-SQL Server/">2019-05-29 MAC上使用SQL Server</a>
+          </li>
+        
+          <li>
             <a href="/2019/05/24/2019-05-24-Android/">2019-05-24 Android</a>
           </li>
         
@@ -936,10 +969,6 @@ end;
         
           <li>
             <a href="/2019/05/20/2019-05-20-Android/">2019-05-20 Android</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/19/2019-05-18-数据库/">2019-05-19 数据库</a>
           </li>
         
       </ul>
