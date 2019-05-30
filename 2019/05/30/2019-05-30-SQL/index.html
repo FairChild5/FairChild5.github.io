@@ -5,19 +5,20 @@
   
 
   
-  <title>2018-12-06 Android -BLE蓝牙小Demo | Hexo</title>
+  <title>2019-05-30 SQL | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Gatt：(Generic Attribute Profile)—通用属性配置文件，用于在ble链路上发送和接收被称为“属性”的数据块。目前所有的ble应用都是基于GATT的。一个设备可以实现多个配置文件。 ble交互的桥梁是Service、Characteristic、Desciptor。Characteristic：可以理解为一个数据类型，它包括一个value和0至多个对此characteri">
+  <meta name="description" content="明天要数据库上机，继续复习SQL🐟句一定要看清题目要求啊！！不要忘记改列名和排序！！ top语句SELECT TOP number|percent column_name(s)FROM table_name limit语句select  from Customer LIMIT 10 ;–检索前10行数据，显示1-10条数据select  from Customer limit 5,10 ;–检索">
+<meta name="keywords" content="SQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2018-12-06 Android -BLE蓝牙小Demo">
-<meta property="og:url" content="http://yoursite.com/2018/12/05/2018-12-09/index.html">
+<meta property="og:title" content="2019-05-30 SQL">
+<meta property="og:url" content="http://yoursite.com/2019/05/30/2019-05-30-SQL/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Gatt：(Generic Attribute Profile)—通用属性配置文件，用于在ble链路上发送和接收被称为“属性”的数据块。目前所有的ble应用都是基于GATT的。一个设备可以实现多个配置文件。 ble交互的桥梁是Service、Characteristic、Desciptor。Characteristic：可以理解为一个数据类型，它包括一个value和0至多个对此characteri">
+<meta property="og:description" content="明天要数据库上机，继续复习SQL🐟句一定要看清题目要求啊！！不要忘记改列名和排序！！ top语句SELECT TOP number|percent column_name(s)FROM table_name limit语句select  from Customer LIMIT 10 ;–检索前10行数据，显示1-10条数据select  from Customer limit 5,10 ;–检索">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-09T10:32:29.000Z">
+<meta property="og:updated_time" content="2019-05-30T11:09:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2018-12-06 Android -BLE蓝牙小Demo">
-<meta name="twitter:description" content="Gatt：(Generic Attribute Profile)—通用属性配置文件，用于在ble链路上发送和接收被称为“属性”的数据块。目前所有的ble应用都是基于GATT的。一个设备可以实现多个配置文件。 ble交互的桥梁是Service、Characteristic、Desciptor。Characteristic：可以理解为一个数据类型，它包括一个value和0至多个对此characteri">
+<meta name="twitter:title" content="2019-05-30 SQL">
+<meta name="twitter:description" content="明天要数据库上机，继续复习SQL🐟句一定要看清题目要求啊！！不要忘记改列名和排序！！ top语句SELECT TOP number|percent column_name(s)FROM table_name limit语句select  from Customer LIMIT 10 ;–检索前10行数据，显示1-10条数据select  from Customer limit 5,10 ;–检索">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -64,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2018-12-09" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2019-05-30-SQL" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/12/05/2018-12-09/" class="article-date">
-  <time datetime="2018-12-05T14:10:16.000Z" itemprop="datePublished">2018-12-05</time>
+    <a href="/2019/05/30/2019-05-30-SQL/" class="article-date">
+  <time datetime="2019-05-30T14:09:28.000Z" itemprop="datePublished">2019-05-30</time>
 </a>
     
   </div>
@@ -78,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      2018-12-06 Android -BLE蓝牙小Demo
+      2019-05-30 SQL
     </h1>
   
 
@@ -86,48 +87,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Gatt：(Generic Attribute Profile)—通用属性配置文件，用于在ble链路上发送和接收被称为“属性”的数据块。目前所有的ble应用都是基于GATT的。一个设备可以实现多个配置文件。</p>
-<p>ble交互的桥梁是Service、Characteristic、Desciptor。<br>Characteristic：可以理解为一个数据类型，它包括一个value和0至多个对此characteristic的描述（Descriptor）。</p>
-<p>Descriptor：对Characterisctic的描述，如范围、单位等。</p>
-<p>Service：Characteristic的集合。它可以包含多个Characteristic。</p>
-<p>一个ble终端可以包含多个Service，一个Service可以包含多个Characteristic，一个Characteristic包含一个value和多个Descriptor，一个Descriptor包含一个value。其中Characteristic比较重要，用的比较多。<br>这三部分都由UUID作为唯一标示符，以此区分。<br>UUID（Universally Unique Identifier），含义是通用唯一识别码，它是在一定范围内唯一的机器生成的标识符。标准的UUID格式为：xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (8-4-4-4-12)。</p>
-<p>–<br>Android:</p>
-<p>目录：frameworks/base/core/java/android/bluetooth/</p>
-<p>BluetoothGatt：中央使用和处理数据；</p>
-<p>BluetoothGattCallback：中央的回调。</p>
-<p>BluetoothGattServer：周边提供数据；</p>
-<p>BluetoothGattServerCallback：周边的回调</p>
-<p>BluetoothGattService：Gatt服务</p>
-<p>BluetoothGattCharacteristic：Gatt特性</p>
-<p>BluetoothGattDescriptor：Gatt描述</p>
-<hr>
-<p>参考：<a href="https://www.cnblogs.com/demodashi/p/9582530.html" target="_blank" rel="noopener">https://www.cnblogs.com/demodashi/p/9582530.html</a></p>
+        <p>明天要数据库上机，继续复习SQL🐟句<br><br><b>一定要看清题目要求啊！！不要忘记改列名和排序！！</b></p>
+<p></p><h4>top语句</h4><br>SELECT TOP number|percent column_name(s)<br>FROM table_name<br><p></p>
+<p></p><h4>limit语句</h4><br>select <em> from Customer LIMIT 10 ;–检索前10行数据，显示1-10条数据<br><br>select </em> from Customer limit 5,10 ;–检索从第6行开始向前加10条数据，共显示id为6,7….15<br><br>SELECT * FROM table LIMIT 4,-1;从第5个数据查询，到最后一个数据<p></p>
+<p></p><h4>case when</h4><br>case..when..then..else..end<br><br>🌰case catname when ‘计算机’ then 3price else 2*price end<p></p>
+<p></p><h4>计数distinct的列</h4><br>使用group by<p></p>
+<p></p><h4>找最大的几条记录</h4><br>内层：top 1 外层循环：看一下谁等于top 1<p></p>
+<p></p><h4>日期📅</h4><br>DATEADD()    在日期中添加或减去指定的时间间隔<br><br>DATEDIFF() 返回两个日期之间的时间<p></p>
+<p></p><h4>SQL 函数</h4><br>first():SELECT FIRST(OrderPrice) AS FirstOrderPrice FROM Orders 结果返回”OrderPrice” 列的第一个值<br><br>ucase() lcase():把字段转化成大、小写<br><br>mid():SELECT MID(City,1,3) as SmallCity FROM Persons<br>结果：”City” 列中提取前 3 个字符<br><br>round():SELECT ProductName, ROUND(UnitPrice,0) as UnitPrice FROM Products 结果：把名称和价格舍入为最接近的整数<p></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/05/2018-12-09/" data-id="cjwak490s00008hshgyunjbos" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjwak492a001i8hsh8kubsgfu" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2019/02/20/2019-02-20/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          2019-02-20
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/12/05/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/05/29/2019-05-29-SQL Server/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">2019-05-29 MAC上使用SQL Server</div>
     </a>
   
 </nav>
