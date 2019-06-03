@@ -62,6 +62,96 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-05-16-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/16/2019-05-16-数据库/" class="article-date">
+  <time datetime="2019-05-16T14:09:28.000Z" itemprop="datePublished">2019-05-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/16/2019-05-16-数据库/">2019-05-16 数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>昨天交了大作业太激动了，忘记更新博客了😢，今天继续，现总结一下这次数据库的作业吧</p>
+<p></p><h3>存储过程</h3><br>在数据库里面建立存储过程基本就是这个框架<p></p>
+<pre><code>CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_update_tag`(IN post_id INT)
+begin
+    DECLARE new_tag VARCHAR(255);
+    DECLARE old_fre INT;
+    DECLARE new_fre INT;
+    DECLARE t_error INT;
+    DECLARE    CONTINUE HANDLER FOR SQLEXCEPTION SET t_error = 1;
+
+    SELECT tags  into new_tag FROM post WHERE id = post_id;
+
+    IF (!isNULL(new_tag)) then
+    BEGIN
+    SELECT frequency into old_fre FROM tag WHERE name = new_tag;
+                    SET new_fre = old_fre + 1;
+                    UPDATE tag SET frequency = new_fre WHERE name = new_tag;    
+    END
+    ELSE 
+                    signal sqlstate &apos;HY000&apos; set message_text=&apos;标签不能为空！！&apos;;    
+    END IF;
+    IF t_error = 1 THEN
+ROLLBACK;
+ELSE
+COMMIT;
+END IF;
+    END
+</code></pre><p>里面的语法规则真的好多，哪里加分号，哪里不加好麻烦。<br><br>其他几个需要注意的地方：声明变量类型是char或者varchar时，要指明长度；注意赋值语句的格式；SQL里面有函数可以用（比如上面的判断str是否为空）<br></p>
+<h4>在php中调用过程</h4>
+
+<pre><code>try
+       {
+            $sql = &quot;call sp_update_tag($id);&quot;;
+            $connection=Yii::$app-&gt;db;
+            $command=$connection-&gt;createCommand($sql);
+            $result=$command-&gt;execute();
+        }catch(Exception $e)
+        {
+            echo $e-&gt;getMessage();
+        }
+</code></pre><p>  </p><h3>视图view</h3><br>  在使用过程中，其实可以将视图当成一张表，但是在yii中，不能用gii给他生成model…创建视图可以通过navicat直接创建（在rsViews目录下面），同时也可以看到对应的SQL语句<br>  <h4>在php中调用视图</h4><p></p>
+<pre><code> $sql = &quot;select title from user_post
+       WHERE id = $id
+&quot;;
+   $result = Yii::$app-&gt;db-&gt;createCommand($sql)-&gt;query();
+
+   foreach($result as $re)
+   {
+       echo $re[&apos;title&apos;];
+       echo &apos;                         &apos;;
+   }
+</code></pre><p>总结一下数据库大作业，我觉得做的很不顺利，主要是因为对SQL语句不是很熟悉，接下来要多练习，⛽️</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjwak4ok700108ysh9lrt7ia5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-05-15-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/15/2019-05-15-数据库/" class="article-date">
@@ -94,7 +184,7 @@ END IF ;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/15/2019-05-15-数据库/" data-id="cjwak492000148hshlfbv9th8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/15/2019-05-15-数据库/" data-id="cjwak4ok5000z8ysh33zcuihf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -189,7 +279,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/14/2019-05-14-数据库/" data-id="cjwak491z00128hshpufchot3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/14/2019-05-14-数据库/" data-id="cjwak4ok4000w8yshmrh49v77" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -232,7 +322,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/13/2019-05-13-Android/" data-id="cjwak491y00108hsh24w1whv9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/13/2019-05-13-Android/" data-id="cjwak4ok3000v8ysh9qedgvpp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -271,7 +361,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/12/2019-05-12-sxr/" data-id="cjwak491u000u8hshrb8vxm34" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/12/2019-05-12-sxr/" data-id="cjwak4ok2000s8yshq5owqp6n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
@@ -311,7 +401,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/10/2019-05-10-yii/" data-id="cjwak491w000y8hshq9zuvd5l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/10/2019-05-10-yii/" data-id="cjwak4ok1000r8ysho80gfxi9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yii/">yii</a></li></ul>
@@ -353,7 +443,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/09/2019-05-09-yii/" data-id="cjwak491v000w8hshsxvrggap" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/09/2019-05-09-yii/" data-id="cjwak4ok0000p8ysh1ait0txd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yii/">yii</a></li></ul>
@@ -391,7 +481,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/08/2019-05-08-yii/" data-id="cjwak491u000s8hshs45ere5s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/08/2019-05-08-yii/" data-id="cjwak4ojy000n8yshoas7yi0r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yii/">yii</a></li></ul>
@@ -431,7 +521,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/07/2019-05-07-yii-git/" data-id="cjwak491q000l8hshd35lcv7t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/07/2019-05-07-yii-git/" data-id="cjwak4ojx000l8yshy9ce8z1e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git-yii/">git yii</a></li></ul>
@@ -475,47 +565,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/06/2019-05-06-Android-yii/" data-id="cjwak491q000m8hsh4hwik35l" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-yii/">Android yii</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-05-Android-yii" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/05/2019-05-05-Android-yii/" class="article-date">
-  <time datetime="2019-05-05T14:09:28.000Z" itemprop="datePublished">2019-05-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/05/2019-05-05-Android-yii/">2019-05-05 Android-yii</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="今天学习的时间不太多，写了Android一个界面，逐渐熟练"><a href="#今天学习的时间不太多，写了Android一个界面，逐渐熟练" class="headerlink" title="今天学习的时间不太多，写了Android一个界面，逐渐熟练"></a><p>今天学习的时间不太多，写了Android一个界面，逐渐熟练</p></h2><p></p><h4>使用composer下载yii的组件</h4><br>php composer.phar require bailangzhan/yii2-webuploader dev-master<br><br>上面命令不行的话，使用：composer global require bailangzhan/yii2-webuploader dev-master<br><br>具体实现过程中碰到了这个问题：Head to <a href="https://github.com/settings/tokens/new?scopes=repo&amp;description=Composer+on+imac.local+2019-05-04+1421" target="_blank" rel="noopener">https://github.com/settings/tokens/new?scopes=repo&amp;description=Composer+on+imac.local+2019-05-04+1421</a><br>to retrieve a token. 这个时候需要用自己github的账户登录来获取这个token<p></p>
-<p></p><h4>场景</h4><br>在表单模型中设置场景，限制了哪些属性可以被更改<p></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/05/2019-05-05-Android-yii/" data-id="cjwak491s000q8hsh8s0m807x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/06/2019-05-06-Android-yii/" data-id="cjwak4ojw000j8yshxehmoki1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-yii/">Android yii</a></li></ul>
@@ -555,7 +605,7 @@ end;
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 15px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 10px;">sxr</a> <a href="/tags/yii/" style="font-size: 15px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
+      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 15px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12.5px;">sxr</a> <a href="/tags/yii/" style="font-size: 15px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
     </div>
   </div>
 
@@ -564,7 +614,7 @@ end;
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
     </div>
   </div>
 
@@ -575,6 +625,10 @@ end;
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/06/03/2019-06-03-sxr/">2019-06-03 sxr</a>
+          </li>
         
           <li>
             <a href="/2019/05/30/2019-05-30-SQL/">2019-05-30 SQL</a>
@@ -590,10 +644,6 @@ end;
         
           <li>
             <a href="/2019/05/24/2019-05-24-Android/">2019-05-24 Android</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/23/2019-05-22-Android/">2019-05-23 Android</a>
           </li>
         
       </ul>
