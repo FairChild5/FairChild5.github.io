@@ -62,6 +62,162 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-05-20-Android" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/20/2019-05-20-Android/" class="article-date">
+  <time datetime="2019-05-20T14:09:28.000Z" itemprop="datePublished">2019-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/20/2019-05-20-Android/">2019-05-20 Android</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h3>数据文件的存储和访问</h3><br>Context类openFileOutput()和openFileInput()方法<p></p>
+<p>（1）得到文件输出流，向文件写入数据<br><br>（2）得到文件输入流，从文件读出数据<br><br>flush()方法：一定概率写到硬盘中</p>
+<p></p><h4>从assets目录中获取文件并读取数据</h4><br>原生文件，在打包成apk时不会被压缩<br><br>getResources().getAssets().open(“文件名”)<br><p></p>
+<p></p><h3>SQLite数据库的存储和访问</h3><br>5000多行,跨平台的嵌入式数据库，不存在数据库的客户端和服务器。存取时用他的接口读写，生成二进制文件，打开时是一堆乱码，因为已经建好了索引。查询的时候是O(1)<br><br>弱类型，支持SQL查询，但是不支持左右连接、事务等操作<br><p></p>
+<p></p><h4>继承SQLiteOpenHelper类</h4><br>重写构造方法（创建数据库）、onCreat()里面写SQL语句、onUpgrade()升级数据库<p></p>
+<p>getReadableDatabase()或getWritableDatabase()方法、Close()方法关闭数据库</p>
+<p>rawQuery()方法执行一条SELECT语句，返回的是一个游标Cursor</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="cjwgakcu20016j2shp0k073h9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-05-18-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/19/2019-05-18-数据库/" class="article-date">
+  <time datetime="2019-05-19T14:09:28.000Z" itemprop="datePublished">2019-05-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/19/2019-05-18-数据库/">2019-05-19 数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h3>数据库中的授权(grant)和收权(revoke)</h3><br>⚠️UPDATE ON R, UPDATE(a) on R, and UPDATE(b) ON R live in <b>different</b> nodes.<p></p>
+<p>⚠️SELECT ON R and SELECT ON R WITH GRANT OPTION live in <b>different</b> nodes.</p>
+<p></p><h4>收权</h4><br>CASCADE:当收回指定的权限时，也要收回那些仅仅由于要收回的权限而被授予的权限。操作方法：先删掉一条弧，然后删掉所有不能到达两颗✨节点的节点<p></p>
+<p>RESTRICT:由于要收回的权限传递给其他人而造成了任何权限收回，那么该收权语句将不被执行</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="cjwgakcu10014j2shvaqmzrun" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-05-17-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/17/2019-05-17-数据库/" class="article-date">
+  <time datetime="2019-05-17T14:09:28.000Z" itemprop="datePublished">2019-05-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/17/2019-05-17-数据库/">2019-05-17 数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天没有学一些课外知识，最近可能就一直备战考试了。</p>
+<p></p><h3>SQL中In和Exists的区别</h3><p></p>
+<p></p><h4>IN关键字</h4><br>　　确定给定的值是否与子查询或列表中的值相匹配。in在查询的时候，首先查询子查询的表，然后将内表和外表做一个笛卡尔积，然后按照条件进行筛选。所以相对内表比较小的时候，in的速度较快。<br>　　<br>具体sql语句如下：<p></p>
+<pre><code> SELECT
+*
+FROM
+`user`
+WHERE
+`user`.id IN (
+    SELECT
+        `order`.user_id
+    FROM
+        `order`
+)　
+</code></pre><p>  </p><h4>Exists关键字</h4><br>　  指定一个子查询，检测行的存在。遍历循环外表，然后看外表中的记录有没有和内表的数据一样的。匹配上就将结果放入结果集中。<p></p>
+<p>具体sql语句如下：</p>
+<pre><code> SELECT
+`user`.*
+FROM
+`user`
+WHERE
+EXISTS (
+    SELECT
+        `order`.user_id
+    FROM
+        `order`
+    WHERE
+        `user`.id = `order`.user_id
+)　　　　
+</code></pre><p>  这条sql语句的执行结果和上面的in的执行结果是一样;但是，不一样的是它们的执行流程完全不一样.</p>
+<p>参考网站：<a href="http://www.cnblogs.com/liyasong/p/sql_in_exists.html" target="_blank" rel="noopener">http://www.cnblogs.com/liyasong/p/sql_in_exists.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="cjwgakcu00012j2sh4o17ywzo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-05-16-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/16/2019-05-16-数据库/" class="article-date">
@@ -140,7 +296,7 @@ END IF;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjwak4ok700108ysh9lrt7ia5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjwgakctz0010j2sh2ecsfwxt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -184,7 +340,7 @@ END IF ;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/15/2019-05-15-数据库/" data-id="cjwak4ok5000z8ysh33zcuihf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/15/2019-05-15-数据库/" data-id="cjwgakcty000zj2shv1n0xjvw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -279,7 +435,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/14/2019-05-14-数据库/" data-id="cjwak4ok4000w8yshmrh49v77" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/14/2019-05-14-数据库/" data-id="cjwgakctx000wj2shqgihwthf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -322,7 +478,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/13/2019-05-13-Android/" data-id="cjwak4ok3000v8ysh9qedgvpp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/13/2019-05-13-Android/" data-id="cjwgakctw000vj2sh3icalxhj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -361,7 +517,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/12/2019-05-12-sxr/" data-id="cjwak4ok2000s8yshq5owqp6n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/12/2019-05-12-sxr/" data-id="cjwgakctv000sj2shfdrpq9eh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
@@ -401,7 +557,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/10/2019-05-10-yii/" data-id="cjwak4ok1000r8ysho80gfxi9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/10/2019-05-10-yii/" data-id="cjwgakctu000rj2shioayvfme" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yii/">yii</a></li></ul>
@@ -443,132 +599,10 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/09/2019-05-09-yii/" data-id="cjwak4ok0000p8ysh1ait0txd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/09/2019-05-09-yii/" data-id="cjwgakcts000pj2shj5d8qd8j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yii/">yii</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-08-yii" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/08/2019-05-08-yii/" class="article-date">
-  <time datetime="2019-05-08T14:09:28.000Z" itemprop="datePublished">2019-05-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/08/2019-05-08-yii/">2019-05-08 yii</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4>ActiveRecord类</h4><br><ul><br><li>一个AR类关联一张数据表，每个AR对象对应表中的一行</li><br><li>AR对象的属性对应于数据行的列</li><br><li>可以以面向对象的方式来操纵数据表中的数据，这样就不需要写SQL语句  提供的方法：insert(),delete(),update(),save()</li><br></ul><br><br>yii\db\ActiveRecord::find()-&gt;where()-&gt;one()<br><br>yii\db\ActiveRecord::find()-&gt;where()-&gt;all()<br><br>另外，还有findOne(),findAll()方法<br><br><h4>DetailView小部件</h4>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/08/2019-05-08-yii/" data-id="cjwak4ojy000n8yshoas7yi0r" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yii/">yii</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-07-yii-git" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/07/2019-05-07-yii-git/" class="article-date">
-  <time datetime="2019-05-07T14:09:28.000Z" itemprop="datePublished">2019-05-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/07/2019-05-07-yii-git/">2019-05-07 git-yii</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h3>git 操作及开发规范</h3><br><b>开发规范：</b>在自己的分支上修改，然后与master合并，如果产生冲突，在本地解决<br><p></p>
-<p></p><h4>git 命令</h4><br>cd 到目录中(首次操作需要clone)<br><br>git pull<br><br>git checkout sxr(将分支转到自己的分支)<br><br>修改代码<br><br>git add .<br><br>git commit -m”备注”<br><br>git merge master(将主分支合并到现在的分支上)<br><br>处理冲突<br><br>git checkout master<br><br>git merge sxr(这时已经没有冲突)<br><br>git push<br><p></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/07/2019-05-07-yii-git/" data-id="cjwak4ojx000l8yshy9ce8z1e" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git-yii/">git yii</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-06-Android-yii" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/06/2019-05-06-Android-yii/" class="article-date">
-  <time datetime="2019-05-06T14:09:28.000Z" itemprop="datePublished">2019-05-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/06/2019-05-06-Android-yii/">2019-05-06 Android-yii</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="今天完成了Android大作业的界面"><a href="#今天完成了Android大作业的界面" class="headerlink" title="今天完成了Android大作业的界面"></a><p>今天完成了Android大作业的界面</p></h2><p></p><h2>Activity之间的通信</h2><br>startActicityForResult方法（intent,requstCode）其中requstCode用来帮助判断是调用者的哪个请求<br><br>onActicityResult方法：被调用的ACticity finish()之后会回调调用者的这个方法<br><br>Intent.putExtra方法中可以放好多key-value<br><br>resultCode:可以帮助调用者判断这是第几次被调用<p></p>
-<p></p><h2>Android 广播(Broadcast和BroadcaseReceiver)</h2><p></p>
-<p></p><h3>自定义广播</h3><br>一开始所有的BroadcaseReceiver都是处于休眠状态，当有一个信号时，操作系统会遍历BroadcaseReceiver的链表，查看谁关心就叫醒他<br><br><b>广播</b>：Context.sendBroadcast()、sendOrderBroadcast()、sendStickyBroadcast()方法把Intent对象以广播的形式发送出去，双方都可以有权限限制<br><br><b>Receiver</b>:需要注册(在注册时可以设置action)，onReceive()方法进行接收<br><br>需要通过<b>intent</b>发送，其中有action用来过滤（匹配）<br><br>接收广播不需要界面<br><br><b>注册方法</b>分为静态注册和动态注册，主要区别是：静态注册时，即使APP从来没有被执行过，onReceive方法依然会被执行；动态注册时，当Context对象被销毁时，Receiver也随之被销毁(也可以设置过滤等操作)<br><p></p>
-<p></p><h3>接受系统广播（电量低、时区改变等）</h3><p></p>
-<p></p><h2>Service :后台运行（例如：下载音乐）和跨进程访问<br>Context.startService()和Context.bindService()<br><br>Service不能自己启动，需要Activity使用startService()方法（只能调用stopService()方法结束）。而使用bindService（）方法启用服务，调用者与服务绑定在了一起。（使用onUnbind方法解除绑定）<p></p>
-<h4>创建Service:onCreate()方法  可以设置使用权限</h4>
-</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/06/2019-05-06-Android-yii/" data-id="cjwak4ojw000j8yshxehmoki1" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-yii/">Android yii</a></li></ul>
 
     </footer>
   </div>
@@ -605,7 +639,7 @@ end;
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 15px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12.5px;">sxr</a> <a href="/tags/yii/" style="font-size: 15px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
+      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 15px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12.5px;">sxr</a> <a href="/tags/yii/" style="font-size: 15px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 17.5px;">算法</a>
     </div>
   </div>
 
@@ -627,23 +661,23 @@ end;
       <ul>
         
           <li>
+            <a href="/2019/06/04/2019-06-04-算法2/">2019-06-04 算法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/04/2019-06-04-算法/">2019-06-04 算法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/04/2019-06-04-算法3/">2019-06-04 算法</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/03/2019-06-03-sxr/">2019-06-03 sxr</a>
           </li>
         
           <li>
             <a href="/2019/05/30/2019-05-30-SQL/">2019-05-30 SQL</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/29/2019-05-29-SQL Server/">2019-05-29 MAC上使用SQL Server</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/29/2019-05-29-SQL/">2019-05-29 SQL</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/24/2019-05-24-Android/">2019-05-24 Android</a>
           </li>
         
       </ul>

@@ -62,6 +62,128 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-06-04-算法2" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/04/2019-06-04-算法2/" class="article-date">
+  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/04/2019-06-04-算法2/">2019-06-04 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h4>算法分析基础</h4><br>寻找效率的定义：与平台无关，实例无关，并且随着输入规模的增长是可以预测的<br><br>O(upper),Ω(lower),Θ(tight)<br><br>O(nlogn)阶时间:快排、堆排、归并、FFT（快速傅立叶变换）<br><br>O(n^k)时间:对某个固定常数k, 我们想知道给定的n个结点的输入图是否有一个大小为k的独立集(方法：枚举) 判断k个结点的子集是否独立：O(k^2)<br><br>指数时间:假设给定一个图，需要找一个最大的独立集<br><br>n!时间：各种穷举搜索，TSP（巡回售货员问题）<br>              ⎛n⎞n<br>n→∞,n!≈ 2πn ⎝e⎠.<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="cjwhxn27e00000sshh91i879t" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-04-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/04/2019-06-04-算法/" class="article-date">
+  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/04/2019-06-04-算法/">2019-06-04 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>开始复习算法啦⛽️</p>
+<p></p><h3>稳定匹配</h3><br>几个概念：<br>1、匹配: 每个男人和每个女人至多属于一个有序对。<br><br>2、完美匹配: 每个男人和每个女人都属于其中某个对的匹配。<br><br>3、稳定匹配：不存在不稳定因素<br><br>不稳定因素一定是<b>双方</b>的<p></p>
+<h4>问题讨论</h4><br>对每组优先表是否存在一个稳定匹配?<br><br>给定一组优先表,如果存在稳定匹配,我们能够有效的构造出来吗?<br><br>如果存在稳定匹配，会有很多吗?<br><h4>算法</h4><br>按照优先选择的思路<br><br>初始，每个人都是自由的。一个自由的男人m选择他的优先表上排名最高的女人w,发起邀请，那么 (m,w)进入中间状态:约会。<br>  如果又有另一个男人m’发起邀请，那么 女人w决定,选择m,还是m’. 如果m优先， 那么约会状态不变。否则(m’,w)变成约 会状态，m变成自由状态。<br><br>  循环往复;最后，当没有人处于自由状 态，那么所有的约会被定为最后的结果， 返回最终的完美匹配。<br><br>      Initialize each person to be free.<br>    while (some man is free and hasn’t proposed to every woman)<br>    {<br>    Choose such a man m<br>    w = 1st woman on m’s list to whom m has not yet     proposed if (w is free)<br>    assign m and w to be engaged<br>    else if (w prefers m to m’)<br>    assign m and w to be engaged, and m’ to be free<br>    else<br>    w rejects m<br>    }<br><h4>算法分析</h4><br>如果男人m在算法执行的某点是自由的，那么存在一个他还没有发出过邀请的女人<br><br>G-S算法返回一个完美匹配-&gt;稳定匹配<br><br>G-S算法在至多n2次While循环的迭代后终止。所以算法的复杂度是O(n2)<br><br>所有的执行得到同样的匹配!<br><h4>算法技巧</h4><br>女人对自己的优先表做预处理，反向变换<br><h5>拓展</h5><br>对于稳定室友匹配问题(更一般的情况)，可能会没有稳定匹配方案<br><h3>五个典型问题</h3><br><h4>区间调度问题:贪心算法</h4><br><h4>带权的区间调度问题:动态规划算法</h4><br><h4>二分匹配：网络流</h4><br><h4>独立集（NP完全问题中的一个）：验证和求解的难度相差很大</h4><br><h4>竞争的便利店选址问题: PSPACE完全问题类,严格难于NP完全问题，求解和验证都很难</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="cjwhxn27i00010ssh1rf107i5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-04-算法3" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/04/2019-06-04-算法3/" class="article-date">
+  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/04/2019-06-04-算法3/">2019-06-04 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h3>图</h3><p></p>
+<p></p><h4>基本定义和应用</h4><br>图的表示：<br><br>领接矩阵：顶点之间有边就标1，主对角线是0（自己到自己是0）<br><br>领接链表：把与它有边相连的顶点接到一个链表上<br><br>定理：设G是一个具有n个结点的无向图。下面任意两条都可以推出第三条：1、G是连通的；2、G不包含一个圈；3、G有n-1条边<p></p>
+<p></p><h4>图的连通性与图的遍历</h4><br>BFS：O(m+n)可以生成层     DFS：O(m+n)<p></p>
+<p></p><h4>二部图(红蓝着色)</h4><br>定理：图G是二部图当且仅当图中没有奇圈<br><br>定理：设G是一个连通图,L0, …, Lk 是从顶点s由BFS 算法生成的层。那么下面两件事一定恰好成立其一:<br>i. G中没有边与同一层的两个结点相交。这种情况下G 是二部图，其中偶数层的结点可以着红色，奇数层结 点可以着蓝色。<br>ii. G中有一条边与同一层的两个结点相交。此种情形下， 存在一个奇圈，不可能是二部图。<p></p>
+<p></p><h4>强连通性</h4><br>如果有向图中每对顶点是相互可达的，那么此图是强连通的<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="cjwhxn27k00030sshpm81h2rj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-06-03-sxr" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/03/2019-06-03-sxr/" class="article-date">
@@ -89,7 +211,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="cjwgak2720000imshgyizr9w9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="cjwgakcub001kj2shp1pbbe8a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
@@ -135,7 +257,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjwak4okh001i8ysh1o307xlj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjwgakcua001ij2shk7sj6dsi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -207,7 +329,7 @@ GO
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjwak4okf001e8ysh0ycx076c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjwgakcu7001ej2shvyug6s5p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li></ul>
@@ -261,7 +383,7 @@ GROUP BY Category.catid;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjwak4okg001g8yshdqurj9ra" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjwgakcu8001gj2sh3uh4z7mt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -457,7 +579,7 @@ public byte[] streamToArr(InputStream inputStream){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjwak4oke001c8yshybzioqzn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjwgakcu6001cj2sh5mse294i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -605,7 +727,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjwak4okd001a8yshn9w7g4jg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjwgakcu5001aj2sha1hlfh5y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -644,166 +766,10 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="cjwak4okb00188yshdi4rzg1f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="cjwgakcu30018j2sh1wxu4tn0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-20-Android" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/20/2019-05-20-Android/" class="article-date">
-  <time datetime="2019-05-20T14:09:28.000Z" itemprop="datePublished">2019-05-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/20/2019-05-20-Android/">2019-05-20 Android</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h3>数据文件的存储和访问</h3><br>Context类openFileOutput()和openFileInput()方法<p></p>
-<p>（1）得到文件输出流，向文件写入数据<br><br>（2）得到文件输入流，从文件读出数据<br><br>flush()方法：一定概率写到硬盘中</p>
-<p></p><h4>从assets目录中获取文件并读取数据</h4><br>原生文件，在打包成apk时不会被压缩<br><br>getResources().getAssets().open(“文件名”)<br><p></p>
-<p></p><h3>SQLite数据库的存储和访问</h3><br>5000多行,跨平台的嵌入式数据库，不存在数据库的客户端和服务器。存取时用他的接口读写，生成二进制文件，打开时是一堆乱码，因为已经建好了索引。查询的时候是O(1)<br><br>弱类型，支持SQL查询，但是不支持左右连接、事务等操作<br><p></p>
-<p></p><h4>继承SQLiteOpenHelper类</h4><br>重写构造方法（创建数据库）、onCreat()里面写SQL语句、onUpgrade()升级数据库<p></p>
-<p>getReadableDatabase()或getWritableDatabase()方法、Close()方法关闭数据库</p>
-<p>rawQuery()方法执行一条SELECT语句，返回的是一个游标Cursor</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="cjwak4oka00168yshlsz2xawg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-18-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/19/2019-05-18-数据库/" class="article-date">
-  <time datetime="2019-05-19T14:09:28.000Z" itemprop="datePublished">2019-05-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/19/2019-05-18-数据库/">2019-05-19 数据库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h3>数据库中的授权(grant)和收权(revoke)</h3><br>⚠️UPDATE ON R, UPDATE(a) on R, and UPDATE(b) ON R live in <b>different</b> nodes.<p></p>
-<p>⚠️SELECT ON R and SELECT ON R WITH GRANT OPTION live in <b>different</b> nodes.</p>
-<p></p><h4>收权</h4><br>CASCADE:当收回指定的权限时，也要收回那些仅仅由于要收回的权限而被授予的权限。操作方法：先删掉一条弧，然后删掉所有不能到达两颗✨节点的节点<p></p>
-<p>RESTRICT:由于要收回的权限传递给其他人而造成了任何权限收回，那么该收权语句将不被执行</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="cjwak4ok900148yshvlrtxy39" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-17-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/17/2019-05-17-数据库/" class="article-date">
-  <time datetime="2019-05-17T14:09:28.000Z" itemprop="datePublished">2019-05-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/17/2019-05-17-数据库/">2019-05-17 数据库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天没有学一些课外知识，最近可能就一直备战考试了。</p>
-<p></p><h3>SQL中In和Exists的区别</h3><p></p>
-<p></p><h4>IN关键字</h4><br>　　确定给定的值是否与子查询或列表中的值相匹配。in在查询的时候，首先查询子查询的表，然后将内表和外表做一个笛卡尔积，然后按照条件进行筛选。所以相对内表比较小的时候，in的速度较快。<br>　　<br>具体sql语句如下：<p></p>
-<pre><code> SELECT
-*
-FROM
-`user`
-WHERE
-`user`.id IN (
-    SELECT
-        `order`.user_id
-    FROM
-        `order`
-)　
-</code></pre><p>  </p><h4>Exists关键字</h4><br>　  指定一个子查询，检测行的存在。遍历循环外表，然后看外表中的记录有没有和内表的数据一样的。匹配上就将结果放入结果集中。<p></p>
-<p>具体sql语句如下：</p>
-<pre><code> SELECT
-`user`.*
-FROM
-`user`
-WHERE
-EXISTS (
-    SELECT
-        `order`.user_id
-    FROM
-        `order`
-    WHERE
-        `user`.id = `order`.user_id
-)　　　　
-</code></pre><p>  这条sql语句的执行结果和上面的in的执行结果是一样;但是，不一样的是它们的执行流程完全不一样.</p>
-<p>参考网站：<a href="http://www.cnblogs.com/liyasong/p/sql_in_exists.html" target="_blank" rel="noopener">http://www.cnblogs.com/liyasong/p/sql_in_exists.html</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="cjwak4ok800128yshsd9a3bp2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
 
     </footer>
   </div>
@@ -840,7 +806,7 @@ EXISTS (
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 15px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12.5px;">sxr</a> <a href="/tags/yii/" style="font-size: 15px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
+      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 15px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12.5px;">sxr</a> <a href="/tags/yii/" style="font-size: 15px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 17.5px;">算法</a>
     </div>
   </div>
 
@@ -862,23 +828,23 @@ EXISTS (
       <ul>
         
           <li>
+            <a href="/2019/06/04/2019-06-04-算法2/">2019-06-04 算法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/04/2019-06-04-算法/">2019-06-04 算法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/04/2019-06-04-算法3/">2019-06-04 算法</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/03/2019-06-03-sxr/">2019-06-03 sxr</a>
           </li>
         
           <li>
             <a href="/2019/05/30/2019-05-30-SQL/">2019-05-30 SQL</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/29/2019-05-29-SQL Server/">2019-05-29 MAC上使用SQL Server</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/29/2019-05-29-SQL/">2019-05-29 SQL</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/24/2019-05-24-Android/">2019-05-24 Android</a>
           </li>
         
       </ul>
