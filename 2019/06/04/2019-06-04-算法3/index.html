@@ -7,18 +7,18 @@
   
   <title>2019-06-04 算法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="图 基本定义和应用图的表示：领接矩阵：顶点之间有边就标1，主对角线是0（自己到自己是0）领接链表：把与它有边相连的顶点接到一个链表上定理：设G是一个具有n个结点的无向图。下面任意两条都可以推出第三条：1、G是连通的；2、G不包含一个圈；3、G有n-1条边 图的连通性与图的遍历BFS：O(m+n)可以生成层     DFS：O(m+n) 二部图(红蓝着色)定理：图G是二部图当且仅当图中没有奇圈定理：">
+  <meta name="description" content="图 基本定义和应用图的表示：领接矩阵：顶点之间有边就标1，主对角线是0（自己到自己是0）领接链表：把与它有边相连的顶点接到一个链表上定理：设G是一个具有n个结点的无向图。下面任意两条都可以推出第三条：1、G是连通的；2、G不包含一个圈；3、G有n-1条边图的连通性与图的遍历BFS：O(m+n)可以生成层     DFS：O(m+n)二部图(红蓝着色)定理：图G是二部图当且仅当图中没有奇圈定理：设G">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2019-06-04 算法">
 <meta property="og:url" content="http://yoursite.com/2019/06/04/2019-06-04-算法3/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="图 基本定义和应用图的表示：领接矩阵：顶点之间有边就标1，主对角线是0（自己到自己是0）领接链表：把与它有边相连的顶点接到一个链表上定理：设G是一个具有n个结点的无向图。下面任意两条都可以推出第三条：1、G是连通的；2、G不包含一个圈；3、G有n-1条边 图的连通性与图的遍历BFS：O(m+n)可以生成层     DFS：O(m+n) 二部图(红蓝着色)定理：图G是二部图当且仅当图中没有奇圈定理：">
+<meta property="og:description" content="图 基本定义和应用图的表示：领接矩阵：顶点之间有边就标1，主对角线是0（自己到自己是0）领接链表：把与它有边相连的顶点接到一个链表上定理：设G是一个具有n个结点的无向图。下面任意两条都可以推出第三条：1、G是连通的；2、G不包含一个圈；3、G有n-1条边图的连通性与图的遍历BFS：O(m+n)可以生成层     DFS：O(m+n)二部图(红蓝着色)定理：图G是二部图当且仅当图中没有奇圈定理：设G">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-04T15:02:21.000Z">
+<meta property="og:updated_time" content="2019-06-05T02:10:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019-06-04 算法">
-<meta name="twitter:description" content="图 基本定义和应用图的表示：领接矩阵：顶点之间有边就标1，主对角线是0（自己到自己是0）领接链表：把与它有边相连的顶点接到一个链表上定理：设G是一个具有n个结点的无向图。下面任意两条都可以推出第三条：1、G是连通的；2、G不包含一个圈；3、G有n-1条边 图的连通性与图的遍历BFS：O(m+n)可以生成层     DFS：O(m+n) 二部图(红蓝着色)定理：图G是二部图当且仅当图中没有奇圈定理：">
+<meta name="twitter:description" content="图 基本定义和应用图的表示：领接矩阵：顶点之间有边就标1，主对角线是0（自己到自己是0）领接链表：把与它有边相连的顶点接到一个链表上定理：设G是一个具有n个结点的无向图。下面任意两条都可以推出第三条：1、G是连通的；2、G不包含一个圈；3、G有n-1条边图的连通性与图的遍历BFS：O(m+n)可以生成层     DFS：O(m+n)二部图(红蓝着色)定理：图G是二部图当且仅当图中没有奇圈定理：设G">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -88,15 +88,18 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p></p><h3>图</h3><p></p>
-<p></p><h4>基本定义和应用</h4><br>图的表示：<br><br>领接矩阵：顶点之间有边就标1，主对角线是0（自己到自己是0）<br><br>领接链表：把与它有边相连的顶点接到一个链表上<br><br>定理：设G是一个具有n个结点的无向图。下面任意两条都可以推出第三条：1、G是连通的；2、G不包含一个圈；3、G有n-1条边<p></p>
-<p></p><h4>图的连通性与图的遍历</h4><br>BFS：O(m+n)可以生成层     DFS：O(m+n)<p></p>
-<p></p><h4>二部图(红蓝着色)</h4><br>定理：图G是二部图当且仅当图中没有奇圈<br><br>定理：设G是一个连通图,L0, …, Lk 是从顶点s由BFS 算法生成的层。那么下面两件事一定恰好成立其一:<br>i. G中没有边与同一层的两个结点相交。这种情况下G 是二部图，其中偶数层的结点可以着红色，奇数层结 点可以着蓝色。<br>ii. G中有一条边与同一层的两个结点相交。此种情形下， 存在一个奇圈，不可能是二部图。<p></p>
-<p></p><h4>强连通性</h4><br>如果有向图中每对顶点是相互可达的，那么此图是强连通的<p></p>
+<h4>基本定义和应用</h4><br>图的表示：<br><br>领接矩阵：顶点之间有边就标1，主对角线是0（自己到自己是0）<br><br>领接链表：把与它有边相连的顶点接到一个链表上<br><br>定理：设G是一个具有n个结点的无向图。下面任意两条都可以推出第三条：1、G是连通的；2、G不包含一个圈；3、G有n-1条边<br><h4>图的连通性与图的遍历</h4><br>BFS：O(m+n)可以生成层     DFS：O(m+n)<br><h4>二部图(红蓝着色)</h4><br>定理：图G是二部图当且仅当图中没有奇圈<br><br>定理：设G是一个连通图,L0, …, Lk 是从顶点s由BFS 算法生成的层。那么下面两件事一定恰好成立其一:<br>i. G中没有边与同一层的两个结点相交。这种情况下G 是二部图，其中偶数层的结点可以着红色，奇数层结 点可以着蓝色。<br>ii. G中有一条边与同一层的两个结点相交。此种情形下， 存在一个奇圈，不可能是二部图。<br><h4>强连通性</h4><br>如果有向图中每对顶点是相互可达的，那么此图是强连通的<br><br><b>存在O(m + n)的有效算法判别图G是否强连通</b><br><br>    Pick any node s.<br>      Run BFS from s in G.<br>     Run BFS from s in Grev.<br>     Return true iff all nodes reached in both BFS executions.<br><h4>有向无圈图(DAG)和拓扑排序</h4>
+
+<pre><code>To compute a topological ordering of G:
+Find a node v with no incoming edges and order it first
+Delete v from G
+Recursively compute a topological ordering of G-{v} and append this order after v
+</code></pre><p>上面算法在 O(m + n) 时间内找到一个拓扑排序.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="cjwhxn27k00030sshpm81h2rj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="cjwhxnkvs001r1esh9zxztqfe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -107,7 +110,7 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/06/04/2019-06-04-算法/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/04/2019-06-04-算法2/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
@@ -148,7 +151,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 15px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12.5px;">sxr</a> <a href="/tags/yii/" style="font-size: 15px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 17.5px;">算法</a>
+      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 15px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12.5px;">sxr</a> <a href="/tags/yii/" style="font-size: 15px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
     </div>
   </div>
 
@@ -170,11 +173,15 @@
       <ul>
         
           <li>
-            <a href="/2019/06/04/2019-06-04-算法2/">2019-06-04 算法</a>
+            <a href="/2019/06/05/2019-06-05-算法/">2019-06-05 算法</a>
           </li>
         
           <li>
             <a href="/2019/06/04/2019-06-04-算法/">2019-06-04 算法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/04/2019-06-04-算法2/">2019-06-04 算法</a>
           </li>
         
           <li>
@@ -183,10 +190,6 @@
         
           <li>
             <a href="/2019/06/03/2019-06-03-sxr/">2019-06-03 sxr</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/30/2019-05-30-SQL/">2019-05-30 SQL</a>
           </li>
         
       </ul>

@@ -5,20 +5,20 @@
   
 
   
-  <title>2019-05-20 Android | Hexo</title>
+  <title>2019-06-05 算法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数据文件的存储和访问Context类openFileOutput()和openFileInput()方法 （1）得到文件输出流，向文件写入数据（2）得到文件输入流，从文件读出数据flush()方法：一定概率写到硬盘中 从assets目录中获取文件并读取数据原生文件，在打包成apk时不会被压缩getResources().getAssets().open(“文件名”) SQLite数据库的存储和访问">
-<meta name="keywords" content="Android">
+  <meta name="description" content="贪心算法直观上说，一个算法是贪心的，如果此算法是通过一些小的步骤来建立一个解，在每一步根据局部情况选择一个决定使得某些主要的指标能得到优化。存在一个局部判断规则可以用来构造问题的最优解。两个基本的方法来证明一个贪心算法对一个问题能够提供一个最优解1、贪心算法领先：每一步都比其他的算法好，从而证明产生了一个最优解2、交换论证：考虑对这个问题的任何可能解，逐渐把它转换成由贪心算法找到的解，而且不影响解">
+<meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2019-05-20 Android">
-<meta property="og:url" content="http://yoursite.com/2019/05/20/2019-05-20-Android/index.html">
+<meta property="og:title" content="2019-06-05 算法">
+<meta property="og:url" content="http://yoursite.com/2019/06/05/2019-06-05-算法/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="数据文件的存储和访问Context类openFileOutput()和openFileInput()方法 （1）得到文件输出流，向文件写入数据（2）得到文件输入流，从文件读出数据flush()方法：一定概率写到硬盘中 从assets目录中获取文件并读取数据原生文件，在打包成apk时不会被压缩getResources().getAssets().open(“文件名”) SQLite数据库的存储和访问">
+<meta property="og:description" content="贪心算法直观上说，一个算法是贪心的，如果此算法是通过一些小的步骤来建立一个解，在每一步根据局部情况选择一个决定使得某些主要的指标能得到优化。存在一个局部判断规则可以用来构造问题的最优解。两个基本的方法来证明一个贪心算法对一个问题能够提供一个最优解1、贪心算法领先：每一步都比其他的算法好，从而证明产生了一个最优解2、交换论证：考虑对这个问题的任何可能解，逐渐把它转换成由贪心算法找到的解，而且不影响解">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-20T09:43:07.000Z">
+<meta property="og:updated_time" content="2019-06-05T07:40:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019-05-20 Android">
-<meta name="twitter:description" content="数据文件的存储和访问Context类openFileOutput()和openFileInput()方法 （1）得到文件输出流，向文件写入数据（2）得到文件输入流，从文件读出数据flush()方法：一定概率写到硬盘中 从assets目录中获取文件并读取数据原生文件，在打包成apk时不会被压缩getResources().getAssets().open(“文件名”) SQLite数据库的存储和访问">
+<meta name="twitter:title" content="2019-06-05 算法">
+<meta name="twitter:description" content="贪心算法直观上说，一个算法是贪心的，如果此算法是通过一些小的步骤来建立一个解，在每一步根据局部情况选择一个决定使得某些主要的指标能得到优化。存在一个局部判断规则可以用来构造问题的最优解。两个基本的方法来证明一个贪心算法对一个问题能够提供一个最优解1、贪心算法领先：每一步都比其他的算法好，从而证明产生了一个最优解2、交换论证：考虑对这个问题的任何可能解，逐渐把它转换成由贪心算法找到的解，而且不影响解">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2019-05-20-Android" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2019-06-05-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/05/20/2019-05-20-Android/" class="article-date">
-  <time datetime="2019-05-20T14:09:28.000Z" itemprop="datePublished">2019-05-20</time>
+    <a href="/2019/06/05/2019-06-05-算法/" class="article-date">
+  <time datetime="2019-06-05T14:09:28.000Z" itemprop="datePublished">2019-06-05</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      2019-05-20 Android
+      2019-06-05 算法
     </h1>
   
 
@@ -87,21 +87,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p></p><h3>数据文件的存储和访问</h3><br>Context类openFileOutput()和openFileInput()方法<p></p>
-<p>（1）得到文件输出流，向文件写入数据<br><br>（2）得到文件输入流，从文件读出数据<br><br>flush()方法：一定概率写到硬盘中</p>
-<p></p><h4>从assets目录中获取文件并读取数据</h4><br>原生文件，在打包成apk时不会被压缩<br><br>getResources().getAssets().open(“文件名”)<br><p></p>
-<p></p><h3>SQLite数据库的存储和访问</h3><br>5000多行,跨平台的嵌入式数据库，不存在数据库的客户端和服务器。存取时用他的接口读写，生成二进制文件，打开时是一堆乱码，因为已经建好了索引。查询的时候是O(1)<br><br>弱类型，支持SQL查询，但是不支持左右连接、事务等操作<br><p></p>
-<p></p><h4>继承SQLiteOpenHelper类</h4><br>重写构造方法（创建数据库）、onCreat()里面写SQL语句、onUpgrade()升级数据库<p></p>
-<p>getReadableDatabase()或getWritableDatabase()方法、Close()方法关闭数据库</p>
-<p>rawQuery()方法执行一条SELECT语句，返回的是一个游标Cursor</p>
+        <p></p><h3>贪心算法</h3><br>直观上说，一个算法是贪心的，如果此算法是通过一些小的步骤来建立一个解，在每一步根据局部情况选择一个决定使得某些主要的指标能得到优化。存在一个局部判断规则可以用来构造问题的最优解。<br><br>两个基本的方法来证明一个贪心算法对一个问题能够提供一个最优解<br><br>1、贪心算法领先：每一步都比其他的算法好，从而证明产生了一个最优解<br><br>2、交换论证：考虑对这个问题的任何可能解，逐渐把它转换成由贪心算法找到的解，而且不影响解的质量。从而证明了贪心法找到了一个至少与其他解一样好的解。<p></p>
+<h4>区间调度</h4><br>算法：使资源尽可能早被释放<br><br>    先按结束时间排序 O(nlogn)<br>    初始令R是所有需求的集合，设A为空 While R 非空<br>    选择一个最小结束时间的需求i∈R<br>    把i加到A中<br>    *从R中删除与需求i不相容的所有需求<br>    Endwhile 返回集合A作为被接受的需求集合<br>算法分析（贪心算法领先）<br><h4>区间划分</h4><br>算法：按开始时间排序<br><br>    Sort intervals by starting time so that s1 ≤ s2 ≤ … ≤ sn. d←0<br>    for j = 1 to n {<br>       if (lecture j is compatible with some classroom k)<br>    schedule lecture j in classroom k<br>    else<br>    allocate a new classroom d + 1 schedule lecture j in classroom<br>    d + 1 d←d+1<br>    }<br><h4>最小延迟调度：最早截止时间优先</h4><br>算法：<br><br>    Sortnjobsbydeadlinesothatd1 ≤ d2 ≤ … ≤ dn<br>    t←0<br>    for j = 1 to n<br>    Assign job j to interval [t, t + tj] sj ← t, fj ← t + tj<br>    t ← t + tj<br>    output intervals [sj, fj]<br>算法分析（⚠️交换论证）<br><br>补充：结构论证：发现一个所有解具有的界限，然后严格证明算法能够达到这个界<br><h4>最优超高速缓存：最远将来规则</h4><br>⚠️简化调度？非简化调度？<br>⚠️FF算法<br><h4>图的最短路径</h4>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="cjwhxnkvg00161esh8eof4x43" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="cjwixaibj0000h0shanee3zrc" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
 
     </footer>
   </div>
@@ -109,19 +104,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/05/21/2019-05-21-算法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          2019-05-21 算法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/05/19/2019-05-18-数据库/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/06/04/2019-06-04-算法/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">2019-05-19 数据库</div>
+      <div class="article-nav-title">2019-06-04 算法</div>
     </a>
   
 </nav>

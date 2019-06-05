@@ -62,10 +62,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-2019-06-04-算法2" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2019-06-05-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/06/04/2019-06-04-算法2/" class="article-date">
-  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
+    <a href="/2019/06/05/2019-06-05-算法/" class="article-date">
+  <time datetime="2019-06-05T14:09:28.000Z" itemprop="datePublished">2019-06-05</time>
 </a>
     
   </div>
@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/04/2019-06-04-算法2/">2019-06-04 算法</a>
+      <a class="article-title" href="/2019/06/05/2019-06-05-算法/">2019-06-05 算法</a>
     </h1>
   
 
@@ -84,12 +84,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p></p><h4>算法分析基础</h4><br>寻找效率的定义：与平台无关，实例无关，并且随着输入规模的增长是可以预测的<br><br>O(upper),Ω(lower),Θ(tight)<br><br>O(nlogn)阶时间:快排、堆排、归并、FFT（快速傅立叶变换）<br><br>O(n^k)时间:对某个固定常数k, 我们想知道给定的n个结点的输入图是否有一个大小为k的独立集(方法：枚举) 判断k个结点的子集是否独立：O(k^2)<br><br>指数时间:假设给定一个图，需要找一个最大的独立集<br><br>n!时间：各种穷举搜索，TSP（巡回售货员问题）<br>              ⎛n⎞n<br>n→∞,n!≈ 2πn ⎝e⎠.<p></p>
+        <p></p><h3>贪心算法</h3><br>直观上说，一个算法是贪心的，如果此算法是通过一些小的步骤来建立一个解，在每一步根据局部情况选择一个决定使得某些主要的指标能得到优化。存在一个局部判断规则可以用来构造问题的最优解。<br><br>两个基本的方法来证明一个贪心算法对一个问题能够提供一个最优解<br><br>1、贪心算法领先：每一步都比其他的算法好，从而证明产生了一个最优解<br><br>2、交换论证：考虑对这个问题的任何可能解，逐渐把它转换成由贪心算法找到的解，而且不影响解的质量。从而证明了贪心法找到了一个至少与其他解一样好的解。<p></p>
+<h4>区间调度</h4><br>算法：使资源尽可能早被释放<br><br>    先按结束时间排序 O(nlogn)<br>    初始令R是所有需求的集合，设A为空 While R 非空<br>    选择一个最小结束时间的需求i∈R<br>    把i加到A中<br>    *从R中删除与需求i不相容的所有需求<br>    Endwhile 返回集合A作为被接受的需求集合<br>算法分析（贪心算法领先）<br><h4>区间划分</h4><br>算法：按开始时间排序<br><br>    Sort intervals by starting time so that s1 ≤ s2 ≤ … ≤ sn. d←0<br>    for j = 1 to n {<br>       if (lecture j is compatible with some classroom k)<br>    schedule lecture j in classroom k<br>    else<br>    allocate a new classroom d + 1 schedule lecture j in classroom<br>    d + 1 d←d+1<br>    }<br><h4>最小延迟调度：最早截止时间优先</h4><br>算法：<br><br>    Sortnjobsbydeadlinesothatd1 ≤ d2 ≤ … ≤ dn<br>    t←0<br>    for j = 1 to n<br>    Assign job j to interval [t, t + tj] sj ← t, fj ← t + tj<br>    t ← t + tj<br>    output intervals [sj, fj]<br>算法分析（⚠️交换论证）<br><br>补充：结构论证：发现一个所有解具有的界限，然后严格证明算法能够达到这个界<br><h4>最优超高速缓存：最远将来规则</h4><br>⚠️简化调度？非简化调度？<br>⚠️FF算法<br><h4>图的最短路径</h4>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="cjwhxn27e00000sshh91i879t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="cjwixaibj0000h0shanee3zrc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -129,7 +130,46 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="cjwhxn27i00010ssh1rf107i5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="cjwhxnkvp001m1esh62qd6ky9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-04-算法2" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/04/2019-06-04-算法2/" class="article-date">
+  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/04/2019-06-04-算法2/">2019-06-04 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h4>算法分析基础</h4><br>寻找效率的定义：与平台无关，实例无关，并且随着输入规模的增长是可以预测的<br><br>O(upper),Ω(lower),Θ(tight)<br><br>O(nlogn)阶时间:快排、堆排、归并、FFT（快速傅立叶变换）<br><br>O(n^k)时间:对某个固定常数k, 我们想知道给定的n个结点的输入图是否有一个大小为k的独立集(方法：枚举) 判断k个结点的子集是否独立：O(k^2)<br><br>指数时间:假设给定一个图，需要找一个最大的独立集<br><br>n!时间：各种穷举搜索，TSP（巡回售货员问题）<br>              ⎛n⎞n<br>n→∞,n!≈ 2πn ⎝e⎠.<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="cjwhxnkvq001p1esh0uu6x9fm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -164,15 +204,18 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p></p><h3>图</h3><p></p>
-<p></p><h4>基本定义和应用</h4><br>图的表示：<br><br>领接矩阵：顶点之间有边就标1，主对角线是0（自己到自己是0）<br><br>领接链表：把与它有边相连的顶点接到一个链表上<br><br>定理：设G是一个具有n个结点的无向图。下面任意两条都可以推出第三条：1、G是连通的；2、G不包含一个圈；3、G有n-1条边<p></p>
-<p></p><h4>图的连通性与图的遍历</h4><br>BFS：O(m+n)可以生成层     DFS：O(m+n)<p></p>
-<p></p><h4>二部图(红蓝着色)</h4><br>定理：图G是二部图当且仅当图中没有奇圈<br><br>定理：设G是一个连通图,L0, …, Lk 是从顶点s由BFS 算法生成的层。那么下面两件事一定恰好成立其一:<br>i. G中没有边与同一层的两个结点相交。这种情况下G 是二部图，其中偶数层的结点可以着红色，奇数层结 点可以着蓝色。<br>ii. G中有一条边与同一层的两个结点相交。此种情形下， 存在一个奇圈，不可能是二部图。<p></p>
-<p></p><h4>强连通性</h4><br>如果有向图中每对顶点是相互可达的，那么此图是强连通的<p></p>
+<h4>基本定义和应用</h4><br>图的表示：<br><br>领接矩阵：顶点之间有边就标1，主对角线是0（自己到自己是0）<br><br>领接链表：把与它有边相连的顶点接到一个链表上<br><br>定理：设G是一个具有n个结点的无向图。下面任意两条都可以推出第三条：1、G是连通的；2、G不包含一个圈；3、G有n-1条边<br><h4>图的连通性与图的遍历</h4><br>BFS：O(m+n)可以生成层     DFS：O(m+n)<br><h4>二部图(红蓝着色)</h4><br>定理：图G是二部图当且仅当图中没有奇圈<br><br>定理：设G是一个连通图,L0, …, Lk 是从顶点s由BFS 算法生成的层。那么下面两件事一定恰好成立其一:<br>i. G中没有边与同一层的两个结点相交。这种情况下G 是二部图，其中偶数层的结点可以着红色，奇数层结 点可以着蓝色。<br>ii. G中有一条边与同一层的两个结点相交。此种情形下， 存在一个奇圈，不可能是二部图。<br><h4>强连通性</h4><br>如果有向图中每对顶点是相互可达的，那么此图是强连通的<br><br><b>存在O(m + n)的有效算法判别图G是否强连通</b><br><br>    Pick any node s.<br>      Run BFS from s in G.<br>     Run BFS from s in Grev.<br>     Return true iff all nodes reached in both BFS executions.<br><h4>有向无圈图(DAG)和拓扑排序</h4>
+
+<pre><code>To compute a topological ordering of G:
+Find a node v with no incoming edges and order it first
+Delete v from G
+Recursively compute a topological ordering of G-{v} and append this order after v
+</code></pre><p>上面算法在 O(m + n) 时间内找到一个拓扑排序.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="cjwhxn27k00030sshpm81h2rj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="cjwhxnkvs001r1esh9zxztqfe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -211,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="cjwgakcub001kj2shp1pbbe8a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="cjwhxnkvo001k1esh6cinpvq5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
@@ -257,7 +300,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjwgakcua001ij2shk7sj6dsi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjwhxnkvn001i1eshar7hcqlw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -329,7 +372,7 @@ GO
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjwgakcu7001ej2shvyug6s5p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjwhxnkvk001e1eshhi12fuw2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li></ul>
@@ -383,7 +426,7 @@ GROUP BY Category.catid;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjwgakcu8001gj2sh3uh4z7mt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjwhxnkvm001g1eshy7hvb0wg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -579,7 +622,7 @@ public byte[] streamToArr(InputStream inputStream){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjwgakcu6001cj2sh5mse294i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjwhxnkvj001c1esh5i0xkvbd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -727,49 +770,10 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjwgakcu5001aj2sha1hlfh5y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjwhxnkvi001a1esh2tz1c80v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-21-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/21/2019-05-21-算法/" class="article-date">
-  <time datetime="2019-05-21T14:09:28.000Z" itemprop="datePublished">2019-05-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/21/2019-05-21-算法/">2019-05-21 算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>还是想不出算法大作业的一天😢<br><br>记录一下今天pcy问我的一个有趣的算法问题：1000个酒里面有一个有毒，拿小白鼠🐁试毒，最少用几个小白鼠？10只<br><br>提示：二进制</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="cjwgakcu30018j2sh1wxu4tn0" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
 
     </footer>
   </div>
@@ -806,7 +810,7 @@ private void openPDF(File file) {
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 15px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12.5px;">sxr</a> <a href="/tags/yii/" style="font-size: 15px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 17.5px;">算法</a>
+      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 15px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12.5px;">sxr</a> <a href="/tags/yii/" style="font-size: 15px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
     </div>
   </div>
 
@@ -828,11 +832,15 @@ private void openPDF(File file) {
       <ul>
         
           <li>
-            <a href="/2019/06/04/2019-06-04-算法2/">2019-06-04 算法</a>
+            <a href="/2019/06/05/2019-06-05-算法/">2019-06-05 算法</a>
           </li>
         
           <li>
             <a href="/2019/06/04/2019-06-04-算法/">2019-06-04 算法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/04/2019-06-04-算法2/">2019-06-04 算法</a>
           </li>
         
           <li>
@@ -841,10 +849,6 @@ private void openPDF(File file) {
         
           <li>
             <a href="/2019/06/03/2019-06-03-sxr/">2019-06-03 sxr</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/30/2019-05-30-SQL/">2019-05-30 SQL</a>
           </li>
         
       </ul>
