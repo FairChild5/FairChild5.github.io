@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="贪心算法直观上说，一个算法是贪心的，如果此算法是通过一些小的步骤来建立一个解，在每一步根据局部情况选择一个决定使得某些主要的指标能得到优化。存在一个局部判断规则可以用来构造问题的最优解。两个基本的方法来证明一个贪心算法对一个问题能够提供一个最优解1、贪心算法领先：每一步都比其他的算法好，从而证明产生了一个最优解2、交换论证：考虑对这个问题的任何可能解，逐渐把它转换成由贪心算法找到的解，而且不影响解">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-05T07:40:27.000Z">
+<meta property="og:updated_time" content="2019-06-06T07:01:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019-06-05 算法">
 <meta name="twitter:description" content="贪心算法直观上说，一个算法是贪心的，如果此算法是通过一些小的步骤来建立一个解，在每一步根据局部情况选择一个决定使得某些主要的指标能得到优化。存在一个局部判断规则可以用来构造问题的最优解。两个基本的方法来证明一个贪心算法对一个问题能够提供一个最优解1、贪心算法领先：每一步都比其他的算法好，从而证明产生了一个最优解2、交换论证：考虑对这个问题的任何可能解，逐渐把它转换成由贪心算法找到的解，而且不影响解">
@@ -88,12 +88,37 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p></p><h3>贪心算法</h3><br>直观上说，一个算法是贪心的，如果此算法是通过一些小的步骤来建立一个解，在每一步根据局部情况选择一个决定使得某些主要的指标能得到优化。存在一个局部判断规则可以用来构造问题的最优解。<br><br>两个基本的方法来证明一个贪心算法对一个问题能够提供一个最优解<br><br>1、贪心算法领先：每一步都比其他的算法好，从而证明产生了一个最优解<br><br>2、交换论证：考虑对这个问题的任何可能解，逐渐把它转换成由贪心算法找到的解，而且不影响解的质量。从而证明了贪心法找到了一个至少与其他解一样好的解。<p></p>
-<h4>区间调度</h4><br>算法：使资源尽可能早被释放<br><br>    先按结束时间排序 O(nlogn)<br>    初始令R是所有需求的集合，设A为空 While R 非空<br>    选择一个最小结束时间的需求i∈R<br>    把i加到A中<br>    *从R中删除与需求i不相容的所有需求<br>    Endwhile 返回集合A作为被接受的需求集合<br>算法分析（贪心算法领先）<br><h4>区间划分</h4><br>算法：按开始时间排序<br><br>    Sort intervals by starting time so that s1 ≤ s2 ≤ … ≤ sn. d←0<br>    for j = 1 to n {<br>       if (lecture j is compatible with some classroom k)<br>    schedule lecture j in classroom k<br>    else<br>    allocate a new classroom d + 1 schedule lecture j in classroom<br>    d + 1 d←d+1<br>    }<br><h4>最小延迟调度：最早截止时间优先</h4><br>算法：<br><br>    Sortnjobsbydeadlinesothatd1 ≤ d2 ≤ … ≤ dn<br>    t←0<br>    for j = 1 to n<br>    Assign job j to interval [t, t + tj] sj ← t, fj ← t + tj<br>    t ← t + tj<br>    output intervals [sj, fj]<br>算法分析（⚠️交换论证）<br><br>补充：结构论证：发现一个所有解具有的界限，然后严格证明算法能够达到这个界<br><h4>最优超高速缓存：最远将来规则</h4><br>⚠️简化调度？非简化调度？<br>⚠️FF算法<br><h4>图的最短路径</h4>
+<p></p><h4>区间调度</h4><br>算法：使资源尽可能早被释放<p></p>
+<pre><code>先按结束时间排序 O(nlogn)
+初始令R是所有需求的集合，设A为空 While R 非空
+选择一个最小结束时间的需求i∈R 
+把i加到A中 
+*从R中删除与需求i不相容的所有需求
+Endwhile 返回集合A作为被接受的需求集合
+</code></pre><p>算法分析（贪心算法领先）</p>
+<p></p><h4>区间划分</h4><br>算法：按开始时间排序<p></p>
+<pre><code>Sort intervals by starting time so that s1 ≤ s2 ≤ ... ≤ sn. d←0
+for j = 1 to n {
+   if (lecture j is compatible with some classroom k)
+schedule lecture j in classroom k
+else
+allocate a new classroom d + 1 schedule lecture j in classroom 
+d + 1 d←d+1
+}
+</code></pre><p></p><h4>最小延迟调度：最早截止时间优先</h4><br>算法：<p></p>
+<pre><code>Sortnjobsbydeadlinesothatd1 ≤ d2 ≤ ... ≤ dn
+t←0
+for j = 1 to n
+Assign job j to interval [t, t + tj] sj ← t, fj ← t + tj
+t ← t + tj
+output intervals [sj, fj]
+</code></pre><p>算法分析（⚠️交换论证）<br><br>补充：结构论证：发现一个所有解具有的界限，然后严格证明算法能够达到这个界</p>
+<p></p><h4>最优超高速缓存：最远将来规则</h4><br>⚠️简化调度？非简化调度？<br>⚠️FF算法<p></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="cjwj18iui001ulvshffl0l961" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="cjwj191us001umfsh1gvtdbkp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -103,6 +128,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/06/06/2019-06-06-算法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          2019-06-06 算法
+        
+      </div>
+    </a>
   
   
     <a href="/2019/06/04/2019-06-04-算法/" id="article-nav-older" class="article-nav-link-wrap">
@@ -136,7 +170,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 15px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12.5px;">sxr</a> <a href="/tags/yii/" style="font-size: 15px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
+      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/数据库/" style="font-size: 18px;">数据库</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
     </div>
   </div>
 
@@ -158,6 +192,10 @@
       <ul>
         
           <li>
+            <a href="/2019/06/06/2019-06-06-算法/">2019-06-06 算法</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/05/2019-06-05-算法/">2019-06-05 算法</a>
           </li>
         
@@ -171,10 +209,6 @@
         
           <li>
             <a href="/2019/06/04/2019-06-04-算法3/">2019-06-04 算法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/03/2019-06-03-sxr/">2019-06-03 sxr</a>
           </li>
         
       </ul>

@@ -5,15 +5,20 @@
   
 
   
-  <title>Archives | Hexo</title>
+  <title>2019-06-06 算法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+  <meta name="description" content="图的最短路径  Dijkstra算法(G,l) 设S是被探查的结点集合 对每个S中的u,存储一个d(u); 初始S={s}且d(s)=0 While S!=V 选择一个结点不在S中的结点v,使得从S到v至少有一条边连接并且d&amp;apos;(v)=min_{e=(u,v), u in S}d(u)+le 最小  将v加入S并且定义d(v)=d&amp;apos;(v) Endwhile 算法分析：普通实现O(">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019-06-06 算法">
+<meta property="og:url" content="http://yoursite.com/2019/06/06/2019-06-06-算法/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="图的最短路径  Dijkstra算法(G,l) 设S是被探查的结点集合 对每个S中的u,存储一个d(u); 初始S={s}且d(s)=0 While S!=V 选择一个结点不在S中的结点v,使得从S到v至少有一条边连接并且d&amp;apos;(v)=min_{e=(u,v), u in S}d(u)+le 最小  将v加入S并且定义d(v)=d&amp;apos;(v) Endwhile 算法分析：普通实现O(">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-06T08:41:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="2019-06-06 算法">
+<meta name="twitter:description" content="图的最短路径  Dijkstra算法(G,l) 设S是被探查的结点集合 对每个S中的u,存储一个d(u); 初始S={s}且d(s)=0 While S!=V 选择一个结点不在S中的结点v,使得从S到v至少有一条边连接并且d&amp;apos;(v)=min_{e=(u,v), u in S}d(u)+le 最小  将v加入S并且定义d(v)=d&amp;apos;(v) Endwhile 算法分析：普通实现O(">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,216 +65,91 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/23/2019-05-22-Android/" class="archive-article-date">
-  <time datetime="2019-05-23T14:09:28.000Z" itemprop="datePublished">May 23</time>
+        <section id="main"><article id="post-2019-06-06-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/06/2019-06-06-算法/" class="article-date">
+  <time datetime="2019-06-06T14:09:28.000Z" itemprop="datePublished">2019-06-06</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/23/2019-05-22-Android/">2019-05-23 Android</a>
+    <h1 class="article-title" itemprop="name">
+      2019-06-06 算法
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/21/2019-05-21-算法/" class="archive-article-date">
-  <time datetime="2019-05-21T14:09:28.000Z" itemprop="datePublished">May 21</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/21/2019-05-21-算法/">2019-05-21 算法</a>
-    </h1>
-  
+        <h4>图的最短路径</h4>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/20/2019-05-20-Android/" class="archive-article-date">
-  <time datetime="2019-05-20T14:09:28.000Z" itemprop="datePublished">May 20</time>
-</a>
+<pre><code>Dijkstra算法(G,l)
+设S是被探查的结点集合
+对每个S中的u,存储一个d(u);
+初始S={s}且d(s)=0
+While S!=V
+选择一个结点不在S中的结点v,使得从S到v至少有一条边连接并且d&apos;(v)=min_{e=(u,v), u in S}d(u)+le 最小 
+将v加入S并且定义d(v)=d&apos;(v)
+Endwhile
+</code></pre><p>算法分析：普通实现O(mn),优先队列实现O(mlogn)</p>
+<p></p><h4>最小生成树(MST)</h4><br>反向删除算法：删除权重最大的边，不破坏连通性<br><br>Prim算法：每次把与S对应的割中最小费用边加入T<p></p>
+<pre><code>Prim(G, c) {
+foreach (v ∈ V) a[v] ← ∞
+    Initialize an empty priority queue Q
+foreach (v ∈ V) insert v onto Q 
+    Initialize set of explored nodes S ← φ
+}
+while (Q is not empty) {
+    u ← delete min element from Q
+    S←S∪{u}
+foreach (edge e = (u, v) incident to u)
+    if ((v ∉ S) and (ce &lt; a[v])) 
+        decrease priority a[v] to ce
+</code></pre><p>算法分析：优先队列实现O(mlogn)<br><br>Kruskal算法：</p>
+<pre><code>Kruskal(G, c) {
+Sort edges weights so that c1 ≤ c2 ≤ ... ≤ cm. T←φ
+}
+foreach (u ∈ V)
+    make a set containing singleton u
+for i = 1 to m (u,v) = ei
+    if (u and v are in different sets) 
+    { T ← T ∪ {ei}
+    merge the sets containing u and v
+    } 
+return T
+</code></pre><p></p><h4>聚类</h4><br>运行Kruskal算法，但是就在它加最后的k-1条边之前停止。等价于取整棵最小生成树T,然后删除k-1条最贵的边，并且定义k聚类是所得到的 连通分支C1,C2,…,Ck.<p></p>
+<p></p><h4>Huffman树</h4><br>采用优先队列O(klogk)<p></p>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/20/2019-05-20-Android/">2019-05-20 Android</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/19/2019-05-18-数据库/" class="archive-article-date">
-  <time datetime="2019-05-19T14:09:28.000Z" itemprop="datePublished">May 19</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法/" data-id="cjwkex5g200003kshhukze8id" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/19/2019-05-18-数据库/">2019-05-19 数据库</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/17/2019-05-17-数据库/" class="archive-article-date">
-  <time datetime="2019-05-17T14:09:28.000Z" itemprop="datePublished">May 17</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/17/2019-05-17-数据库/">2019-05-17 数据库</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/05/2019-06-05-算法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2019-06-05 算法</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/16/2019-05-16-数据库/" class="archive-article-date">
-  <time datetime="2019-05-16T14:09:28.000Z" itemprop="datePublished">May 16</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/16/2019-05-16-数据库/">2019-05-16 数据库</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/15/2019-05-15-数据库/" class="archive-article-date">
-  <time datetime="2019-05-15T14:09:28.000Z" itemprop="datePublished">May 15</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/15/2019-05-15-数据库/">2019-05-15 数据库</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/14/2019-05-14-数据库/" class="archive-article-date">
-  <time datetime="2019-05-14T14:09:28.000Z" itemprop="datePublished">May 14</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/14/2019-05-14-数据库/">2019-05-14 数据库</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/13/2019-05-13-Android/" class="archive-article-date">
-  <time datetime="2019-05-13T14:09:28.000Z" itemprop="datePublished">May 13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/13/2019-05-13-Android/">2019-05-13 Android</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/12/2019-05-12-sxr/" class="archive-article-date">
-  <time datetime="2019-05-12T14:09:28.000Z" itemprop="datePublished">May 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/12/2019-05-12-sxr/">2019-05-12 sxr</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
-  </nav>
 
 </section>
         
