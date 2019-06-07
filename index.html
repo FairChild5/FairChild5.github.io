@@ -95,7 +95,121 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-算法/" data-id="cjwlqjyxg001vnfsh5f2aebhs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-算法/" data-id="cjwlqkjgh0022nzsh8lyla48s" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-07-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/07/2019-06-07-数据库/" class="article-date">
+  <time datetime="2019-06-07T14:09:28.000Z" itemprop="datePublished">2019-06-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/07/2019-06-07-数据库/">2019-06-07 数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3>ER Model</h3><br>多对一关系：at most 1 箭头指向的一端是“唯一的”<br><br>圆箭头：有且只有一个<br><br>多端关系转换成双端：关系变实体，注意多对一的箭头<br><br>关系中的角色：只需要写一个实体<br><br>子类：1、三角形的尖指向父类 2、每种实体都是包含根节点的一棵子树 3、只有根有主键，并且充当所有实体的主键<br><br>模型约束：实体完整性（若属性A是基本关系R的<b>主属性</b>，则属性A不能取空值）、参照完整性（外键或者取参照关系中的某个主键值，或者取空值（表示还没有分配）<br>，外键可以由多个属性构成）、域约束、用户自定义约束<br><br>弱实体集合：双边矩形  多对一的sopporting relationship：双边菱形<br><h3>The Relational Data Model</h3><br>把子类转换成关系模式<br><br>OO方法：每个对象只属于一张表（按照子树转换）<br><br>ER方法：一个矩形转化为一张表，<b>子类要带上主键</b><br><br>NULL方法：把所有属性都放到一张表里<br><h3>SQL语句</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-数据库/" data-id="cjwm7wfmr0000zrsh07mmvdz2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-06-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/06/2019-06-06-算法/" class="article-date">
+  <time datetime="2019-06-06T14:09:28.000Z" itemprop="datePublished">2019-06-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/06/2019-06-06-算法/">2019-06-06 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4>图的最短路径</h4>
+
+<pre><code>Dijkstra算法(G,l)
+设S是被探查的结点集合
+对每个S中的u,存储一个d(u);
+初始S={s}且d(s)=0
+While S!=V
+选择一个结点不在S中的结点v,使得从S到v至少有一条边连接并且d&apos;(v)=min_{e=(u,v), u in S}d(u)+le 最小 
+将v加入S并且定义d(v)=d&apos;(v)
+Endwhile
+</code></pre><p>算法分析：普通实现O(mn),优先队列实现O(mlogn)</p>
+<p></p><h4>最小生成树(MST)</h4><br>反向删除算法：删除权重最大的边，不破坏连通性<br><br>Prim算法：每次把与S对应的割中最小费用边加入T<p></p>
+<pre><code>Prim(G, c) {
+foreach (v ∈ V) a[v] ← ∞
+    Initialize an empty priority queue Q
+foreach (v ∈ V) insert v onto Q 
+    Initialize set of explored nodes S ← φ
+}
+while (Q is not empty) {
+    u ← delete min element from Q
+    S←S∪{u}
+foreach (edge e = (u, v) incident to u)
+    if ((v ∉ S) and (ce &lt; a[v])) 
+        decrease priority a[v] to ce
+</code></pre><p>算法分析：优先队列实现O(mlogn)<br><br>Kruskal算法：</p>
+<pre><code>Kruskal(G, c) {
+Sort edges weights so that c1 ≤ c2 ≤ ... ≤ cm. T←φ
+}
+foreach (u ∈ V)
+    make a set containing singleton u
+for i = 1 to m (u,v) = ei
+    if (u and v are in different sets) 
+    { T ← T ∪ {ei}
+    merge the sets containing u and v
+    } 
+return T
+</code></pre><p></p><h4>聚类</h4><br>运行Kruskal算法，但是就在它加最后的k-1条边之前停止。等价于取整棵最小生成树T,然后删除k-1条最贵的边，并且定义k聚类是所得到的 连通分支C1,C2,…,Ck.<p></p>
+<p></p><h4>Huffman树</h4><br>采用优先队列O(klogk)<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法/" data-id="cjwlqkjgd001xnzshbyft7z2m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -172,83 +286,7 @@ return δ.
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法2/" data-id="cjwlqjyxf001rnfshpr8rymwh" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-06-06-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/06/2019-06-06-算法/" class="article-date">
-  <time datetime="2019-06-06T14:09:28.000Z" itemprop="datePublished">2019-06-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/06/2019-06-06-算法/">2019-06-06 算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4>图的最短路径</h4>
-
-<pre><code>Dijkstra算法(G,l)
-设S是被探查的结点集合
-对每个S中的u,存储一个d(u);
-初始S={s}且d(s)=0
-While S!=V
-选择一个结点不在S中的结点v,使得从S到v至少有一条边连接并且d&apos;(v)=min_{e=(u,v), u in S}d(u)+le 最小 
-将v加入S并且定义d(v)=d&apos;(v)
-Endwhile
-</code></pre><p>算法分析：普通实现O(mn),优先队列实现O(mlogn)</p>
-<p></p><h4>最小生成树(MST)</h4><br>反向删除算法：删除权重最大的边，不破坏连通性<br><br>Prim算法：每次把与S对应的割中最小费用边加入T<p></p>
-<pre><code>Prim(G, c) {
-foreach (v ∈ V) a[v] ← ∞
-    Initialize an empty priority queue Q
-foreach (v ∈ V) insert v onto Q 
-    Initialize set of explored nodes S ← φ
-}
-while (Q is not empty) {
-    u ← delete min element from Q
-    S←S∪{u}
-foreach (edge e = (u, v) incident to u)
-    if ((v ∉ S) and (ce &lt; a[v])) 
-        decrease priority a[v] to ce
-</code></pre><p>算法分析：优先队列实现O(mlogn)<br><br>Kruskal算法：</p>
-<pre><code>Kruskal(G, c) {
-Sort edges weights so that c1 ≤ c2 ≤ ... ≤ cm. T←φ
-}
-foreach (u ∈ V)
-    make a set containing singleton u
-for i = 1 to m (u,v) = ei
-    if (u and v are in different sets) 
-    { T ← T ∪ {ei}
-    merge the sets containing u and v
-    } 
-return T
-</code></pre><p></p><h4>聚类</h4><br>运行Kruskal算法，但是就在它加最后的k-1条边之前停止。等价于取整棵最小生成树T,然后删除k-1条最贵的边，并且定义k聚类是所得到的 连通分支C1,C2,…,Ck.<p></p>
-<p></p><h4>Huffman树</h4><br>采用优先队列O(klogk)<p></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法/" data-id="cjwlqjyxg001unfshrpkcxhxc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法2/" data-id="cjwlqkjge001ynzshtijnj8k8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -313,46 +351,7 @@ output intervals [sj, fj]
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="cjwlqjyy40031nfshseevjs2y" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-06-04-算法2" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/04/2019-06-04-算法2/" class="article-date">
-  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/04/2019-06-04-算法2/">2019-06-04 算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h4>算法分析基础</h4><br>寻找效率的定义：与平台无关，实例无关，并且随着输入规模的增长是可以预测的<br><br>O(upper),Ω(lower),Θ(tight)<br><br>O(nlogn)阶时间:快排、堆排、归并、FFT（快速傅立叶变换）<br><br>O(n^k)时间:对某个固定常数k, 我们想知道给定的n个结点的输入图是否有一个大小为k的独立集(方法：枚举) 判断k个结点的子集是否独立：O(k^2)<br><br>指数时间:假设给定一个图，需要找一个最大的独立集<br><br>n!时间：各种穷举搜索，TSP（巡回售货员问题）<br>              ⎛n⎞n<br>n→∞,n!≈ 2πn ⎝e⎠.<p></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="cjwlqjyxc001lnfshm2jk4uwr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="cjwlqkjgc001unzshvwvdmm4q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -392,7 +391,46 @@ output intervals [sj, fj]
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="cjwlqjyxd001nnfshzpuikhmy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="cjwlqkjg9001onzshhhbro0yi" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-04-算法2" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/04/2019-06-04-算法2/" class="article-date">
+  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/04/2019-06-04-算法2/">2019-06-04 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h4>算法分析基础</h4><br>寻找效率的定义：与平台无关，实例无关，并且随着输入规模的增长是可以预测的<br><br>O(upper),Ω(lower),Θ(tight)<br><br>O(nlogn)阶时间:快排、堆排、归并、FFT（快速傅立叶变换）<br><br>O(n^k)时间:对某个固定常数k, 我们想知道给定的n个结点的输入图是否有一个大小为k的独立集(方法：枚举) 判断k个结点的子集是否独立：O(k^2)<br><br>指数时间:假设给定一个图，需要找一个最大的独立集<br><br>n!时间：各种穷举搜索，TSP（巡回售货员问题）<br>              ⎛n⎞n<br>n→∞,n!≈ 2πn ⎝e⎠.<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="cjwlqkjga001qnzshpxxspxim" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -438,7 +476,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="cjwlqjyxe001qnfshj9t6c1dd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="cjwlqkjgb001tnzshcgjjvj7w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -477,7 +515,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="cjwlqjyxh001ynfshwbcblju0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="cjwlqkjg7001lnzshmdwqpw53" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
@@ -523,61 +561,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjwlqjyxa001enfshkfut99w8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-29-SQL" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/29/2019-05-29-SQL/" class="article-date">
-  <time datetime="2019-05-29T14:09:28.000Z" itemprop="datePublished">2019-05-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/29/2019-05-29-SQL/">2019-05-29 SQL</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>周五要数据库上机，复习一下SQL🐟句</p>
-<p></p><h4>JOIN的用法</h4><p></p>
-<p><ul></ul></p>
-<p><li>inner join</li></p>
-<p><li>left join:将左表的所有记录列出，右表中只要符合on条件的，与左表记录相拼合，不符合条件的，填以null值</li></p>
-<p><li>将右表的所有记录列出，左表中只要符合on条件的，与右表记录相拼合，不符合条件的，填以null值</li></p>
-<p><li>full join:综合left和right（但是在mysql中没有这个操作，需要用Union）<br></li></p>
-<p></p><h4>数据库查询中的函数</h4><br>参考网站：<a href="https://blog.csdn.net/qq_43501509/article/details/84933178" target="_blank" rel="noopener">https://blog.csdn.net/qq_43501509/article/details/84933178</a><p></p>
-<p>IF(expr,v1,v2)    如果expr表达式为true返回v1,否则返回v2<br><br>IFNULL(v1,v2)    如果v1不为NULL返回v1,否则返回v2<br></p>
-<p>⚠️1、是count还是count* 如果是count的话要count哪个字段<br>     2、注意join的格式</p>
-<pre><code>SELECT distinct Category.catid,count(Workson.proid) as proNum
-from Category LEFT outer JOIN Project on Project.catid=Category.catid 
-LEFT outer JOIN Workson on Project.proid = Workson.proid
-AND empid=&apos;10102&apos;
-GROUP BY Category.catid;
-</code></pre><p>⚠️对于多对多的关系进行多表连接的时候要注意，可以先select*查看一下结果</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjwlqjyx9001cnfshio8gbmpv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjwlqkjg7001jnzshxtcq6otn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -593,7 +577,7 @@ GROUP BY Category.catid;
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -643,7 +627,7 @@ GROUP BY Category.catid;
           </li>
         
           <li>
-            <a href="/2019/06/06/2019-06-06-算法2/">2019-06-06 算法</a>
+            <a href="/2019/06/07/2019-06-07-数据库/">2019-06-07 数据库</a>
           </li>
         
           <li>
@@ -651,11 +635,11 @@ GROUP BY Category.catid;
           </li>
         
           <li>
-            <a href="/2019/06/05/2019-06-05-算法/">2019-06-05 算法</a>
+            <a href="/2019/06/06/2019-06-06-算法2/">2019-06-06 算法</a>
           </li>
         
           <li>
-            <a href="/2019/06/04/2019-06-04-算法2/">2019-06-04 算法</a>
+            <a href="/2019/06/05/2019-06-05-算法/">2019-06-05 算法</a>
           </li>
         
       </ul>
