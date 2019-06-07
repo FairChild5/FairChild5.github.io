@@ -5,15 +5,20 @@
   
 
   
-  <title>Archives: 2019/3 | Hexo</title>
+  <title>2019-06-06 算法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/03/index.html">
+  <meta name="description" content="分治策略把一个问题分解成几个部分，递归(注意递归的出口)解决规模比较小的类似问题，把子问题的解合成完整的解 计数逆序穷举：Θ(n2) 排序:Θ(nlgn)算法：O(nlogn) Merge-and-Count(A,B) 维护一个Current指针指向每个表，初始化指向首元素 维护一个变量Count用于逆序的计数，初始为0  While两个表都不空 令ai与bj是由Current指针指向的元素 把这">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019-06-06 算法">
+<meta property="og:url" content="http://yoursite.com/2019/06/06/2019-06-06-算法2/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="分治策略把一个问题分解成几个部分，递归(注意递归的出口)解决规模比较小的类似问题，把子问题的解合成完整的解 计数逆序穷举：Θ(n2) 排序:Θ(nlgn)算法：O(nlogn) Merge-and-Count(A,B) 维护一个Current指针指向每个表，初始化指向首元素 维护一个变量Count用于逆序的计数，初始为0  While两个表都不空 令ai与bj是由Current指针指向的元素 把这">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-07T02:05:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="2019-06-06 算法">
+<meta name="twitter:description" content="分治策略把一个问题分解成几个部分，递归(注意递归的出口)解决规模比较小的类似问题，把子问题的解合成完整的解 计数逆序穷举：Θ(n2) 排序:Θ(nlgn)算法：O(nlogn) Merge-and-Count(A,B) 维护一个Current指针指向每个表，初始化指向首元素 维护一个变量Count用于逆序的计数，初始为0  While两个表都不空 令ai与bj是由Current指针指向的元素 把这">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,59 +65,101 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/03/25/2019-03-25-SQL/" class="archive-article-date">
-  <time datetime="2019-03-25T12:28:28.000Z" itemprop="datePublished">Mar 25</time>
+        <section id="main"><article id="post-2019-06-06-算法2" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/06/2019-06-06-算法2/" class="article-date">
+  <time datetime="2019-06-06T14:09:28.000Z" itemprop="datePublished">2019-06-06</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/25/2019-03-25-SQL/">2019-03-25 SQL</a>
+    <h1 class="article-title" itemprop="name">
+      2019-06-06 算法
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/03/05/2019-03-04-JavaScript/" class="archive-article-date">
-  <time datetime="2019-03-05T06:37:28.000Z" itemprop="datePublished">Mar 5</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/05/2019-03-04-JavaScript/">2019-03-05 JavaScript</a>
-    </h1>
-  
+        <p></p><h3>分治策略</h3><br>把一个问题分解成几个部分，递归(注意递归的出口)解决规模比较小的类似问题，把子问题的解合成完整的解<p></p>
+<p></p><h4>计数逆序</h4><br>穷举：Θ(n2) 排序:Θ(nlgn)<br><br>算法：O(nlogn)<p></p>
+<pre><code>Merge-and-Count(A,B) 维护一个Current指针指向每个表，初始化指向首元素
+维护一个变量Count用于逆序的计数，初始为0 
+While两个表都不空
+令ai与bj是由Current指针指向的元素 把这两个表中较小的元素加到输出表中 
+If bj是较小的元素 then
+把Count加上在A中剩余的元素数 
+Endif
+把较小元素选出的表中的Current指针前移
+Endwhile
+一旦一个表为空，把另一个表剩余的所有元素加到输出中 返回Count和合并后的表
 
-    </header>
+Sort-and-Count(L) 
+If这个表中有一个元素，
+then
+    没有逆序
+Else
+    把这个表划分成两半， A包含前⎡n/2⎤ 个元素
+    ⎣n/2⎦ B包含剩下的 个元素
+    (rA,A)=Sort-and-Count(A) (rB,B)=Sort-and-Count(B)
+    (r ,L)=Merge-and-Count(A,B)
+Endif 
+返回r=rA+rB+r以及排好序的表L
+</code></pre><p></p><h4>最邻近点对</h4><br>算法：O(nlog2n)<p></p>
+<pre><code>Closest-Pair(p1, ..., pn) {
+Compute separation line L such that half the points are on one side and half on the other side.
+
+δ1 = Closest-Pair(left half) 
+δ2 = Closest-Pair(right half) 
+δ = min(δ1, δ2)
+Delete all points further than δ from separation line L O(n)
+Sort remaining points by y-coordinate.
+Scan points in y-order and compare distance between each point and next 11 neighbors. If any of these distances is less than δ, update δ.
+return δ. 
+}
+</code></pre><p></p><h4>整数乘法</h4><br>采用分治的策略，每个整数分为高位和低位<br><p></p>
+<p></p><h4>矩阵乘法</h4><br>类Strassen算法上每获得一点理论上的改进， 实际上的可用性就会降低。(需要n达到一定规模)<p></p>
+<p></p><h4>卷积与快速傅立叶变换</h4><br>FFT. Fast way to convert between time-domain and frequency-domain.<br><br>Alternate viewpoint. Fast way to add, multiply, and evaluate polynomials.<br><p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法2/" data-id="cjwlqjyxf001rnfshpr8rymwh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/07/2019-06-07-算法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          2019-06-07 算法
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/06/06/2019-06-06-算法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2019-06-06 算法</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         

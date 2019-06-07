@@ -5,15 +5,20 @@
   
 
   
-  <title>Archives: 2019/3 | Hexo</title>
+  <title>2019-06-07 算法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/03/index.html">
+  <meta name="description" content="动态规划注意递归出口;用较小子问题的最优解来表达更大规模问题的最优解的一个递推的等式；递归算法特别容易产生冗余的重复子问题计算，从而导致指数阶算法（可以使用一个全局数组储存中间结果） 带权的区间调度预处理：按开始时间（方便求p(j)）和结束时间排序(标号) 分段的最小二乘⚠️看公式 子集和与背包运行时间是伪多项式的Θ(n W)对于另外的子集和决策问题:(背包决策问题的特殊情况)任给自然数w1,…,">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019-06-07 算法">
+<meta property="og:url" content="http://yoursite.com/2019/06/07/2019-06-07-算法/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="动态规划注意递归出口;用较小子问题的最优解来表达更大规模问题的最优解的一个递推的等式；递归算法特别容易产生冗余的重复子问题计算，从而导致指数阶算法（可以使用一个全局数组储存中间结果） 带权的区间调度预处理：按开始时间（方便求p(j)）和结束时间排序(标号) 分段的最小二乘⚠️看公式 子集和与背包运行时间是伪多项式的Θ(n W)对于另外的子集和决策问题:(背包决策问题的特殊情况)任给自然数w1,…,">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-07T06:55:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="2019-06-07 算法">
+<meta name="twitter:description" content="动态规划注意递归出口;用较小子问题的最优解来表达更大规模问题的最优解的一个递推的等式；递归算法特别容易产生冗余的重复子问题计算，从而导致指数阶算法（可以使用一个全局数组储存中间结果） 带权的区间调度预处理：按开始时间（方便求p(j)）和结束时间排序(标号) 分段的最小二乘⚠️看公式 子集和与背包运行时间是伪多项式的Θ(n W)对于另外的子集和决策问题:(背包决策问题的特殊情况)任给自然数w1,…,">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,59 +65,60 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/03/25/2019-03-25-SQL/" class="archive-article-date">
-  <time datetime="2019-03-25T12:28:28.000Z" itemprop="datePublished">Mar 25</time>
+        <section id="main"><article id="post-2019-06-07-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/07/2019-06-07-算法/" class="article-date">
+  <time datetime="2019-06-07T14:09:28.000Z" itemprop="datePublished">2019-06-07</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/25/2019-03-25-SQL/">2019-03-25 SQL</a>
+    <h1 class="article-title" itemprop="name">
+      2019-06-07 算法
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/03/05/2019-03-04-JavaScript/" class="archive-article-date">
-  <time datetime="2019-03-05T06:37:28.000Z" itemprop="datePublished">Mar 5</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/05/2019-03-04-JavaScript/">2019-03-05 JavaScript</a>
-    </h1>
-  
+        <p></p><h3>动态规划</h3><br>注意递归出口;用较小子问题的最优解来表达更大规模问题的最优解的一个递推的等式；递归算法特别容易产生冗余的重复子问题计算，从而导致指数阶算法（可以使用一个全局数组储存中间结果）<p></p>
+<p></p><h4>带权的区间调度</h4><br>预处理：按开始时间（方便求p(j)）和结束时间排序(标号)<p></p>
+<p></p><h4>分段的最小二乘</h4><br>⚠️看公式<p></p>
+<p></p><h4>子集和与背包</h4><br>运行时间是伪多项式的Θ(n W)<br><br>对于另外的子集和决策问题:(背包决策问题的特殊情况)任给自然数w1,…,w和目标值W<br>问{w1,…,w}有一个子集加起来恰好等于W吗?<b> NP-complete</b><p></p>
+<p></p><h4>RNA二级结构</h4><br>按照区间增长的顺序<br><br>存在O(n2)个子问题;每次求值用O(n)时间   总运行时间是O(n3)<p></p>
+<p></p><h4>序列比对</h4><br>时间、空间复杂度都是O(mn)<br><br>改进：只用两列，但不能记录解的结构<br><br><b>最优序列比对算法 (分治+动态规划) 可以在 O(m + n) 空间， O(mn)时间复杂度内完成.</b><p></p>
+<p></p><h4>图中的最短路径</h4><br>如果有负圈，不存在“最短”路径<br><br>如果没有负圈，那么存在一条路径至多有n-1条边<br><br>表M有n^2项，每项O(n)时间计算<br>  时间复杂度:O(n^3)<br>  空间复杂度:O(n^2)<br>  ⚠️时间和空间复杂度的改进<p></p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-算法/" data-id="cjwlqjyxg001vnfsh5f2aebhs" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/06/06/2019-06-06-算法2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2019-06-06 算法</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         

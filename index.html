@@ -62,6 +62,128 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-06-07-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/07/2019-06-07-算法/" class="article-date">
+  <time datetime="2019-06-07T14:09:28.000Z" itemprop="datePublished">2019-06-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/07/2019-06-07-算法/">2019-06-07 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h3>动态规划</h3><br>注意递归出口;用较小子问题的最优解来表达更大规模问题的最优解的一个递推的等式；递归算法特别容易产生冗余的重复子问题计算，从而导致指数阶算法（可以使用一个全局数组储存中间结果）<p></p>
+<p></p><h4>带权的区间调度</h4><br>预处理：按开始时间（方便求p(j)）和结束时间排序(标号)<p></p>
+<p></p><h4>分段的最小二乘</h4><br>⚠️看公式<p></p>
+<p></p><h4>子集和与背包</h4><br>运行时间是伪多项式的Θ(n W)<br><br>对于另外的子集和决策问题:(背包决策问题的特殊情况)任给自然数w1,…,w和目标值W<br>问{w1,…,w}有一个子集加起来恰好等于W吗?<b> NP-complete</b><p></p>
+<p></p><h4>RNA二级结构</h4><br>按照区间增长的顺序<br><br>存在O(n2)个子问题;每次求值用O(n)时间   总运行时间是O(n3)<p></p>
+<p></p><h4>序列比对</h4><br>时间、空间复杂度都是O(mn)<br><br>改进：只用两列，但不能记录解的结构<br><br><b>最优序列比对算法 (分治+动态规划) 可以在 O(m + n) 空间， O(mn)时间复杂度内完成.</b><p></p>
+<p></p><h4>图中的最短路径</h4><br>如果有负圈，不存在“最短”路径<br><br>如果没有负圈，那么存在一条路径至多有n-1条边<br><br>表M有n^2项，每项O(n)时间计算<br>  时间复杂度:O(n^3)<br>  空间复杂度:O(n^2)<br>  ⚠️时间和空间复杂度的改进<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-算法/" data-id="cjwlqjyxg001vnfsh5f2aebhs" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-06-算法2" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/06/2019-06-06-算法2/" class="article-date">
+  <time datetime="2019-06-06T14:09:28.000Z" itemprop="datePublished">2019-06-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/06/2019-06-06-算法2/">2019-06-06 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h3>分治策略</h3><br>把一个问题分解成几个部分，递归(注意递归的出口)解决规模比较小的类似问题，把子问题的解合成完整的解<p></p>
+<p></p><h4>计数逆序</h4><br>穷举：Θ(n2) 排序:Θ(nlgn)<br><br>算法：O(nlogn)<p></p>
+<pre><code>Merge-and-Count(A,B) 维护一个Current指针指向每个表，初始化指向首元素
+维护一个变量Count用于逆序的计数，初始为0 
+While两个表都不空
+令ai与bj是由Current指针指向的元素 把这两个表中较小的元素加到输出表中 
+If bj是较小的元素 then
+把Count加上在A中剩余的元素数 
+Endif
+把较小元素选出的表中的Current指针前移
+Endwhile
+一旦一个表为空，把另一个表剩余的所有元素加到输出中 返回Count和合并后的表
+
+Sort-and-Count(L) 
+If这个表中有一个元素，
+then
+    没有逆序
+Else
+    把这个表划分成两半， A包含前⎡n/2⎤ 个元素
+    ⎣n/2⎦ B包含剩下的 个元素
+    (rA,A)=Sort-and-Count(A) (rB,B)=Sort-and-Count(B)
+    (r ,L)=Merge-and-Count(A,B)
+Endif 
+返回r=rA+rB+r以及排好序的表L
+</code></pre><p></p><h4>最邻近点对</h4><br>算法：O(nlog2n)<p></p>
+<pre><code>Closest-Pair(p1, ..., pn) {
+Compute separation line L such that half the points are on one side and half on the other side.
+
+δ1 = Closest-Pair(left half) 
+δ2 = Closest-Pair(right half) 
+δ = min(δ1, δ2)
+Delete all points further than δ from separation line L O(n)
+Sort remaining points by y-coordinate.
+Scan points in y-order and compare distance between each point and next 11 neighbors. If any of these distances is less than δ, update δ.
+return δ. 
+}
+</code></pre><p></p><h4>整数乘法</h4><br>采用分治的策略，每个整数分为高位和低位<br><p></p>
+<p></p><h4>矩阵乘法</h4><br>类Strassen算法上每获得一点理论上的改进， 实际上的可用性就会降低。(需要n达到一定规模)<p></p>
+<p></p><h4>卷积与快速傅立叶变换</h4><br>FFT. Fast way to convert between time-domain and frequency-domain.<br><br>Alternate viewpoint. Fast way to add, multiply, and evaluate polynomials.<br><p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法2/" data-id="cjwlqjyxf001rnfshpr8rymwh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-06-06-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/06/2019-06-06-算法/" class="article-date">
@@ -126,7 +248,7 @@ return T
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法/" data-id="cjwkex5g200003kshhukze8id" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法/" data-id="cjwlqjyxg001unfshrpkcxhxc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -191,7 +313,46 @@ output intervals [sj, fj]
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="cjwj191us001umfsh1gvtdbkp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="cjwlqjyy40031nfshseevjs2y" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-04-算法2" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/04/2019-06-04-算法2/" class="article-date">
+  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/04/2019-06-04-算法2/">2019-06-04 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h4>算法分析基础</h4><br>寻找效率的定义：与平台无关，实例无关，并且随着输入规模的增长是可以预测的<br><br>O(upper),Ω(lower),Θ(tight)<br><br>O(nlogn)阶时间:快排、堆排、归并、FFT（快速傅立叶变换）<br><br>O(n^k)时间:对某个固定常数k, 我们想知道给定的n个结点的输入图是否有一个大小为k的独立集(方法：枚举) 判断k个结点的子集是否独立：O(k^2)<br><br>指数时间:假设给定一个图，需要找一个最大的独立集<br><br>n!时间：各种穷举搜索，TSP（巡回售货员问题）<br>              ⎛n⎞n<br>n→∞,n!≈ 2πn ⎝e⎠.<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="cjwlqjyxc001lnfshm2jk4uwr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -231,46 +392,7 @@ output intervals [sj, fj]
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="cjwj191up001mmfshl243vm8m" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-06-04-算法2" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/04/2019-06-04-算法2/" class="article-date">
-  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/04/2019-06-04-算法2/">2019-06-04 算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h4>算法分析基础</h4><br>寻找效率的定义：与平台无关，实例无关，并且随着输入规模的增长是可以预测的<br><br>O(upper),Ω(lower),Θ(tight)<br><br>O(nlogn)阶时间:快排、堆排、归并、FFT（快速傅立叶变换）<br><br>O(n^k)时间:对某个固定常数k, 我们想知道给定的n个结点的输入图是否有一个大小为k的独立集(方法：枚举) 判断k个结点的子集是否独立：O(k^2)<br><br>指数时间:假设给定一个图，需要找一个最大的独立集<br><br>n!时间：各种穷举搜索，TSP（巡回售货员问题）<br>              ⎛n⎞n<br>n→∞,n!≈ 2πn ⎝e⎠.<p></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="cjwj191uq001pmfsh0byjru70" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="cjwlqjyxd001nnfshzpuikhmy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -316,7 +438,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="cjwj191ur001rmfsher0vtur1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="cjwlqjyxe001qnfshj9t6c1dd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -355,7 +477,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="cjwj191uo001kmfsh1aelut4g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="cjwlqjyxh001ynfshwbcblju0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
@@ -401,82 +523,10 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjwj191un001imfshrdswzi2u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjwlqjyxa001enfshkfut99w8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-29-SQL Server" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/29/2019-05-29-SQL Server/" class="article-date">
-  <time datetime="2019-05-29T14:09:28.000Z" itemprop="datePublished">2019-05-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/29/2019-05-29-SQL Server/">2019-05-29 MAC上使用SQL Server</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>步骤:</p>
-<p>打开Docker</p>
-<p>打开终端 </p>
-<pre><code>sudo docker stop sql1
-sudo docker rm sql1
-
-sudo docker run -e &apos;ACCEPT_EULA=Y&apos; -e &apos;SA_PASSWORD=&lt;Sxr878231&apos; \
-       -p 1433:1433 --name sql1 \
-       -d mcr.microsoft.com/mssql/server:2017-latest
-
-       sudo docker exec -it sql1 &quot;bash&quot;
-       /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P &apos;Sxr878231&apos;
-</code></pre><p> 打开Navicat</p>
-<p> 连接localhost</p>
-<p> 执行查询</p>
-<pre><code> USE master;  
-GO  
-IF DB_ID (N&apos;MyOptionsTest&apos;) IS NOT NULL  
-DROP DATABASE MyOptionsTest;  
-GO  
-CREATE DATABASE MyOptionsTest  
-COLLATE Chinese_PRC_CS_AI_WS;  
-GO  
-
---Verify the collation setting.  
-SELECT name, collation_name  
-FROM sys.databases  
-WHERE name = N&apos;MyOptionsTest&apos;;  
-GO  
-</code></pre><p>插入表</p>
-<p>CREATE TABLE Department<br>(<br>depid    varchar(20)    not null    PRIMARY KEY,<br>depname    varchar(20)    not null,<br>location    varchar(20)    not null,<br>)<br>CREATE TABLE Employee<br>(<br>empid    varchar(20)    not null    PRIMARY KEY,<br>empname    varchar(20)    not null,<br>age int not null,<br>sex varchar(10) not null,<br>depid    varchar(20)    not null    foreign key(depid) references Department(depid)<br>)<br>CREATE TABLE Category<br>(<br>catid    varchar(20)    not null    PRIMARY KEY,<br>catname    varchar(20)    not null<br>)<br>CREATE TABLE Project<br>(<br>proid        varchar(20)    not null    PRIMARY KEY,<br>projectname varchar(20) not null,<br>budget    int    not null,<br>catid    varchar(20)    not null    foreign key(catid) references Category(catid)<br>)<br>CREATE TABLE Workson<br>(<br>empid    varchar(20)    not null    foreign key(empid) references Employee(empid),<br>proid        varchar(20)    not null    foreign key(proid) references Project(proid),<br>job    varchar(20)    ,<br>enterdate    date    not null,<br>PRIMARY KEY (empid,proid)<br>)<br>INSERT INTO Department<br>SELECT ‘d1’, ‘开发部’, ‘天津’ union<br>SELECT ‘d2’, ‘财务部’, ‘北京’ union<br>SELECT ‘d3’, ‘市场部’, ‘广州’ union<br>SELECT ‘d4’, ‘人才管理部’, ‘天津’<br>INSERT INTO Employee<br>SELECT ‘10102’, ‘张三’, 34, ‘男’,’d1’ union<br>SELECT ‘10211’, ‘李飞’, 24, ‘男’,’d2’ union<br>SELECT ‘18316’, ‘王玲’, 29, ‘女’,’d4’ union<br>SELECT ‘22020’, ‘周城’, 39, ‘男’,’d2’ union<br>SELECT ‘22135’, ‘徐晶’, 35, ‘女’,’d3’ union<br>SELECT ‘25348’, ‘冯昕’, 27, ‘男’,’d1’ union<br>SELECT ‘28559’, ‘李风’, 41, ‘女’,’d3’ union<br>SELECT ‘29346’, ‘王新’, 32, ‘男’,’d1’ union<br>SELECT ‘30678’, ‘孙浩文’, 28, ‘女’,’d4’ </p>
-<p>INSERT INTO Category<br>SELECT ‘c1’, ‘设计类’ union<br>SELECT ‘c2’, ‘采购类’ union<br>SELECT ‘c3’, ‘营销类’ union<br>SELECT ‘c4’, ‘软件类’ union<br>SELECT ‘c5’, ‘硬件类’</p>
-<p>INSERT INTO Project<br>SELECT ‘p1’,’产品推广’, 120000, ‘c3’ union<br>SELECT ‘p2’, ‘广告设计’,40000, ‘c1’ union<br>SELECT ‘p3’, ‘软件升级’, 185000, ‘c4’ union<br>SELECT ‘p4’, ‘服务器采购’,150000, ‘c2’ union<br>SELECT ‘p5’, ‘办公用品采购’,80000, ‘c2’ union<br>SELECT ‘p6’, ‘软件开发’,85000, ‘c4’ </p>
-<p>INSERT INTO Workson<br>SELECT ‘10211’, ‘p1’, ‘分析员’, ‘2017-01-01’ union<br>SELECT ‘25348’, ‘p6’, ‘职员’, ‘2018-02-01’ union<br>SELECT ‘10102’, ‘p3’, ‘管理员’, ‘2018-08-05’ union<br>SELECT ‘25348’, ‘p4’, ‘职员’, ‘2018-03-23’ union<br>SELECT ‘22020’, ‘p6’, ‘管理员’, ‘2019-03-01’ union<br>SELECT ‘28559’, ‘p5’, ‘职员’, ‘2019-02-20’ union<br>SELECT ‘29346’, ‘p5’,  null, ‘2018-04-12’ union<br>SELECT ‘25348’, ‘p1’,  null, ‘2017-06-04’ union<br>SELECT ‘25348’, ‘p2’,  null, ‘2018-11-15’ union<br>SELECT ‘22020’, ‘p3’, ‘职员’, ‘2017-07-16’ union<br>SELECT ‘22135’, ‘p2’, ‘管理员’, ‘2017-12-18’ union<br>SELECT ‘18316’, ‘p5’, ‘职员’, ‘2018-06-22’ union<br>SELECT ‘10102’, ‘p4’, ‘管理员’, ‘2018-10-29’ union<br>SELECT ‘28559’, ‘p1’, ‘管理员’, ‘2019-02-11’ union<br>SELECT ‘10102’, ‘p5’, ‘职员’, ‘2018-12-10’ union<br>SELECT ‘18316’, ‘p1’, ‘职员’, ‘2017-09-28’ union<br>SELECT ‘10211’, ‘p6’, ‘分析员’, ‘2018-05-27’ union<br>SELECT ‘10102’, ‘p2’, ‘职员’, ‘2018-11-27’ union<br>SELECT ‘29346’, ‘p2’, ‘职员’, ‘2018-02-03’ union<br>SELECT ‘18316’, ‘p6’, ‘职员’, ‘2018-05-01’ </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjwj191ul001emfsh6m278ovq" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li></ul>
 
     </footer>
   </div>
@@ -527,206 +577,10 @@ GROUP BY Category.catid;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjwj191um001gmfshlmdgdkg1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjwlqjyx9001cnfshio8gbmpv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-24-Android" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/24/2019-05-24-Android/" class="article-date">
-  <time datetime="2019-05-24T14:09:28.000Z" itemprop="datePublished">2019-05-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/24/2019-05-24-Android/">2019-05-24 Android</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天写完了算法大作业😄基本完成了android端的学生界面🌈</p>
-<h3>根据url下载图片并显示</h3>
-
-<pre><code>private Button summitButton;
-private RadioButton ra,rb,rc,rd;
-private String answer;
-//设置提交次数
-private int count=0;
-
-public static final int DOWNLOAD_CODE = 10001;
-public static final int DOWNLOAD_FAIL = 300;
-public static final int CONNECT_TIMEOUT = 2000;
-private ImageView image_download;
-
-private Handler handler;
-private String path=&quot;http://47.95.200.233/search-homework/static/img/logo.b5d9053.png&quot;;
-
-private int fileLength;
-
-private Bitmap mBitmap;
-
-
-
-@Override
-protected void onCreate(@Nullable Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.question);
-    //下载并显示图片
-    image_download=findViewById(R.id.question_img);
-
-
-    new Thread(new GetPictThread(handler,path)).start();
-
-
-    //接收子线程的消息
-    handler=new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what){
-                case DOWNLOAD_CODE:
-                    /*
-                     * 更新UI
-                     * 提取消息中的bitmap,并设置ImageView
-                     * */
-                    Bitmap bitmap=(Bitmap) msg.obj;
-                    if (bitmap!=null){
-                        image_download.setImageBitmap(bitmap);//disPlay image
-                    }
-                    break;
-                case DOWNLOAD_FAIL:
-                    Toast.makeText(Answer.this,&quot;下载失败&quot;,Toast.LENGTH_SHORT).show();
-                    break;
-            }
-        }
-    };
-
-
-
-
-}
-
-
-private class GetPictThread implements Runnable{
-    //定义handler和path
-    public Handler handler;
-    public String path;
-
-    //带参构造
-    public GetPictThread(Handler handler, String path) {
-        this.handler = handler;
-        this.path = path;
-    }
-
-    //在run方法中实现图片下载
-    @Override
-    public void run() {
-        //通过Get方法请求获取网络图片
-        try {
-            URL url=new URL(path);
-            HttpURLConnection connection=(HttpURLConnection) url.openConnection();
-
-            //设置请求方式
-            connection.setRequestMethod(&quot;GET&quot;);
-            //设置超时时间
-            connection.setConnectTimeout(30*1000);
-            //发起连接
-            connection.connect();
-
-            //获取状态码
-            int requestCode=connection.getResponseCode();
-            System.out.println(requestCode);
-
-            if (requestCode==HttpURLConnection.HTTP_OK){
-                /*
-                 * 1.获得文件长度
-                 * 2.通过缓冲输入流
-                 * 3.将输入流转换成字节数组
-                 * 4.将字节数组转换成位图
-                 * */
-                fileLength=connection.getContentLength();
-
-                InputStream is=new BufferedInputStream(connection.getInputStream());
-
-                //获取到字节数组
-                byte[] arr=streamToArr(is);
-
-                //将字节数组转换成位图
-                mBitmap= BitmapFactory.decodeByteArray(arr,0,arr.length);
-
-                /*
-                 * 下载完成后将消息发送出去
-                 * 通知主线程，更新UI
-                 * */
-                Message message=Message.obtain();
-                message.what=DOWNLOAD_CODE;
-                message.obj=mBitmap;
-                handler.sendMessage(message);
-
-            }else {
-                Log.e(&quot;TAG&quot;, &quot;run:error &quot;+requestCode);
-            }
-        }catch (MalformedURLException e){
-            e.printStackTrace();
-            handler.sendEmptyMessage(DOWNLOAD_FAIL);
-        }catch (IOException e){
-            e.printStackTrace();
-            handler.sendEmptyMessage(DOWNLOAD_FAIL);
-        }
-    }
-}
-
-
-
-public byte[] streamToArr(InputStream inputStream){
-
-    try {
-        ByteArrayOutputStream baos=new ByteArrayOutputStream();
-        byte[] buffer=new byte[1024];
-        int len;
-
-        while ((len=inputStream.read(buffer))!=-1){
-            baos.write(buffer,0,len);
-        }
-
-        //关闭输出流
-        baos.close();
-        //关闭输入流
-        inputStream.close();
-        //返回字节数组
-        return baos.toByteArray();
-    }catch (IOException e){
-        e.printStackTrace();
-        //若失败，则返回空
-        return null;
-    }
-}
-</code></pre><p>参考网站：<a href="https://blog.csdn.net/cjhloveandroid/article/details/82811236" target="_blank" rel="noopener">https://blog.csdn.net/cjhloveandroid/article/details/82811236</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjwj191ul001cmfshtd3jottm" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 
     </footer>
   </div>
@@ -785,6 +639,14 @@ public byte[] streamToArr(InputStream inputStream){
       <ul>
         
           <li>
+            <a href="/2019/06/07/2019-06-07-算法/">2019-06-07 算法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/06/2019-06-06-算法2/">2019-06-06 算法</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/06/2019-06-06-算法/">2019-06-06 算法</a>
           </li>
         
@@ -793,15 +655,7 @@ public byte[] streamToArr(InputStream inputStream){
           </li>
         
           <li>
-            <a href="/2019/06/04/2019-06-04-算法/">2019-06-04 算法</a>
-          </li>
-        
-          <li>
             <a href="/2019/06/04/2019-06-04-算法2/">2019-06-04 算法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/04/2019-06-04-算法3/">2019-06-04 算法</a>
           </li>
         
       </ul>
