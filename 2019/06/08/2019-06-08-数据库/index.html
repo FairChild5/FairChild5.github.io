@@ -5,15 +5,20 @@
   
 
   
-  <title>Archives: 2019/5 | Hexo</title>
+  <title>2019-06-08 数据库 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/05/index.html">
+  <meta name="description" content="SQL语句建表：CREATE TABLE  PRIMARY KEY(属性A,属性B)外键：REFERENCES relation ( attributes ) 或者 FOREIGN KEY ( list of attributes ) REFERENCES relation (  )被参照的属性必须是primary key或unique三种外键可能的操作：1、reject(default) 2、C">
+<meta name="keywords" content="数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019-06-08 数据库">
+<meta property="og:url" content="http://yoursite.com/2019/06/08/2019-06-08-数据库/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SQL语句建表：CREATE TABLE  PRIMARY KEY(属性A,属性B)外键：REFERENCES relation ( attributes ) 或者 FOREIGN KEY ( list of attributes ) REFERENCES relation (  )被参照的属性必须是primary key或unique三种外键可能的操作：1、reject(default) 2、C">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-08T13:03:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="2019-06-08 数据库">
+<meta name="twitter:description" content="SQL语句建表：CREATE TABLE  PRIMARY KEY(属性A,属性B)外键：REFERENCES relation ( attributes ) 或者 FOREIGN KEY ( list of attributes ) REFERENCES relation (  )被参照的属性必须是primary key或unique三种外键可能的操作：1、reject(default) 2、C">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,216 +65,68 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/30/2019-05-30-SQL/" class="archive-article-date">
-  <time datetime="2019-05-30T14:09:28.000Z" itemprop="datePublished">May 30</time>
+        <section id="main"><article id="post-2019-06-08-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/08/2019-06-08-数据库/" class="article-date">
+  <time datetime="2019-06-08T14:09:28.000Z" itemprop="datePublished">2019-06-08</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/30/2019-05-30-SQL/">2019-05-30 SQL</a>
+    <h1 class="article-title" itemprop="name">
+      2019-06-08 数据库
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/29/2019-05-29-SQL/" class="archive-article-date">
-  <time datetime="2019-05-29T14:09:28.000Z" itemprop="datePublished">May 29</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/29/2019-05-29-SQL/">2019-05-29 SQL</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/29/2019-05-29-SQL Server/" class="archive-article-date">
-  <time datetime="2019-05-29T14:09:28.000Z" itemprop="datePublished">May 29</time>
-</a>
+        <p></p><h3>SQL语句</h3><br>建表：CREATE TABLE  PRIMARY KEY(属性A,属性B)<br><br>外键：REFERENCES relation ( attributes ) 或者 FOREIGN KEY ( list of attributes ) REFERENCES relation ( <attributes> )被参照的属性必须是primary key或unique<br><br>三种外键可能的操作：1、reject(default) 2、CASCADE(FOREIGN KEY(beer) REFERENCES     Beers(name)<br>        ON DELETE/UPDATE CASCADE) 3、Set NULL(FOREIGN KEY(beer) REFERENCES     Beers(name)<br>        ON DELETE SET NULL);)<br><br>描述属性：NOT NULL,DEFAULT value(没有显式的给出时用默认，而不是NULL时用默认)<p></p>
+<p><b>修改columu(ADD/DROP)</b>:ALTER TABLE Bars ADD phone CHAR(16)<br>            DEFAULT ‘unlisted’;</p>
+<p>ALTER TABLE Bars DROP COLUMN license;</p>
+<p><b>CHECK</b>:Check occurs only when the ‘beer’ attribute of a ‘Sells’ tuple is inserted or updated.<br>Not when a ‘Beers’ tuple is deleted or updated. 添加到某个属性后面<br><br>也可以写成这种形式：CHECK (bar = ‘Joe’’s Bar’ OR<br>                 price &lt;= 5.00)<br><br>                 ALTER TABLE Sells ADD CHECK(…);</p>
+<p></p><h4>查询语句</h4><br>SELECT bar, beer, price*120 AS priceInYen<br>FROM    Sells;<br><br>SELECT  drinker, ‘likes Bud’ AS whoLikesBud<br>FROM     Likes<br>WHERE  beer = ‘Bud’;  –自己添一列<br><br>NULL和别的值比较 -&gt; UNKNOWN<br><br>判断一个值是否为空：is null<br><p></p>
+<p>INSERT INTO     relation     VALUES (list of values);<br><br>INSERT INTO     relation      (subquery);(批量插入)<br><br>DELETE FROM     relation     WHERE condition;<br><br>UPDATE               relation      SET assignments<br>                        WHERE condition;<br><br>Make the Likes relation empty:<b>DELETE FROM Likes;</b>(Different from <b>DROP TABLE Likes;</b>)<br></p>
+</attributes>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/29/2019-05-29-SQL Server/">2019-05-29 MAC上使用SQL Server</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/24/2019-05-24-Android/" class="archive-article-date">
-  <time datetime="2019-05-24T14:09:28.000Z" itemprop="datePublished">May 24</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-数据库/" data-id="cjwnj4ojx0000nlshaj1syhdv" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/24/2019-05-24-Android/">2019-05-24 Android</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/23/2019-05-22-Android/" class="archive-article-date">
-  <time datetime="2019-05-23T14:09:28.000Z" itemprop="datePublished">May 23</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/23/2019-05-22-Android/">2019-05-23 Android</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/08/2019-06-08-算法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          2019-06-08 算法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/07/2019-06-07-数据库/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2019-06-07 数据库</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/21/2019-05-21-算法/" class="archive-article-date">
-  <time datetime="2019-05-21T14:09:28.000Z" itemprop="datePublished">May 21</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/21/2019-05-21-算法/">2019-05-21 算法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/20/2019-05-20-Android/" class="archive-article-date">
-  <time datetime="2019-05-20T14:09:28.000Z" itemprop="datePublished">May 20</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/20/2019-05-20-Android/">2019-05-20 Android</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/19/2019-05-18-数据库/" class="archive-article-date">
-  <time datetime="2019-05-19T14:09:28.000Z" itemprop="datePublished">May 19</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/19/2019-05-18-数据库/">2019-05-19 数据库</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/17/2019-05-17-数据库/" class="archive-article-date">
-  <time datetime="2019-05-17T14:09:28.000Z" itemprop="datePublished">May 17</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/17/2019-05-17-数据库/">2019-05-17 数据库</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/16/2019-05-16-数据库/" class="archive-article-date">
-  <time datetime="2019-05-16T14:09:28.000Z" itemprop="datePublished">May 16</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/16/2019-05-16-数据库/">2019-05-16 数据库</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2019/05/page/2/">2</a><a class="page-number" href="/archives/2019/05/page/3/">3</a><a class="extend next" rel="next" href="/archives/2019/05/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

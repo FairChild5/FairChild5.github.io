@@ -62,6 +62,45 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-06-03-sxr" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/03/2019-06-03-sxr/" class="article-date">
+  <time datetime="2019-06-03T14:09:28.000Z" itemprop="datePublished">2019-06-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/03/2019-06-03-sxr/">2019-06-03 sxr</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近都没有发github，在忙着复习，🍐还挺大的。今天为什么要记一下博客呢？因为今天做了移动的展示，有一点点感悟。学长真的强，不仅是因为多学了一年。不管什么时候都要知道人外有人，自己只是一个laji，但是也不用太沮丧了，继续学习💪。<br><br>有一个挺重要的就是如何展示，本来我们做的也挺多的，但是界面就不太好看，展示形式也有点单调，这方面以后一定要改进。我甚至觉得展示比代码还要重要一点。今天有几个app给我印象挺深刻的：多线程下载视频，界面很简单很实用，我很喜欢。还有一个做游戏的，一个小人闯关，游戏这方面一点也没接触过，觉得技术挺难的。<br><br>复习加油！！！🌈</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="cjwne2vdk001lk5shtfceepnd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-05-30-SQL" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/30/2019-05-30-SQL/" class="article-date">
@@ -96,7 +135,61 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjwm7xi1w001i0pshz9jrg6lm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjwne2vdj001jk5shyvqzuudm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-05-29-SQL" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/29/2019-05-29-SQL/" class="article-date">
+  <time datetime="2019-05-29T14:09:28.000Z" itemprop="datePublished">2019-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/29/2019-05-29-SQL/">2019-05-29 SQL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>周五要数据库上机，复习一下SQL🐟句</p>
+<p></p><h4>JOIN的用法</h4><p></p>
+<p><ul></ul></p>
+<p><li>inner join</li></p>
+<p><li>left join:将左表的所有记录列出，右表中只要符合on条件的，与左表记录相拼合，不符合条件的，填以null值</li></p>
+<p><li>将右表的所有记录列出，左表中只要符合on条件的，与右表记录相拼合，不符合条件的，填以null值</li></p>
+<p><li>full join:综合left和right（但是在mysql中没有这个操作，需要用Union）<br></li></p>
+<p></p><h4>数据库查询中的函数</h4><br>参考网站：<a href="https://blog.csdn.net/qq_43501509/article/details/84933178" target="_blank" rel="noopener">https://blog.csdn.net/qq_43501509/article/details/84933178</a><p></p>
+<p>IF(expr,v1,v2)    如果expr表达式为true返回v1,否则返回v2<br><br>IFNULL(v1,v2)    如果v1不为NULL返回v1,否则返回v2<br></p>
+<p>⚠️1、是count还是count* 如果是count的话要count哪个字段<br>     2、注意join的格式</p>
+<pre><code>SELECT distinct Category.catid,count(Workson.proid) as proNum
+from Category LEFT outer JOIN Project on Project.catid=Category.catid 
+LEFT outer JOIN Workson on Project.proid = Workson.proid
+AND empid=&apos;10102&apos;
+GROUP BY Category.catid;
+</code></pre><p>⚠️对于多对多的关系进行多表连接的时候要注意，可以先select*查看一下结果</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjwne2vdh001ek5shzduziw7n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -168,64 +261,10 @@ GO
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjwm7xi1u001e0pshne2sljan" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjwne2vdi001gk5shsiieawga" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-29-SQL" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/29/2019-05-29-SQL/" class="article-date">
-  <time datetime="2019-05-29T14:09:28.000Z" itemprop="datePublished">2019-05-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/29/2019-05-29-SQL/">2019-05-29 SQL</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>周五要数据库上机，复习一下SQL🐟句</p>
-<p></p><h4>JOIN的用法</h4><p></p>
-<p><ul></ul></p>
-<p><li>inner join</li></p>
-<p><li>left join:将左表的所有记录列出，右表中只要符合on条件的，与左表记录相拼合，不符合条件的，填以null值</li></p>
-<p><li>将右表的所有记录列出，左表中只要符合on条件的，与右表记录相拼合，不符合条件的，填以null值</li></p>
-<p><li>full join:综合left和right（但是在mysql中没有这个操作，需要用Union）<br></li></p>
-<p></p><h4>数据库查询中的函数</h4><br>参考网站：<a href="https://blog.csdn.net/qq_43501509/article/details/84933178" target="_blank" rel="noopener">https://blog.csdn.net/qq_43501509/article/details/84933178</a><p></p>
-<p>IF(expr,v1,v2)    如果expr表达式为true返回v1,否则返回v2<br><br>IFNULL(v1,v2)    如果v1不为NULL返回v1,否则返回v2<br></p>
-<p>⚠️1、是count还是count* 如果是count的话要count哪个字段<br>     2、注意join的格式</p>
-<pre><code>SELECT distinct Category.catid,count(Workson.proid) as proNum
-from Category LEFT outer JOIN Project on Project.catid=Category.catid 
-LEFT outer JOIN Workson on Project.proid = Workson.proid
-AND empid=&apos;10102&apos;
-GROUP BY Category.catid;
-</code></pre><p>⚠️对于多对多的关系进行多表连接的时候要注意，可以先select*查看一下结果</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjwm7xi1v001g0psh22vrmcms" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
 
     </footer>
   </div>
@@ -418,7 +457,7 @@ public byte[] streamToArr(InputStream inputStream){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjwm7xi1t001c0psh0bcfvyhm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjwne2vdg001ck5sh6dhtqjsq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -566,7 +605,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjwm7xi1t001a0pshlnredhsi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjwne2vdf001ak5shq287uvgx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -605,7 +644,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="cjwm7xi1s00180psh0n7b5heh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="cjwne2vde0018k5shmlc6aund" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -650,7 +689,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="cjwm7xi1r00160pshthdqwex4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="cjwne2vdd0016k5she7o6b21q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -692,7 +731,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="cjwm7xi1q00140pshxhicprru" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="cjwne2vdb0014k5shxs8jwjy2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -761,97 +800,7 @@ EXISTS (
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="cjwm7xi1p00120psh43h7g843" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-16-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/16/2019-05-16-数据库/" class="article-date">
-  <time datetime="2019-05-16T14:09:28.000Z" itemprop="datePublished">2019-05-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/16/2019-05-16-数据库/">2019-05-16 数据库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>昨天交了大作业太激动了，忘记更新博客了😢，今天继续，现总结一下这次数据库的作业吧</p>
-<p></p><h3>存储过程</h3><br>在数据库里面建立存储过程基本就是这个框架<p></p>
-<pre><code>CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_update_tag`(IN post_id INT)
-begin
-    DECLARE new_tag VARCHAR(255);
-    DECLARE old_fre INT;
-    DECLARE new_fre INT;
-    DECLARE t_error INT;
-    DECLARE    CONTINUE HANDLER FOR SQLEXCEPTION SET t_error = 1;
-
-    SELECT tags  into new_tag FROM post WHERE id = post_id;
-
-    IF (!isNULL(new_tag)) then
-    BEGIN
-    SELECT frequency into old_fre FROM tag WHERE name = new_tag;
-                    SET new_fre = old_fre + 1;
-                    UPDATE tag SET frequency = new_fre WHERE name = new_tag;    
-    END
-    ELSE 
-                    signal sqlstate &apos;HY000&apos; set message_text=&apos;标签不能为空！！&apos;;    
-    END IF;
-    IF t_error = 1 THEN
-ROLLBACK;
-ELSE
-COMMIT;
-END IF;
-    END
-</code></pre><p>里面的语法规则真的好多，哪里加分号，哪里不加好麻烦。<br><br>其他几个需要注意的地方：声明变量类型是char或者varchar时，要指明长度；注意赋值语句的格式；SQL里面有函数可以用（比如上面的判断str是否为空）<br></p>
-<h4>在php中调用过程</h4>
-
-<pre><code>try
-       {
-            $sql = &quot;call sp_update_tag($id);&quot;;
-            $connection=Yii::$app-&gt;db;
-            $command=$connection-&gt;createCommand($sql);
-            $result=$command-&gt;execute();
-        }catch(Exception $e)
-        {
-            echo $e-&gt;getMessage();
-        }
-</code></pre><p>  </p><h3>视图view</h3><br>  在使用过程中，其实可以将视图当成一张表，但是在yii中，不能用gii给他生成model…创建视图可以通过navicat直接创建（在rsViews目录下面），同时也可以看到对应的SQL语句<br>  <h4>在php中调用视图</h4><p></p>
-<pre><code> $sql = &quot;select title from user_post
-       WHERE id = $id
-&quot;;
-   $result = Yii::$app-&gt;db-&gt;createCommand($sql)-&gt;query();
-
-   foreach($result as $re)
-   {
-       echo $re[&apos;title&apos;];
-       echo &apos;                         &apos;;
-   }
-</code></pre><p>总结一下数据库大作业，我觉得做的很不顺利，主要是因为对SQL语句不是很熟悉，接下来要多练习，⛽️</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjwm7xi1o00100pshi1rnordk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="cjwne2vd80010k5shieo156xt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -917,6 +866,10 @@ END IF;
           </li>
         
           <li>
+            <a href="/2019/06/08/2019-06-08-数据库/">2019-06-08 数据库</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/07/2019-06-07-数据库/">2019-06-07 数据库</a>
           </li>
         
@@ -926,10 +879,6 @@ END IF;
         
           <li>
             <a href="/2019/06/06/2019-06-06-算法/">2019-06-06 算法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/06/2019-06-06-算法2/">2019-06-06 算法</a>
           </li>
         
       </ul>
