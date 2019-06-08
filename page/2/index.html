@@ -62,6 +62,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-05-30-SQL" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/30/2019-05-30-SQL/" class="article-date">
+  <time datetime="2019-05-30T14:09:28.000Z" itemprop="datePublished">2019-05-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/30/2019-05-30-SQL/">2019-05-30 SQL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>明天要数据库上机，继续复习SQL🐟句<br><br><b>一定要看清题目要求啊！！不要忘记改列名和排序！！</b></p>
+<p></p><h4>top语句</h4><br>SELECT TOP number|percent column_name(s)<br>FROM table_name<br><p></p>
+<p></p><h4>limit语句</h4><br>select <em> from Customer LIMIT 10 ;–检索前10行数据，显示1-10条数据<br><br>select </em> from Customer limit 5,10 ;–检索从第6行开始向前加10条数据，共显示id为6,7….15<br><br>SELECT * FROM table LIMIT 4,-1;从第5个数据查询，到最后一个数据<p></p>
+<p></p><h4>case when</h4><br>case..when..then..else..end<br><br>🌰case catname when ‘计算机’ then 3price else 2*price end<p></p>
+<p></p><h4>计数distinct的列</h4><br>使用group by<p></p>
+<p></p><h4>找最大的几条记录</h4><br>内层：top 1 外层循环：看一下谁等于top 1<p></p>
+<p></p><h4>日期📅</h4><br>DATEADD()    在日期中添加或减去指定的时间间隔<br><br>DATEDIFF() 返回两个日期之间的时间<p></p>
+<p></p><h4>SQL 函数</h4><br>first():SELECT FIRST(OrderPrice) AS FirstOrderPrice FROM Orders 结果返回”OrderPrice” 列的第一个值<br><br>ucase() lcase():把字段转化成大、小写<br><br>mid():SELECT MID(City,1,3) as SmallCity FROM Persons<br>结果：”City” 列中提取前 3 个字符<br><br>round():SELECT ProductName, ROUND(UnitPrice,0) as UnitPrice FROM Products 结果：把名称和价格舍入为最接近的整数<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjwm7xi1w001i0pshz9jrg6lm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-05-29-SQL Server" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/29/2019-05-29-SQL Server/" class="article-date">
@@ -122,7 +168,7 @@ GO
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjwm7x19e001e06shgwe40tb7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjwm7xi1u001e0pshne2sljan" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li></ul>
@@ -176,7 +222,7 @@ GROUP BY Category.catid;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjwm7x19e001g06sh5jw5k1nk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjwm7xi1v001g0psh22vrmcms" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -372,7 +418,7 @@ public byte[] streamToArr(InputStream inputStream){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjwm7x19d001c06shuhqjzmu0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjwm7xi1t001c0psh0bcfvyhm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -520,7 +566,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjwm7x19c001a06shmnq2wjvv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjwm7xi1t001a0pshlnredhsi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -559,7 +605,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="cjwm7x19a001806shc82v27lr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="cjwm7xi1s00180psh0n7b5heh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -604,7 +650,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="cjwm7x199001606sh6pi5iajt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="cjwm7xi1r00160pshthdqwex4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -646,7 +692,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="cjwm7x198001406shkyibzvuh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="cjwm7xi1q00140pshxhicprru" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -715,7 +761,7 @@ EXISTS (
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="cjwm7x196001206shhtjpjyfg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="cjwm7xi1p00120psh43h7g843" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -805,51 +851,7 @@ END IF;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjwm7x195001006shthf6xgk3" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-15-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/15/2019-05-15-数据库/" class="article-date">
-  <time datetime="2019-05-15T14:09:28.000Z" itemprop="datePublished">2019-05-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/15/2019-05-15-数据库/">2019-05-15 数据库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>先补充一下触发器的内容。需求时：当满足条件时插入，不满足时插入失败，系统报错<br><br>实现方法：在创建触发器时mysql抛出异常</p>
-<pre><code>else
-    signal sqlstate &apos;HY000&apos; set message_text=&apos;您暂时已被禁止发布文章！&apos;;
-END IF ;
-</code></pre><p>然后在php中try-catch就可以啦</p>
-<p></p><h3>MYSQL 存储过程</h3><br>存储过程是为了完成特定功能的SQL语句集，经编译创建并保存在数据库中，用户可通过指定存储过程的名字并给定参数(需要时)来调用执行。存储过程思想上很简单，就是数据库 SQL 语言层面的代码<b>封装</b>与<b>重用</b>。<p></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/15/2019-05-15-数据库/" data-id="cjwm7x194000z06sheokycayg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjwm7xi1o00100pshi1rnordk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -911,6 +913,10 @@ END IF ;
       <ul>
         
           <li>
+            <a href="/2019/06/08/2019-06-08-算法/">2019-06-08 算法</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/07/2019-06-07-数据库/">2019-06-07 数据库</a>
           </li>
         
@@ -924,10 +930,6 @@ END IF ;
         
           <li>
             <a href="/2019/06/06/2019-06-06-算法2/">2019-06-06 算法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/05/2019-06-05-算法/">2019-06-05 算法</a>
           </li>
         
       </ul>

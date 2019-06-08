@@ -5,20 +5,20 @@
   
 
   
-  <title>2019-06-04 算法 | Hexo</title>
+  <title>2019-06-08 算法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="算法分析基础寻找效率的定义：与平台无关，实例无关，并且随着输入规模的增长是可以预测的O(upper),Ω(lower),Θ(tight)O(nlogn)阶时间:快排、堆排、归并、FFT（快速傅立叶变换）O(n^k)时间:对某个固定常数k, 我们想知道给定的n个结点的输入图是否有一个大小为k的独立集(方法：枚举) 判断k个结点的子集是否独立：O(k^2)指数时间:假设给定一个图，需要找一个最大的独立">
+  <meta name="description" content="图中的最短路径⚠️时间复杂度可以改进到O(mn)时间空间复杂度的改进：我们不对每个值i记录M[i,v],而是对每个 结点v更新一个值M[v]，M[v]=min(M[v],min(cvw +M[w]))（多加一条边） 这样空间复杂度改进到O(n)复原最短路径：记录每个结点通向终点t的路径上 它后面的第一个结点；只要距离M[v]更新，我们就更新这个值（first[v]）如果指针图P包含一个圈C，那么这">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2019-06-04 算法">
-<meta property="og:url" content="http://yoursite.com/2019/06/04/2019-06-04-算法2/index.html">
+<meta property="og:title" content="2019-06-08 算法">
+<meta property="og:url" content="http://yoursite.com/2019/06/08/2019-06-08-算法/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="算法分析基础寻找效率的定义：与平台无关，实例无关，并且随着输入规模的增长是可以预测的O(upper),Ω(lower),Θ(tight)O(nlogn)阶时间:快排、堆排、归并、FFT（快速傅立叶变换）O(n^k)时间:对某个固定常数k, 我们想知道给定的n个结点的输入图是否有一个大小为k的独立集(方法：枚举) 判断k个结点的子集是否独立：O(k^2)指数时间:假设给定一个图，需要找一个最大的独立">
+<meta property="og:description" content="图中的最短路径⚠️时间复杂度可以改进到O(mn)时间空间复杂度的改进：我们不对每个值i记录M[i,v],而是对每个 结点v更新一个值M[v]，M[v]=min(M[v],min(cvw +M[w]))（多加一条边） 这样空间复杂度改进到O(n)复原最短路径：记录每个结点通向终点t的路径上 它后面的第一个结点；只要距离M[v]更新，我们就更新这个值（first[v]）如果指针图P包含一个圈C，那么这">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-04T13:28:28.000Z">
+<meta property="og:updated_time" content="2019-06-08T10:41:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019-06-04 算法">
-<meta name="twitter:description" content="算法分析基础寻找效率的定义：与平台无关，实例无关，并且随着输入规模的增长是可以预测的O(upper),Ω(lower),Θ(tight)O(nlogn)阶时间:快排、堆排、归并、FFT（快速傅立叶变换）O(n^k)时间:对某个固定常数k, 我们想知道给定的n个结点的输入图是否有一个大小为k的独立集(方法：枚举) 判断k个结点的子集是否独立：O(k^2)指数时间:假设给定一个图，需要找一个最大的独立">
+<meta name="twitter:title" content="2019-06-08 算法">
+<meta name="twitter:description" content="图中的最短路径⚠️时间复杂度可以改进到O(mn)时间空间复杂度的改进：我们不对每个值i记录M[i,v],而是对每个 结点v更新一个值M[v]，M[v]=min(M[v],min(cvw +M[w]))（多加一条边） 这样空间复杂度改进到O(n)复原最短路径：记录每个结点通向终点t的路径上 它后面的第一个结点；只要距离M[v]更新，我们就更新这个值（first[v]）如果指针图P包含一个圈C，那么这">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2019-06-04-算法2" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2019-06-08-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/06/04/2019-06-04-算法2/" class="article-date">
-  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
+    <a href="/2019/06/08/2019-06-08-算法/" class="article-date">
+  <time datetime="2019-06-08T14:09:28.000Z" itemprop="datePublished">2019-06-08</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      2019-06-04 算法
+      2019-06-08 算法
     </h1>
   
 
@@ -87,12 +87,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p></p><h4>算法分析基础</h4><br>寻找效率的定义：与平台无关，实例无关，并且随着输入规模的增长是可以预测的<br><br>O(upper),Ω(lower),Θ(tight)<br><br>O(nlogn)阶时间:快排、堆排、归并、FFT（快速傅立叶变换）<br><br>O(n^k)时间:对某个固定常数k, 我们想知道给定的n个结点的输入图是否有一个大小为k的独立集(方法：枚举) 判断k个结点的子集是否独立：O(k^2)<br><br>指数时间:假设给定一个图，需要找一个最大的独立集<br><br>n!时间：各种穷举搜索，TSP（巡回售货员问题）<br>              ⎛n⎞n<br>n→∞,n!≈ 2πn ⎝e⎠.<p></p>
+        <p></p><h4>图中的最短路径</h4><br>⚠️时间复杂度可以改进到O(mn)时间<br><br>空间复杂度的改进：我们不对每个值i记录M[i,v],而是对每个 结点v更新一个值M[v]，M[v]=min(M[v],min(cvw +M[w]))（多加一条边） 这样空间复杂度改进到O(n)<br><br>复原最短路径：记录每个结点通向终点t的路径上 它后面的第一个结点；只要距离M[v]更新，我们就更新这个值（first[v]）<br><br>如果指针图P包含一个圈C，那么这个圈一定有负费用<br><br>算法终止信号：某一次迭代中所有的M[v]值都保持不变<br><p></p>
+<p></p><h4>图中的负圈</h4><br>n-1步还停不下来，就说明有一个负圈<br><br>存在O(mn)时间的算法找到一个负圈（增加一个终点）<p></p>
+<p></p><h3>网络流</h3><p></p>
+<p></p><h4>最大流问题</h4><br>问题描述：有向图G,存在单一源点和单一汇点，每条边关联一个容量，非负数C<br><br>解决思路：引出原始边（前向边）和剩余边（后向边）的概念；bottleneck(P,f)是P上任何边关于流f的 最小剩余容量；把剩余图中的任何一条s-t路径认为是一条<b>增广路径</b><br>算法：Ford-Fulkerson算法<br><br>算法分析：因为有一个上界，我们知道 Ford-Fulkerson算法 一定会终止,算法时间复杂度：O(mC)<p></p>
+<p></p><h4>最大流和最小割</h4><br>最大流的值等于最小割<p></p>
+<p></p><h4>选择好的增广路径</h4><br>算法时间复杂度O(mC)，有些时候算法的执行会非常没有效率（因为选择了一条瓶颈容量很小的增广路径，导致收敛很慢）<br><br>算法改进：选择具有大的瓶颈容量的路径，那么算法进展会更快些<br><br>算法分析：外层While循环的迭代次数至多是 1 + ⎡log2 C⎤， ∆每次缩小一半<p></p>
+<p></p><h4>二分匹配问题</h4><br>将s连到L中的每个点，并赋流值为1；R中的每个点连到t,并赋流值为1;图中的<b>最大s-t流的值</b>等于G中<b>最大匹配的大小</b><p></p>
+<p></p><h3>NP与计算的难解性</h3><br>可行性的定义：存在多项式时间的算法<br><br>定义X至少和Y一样难：如果对于问题Y，能够用多项式个标准的计算步骤+多项式次调用解问题X的黑盒子来解问题Y。那么记作 Y &lt;= X;”Y多项式时间可归约到X“或”X至少像Y一样难“<p></p>
+<p></p><h4>多项式时间归约</h4><br>几个基本问题：独立集问题，顶点覆盖问题（S是一个独立集当且仅当它的补V-S是一个顶点覆盖）<br><br>集合覆盖：试图用一组较小的集合覆盖一个任意的对象集合（顶点覆盖&lt;=集合覆盖）<br><br>SAT问题：是否存在满足的真值赋值（3-SAY&lt;=独立集）<br><br><b>3-SAT &lt;= 独立集 &lt;= 顶点覆盖 &lt;= 集合覆盖<br><br>自归约问题:寻找问题 &lt;= 判别问题<br><br>P类问题</b>：存在多项式时间解法的问题的集合P(判定素数的问题：AKS算法;X和Y有没有公因数;编辑距离;高斯解方程)<br><br><b>NP</b>：是所有存在有效验证程序的问题的集合<br><br><b>NP完全</b>:(电路可满足性)如果Y是一个NP完全问题，X属于NP且Y&lt;=X，则X是NP完全的<br><br>一般经验是：NP问题要么是P，要么是NP完全<p></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="cjwm7xi1y001p0psh9ksfgiyr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-算法/" data-id="cjwn0uz1900009wshyh2uny1i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -103,19 +111,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/06/04/2019-06-04-算法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          2019-06-04 算法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/04/2019-06-04-算法3/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/06/07/2019-06-07-数据库/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">2019-06-04 算法</div>
+      <div class="article-nav-title">2019-06-07 数据库</div>
     </a>
   
 </nav>

@@ -62,6 +62,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-05-15-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/15/2019-05-15-数据库/" class="article-date">
+  <time datetime="2019-05-15T14:09:28.000Z" itemprop="datePublished">2019-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/15/2019-05-15-数据库/">2019-05-15 数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先补充一下触发器的内容。需求时：当满足条件时插入，不满足时插入失败，系统报错<br><br>实现方法：在创建触发器时mysql抛出异常</p>
+<pre><code>else
+    signal sqlstate &apos;HY000&apos; set message_text=&apos;您暂时已被禁止发布文章！&apos;;
+END IF ;
+</code></pre><p>然后在php中try-catch就可以啦</p>
+<p></p><h3>MYSQL 存储过程</h3><br>存储过程是为了完成特定功能的SQL语句集，经编译创建并保存在数据库中，用户可通过指定存储过程的名字并给定参数(需要时)来调用执行。存储过程思想上很简单，就是数据库 SQL 语言层面的代码<b>封装</b>与<b>重用</b>。<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/15/2019-05-15-数据库/" data-id="cjwm7xi1n000z0pshqj2lb2ej" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-05-14-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/14/2019-05-14-数据库/" class="article-date">
@@ -145,7 +189,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/14/2019-05-14-数据库/" data-id="cjwm7x193000w06sh189rj9kk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/14/2019-05-14-数据库/" data-id="cjwm7xi1m000w0pshq2igcqu4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -188,7 +232,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/13/2019-05-13-Android/" data-id="cjwm7x192000v06shmerrat4x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/13/2019-05-13-Android/" data-id="cjwm7xi1l000v0pshj6y0o6je" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -227,7 +271,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/12/2019-05-12-sxr/" data-id="cjwm7x191000s06shx4bqcpyv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/12/2019-05-12-sxr/" data-id="cjwm7xi1k000s0pshl6j8h75v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
@@ -267,7 +311,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/10/2019-05-10-yii/" data-id="cjwm7x190000r06sh0lntyzia" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/10/2019-05-10-yii/" data-id="cjwm7xi1j000r0pshewd55oc4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yii/">yii</a></li></ul>
@@ -309,7 +353,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/09/2019-05-09-yii/" data-id="cjwm7x18z000p06shut4dfmz6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/09/2019-05-09-yii/" data-id="cjwm7xi1i000p0pshspplk46y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yii/">yii</a></li></ul>
@@ -347,7 +391,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/08/2019-05-08-yii/" data-id="cjwm7x18z000n06sh92cgvooa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/08/2019-05-08-yii/" data-id="cjwm7xi1h000n0pshufyhlmdd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yii/">yii</a></li></ul>
@@ -387,7 +431,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/07/2019-05-07-yii-git/" data-id="cjwm7x18y000l06shgn6e9o1g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/07/2019-05-07-yii-git/" data-id="cjwm7xi1g000l0pshusaoool3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git-yii/">git yii</a></li></ul>
@@ -431,7 +475,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/06/2019-05-06-Android-yii/" data-id="cjwm7x18x000j06shzwdmbxp1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/06/2019-05-06-Android-yii/" data-id="cjwm7xi1f000j0pshshq45xlp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-yii/">Android yii</a></li></ul>
@@ -471,46 +515,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/05/2019-05-05-Android-yii/" data-id="cjwm7x18w000h06shzem8cuni" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-yii/">Android yii</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-04-Android-yii" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/04/2019-05-04-Android-yii/" class="article-date">
-  <time datetime="2019-05-04T12:28:28.000Z" itemprop="datePublished">2019-05-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/04/2019-05-04-Android-yii/">2019-05-04 Android-yii</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="差不多有两个月没有在hexo上发东西，最近学习yii踩了很多坑，我觉得还是记录一下比较好，同时也在做android，主要是大作业，做的比较顺畅"><a href="#差不多有两个月没有在hexo上发东西，最近学习yii踩了很多坑，我觉得还是记录一下比较好，同时也在做android，主要是大作业，做的比较顺畅" class="headerlink" title="差不多有两个月没有在hexo上发东西，最近学习yii踩了很多坑，我觉得还是记录一下比较好，同时也在做android，主要是大作业，做的比较顺畅"></a><p>差不多有两个月没有在hexo上发东西，最近学习yii踩了很多坑，我觉得还是记录一下比较好，同时也在做android，主要是大作业，做的比较顺畅</p></h2><h2 id="在build-gradle里面添加依赖，直接sync就可以，但是compile现在基本已经被implementation取代了"><a href="#在build-gradle里面添加依赖，直接sync就可以，但是compile现在基本已经被implementation取代了" class="headerlink" title="在build.gradle里面添加依赖，直接sync就可以，但是compile现在基本已经被implementation取代了"></a><p>在build.gradle里面添加依赖，直接sync就可以，但是compile现在基本已经被implementation取代了</p></h2><h2 id="最近学习了一个新控件，我特别喜欢，叫做ExpandableListView，我觉得很简洁"><a href="#最近学习了一个新控件，我特别喜欢，叫做ExpandableListView，我觉得很简洁" class="headerlink" title="最近学习了一个新控件，我特别喜欢，叫做ExpandableListView，我觉得很简洁"></a><p>最近学习了一个新控件，我特别喜欢，叫做ExpandableListView，我觉得很简洁</p></h2><h2 id="学习了android读取本地pdf文件（其实读在线的也可以），需要添加一个依赖库（如上），第一次用到了assets这个目录，实现起来比较简单"><a href="#学习了android读取本地pdf文件（其实读在线的也可以），需要添加一个依赖库（如上），第一次用到了assets这个目录，实现起来比较简单" class="headerlink" title="学习了android读取本地pdf文件（其实读在线的也可以），需要添加一个依赖库（如上），第一次用到了assets这个目录，实现起来比较简单"></a><p>学习了android读取本地pdf文件（其实读在线的也可以），需要添加一个依赖库（如上），第一次用到了assets这个目录，实现起来比较简单</p></h2><p>另外，上传博客文章的时候，前面的title date tags内容要规范，冒号后面有空格</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/04/2019-05-04-Android-yii/" data-id="cjwm7x18u000f06shgzjj03yk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/05/2019-05-05-Android-yii/" data-id="cjwm7xi1e000h0pshsbsolos7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-yii/">Android yii</a></li></ul>
@@ -572,6 +577,10 @@ end;
       <ul>
         
           <li>
+            <a href="/2019/06/08/2019-06-08-算法/">2019-06-08 算法</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/07/2019-06-07-数据库/">2019-06-07 数据库</a>
           </li>
         
@@ -585,10 +594,6 @@ end;
         
           <li>
             <a href="/2019/06/06/2019-06-06-算法2/">2019-06-06 算法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/05/2019-06-05-算法/">2019-06-05 算法</a>
           </li>
         
       </ul>

@@ -62,6 +62,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-06-08-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/08/2019-06-08-算法/" class="article-date">
+  <time datetime="2019-06-08T14:09:28.000Z" itemprop="datePublished">2019-06-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/08/2019-06-08-算法/">2019-06-08 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h4>图中的最短路径</h4><br>⚠️时间复杂度可以改进到O(mn)时间<br><br>空间复杂度的改进：我们不对每个值i记录M[i,v],而是对每个 结点v更新一个值M[v]，M[v]=min(M[v],min(cvw +M[w]))（多加一条边） 这样空间复杂度改进到O(n)<br><br>复原最短路径：记录每个结点通向终点t的路径上 它后面的第一个结点；只要距离M[v]更新，我们就更新这个值（first[v]）<br><br>如果指针图P包含一个圈C，那么这个圈一定有负费用<br><br>算法终止信号：某一次迭代中所有的M[v]值都保持不变<br><p></p>
+<p></p><h4>图中的负圈</h4><br>n-1步还停不下来，就说明有一个负圈<br><br>存在O(mn)时间的算法找到一个负圈（增加一个终点）<p></p>
+<p></p><h3>网络流</h3><p></p>
+<p></p><h4>最大流问题</h4><br>问题描述：有向图G,存在单一源点和单一汇点，每条边关联一个容量，非负数C<br><br>解决思路：引出原始边（前向边）和剩余边（后向边）的概念；bottleneck(P,f)是P上任何边关于流f的 最小剩余容量；把剩余图中的任何一条s-t路径认为是一条<b>增广路径</b><br>算法：Ford-Fulkerson算法<br><br>算法分析：因为有一个上界，我们知道 Ford-Fulkerson算法 一定会终止,算法时间复杂度：O(mC)<p></p>
+<p></p><h4>最大流和最小割</h4><br>最大流的值等于最小割<p></p>
+<p></p><h4>选择好的增广路径</h4><br>算法时间复杂度O(mC)，有些时候算法的执行会非常没有效率（因为选择了一条瓶颈容量很小的增广路径，导致收敛很慢）<br><br>算法改进：选择具有大的瓶颈容量的路径，那么算法进展会更快些<br><br>算法分析：外层While循环的迭代次数至多是 1 + ⎡log2 C⎤， ∆每次缩小一半<p></p>
+<p></p><h4>二分匹配问题</h4><br>将s连到L中的每个点，并赋流值为1；R中的每个点连到t,并赋流值为1;图中的<b>最大s-t流的值</b>等于G中<b>最大匹配的大小</b><p></p>
+<p></p><h3>NP与计算的难解性</h3><br>可行性的定义：存在多项式时间的算法<br><br>定义X至少和Y一样难：如果对于问题Y，能够用多项式个标准的计算步骤+多项式次调用解问题X的黑盒子来解问题Y。那么记作 Y &lt;= X;”Y多项式时间可归约到X“或”X至少像Y一样难“<p></p>
+<p></p><h4>多项式时间归约</h4><br>几个基本问题：独立集问题，顶点覆盖问题（S是一个独立集当且仅当它的补V-S是一个顶点覆盖）<br><br>集合覆盖：试图用一组较小的集合覆盖一个任意的对象集合（顶点覆盖&lt;=集合覆盖）<br><br>SAT问题：是否存在满足的真值赋值（3-SAY&lt;=独立集）<br><br><b>3-SAT &lt;= 独立集 &lt;= 顶点覆盖 &lt;= 集合覆盖<br><br>自归约问题:寻找问题 &lt;= 判别问题<br><br>P类问题</b>：存在多项式时间解法的问题的集合P(判定素数的问题：AKS算法;X和Y有没有公因数;编辑距离;高斯解方程)<br><br><b>NP</b>：是所有存在有效验证程序的问题的集合<br><br><b>NP完全</b>:(电路可满足性)如果Y是一个NP完全问题，X属于NP且Y&lt;=X，则X是NP完全的<br><br>一般经验是：NP问题要么是P，要么是NP完全<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-算法/" data-id="cjwn0uz1900009wshyh2uny1i" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-06-07-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/07/2019-06-07-数据库/" class="article-date">
@@ -88,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-数据库/" data-id="cjwm7x19m001z06shob8r4n1m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-数据库/" data-id="cjwm7xi22001z0pshoca148rq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -133,7 +180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-算法/" data-id="cjwm7x19n002106shh6phuf56" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-算法/" data-id="cjwm7xi2300210pshl631qi3l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -209,7 +256,7 @@ return T
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法/" data-id="cjwm7x19k001v06sh8gf2xq91" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法/" data-id="cjwm7xi21001v0psh8cig5uc2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -286,7 +333,7 @@ return δ.
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法2/" data-id="cjwm7x19l001y06sh66o2ef1b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法2/" data-id="cjwm7xi22001y0pshuoaofo6a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -351,7 +398,7 @@ output intervals [sj, fj]
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="cjwm7x19j001u06sh0exgx9hi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="cjwm7xi20001u0pshbt2lrko0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -391,7 +438,7 @@ output intervals [sj, fj]
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="cjwm7x19h001m06shhsr9bbj3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="cjwm7xi1x001m0pshuhtgzlrk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -430,7 +477,7 @@ output intervals [sj, fj]
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="cjwm7x19i001p06shu8q1l420" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="cjwm7xi1y001p0psh9ksfgiyr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -476,7 +523,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="cjwm7x19i001r06sh0pcp80ot" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="cjwm7xi1z001r0pshsexkykew" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -515,56 +562,10 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="cjwm7x19g001k06sh66fpk0jc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="cjwm7xi1w001k0psh9zoaa3hr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-30-SQL" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/30/2019-05-30-SQL/" class="article-date">
-  <time datetime="2019-05-30T14:09:28.000Z" itemprop="datePublished">2019-05-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/30/2019-05-30-SQL/">2019-05-30 SQL</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>明天要数据库上机，继续复习SQL🐟句<br><br><b>一定要看清题目要求啊！！不要忘记改列名和排序！！</b></p>
-<p></p><h4>top语句</h4><br>SELECT TOP number|percent column_name(s)<br>FROM table_name<br><p></p>
-<p></p><h4>limit语句</h4><br>select <em> from Customer LIMIT 10 ;–检索前10行数据，显示1-10条数据<br><br>select </em> from Customer limit 5,10 ;–检索从第6行开始向前加10条数据，共显示id为6,7….15<br><br>SELECT * FROM table LIMIT 4,-1;从第5个数据查询，到最后一个数据<p></p>
-<p></p><h4>case when</h4><br>case..when..then..else..end<br><br>🌰case catname when ‘计算机’ then 3price else 2*price end<p></p>
-<p></p><h4>计数distinct的列</h4><br>使用group by<p></p>
-<p></p><h4>找最大的几条记录</h4><br>内层：top 1 外层循环：看一下谁等于top 1<p></p>
-<p></p><h4>日期📅</h4><br>DATEADD()    在日期中添加或减去指定的时间间隔<br><br>DATEDIFF() 返回两个日期之间的时间<p></p>
-<p></p><h4>SQL 函数</h4><br>first():SELECT FIRST(OrderPrice) AS FirstOrderPrice FROM Orders 结果返回”OrderPrice” 列的第一个值<br><br>ucase() lcase():把字段转化成大、小写<br><br>mid():SELECT MID(City,1,3) as SmallCity FROM Persons<br>结果：”City” 列中提取前 3 个字符<br><br>round():SELECT ProductName, ROUND(UnitPrice,0) as UnitPrice FROM Products 结果：把名称和价格舍入为最接近的整数<p></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjwm7x19f001i06shl4063iwb" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
 
     </footer>
   </div>
@@ -623,6 +624,10 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       <ul>
         
           <li>
+            <a href="/2019/06/08/2019-06-08-算法/">2019-06-08 算法</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/07/2019-06-07-数据库/">2019-06-07 数据库</a>
           </li>
         
@@ -636,10 +641,6 @@ Recursively compute a topological ordering of G-{v} and append this order after 
         
           <li>
             <a href="/2019/06/06/2019-06-06-算法2/">2019-06-06 算法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/05/2019-06-05-算法/">2019-06-05 算法</a>
           </li>
         
       </ul>
