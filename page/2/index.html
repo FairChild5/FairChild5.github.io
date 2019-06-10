@@ -62,6 +62,111 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-06-05-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/05/2019-06-05-算法/" class="article-date">
+  <time datetime="2019-06-05T14:09:28.000Z" itemprop="datePublished">2019-06-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/05/2019-06-05-算法/">2019-06-05 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h3>贪心算法</h3><br>直观上说，一个算法是贪心的，如果此算法是通过一些小的步骤来建立一个解，在每一步根据局部情况选择一个决定使得某些主要的指标能得到优化。存在一个局部判断规则可以用来构造问题的最优解。<br><br>两个基本的方法来证明一个贪心算法对一个问题能够提供一个最优解<br><br>1、贪心算法领先：每一步都比其他的算法好，从而证明产生了一个最优解<br><br>2、交换论证：考虑对这个问题的任何可能解，逐渐把它转换成由贪心算法找到的解，而且不影响解的质量。从而证明了贪心法找到了一个至少与其他解一样好的解。<p></p>
+<p></p><h4>区间调度</h4><br>算法：使资源尽可能早被释放<p></p>
+<pre><code>先按结束时间排序 O(nlogn)
+初始令R是所有需求的集合，设A为空 While R 非空
+选择一个最小结束时间的需求i∈R 
+把i加到A中 
+*从R中删除与需求i不相容的所有需求
+Endwhile 返回集合A作为被接受的需求集合
+</code></pre><p>算法分析（贪心算法领先）</p>
+<p></p><h4>区间划分</h4><br>算法：按开始时间排序<p></p>
+<pre><code>Sort intervals by starting time so that s1 ≤ s2 ≤ ... ≤ sn. d←0
+for j = 1 to n {
+   if (lecture j is compatible with some classroom k)
+schedule lecture j in classroom k
+else
+allocate a new classroom d + 1 schedule lecture j in classroom 
+d + 1 d←d+1
+}
+</code></pre><p></p><h4>最小延迟调度：最早截止时间优先</h4><br>算法：<p></p>
+<pre><code>Sortnjobsbydeadlinesothatd1 ≤ d2 ≤ ... ≤ dn
+t←0
+for j = 1 to n
+Assign job j to interval [t, t + tj] sj ← t, fj ← t + tj
+t ← t + tj
+output intervals [sj, fj]
+</code></pre><p>算法分析（⚠️交换论证）<br><br>补充：结构论证：发现一个所有解具有的界限，然后严格证明算法能够达到这个界</p>
+<p></p><h4>最优超高速缓存：最远将来规则</h4><br>⚠️简化调度？非简化调度？<br>⚠️FF算法<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="cjwoq8kiq001u7ashz2kbi06s" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-04-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/04/2019-06-04-算法/" class="article-date">
+  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/04/2019-06-04-算法/">2019-06-04 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>开始复习算法啦⛽️</p>
+<p></p><h3>稳定匹配</h3><br>几个概念：<br>1、匹配: 每个男人和每个女人至多属于一个有序对。<br><br>2、完美匹配: 每个男人和每个女人都属于其中某个对的匹配。<br><br>3、稳定匹配：不存在不稳定因素<br><br>不稳定因素一定是<b>双方</b>的<p></p>
+<h4>问题讨论</h4><br>对每组优先表是否存在一个稳定匹配?<br><br>给定一组优先表,如果存在稳定匹配,我们能够有效的构造出来吗?<br><br>如果存在稳定匹配，会有很多吗?<br><h4>算法</h4><br>按照优先选择的思路<br><br>初始，每个人都是自由的。一个自由的男人m选择他的优先表上排名最高的女人w,发起邀请，那么 (m,w)进入中间状态:约会。<br>  如果又有另一个男人m’发起邀请，那么 女人w决定,选择m,还是m’. 如果m优先， 那么约会状态不变。否则(m’,w)变成约 会状态，m变成自由状态。<br><br>  循环往复;最后，当没有人处于自由状 态，那么所有的约会被定为最后的结果， 返回最终的完美匹配。<br><br>      Initialize each person to be free.<br>    while (some man is free and hasn’t proposed to every woman)<br>    {<br>    Choose such a man m<br>    w = 1st woman on m’s list to whom m has not yet     proposed if (w is free)<br>    assign m and w to be engaged<br>    else if (w prefers m to m’)<br>    assign m and w to be engaged, and m’ to be free<br>    else<br>    w rejects m<br>    }<br><h4>算法分析</h4><br>如果男人m在算法执行的某点是自由的，那么存在一个他还没有发出过邀请的女人<br><br>G-S算法返回一个完美匹配-&gt;稳定匹配<br><br>G-S算法在至多n2次While循环的迭代后终止。所以算法的复杂度是O(n2)<br><br>所有的执行得到同样的匹配!<br><h4>算法技巧</h4><br>女人对自己的优先表做预处理，反向变换<br><h5>拓展</h5><br>对于稳定室友匹配问题(更一般的情况)，可能会没有稳定匹配方案<br><h3>五个典型问题</h3><br><h4>区间调度问题:贪心算法</h4><br><h4>带权的区间调度问题:动态规划算法</h4><br><h4>二分匹配：网络流</h4><br><h4>独立集（NP完全问题中的一个）：验证和求解的难度相差很大</h4><br><h4>竞争的便利店选址问题: PSPACE完全问题类,严格难于NP完全问题，求解和验证都很难</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="cjwoq8kin001o7ashc2f44f2p" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-06-04-算法2" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/04/2019-06-04-算法2/" class="article-date">
@@ -89,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="cjwomnwui001p3mshxcj3ifab" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="cjwoq8kio001q7ashrgkybi5c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -135,7 +240,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="cjwomnwuk001r3msh95ugxjjw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="cjwoq8kip001t7ashqhm65gl6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -174,7 +279,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="cjwomnwug001k3mshzdv7f22u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="cjwoq8kim001l7ashxp0por4b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
@@ -220,7 +325,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjwomnwuf001i3mshc73rqvwx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjwoq8kil001j7ashz58nx0xn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -292,7 +397,7 @@ GO
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjwomnwue001e3mshuohkwru4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjwoq8kik001f7ashxs2pcv2c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li></ul>
@@ -346,7 +451,7 @@ GROUP BY Category.catid;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjwomnwuf001g3mshla23ykk7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjwoq8kil001h7ash0rcmqvt6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -542,7 +647,7 @@ public byte[] streamToArr(InputStream inputStream){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjwomnwuc001c3mshtp7rxo1j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjwoq8kij001d7ashjvtzg6ku" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -690,91 +795,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjwomnwub001a3mshe5zvdsm6" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-21-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/21/2019-05-21-算法/" class="article-date">
-  <time datetime="2019-05-21T14:09:28.000Z" itemprop="datePublished">2019-05-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/21/2019-05-21-算法/">2019-05-21 算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>还是想不出算法大作业的一天😢<br><br>记录一下今天pcy问我的一个有趣的算法问题：1000个酒里面有一个有毒，拿小白鼠🐁试毒，最少用几个小白鼠？10只<br><br>提示：二进制</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="cjwomnwua00183mshl6un0ynf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-20-Android" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/20/2019-05-20-Android/" class="article-date">
-  <time datetime="2019-05-20T14:09:28.000Z" itemprop="datePublished">2019-05-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/20/2019-05-20-Android/">2019-05-20 Android</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h3>数据文件的存储和访问</h3><br>Context类openFileOutput()和openFileInput()方法<p></p>
-<p>（1）得到文件输出流，向文件写入数据<br><br>（2）得到文件输入流，从文件读出数据<br><br>flush()方法：一定概率写到硬盘中</p>
-<p></p><h4>从assets目录中获取文件并读取数据</h4><br>原生文件，在打包成apk时不会被压缩<br><br>getResources().getAssets().open(“文件名”)<br><p></p>
-<p></p><h3>SQLite数据库的存储和访问</h3><br>5000多行,跨平台的嵌入式数据库，不存在数据库的客户端和服务器。存取时用他的接口读写，生成二进制文件，打开时是一堆乱码，因为已经建好了索引。查询的时候是O(1)<br><br>弱类型，支持SQL查询，但是不支持左右连接、事务等操作<br><p></p>
-<p></p><h4>继承SQLiteOpenHelper类</h4><br>重写构造方法（创建数据库）、onCreat()里面写SQL语句、onUpgrade()升级数据库<p></p>
-<p>getReadableDatabase()或getWritableDatabase()方法、Close()方法关闭数据库</p>
-<p>rawQuery()方法执行一条SELECT语句，返回的是一个游标Cursor</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="cjwomnwu700143msh3rfabmhk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjwoq8kii001b7ashnix79kdj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -814,7 +835,7 @@ private void openPDF(File file) {
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 15px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12.5px;">sxr</a> <a href="/tags/yii/" style="font-size: 15px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
+      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a>
     </div>
   </div>
 
@@ -836,6 +857,10 @@ private void openPDF(File file) {
       <ul>
         
           <li>
+            <a href="/2019/06/10/2019-06-10-数据库/">2019-06-10 数据库</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/09/2019-06-09-数据库/">2019-06-09 数据库</a>
           </li>
         
@@ -844,15 +869,11 @@ private void openPDF(File file) {
           </li>
         
           <li>
+            <a href="/2019/06/09/2019-06-09-数据库3/">2019-06-09 数据库</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/08/2019-06-08-数据库/">2019-06-08 数据库</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/08/2019-06-08-算法/">2019-06-08 算法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/07/2019-06-07-数据库/">2019-06-07 数据库</a>
           </li>
         
       </ul>
