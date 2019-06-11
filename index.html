@@ -92,12 +92,16 @@
 <p><b>undo 日志规则：</b><br><br>（1）为每个更新操作生成一个undo日志记录（使用旧值）<br><br>（2）在修改磁盘上的元素X之前，必须将任何X的日志记录刷新到磁盘（预写日志记录）<br><br>（3）在&lt;T，commit&gt;放在磁盘上的日志记录之前，事务T的所有WRITE都必须OUTPUT到磁盘<br></p>
 <p><b>恢复规则:（从后往前）</b><br><br>（1）S是日志里没有提交或者撤回的事务集合<br><br>（2）对于log中的每个事务，从后往前，如果该事务在S中，则①完成写操作，并将值输入到磁盘上<br><br>（3）对于每个在S中的事务，在log中加上&lt;Ti, abort&gt;<br></p>
 <p></p><h3>redo 日志</h3><br><b>redo 日志规则：</b><br><br>（1）redo 日志要求 commit 结束之后才能改数<br><br>（2）对于每个磁盘更新，生成一个重做日志记录（具有新值）<br><br>（3）在修改磁盘上的DB元素X之前，必须将所有（包括COMMIT）事务的日志记录刷新到磁盘<br><p></p>
-<p><b>恢复规则:（从前往后）</b><br><br>（1）S是日志文件里的“已提交事务”的集合<br><br>（2）对于日志里的每个事务，从前往后地做这些事：如果事务在S里，则重写，并且将数据一道磁盘上去<br><br></p>
-
+<p><b>恢复规则:（从前往后）</b><br><br>（1）S是日志文件里的“已提交事务”的集合<br><br>（2）对于日志里的每个事务，从前往后地做这些事：如果事务在S里，则重写，并且将数据一道磁盘上去</p>
+<p></p><h3>Checkpoint(simple)</h3><br>（1）停止接受新的事务<br><br>（2）等待所有事务完成（提交/中止）<br><br>（3）将所有日志记录刷新到磁盘（日志）<br><br>（4）将所有缓冲区清空到磁盘（DB）<br><br>（5）写入并刷新磁盘上的<ckpt>记录（日志）<br><br>（6）恢复事务处理<br><p></p>
+<p></p><h3>Undo/Redo log</h3><br>格式：Ti, X, Old-X-value, New-X-value<p></p>
+<p></p><h4>undo/redo 规则</h4><br>(1) Log record (Ti, X, old, new) <b>flushed to disk before writing X to disk </b><br><br>(2) Flush the log at commit,<br>Element X can be written to disk either before or after the commit of Ti<br>(commit变得很随意)<p></p>
+<p></p><h3>改进版的checkpoint</h3><br>不需要停止接收新的事务<br><br>Start ckpt Ti,T2,… 和 end ckpt 之间的buffer被flush<br><br>⚠️PPT上的题，要看清题目问的是什么<p></p>
+</ckpt>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/10/2019-06-10-数据库/" data-id="cjwqitz6t0001m9shr7ri0puv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/10/2019-06-10-数据库/" data-id="cjwqiwja6002en3shuzyrzrb7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -141,7 +145,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库/" data-id="cjwoq8kiw00297ashg9ye1cy4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库/" data-id="cjwqiwja30027n3shtttdkm9h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -192,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库2/" data-id="cjwoq8kix002b7ash7xfsr5mo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库2/" data-id="cjwqiwja40029n3shxganj8ni" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -231,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库3/" data-id="cjwqitz6o0000m9shn68uozbc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库3/" data-id="cjwqiwja5002bn3shqf1bbi2v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -275,7 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-数据库/" data-id="cjwoq8kiv00247ashnk1uhsre" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-数据库/" data-id="cjwqiwja20023n3sho1qkxptm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -322,7 +326,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-算法/" data-id="cjwoq8kiv00267ashkfyfxemn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-算法/" data-id="cjwqiwja30025n3shzo76nv3b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -360,7 +364,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-数据库/" data-id="cjwoq8kit00207ashq2hortc4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-数据库/" data-id="cjwqiwja0001zn3shfpg3aibd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -405,7 +409,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-算法/" data-id="cjwoq8kiu00227ashr1q7j224" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-算法/" data-id="cjwqiwja10021n3shons3tveh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -481,7 +485,7 @@ return T
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法/" data-id="cjwoq8kir001x7ashhb453i2g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法/" data-id="cjwqiwj9y001vn3shvgvrli6e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -558,7 +562,7 @@ return δ.
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法2/" data-id="cjwoq8kis001y7ash6k4vka4y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法2/" data-id="cjwqiwj9z001yn3sh0jxrr8yh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
