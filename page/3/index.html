@@ -62,6 +62,154 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-05-22-Android" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/23/2019-05-22-Android/" class="article-date">
+  <time datetime="2019-05-23T14:09:28.000Z" itemprop="datePublished">2019-05-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/23/2019-05-22-Android/">2019-05-23 Android</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天写了好久的安卓大作业，学到了好多东西🌈但是把shift键按坏了😷好不方便</p>
+<h4>给服务端发消息</h4>
+
+<pre><code>OkGo.&lt;String&gt;post(AppConst.BaseUrl + &quot;teacher/new-register&quot;)
+                            .params(&quot;token&quot;, token)
+                            .params(&quot;lid&quot;, 2)
+                            .params(&quot;gps&quot;,gps)
+                            .execute(new StringCallback() {
+                                @Override
+                                public void onSuccess(Response&lt;String&gt; response) {
+                                    String string = response.body();
+                                    try {
+                                        JSONObject object = new JSONObject(string);
+
+                                        Toast.makeText(MainActivity.this, &quot;提交成功&quot;, Toast.LENGTH_SHORT).show();
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+</code></pre><h4>关于pdf的下载和读取</h4>
+
+<pre><code>@Override
+protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.question);
+    //下载并预览pdf
+    findViewById(R.id.buttonsummit).setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+            new Thread(){
+                @Override
+                public void run() {
+                    super.run();
+                    downFile();
+                }
+            }.start();
+        }
+    });
+        //发送答案
+    //init();
+}
+
+
+private void downFile(){
+    String urlString = &quot;http://47.95.200.233/search-homework/Documentation.pdf&quot;;
+    try {
+        URL url = new URL(urlString);
+        HttpURLConnection connection = (HttpURLConnection)
+                url.openConnection();
+        connection.setRequestMethod(&quot;GET&quot;);
+        connection.setDoInput(true);
+        connection.setDoOutput(true);
+        connection.setUseCaches(false);
+        connection.setConnectTimeout(5000);
+        connection.setReadTimeout(5000);
+        //实现连接
+        connection.connect();
+
+        if (connection.getResponseCode() == 200) {
+            InputStream is = connection.getInputStream();
+            //以下为下载操作
+            byte[] arr = new byte[1];
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            BufferedOutputStream bos = new BufferedOutputStream(baos);
+            int n = is.read(arr);
+            while (n &gt; 0) {
+                bos.write(arr);
+                n = is.read(arr);
+            }
+            bos.close();
+            String path = Environment.getExternalStorageDirectory()
+                    + &quot;/download/&quot;;
+            String[] name = urlString.split(&quot;/&quot;);
+            path = path + name[name.length - 1];
+            File file = new File(path);
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(baos.toByteArray());
+            fos.close();
+            //关闭网络连接
+            connection.disconnect();
+            Log.d(&quot;下载完成&quot;,&quot;下载完成&quot;);
+            //openPDF(file);//打开PDF文件
+        }
+    } catch (Exception e) {
+        // TODO: handle exception
+        System.out.println(e.getMessage());
+    }
+
+}
+
+private void openPDF(File file) {
+    if (file.exists()) {
+        Log.d(&quot;打开&quot;,&quot;打开&quot;);
+        Uri path1 = Uri.fromFile(file);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(path1, &quot;application/pdf&quot;);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        try {
+            startActivity(intent);
+        }
+        catch (Exception e) {
+            Log.d(&quot;打开失败&quot;,&quot;打开失败&quot;);
+        }
+    }
+
+}
+</code></pre><h4>
+</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjwrixedy001fwcshyvpbhg0h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-05-21-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/21/2019-05-21-算法/" class="article-date">
@@ -89,7 +237,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="cjwr77f3c0018stshzra2yv7y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="cjwrixedu0016wcshmu49asr2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -134,7 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="cjwr77f390014stshzwy3qad6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="cjwrixedt0014wcshox1b0ad7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -176,7 +324,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="cjwr77f3b0016stsh3ddvc9x0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="cjwrixedv0018wcsh3dbsxk3s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -245,7 +393,7 @@ EXISTS (
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="cjwr77f370010stshxwfwsxvk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="cjwrixeds0012wcsh8pq2szwc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -335,7 +483,7 @@ END IF;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjwr77f380012stshrwta44ns" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjwrixedq000ywcshfyhw5vwt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -379,7 +527,7 @@ END IF ;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/15/2019-05-15-数据库/" data-id="cjwr77f36000zstshrna01bxx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/15/2019-05-15-数据库/" data-id="cjwrixedr0010wcsh7fnm391t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -474,7 +622,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/14/2019-05-14-数据库/" data-id="cjwr77f35000wstsh36e6hseh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/14/2019-05-14-数据库/" data-id="cjwrixedo000vwcshlrll6pbq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -517,7 +665,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/13/2019-05-13-Android/" data-id="cjwr77f35000vstsh2ybrajlr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/13/2019-05-13-Android/" data-id="cjwrixedp000wwcsh4lbxgc9h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -556,50 +704,10 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/12/2019-05-12-sxr/" data-id="cjwr77f33000sstsh255apxln" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/12/2019-05-12-sxr/" data-id="cjwrixedl000nwcsht6460jwe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-10-yii" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/10/2019-05-10-yii/" class="article-date">
-  <time datetime="2019-05-10T14:09:28.000Z" itemprop="datePublished">2019-05-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/10/2019-05-10-yii/">2019-05-10 yii</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h3>权限管理</h3><p></p>
-<h4>ACF方式</h4><br>在controller代码中的behaviors()方法中添加如下代码：<br>‘access’ =&gt; [<br>                ‘class’ =&gt; AccessControl::className(),<br>                ‘rules’ =&gt;<br>                [<br>                    [<br>                        ‘actions’ =&gt; [‘index’,’view’],<br>                        ‘allow’ =&gt; true,<br>                        ‘roles’ =&gt; [‘?’],<br>                    ],<br>                    [<br>                        ‘actions’ =&gt; [‘index’,’view’,’create’,’update’],<br>                        ‘allow’ =&gt; true,<br>                        ‘roles’ =&gt; [‘@’],<br>                    ],<br>                ],<br><br>问号表示游客，@表示登录用户<br><h4>RBAC方式：基于角色的权限管理方式</h4>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/10/2019-05-10-yii/" data-id="cjwr77f33000rstshiv9kbfp3" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yii/">yii</a></li></ul>
 
     </footer>
   </div>
@@ -658,11 +766,11 @@ end;
       <ul>
         
           <li>
-            <a href="/2019/06/10/2019-06-10-数据库/">2019-06-10 数据库</a>
+            <a href="/2019/06/11/2019-06-11-数据库/">2019-06-11 数据库</a>
           </li>
         
           <li>
-            <a href="/2019/06/09/2019-06-09-数据库/">2019-06-09 数据库</a>
+            <a href="/2019/06/10/2019-06-10-数据库/">2019-06-10 数据库</a>
           </li>
         
           <li>
@@ -674,7 +782,7 @@ end;
           </li>
         
           <li>
-            <a href="/2019/06/08/2019-06-08-数据库/">2019-06-08 数据库</a>
+            <a href="/2019/06/09/2019-06-09-数据库/">2019-06-09 数据库</a>
           </li>
         
       </ul>
