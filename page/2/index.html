@@ -62,9 +62,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-2019-06-06-算法2" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2019-06-06-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/06/06/2019-06-06-算法2/" class="article-date">
+    <a href="/2019/06/06/2019-06-06-算法/" class="article-date">
   <time datetime="2019-06-06T14:09:28.000Z" itemprop="datePublished">2019-06-06</time>
 </a>
     
@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/06/2019-06-06-算法2/">2019-06-06 算法</a>
+      <a class="article-title" href="/2019/06/06/2019-06-06-算法/">2019-06-06 算法</a>
     </h1>
   
 
@@ -84,50 +84,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p></p><h3>分治策略</h3><br>把一个问题分解成几个部分，递归(注意递归的出口)解决规模比较小的类似问题，把子问题的解合成完整的解<p></p>
-<p></p><h4>计数逆序</h4><br>穷举：Θ(n2) 排序:Θ(nlgn)<br><br>算法：O(nlogn)<p></p>
-<pre><code>Merge-and-Count(A,B) 维护一个Current指针指向每个表，初始化指向首元素
-维护一个变量Count用于逆序的计数，初始为0 
-While两个表都不空
-令ai与bj是由Current指针指向的元素 把这两个表中较小的元素加到输出表中 
-If bj是较小的元素 then
-把Count加上在A中剩余的元素数 
-Endif
-把较小元素选出的表中的Current指针前移
+        <h4>图的最短路径</h4>
+
+<pre><code>Dijkstra算法(G,l)
+设S是被探查的结点集合
+对每个S中的u,存储一个d(u);
+初始S={s}且d(s)=0
+While S!=V
+选择一个结点不在S中的结点v,使得从S到v至少有一条边连接并且d&apos;(v)=min_{e=(u,v), u in S}d(u)+le 最小 
+将v加入S并且定义d(v)=d&apos;(v)
 Endwhile
-一旦一个表为空，把另一个表剩余的所有元素加到输出中 返回Count和合并后的表
-
-Sort-and-Count(L) 
-If这个表中有一个元素，
-then
-    没有逆序
-Else
-    把这个表划分成两半， A包含前⎡n/2⎤ 个元素
-    ⎣n/2⎦ B包含剩下的 个元素
-    (rA,A)=Sort-and-Count(A) (rB,B)=Sort-and-Count(B)
-    (r ,L)=Merge-and-Count(A,B)
-Endif 
-返回r=rA+rB+r以及排好序的表L
-</code></pre><p></p><h4>最邻近点对</h4><br>算法：O(nlog2n)<p></p>
-<pre><code>Closest-Pair(p1, ..., pn) {
-Compute separation line L such that half the points are on one side and half on the other side.
-
-δ1 = Closest-Pair(left half) 
-δ2 = Closest-Pair(right half) 
-δ = min(δ1, δ2)
-Delete all points further than δ from separation line L O(n)
-Sort remaining points by y-coordinate.
-Scan points in y-order and compare distance between each point and next 11 neighbors. If any of these distances is less than δ, update δ.
-return δ. 
+</code></pre><p>算法分析：普通实现O(mn),优先队列实现O(mlogn)</p>
+<p></p><h4>最小生成树(MST)</h4><br>反向删除算法：删除权重最大的边，不破坏连通性<br><br>Prim算法：每次把与S对应的割中最小费用边加入T<p></p>
+<pre><code>Prim(G, c) {
+foreach (v ∈ V) a[v] ← ∞
+    Initialize an empty priority queue Q
+foreach (v ∈ V) insert v onto Q 
+    Initialize set of explored nodes S ← φ
 }
-</code></pre><p></p><h4>整数乘法</h4><br>采用分治的策略，每个整数分为高位和低位<br><p></p>
-<p></p><h4>矩阵乘法</h4><br>类Strassen算法上每获得一点理论上的改进， 实际上的可用性就会降低。(需要n达到一定规模)<p></p>
-<p></p><h4>卷积与快速傅立叶变换</h4><br>FFT. Fast way to convert between time-domain and frequency-domain.<br><br>Alternate viewpoint. Fast way to add, multiply, and evaluate polynomials.<br><p></p>
+while (Q is not empty) {
+    u ← delete min element from Q
+    S←S∪{u}
+foreach (edge e = (u, v) incident to u)
+    if ((v ∉ S) and (ce &lt; a[v])) 
+        decrease priority a[v] to ce
+</code></pre><p>算法分析：优先队列实现O(mlogn)<br><br>Kruskal算法：</p>
+<pre><code>Kruskal(G, c) {
+Sort edges weights so that c1 ≤ c2 ≤ ... ≤ cm. T←φ
+}
+foreach (u ∈ V)
+    make a set containing singleton u
+for i = 1 to m (u,v) = ei
+    if (u and v are in different sets) 
+    { T ← T ∪ {ei}
+    merge the sets containing u and v
+    } 
+return T
+</code></pre><p></p><h4>聚类</h4><br>运行Kruskal算法，但是就在它加最后的k-1条边之前停止。等价于取整棵最小生成树T,然后删除k-1条最贵的边，并且定义k聚类是所得到的 连通分支C1,C2,…,Ck.<p></p>
+<p></p><h4>Huffman树</h4><br>采用优先队列O(klogk)<p></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法2/" data-id="cjwrktnv1001u0ksh9mspwq0i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法/" data-id="cjwuewssr001wvush0ju7h41g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -192,7 +191,7 @@ output intervals [sj, fj]
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="cjwrktnv2001v0kshp109kqx2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="cjwuewssu0022vush89zw1ocf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -232,7 +231,7 @@ output intervals [sj, fj]
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="cjwrktnuw001m0kshu59fqeew" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="cjwuewssm001lvush6bqkq5xp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -271,7 +270,7 @@ output intervals [sj, fj]
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="cjwrktnuz001r0kshobitu4n8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="cjwuewsso001qvushm2v546t9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -317,7 +316,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="cjwrktnv3001y0ksh0vno7p92" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="cjwuewssq001vvushawn3pbjd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -356,7 +355,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="cjwrktnus001g0kshp6pdbb87" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="cjwuewssn001nvush0nxia8x6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
@@ -402,7 +401,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjwrktnut001i0kshg4t5yrrr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjwuewssk001ivush1jk5qlao" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -474,7 +473,7 @@ GO
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjwrktnur001e0kshywp1o3bs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjwuewssj001fvushq4rqve4j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li></ul>
@@ -528,7 +527,7 @@ GROUP BY Category.catid;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjwrktnuu001k0ksh967uzy61" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjwuewssk001hvushqnw2wppu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -724,7 +723,7 @@ public byte[] streamToArr(InputStream inputStream){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjwrktnup001a0kshkvwou0tb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjwuewssg001bvushwte5ujj9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>

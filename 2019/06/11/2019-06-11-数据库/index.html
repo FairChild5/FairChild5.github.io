@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="并发控制transactions see values in buffers, not on disk =&amp;gt; this time ignore INPUT/OUTPUT 冲突调换后影响语义(1)any two actions of a single transaction (2)two actions on a common DB element A, one of which is WRI">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-11T13:59:06.000Z">
+<meta property="og:updated_time" content="2019-06-13T08:39:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019-06-11 数据库">
 <meta name="twitter:description" content="并发控制transactions see values in buffers, not on disk =&amp;gt; this time ignore INPUT/OUTPUT 冲突调换后影响语义(1)any two actions of a single transaction (2)two actions on a common DB element A, one of which is WRI">
@@ -93,14 +93,15 @@
 <p></p><h4>如何做可串行化调度</h4><p></p>
 <p></p><h5>乐观的方式</h5><br>假定一个可串行的序（按照时间戳）🌰假设 T1:5,T2:3,T3:7 那么序就是 T2-&gt;T1-&gt;T3 每次进来都要比对序<p></p>
 <p></p><h5>悲观的方式</h5><br>按一套机制一定是可串行的（lock）<br><br>规则1（对事务）:事务在读写某个元素之前必须先加锁，该事务所有动作都完成之后再解锁<br><br>规则2（对元素）：每个元素只能持有一把锁<br><br>规则3（两段锁协议）（不解决死锁问题，但保证冲突可串行化）（对事务）：开始解锁后不能再加锁<p></p>
-<p></p><h4>一些增加并行度的方法</h4><br>Shared locks:使用共享锁读 S=… ls1(A) r1(A) ls2(A) r2(A) … u1(A)u2(A)  此时，lx1(A)排他锁用来写操作（读锁可以被写锁替换）（<b>只有读锁和读锁是共享的</b>，一个元素一旦加了写锁，别的事务不能对它进行读写）<br><br>⚠️避免更新时死锁的办法：添加一种新锁：更新锁<br><p></p>
+<p></p><h4>一些增加并行度的方法</h4><br>Shared locks:使用共享锁读 S=… ls1(A) r1(A) ls2(A) r2(A) … u1(A)u2(A)  此时，lx1(A)排他锁用来写操作（读锁可以被写锁替换）（<b>只有读锁和读锁是共享的</b>，一个元素一旦加了写锁，别的事务不能对它进行读写）<br><p></p>
 <p></p><h4>活锁和死锁</h4><br>封锁技术可以有效的解决并行操作的一致性问题，但也会带来新的问题<br><br>活锁：某个事务可能处于永久的等待中（先来先服务）<br><p></p>
-<p></p><h5>死锁</h5><br>产生条件：几个事务都封锁了一些对象，然后又请求给已经被封锁的对象加锁<br><br>⚠️解决办法：顺序封锁法（预先对数据对象规定一个封锁顺序，所有事务都按这个顺序实行封锁）<p></p>
+<p></p><h5>死锁</h5><br>产生条件：几个事务都封锁了一些对象，然后又请求给已经被封锁的对象加锁<br><br>解决办法：顺序封锁法（预先对数据对象规定一个封锁顺序，所有事务都按这个顺序实行封锁，这个顺序是随机的）<p></p>
+<p></p><h4>多粒度锁</h4><br>层次嵌套元素(例如关系/块/元组)可以用意图锁IS和IX锁定的想法<br><br><b>从根(关系)级别开始锁定</b><br><br>要在子元素上放置一个S或X锁，首先放置一个对应的意图锁是或IX元素本身<br>,警告其他人:“我将读取/写入这个元素的一些子元素”<p></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/11/2019-06-11-数据库/" data-id="cjwrktnva002a0kshb8cydo4x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/11/2019-06-11-数据库/" data-id="cjwuewssx002bvush27o2hp8b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
