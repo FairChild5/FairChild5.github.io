@@ -5,20 +5,20 @@
   
 
   
-  <title>2019-06-06 算法 | Hexo</title>
+  <title>2019-06-15 计算机组成原理 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="图的最短路径  Dijkstra算法(G,l) 设S是被探查的结点集合 对每个S中的u,存储一个d(u); 初始S={s}且d(s)=0 While S!=V 选择一个结点不在S中的结点v,使得从S到v至少有一条边连接并且d&amp;apos;(v)=min_{e=(u,v), u in S}d(u)+le 最小  将v加入S并且定义d(v)=d&amp;apos;(v) Endwhile 算法分析：普通实现O(">
-<meta name="keywords" content="算法">
+  <meta name="description" content="数的表示和存储 进制的选择根据存储介质与状态记录 数的表示数在计算机中按照“补码”存储浮点数（IEEE754标准）：上溢：指数太大而不能在指数域表示下溢：负的指数太大　而不能在指数域表示单精度：符号位（1位）+指数位（8位，加上偏阶127）+尾数（23位，但是具有24位精度，有一个隐藏的前导1）单精度：符号位（1位）+指数位（11位，加上偏阶1023）+尾数（52位，但是具有53位精度，有一个隐藏">
+<meta name="keywords" content="计算机组成原理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2019-06-06 算法">
-<meta property="og:url" content="http://yoursite.com/2019/06/06/2019-06-06-算法/index.html">
+<meta property="og:title" content="2019-06-15 计算机组成原理">
+<meta property="og:url" content="http://yoursite.com/2019/06/15/2019-06-15-计组2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="图的最短路径  Dijkstra算法(G,l) 设S是被探查的结点集合 对每个S中的u,存储一个d(u); 初始S={s}且d(s)=0 While S!=V 选择一个结点不在S中的结点v,使得从S到v至少有一条边连接并且d&amp;apos;(v)=min_{e=(u,v), u in S}d(u)+le 最小  将v加入S并且定义d(v)=d&amp;apos;(v) Endwhile 算法分析：普通实现O(">
+<meta property="og:description" content="数的表示和存储 进制的选择根据存储介质与状态记录 数的表示数在计算机中按照“补码”存储浮点数（IEEE754标准）：上溢：指数太大而不能在指数域表示下溢：负的指数太大　而不能在指数域表示单精度：符号位（1位）+指数位（8位，加上偏阶127）+尾数（23位，但是具有24位精度，有一个隐藏的前导1）单精度：符号位（1位）+指数位（11位，加上偏阶1023）+尾数（52位，但是具有53位精度，有一个隐藏">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-06T08:41:32.000Z">
+<meta property="og:updated_time" content="2019-06-15T15:54:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019-06-06 算法">
-<meta name="twitter:description" content="图的最短路径  Dijkstra算法(G,l) 设S是被探查的结点集合 对每个S中的u,存储一个d(u); 初始S={s}且d(s)=0 While S!=V 选择一个结点不在S中的结点v,使得从S到v至少有一条边连接并且d&amp;apos;(v)=min_{e=(u,v), u in S}d(u)+le 最小  将v加入S并且定义d(v)=d&amp;apos;(v) Endwhile 算法分析：普通实现O(">
+<meta name="twitter:title" content="2019-06-15 计算机组成原理">
+<meta name="twitter:description" content="数的表示和存储 进制的选择根据存储介质与状态记录 数的表示数在计算机中按照“补码”存储浮点数（IEEE754标准）：上溢：指数太大而不能在指数域表示下溢：负的指数太大　而不能在指数域表示单精度：符号位（1位）+指数位（8位，加上偏阶127）+尾数（23位，但是具有24位精度，有一个隐藏的前导1）单精度：符号位（1位）+指数位（11位，加上偏阶1023）+尾数（52位，但是具有53位精度，有一个隐藏">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2019-06-06-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2019-06-15-计组2" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/06/06/2019-06-06-算法/" class="article-date">
-  <time datetime="2019-06-06T14:09:28.000Z" itemprop="datePublished">2019-06-06</time>
+    <a href="/2019/06/15/2019-06-15-计组2/" class="article-date">
+  <time datetime="2019-06-15T14:09:28.000Z" itemprop="datePublished">2019-06-15</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      2019-06-06 算法
+      2019-06-15 计算机组成原理
     </h1>
   
 
@@ -87,52 +87,31 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4>图的最短路径</h4>
-
-<pre><code>Dijkstra算法(G,l)
-设S是被探查的结点集合
-对每个S中的u,存储一个d(u);
-初始S={s}且d(s)=0
-While S!=V
-选择一个结点不在S中的结点v,使得从S到v至少有一条边连接并且d&apos;(v)=min_{e=(u,v), u in S}d(u)+le 最小 
-将v加入S并且定义d(v)=d&apos;(v)
-Endwhile
-</code></pre><p>算法分析：普通实现O(mn),优先队列实现O(mlogn)</p>
-<p></p><h4>最小生成树(MST)</h4><br>反向删除算法：删除权重最大的边，不破坏连通性<br><br>Prim算法：每次把与S对应的割中最小费用边加入T<p></p>
-<pre><code>Prim(G, c) {
-foreach (v ∈ V) a[v] ← ∞
-    Initialize an empty priority queue Q
-foreach (v ∈ V) insert v onto Q 
-    Initialize set of explored nodes S ← φ
-}
-while (Q is not empty) {
-    u ← delete min element from Q
-    S←S∪{u}
-foreach (edge e = (u, v) incident to u)
-    if ((v ∉ S) and (ce &lt; a[v])) 
-        decrease priority a[v] to ce
-</code></pre><p>算法分析：优先队列实现O(mlogn)<br><br>Kruskal算法：</p>
-<pre><code>Kruskal(G, c) {
-Sort edges weights so that c1 ≤ c2 ≤ ... ≤ cm. T←φ
-}
-foreach (u ∈ V)
-    make a set containing singleton u
-for i = 1 to m (u,v) = ei
-    if (u and v are in different sets) 
-    { T ← T ∪ {ei}
-    merge the sets containing u and v
-    } 
-return T
-</code></pre><p></p><h4>聚类</h4><br>运行Kruskal算法，但是就在它加最后的k-1条边之前停止。等价于取整棵最小生成树T,然后删除k-1条最贵的边，并且定义k聚类是所得到的 连通分支C1,C2,…,Ck.<p></p>
-<p></p><h4>Huffman树</h4><br>采用优先队列O(klogk)<p></p>
+        <p></p><h3>数的表示和存储</h3><p></p>
+<p></p><h4>进制的选择</h4><br>根据存储介质与状态记录<p></p>
+<p></p><h4>数的表示</h4><br>数在计算机中按照“补码”存储<br><br>浮点数（IEEE754标准）：<br>上溢：指数太大而不能在指数域表示<br><br>下溢：负的指数太大　而不能在指数域表示<br><br>单精度：符号位（1位）+指数位（8位，加上偏阶127）+尾数（23位，但是具有24位精度，有一个隐藏的前导1）<br><br>单精度：符号位（1位）+指数位（11位，加上偏阶1023）+尾数（52位，但是具有53位精度，有一个隐藏的前导1）<br><p></p>
+<p></p><h4>计算的实现</h4><p></p>
+<p></p><h5>加法器</h5><br>进位与溢出（上溢和下溢）：饱和操作是指当计算结果溢出时，结果被设置为最大的正数或最小的负数<br><p></p>
+<p></p><h5>减法器</h5><br>减法 = 加上负数的补码（按位取反再加一）<p></p>
+<p></p><h5>乘法器</h5><br>改进后的乘法器：32位被乘数、64位乘积（空间拼接：左边是乘积，右边是乘数，每次右移一位）（2个32位寄存器 Hi和Lo）<p></p>
+<p></p><h5>除法器</h5><br>改进后的除法器：32位除数，64位余数（使用被除数初始化）<p></p>
+<p></p><h5>浮点数的运算器：结果是规格化数</h5><br>加法：对阶（小的向大的对）-&gt; 尾数相加 -&gt; 规格化 -&gt; 检查溢出 -&gt; 保留位数 -&gt; 规格化 -&gt; 检查溢出<br><br>乘法：指数相加 -&gt; 相乘（点小数点）-&gt; 规格化 -&gt; 舍入 -&gt; 确定符号<p></p>
+<p></p><h4>连续计算（指令设计）</h4><br>连续计算的描述：数据来源与去向，计算类型，计算顺序（浮点数运算顺序不能交换）<br><br>指令种类：<br><br>1、算数运算（乘法：mult $s2,$s3,64位有符号积存在Hi,Lo中 同理还有multu）（除法：div $s2,$s3  Lo=商,Hi=余数 divu）（mfhi $s1 &lt;=&gt; $s1=Hi. mflo $s1 &lt;=&gt; $s1=Lo）<br><br>2、逻辑运算<br><br>3、数据流动<br><br>4、计算顺序<br><br>5、机器控制<br><p></p>
+<p></p><h4>指令的格式</h4><br>op(6)rs(5)rt(5)rd(5)shamt(5)funct(6)<br><br>操作类型<br><br>地址说明<br><br>功能补充<br><br>多数据类型：立即数、有无符号、浮点（需要协处理器）定点<br><p></p>
+<p></p><h5>指令长度：简单源于规整</h5><p></p>
+<p></p><h5>执行速度：越小越快（寄存器访问）</h5><p></p>
+<p></p><h5>存储器访问</h5><br>独立指令<br><br>寻址单位：字节<br><br>对齐方式：大端对齐（使用最左边字节的地址作为字地址）<br><p></p>
+<p></p><h4>五种寻址方式</h4><br>⚠️<p></p>
+<p></p><h4>立即数</h4><br>加速大概率事件,0号寄存器<br><br>独立指令<br><p></p>
+<p></p><h4>指令的运行</h4><br>基本块（block）:没有分支（可能出现在末尾者除外）并且没有分支目标／分支标签（可能出现在开始者除外）的指令序列<br><br>分块（编译器优化）<br><br>子程序（叶程序）：<p></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法/" data-id="cjwxpccgk001qbyfydedfyal3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/15/2019-06-15-计组2/" data-id="cjwxpccgw002hbyfyl7pdl4to" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
 
     </footer>
   </div>
@@ -140,19 +119,10 @@ return T
     
 <nav id="article-nav">
   
-    <a href="/2019/06/07/2019-06-07-算法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          2019-06-07 算法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/06/2019-06-06-算法2/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/06/15/2019-06-15-计组/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">2019-06-06 算法</div>
+      <div class="article-nav-title">2019-06-15 计算机组成原理</div>
     </a>
   
 </nav>
