@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="数的表示和存储 进制的选择根据存储介质与状态记录 数的表示数在计算机中按照“补码”存储浮点数（IEEE754标准）：上溢：指数太大而不能在指数域表示下溢：负的指数太大　而不能在指数域表示单精度：符号位（1位）+指数位（8位，加上偏阶127）+尾数（23位，但是具有24位精度，有一个隐藏的前导1）单精度：符号位（1位）+指数位（11位，加上偏阶1023）+尾数（52位，但是具有53位精度，有一个隐藏">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-15T15:54:42.000Z">
+<meta property="og:updated_time" content="2019-06-16T12:18:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019-06-15 计算机组成原理">
 <meta name="twitter:description" content="数的表示和存储 进制的选择根据存储介质与状态记录 数的表示数在计算机中按照“补码”存储浮点数（IEEE754标准）：上溢：指数太大而不能在指数域表示下溢：负的指数太大　而不能在指数域表示单精度：符号位（1位）+指数位（8位，加上偏阶127）+尾数（23位，但是具有24位精度，有一个隐藏的前导1）单精度：符号位（1位）+指数位（11位，加上偏阶1023）+尾数（52位，但是具有53位精度，有一个隐藏">
@@ -103,12 +103,27 @@
 <p></p><h5>存储器访问</h5><br>独立指令<br><br>寻址单位：字节<br><br>对齐方式：大端对齐（使用最左边字节的地址作为字地址）<br><p></p>
 <p></p><h4>五种寻址方式</h4><br>⚠️<p></p>
 <p></p><h4>立即数</h4><br>加速大概率事件,0号寄存器<br><br>独立指令<br><p></p>
-<p></p><h4>指令的运行</h4><br>基本块（block）:没有分支（可能出现在末尾者除外）并且没有分支目标／分支标签（可能出现在开始者除外）的指令序列<br><br>分块（编译器优化）<br><br>子程序（叶程序）：<p></p>
+<p></p><h4>指令的运行</h4><br>基本块（block）:没有分支（可能出现在末尾者除外）并且没有分支目标／分支标签（可能出现在开始者除外）的指令序列<br><br>分块（编译器优化）<br><p></p>
+<p>子程序（叶程序）：压栈（sp减小）出栈（sp增大）<br></p>
+<p>MIPS寄存器分布：<br><br>$at(1号):汇编器<br><br>$v0-$v1(2-3号)<br><br>$a0-$a3<br><br>$t0-$t7(8-15)<br><br>$s0-$s7(16-23)<br><br>$t8-$t9(24-25)<br><br>$k0-$k1(26-27):操作系统<br><br>$gp(全局指针) $sp(栈指针) $fp(帧指针) $ra</p>
+<p>C语言程序 -&gt;(编译器) 汇编语言程序（伪指令） -&gt;(汇编器) 目标模块：机器语言模块 + 目标库：例程序（机器语言） -&gt;(链接器) 可执行代码：机器语言程序 -&gt;(加载器) 存储器（内存）<br><br>Java 程序 -&gt;(编译器) 类文件（Java字节码）+ Java库例程（机器语言） -&gt;(Jit:把一部分“热点”的方法直接编译成宿主机的指令序列)(Java虚拟机) -&gt;机器语言<br><br>Java的特点：跨平台，解释执行</p>
+<p></p><h4>计算优化</h4><br>乘法提速：乘法树<br><br>浮点数优化：精度和次序<p></p>
+<p></p><h4>CPU三问</h4><br>数据通路：指令存储器-寄存器-运算器-数据存储器-PC、地址变换单元-单周期、组合逻辑器件与时序器件<br><p></p>
+<p></p><h5>没有空闲单元，挖掘并行性：流水线</h5><p></p>
+<p></p><h5>面向流水线的指令集设计</h5><br>1、指令等长，简化了第一级取指和第二级译码<br><br>2、MIPS只有很少的几种指令格式<br><br>3、MIPS中的存储器操作数仅出现在存取指令中<br><br>4、所有操作数必须在存储器中对齐<br><br>5、每条MIPS指令最多只写一个结果并且在流水线的最后一级执行<br><p></p>
+<p></p><h5>做法</h5><br>分级（低耦的单元切分），隔离（时序单元）（锁存器），传递数据，传递控制信号<p></p>
+<p></p><h4>流水线</h4><p></p>
+<p></p><h5>断流: 结构冒险，数据冒险，控制冒险，中断与异常</h5><p></p>
+<p></p><h5>解决办法</h5><br>结构冒险：死等，bubble,拆分存储器<br><br>数据冒险：旁路（旁路在哪搭，打开的条件）<br><br>控制冒险：分支预测（静态、动态），有限状态机<br><br>异常和中断：基本机制、处理方式类似控制相关，多重（嵌套）中断<br><br>异常发生时处理器必须进行的操作：EPC中保存出错指令的地址，并把控制权转交给操作系统的特定地址<p></p>
+<p></p><h4>指令级并行</h4><p></p>
+<p></p><h5>静态多发（超长指令字）</h5><br>包，冒险，循环展开<p></p>
+<p></p><h5>动态多发</h5><br>顺序发射，乱序执行，顺序提交<br><br>寄存器重命名，保留站<p></p>
+<p></p><h5>下列开发指令级并行度的技术主要是基于硬件（H）还是软件（S）</h5><br>分支预测：HS<br><br>多发射：HS<br><br>超长指令字：S<br><br>超标量：H<br><br>动态调度：H<br><br>乱序执行：H<br><br>推测机制：HS<br><br>重排序缓冲区：H<br><br>寄存器重命名：HS<br><p></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/15/2019-06-15-计组2/" data-id="cjwxpccgw002hbyfyl7pdl4to" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/15/2019-06-15-计组2/" data-id="cjwyzkcmo002lpgshp31va2p2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
@@ -118,6 +133,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/06/16/2019-06-16-计组/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          2019-06-16 计算机组成原理
+        
+      </div>
+    </a>
   
   
     <a href="/2019/06/15/2019-06-15-计组/" id="article-nav-older" class="article-nav-link-wrap">
@@ -151,7 +175,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/计算机组成原理/" style="font-size: 12px;">计算机组成原理</a>
+      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
     </div>
   </div>
 
@@ -173,6 +197,10 @@
       <ul>
         
           <li>
+            <a href="/2019/06/16/2019-06-16-计组/">2019-06-16 计算机组成原理</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/15/2019-06-15-计组2/">2019-06-15 计算机组成原理</a>
           </li>
         
@@ -186,10 +214,6 @@
         
           <li>
             <a href="/2019/06/10/2019-06-10-数据库/">2019-06-10 数据库</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/09/2019-06-09-数据库2/">2019-06-09 数据库</a>
           </li>
         
       </ul>

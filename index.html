@@ -62,6 +62,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-06-16-计组" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/16/2019-06-16-计组/" class="article-date">
+  <time datetime="2019-06-16T14:09:28.000Z" itemprop="datePublished">2019-06-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/16/2019-06-16-计组/">2019-06-16 计算机组成原理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h3>存储体系😐</h3><br>访存瓶颈：大容量和高速度 -&gt; 多级存储体系<br><br>命中时间：访问存储器层次中的高层存储器所需要的时间，包括了判断当前访问是命中还是缺失所需的时间<br><br>缺失代价：将相应的块从低层存储器替换到高层存储器中，以及将该信息块传送给处理器的时间之和<p></p>
+<p></p><h4>存储器技术</h4><p></p>
+<p><ul></ul></p>
+<p><li>rom:只读，断电保留</li></p>
+<p><li>ram:随机存取，断电不保留</li><br></p>
+<p><ul></ul></p>
+<p><li>主存（DRAM）：不能长久地保持数据，必须周期性地刷新<br>（每次刷新一行）多bank并行（提高带宽）</li></p>
+<p><li>cache（SRAM）:不需要刷新，并且其访问时间与周期时间非常相近</li></p>
+<p><li>闪存：这种非易失存储器用作个人移动设备中的二级存储器，电可擦除的可编程只读存储器</li></p>
+<p><li>磁盘（机械器件）：访问最慢，容量最大，<b>顺序存储器</b></li><br></p>
+<p></p><h4>cache-增收</h4><br>block的大小：增加块的大小通常会引起缺失率的降低，但是当块大小增加到一定程度时，缺失率也会增加，这是因为块的竞争增加。另外，仅仅增加块大小会使<b>缺失成本增加</b><br><br>相联度<br><br>替换算法：LRU,随机替换<br><br>写一致性：直写，回写，写分配<br><br>多级cache:一级cache致力于减少命中时间获得较短的时间周期或者较少的流水线，二级cache则主要针对改善缺失率以减少长时间的访存代价<br><p></p>
+<p></p><h4>虚存-止损(百万cycle太长)</h4><br>Page(4k)<br><br>相联度：全相联 写一致性：回写法<br><br>TLB缺失：使用软件解决，MIPS支持随机替换<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/16/2019-06-16-计组/" data-id="cjwyzkcmn002ipgshox0tx3wr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-06-15-计组2" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/15/2019-06-15-计组2/" class="article-date">
@@ -100,12 +150,27 @@
 <p></p><h5>存储器访问</h5><br>独立指令<br><br>寻址单位：字节<br><br>对齐方式：大端对齐（使用最左边字节的地址作为字地址）<br><p></p>
 <p></p><h4>五种寻址方式</h4><br>⚠️<p></p>
 <p></p><h4>立即数</h4><br>加速大概率事件,0号寄存器<br><br>独立指令<br><p></p>
-<p></p><h4>指令的运行</h4><br>基本块（block）:没有分支（可能出现在末尾者除外）并且没有分支目标／分支标签（可能出现在开始者除外）的指令序列<br><br>分块（编译器优化）<br><br>子程序（叶程序）：<p></p>
+<p></p><h4>指令的运行</h4><br>基本块（block）:没有分支（可能出现在末尾者除外）并且没有分支目标／分支标签（可能出现在开始者除外）的指令序列<br><br>分块（编译器优化）<br><p></p>
+<p>子程序（叶程序）：压栈（sp减小）出栈（sp增大）<br></p>
+<p>MIPS寄存器分布：<br><br>$at(1号):汇编器<br><br>$v0-$v1(2-3号)<br><br>$a0-$a3<br><br>$t0-$t7(8-15)<br><br>$s0-$s7(16-23)<br><br>$t8-$t9(24-25)<br><br>$k0-$k1(26-27):操作系统<br><br>$gp(全局指针) $sp(栈指针) $fp(帧指针) $ra</p>
+<p>C语言程序 -&gt;(编译器) 汇编语言程序（伪指令） -&gt;(汇编器) 目标模块：机器语言模块 + 目标库：例程序（机器语言） -&gt;(链接器) 可执行代码：机器语言程序 -&gt;(加载器) 存储器（内存）<br><br>Java 程序 -&gt;(编译器) 类文件（Java字节码）+ Java库例程（机器语言） -&gt;(Jit:把一部分“热点”的方法直接编译成宿主机的指令序列)(Java虚拟机) -&gt;机器语言<br><br>Java的特点：跨平台，解释执行</p>
+<p></p><h4>计算优化</h4><br>乘法提速：乘法树<br><br>浮点数优化：精度和次序<p></p>
+<p></p><h4>CPU三问</h4><br>数据通路：指令存储器-寄存器-运算器-数据存储器-PC、地址变换单元-单周期、组合逻辑器件与时序器件<br><p></p>
+<p></p><h5>没有空闲单元，挖掘并行性：流水线</h5><p></p>
+<p></p><h5>面向流水线的指令集设计</h5><br>1、指令等长，简化了第一级取指和第二级译码<br><br>2、MIPS只有很少的几种指令格式<br><br>3、MIPS中的存储器操作数仅出现在存取指令中<br><br>4、所有操作数必须在存储器中对齐<br><br>5、每条MIPS指令最多只写一个结果并且在流水线的最后一级执行<br><p></p>
+<p></p><h5>做法</h5><br>分级（低耦的单元切分），隔离（时序单元）（锁存器），传递数据，传递控制信号<p></p>
+<p></p><h4>流水线</h4><p></p>
+<p></p><h5>断流: 结构冒险，数据冒险，控制冒险，中断与异常</h5><p></p>
+<p></p><h5>解决办法</h5><br>结构冒险：死等，bubble,拆分存储器<br><br>数据冒险：旁路（旁路在哪搭，打开的条件）<br><br>控制冒险：分支预测（静态、动态），有限状态机<br><br>异常和中断：基本机制、处理方式类似控制相关，多重（嵌套）中断<br><br>异常发生时处理器必须进行的操作：EPC中保存出错指令的地址，并把控制权转交给操作系统的特定地址<p></p>
+<p></p><h4>指令级并行</h4><p></p>
+<p></p><h5>静态多发（超长指令字）</h5><br>包，冒险，循环展开<p></p>
+<p></p><h5>动态多发</h5><br>顺序发射，乱序执行，顺序提交<br><br>寄存器重命名，保留站<p></p>
+<p></p><h5>下列开发指令级并行度的技术主要是基于硬件（H）还是软件（S）</h5><br>分支预测：HS<br><br>多发射：HS<br><br>超长指令字：S<br><br>超标量：H<br><br>动态调度：H<br><br>乱序执行：H<br><br>推测机制：HS<br><br>重排序缓冲区：H<br><br>寄存器重命名：HS<br><p></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/15/2019-06-15-计组2/" data-id="cjwxpccgw002hbyfyl7pdl4to" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/15/2019-06-15-计组2/" data-id="cjwyzkcmo002lpgshp31va2p2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
@@ -148,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/15/2019-06-15-计组/" data-id="cjwxpccgx002jbyfy5ufi2d7z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/15/2019-06-15-计组/" data-id="cjwyzkcmr002spgsh8g6mzmpa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
@@ -196,7 +261,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/11/2019-06-11-数据库/" data-id="cjwxpccgz002mbyfyx7zcnjwy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/11/2019-06-11-数据库/" data-id="cjwyzkcmp002npgshhd2861r6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -247,7 +312,51 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/10/2019-06-10-数据库/" data-id="cjwxpcch0002obyfymbcjdvaj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/10/2019-06-10-数据库/" data-id="cjwyzkcmm002gpgshjllqjk21" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-09-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/09/2019-06-09-数据库/" class="article-date">
+  <time datetime="2019-06-09T14:09:28.000Z" itemprop="datePublished">2019-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/09/2019-06-09-数据库/">2019-06-09 数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h3>模式设计</h3><br>重点解决插入异常、删除异常、冗余太大的问题<p></p>
+<p></p><h4>Finding the Keys</h4><br>if there is an arrow from the relationship to E, then<br>       we don’t need the key of E as part of the relation key.<p></p>
+<p></p><h4>分解表</h4><br>无损分解：把分开的表再复原（连接）回去还是原来的表<br><br>保持函数依赖：(S1并S2)的闭包 =  S的闭包<p></p>
+<p></p><h4>BCNF</h4><br>关系R是BCNF 当且仅当 非平凡函数依赖A1,A2,…,An-&gt;B    ,箭头左边是超键<br><br>根据违反BCNF的函数依赖拆表：Replace R  by relations with schemas:<br> R1 = X +.<br> R2 = R – (X + - X ).<br><br> 任何只有两个属性的表都是BCNF的<br><br> 有时找不到<b>保持函数依赖</b>分解到BCNF的方法,这时就需要3NF<br> <h4>3NF</h4><br> 违反3NF的函数依赖：左边不是superkey，右边不是主属性<br><br> 可以保证无损连接和函数依赖分到3NF，可以保证无损连接分到BCNF<br> <h4>第四范式(多值依赖)</h4><br> 多值函数依赖：（例如：一个人有多部手机）交换右边的属性，结果都要在R中<br><b>不能分裂箭头右边的属性</b><br><br> 如果每当 X -&gt;-&gt; Y 是<b>非平凡</b>(Y不是X的子集，而且<br>X和Y并不是所有的属性)的MVD(多值函数依赖)，则关系R在4NF中，那么X是superkey<br><br><b>在求key时还是要看FD</b><br><p></p>
+<p></p><h4>判断无损连接分解的算法</h4><br>参考网站：<a href="https://blog.csdn.net/lanshan1111/article/details/83961908" target="_blank" rel="noopener">https://blog.csdn.net/lanshan1111/article/details/83961908</a><p></p>
+<p></p><h4>最小函数依赖集</h4><br> F中任一函数依赖的右部仅含有一个属性<br> <h4>补充</h4><br> 2NF：每一个非主属性完全函数依赖于🐎，不属于2NF的关系模式会有插入异常、删除异常和修改困难<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库/" data-id="cjwyzkcmj0028pgshx3fg8zri" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -298,51 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库2/" data-id="cjwxpccgs0027byfyng8bo9y6" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-06-09-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/09/2019-06-09-数据库/" class="article-date">
-  <time datetime="2019-06-09T14:09:28.000Z" itemprop="datePublished">2019-06-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/09/2019-06-09-数据库/">2019-06-09 数据库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h3>模式设计</h3><br>重点解决插入异常、删除异常、冗余太大的问题<p></p>
-<p></p><h4>Finding the Keys</h4><br>if there is an arrow from the relationship to E, then<br>       we don’t need the key of E as part of the relation key.<p></p>
-<p></p><h4>分解表</h4><br>无损分解：把分开的表再复原（连接）回去还是原来的表<br><br>保持函数依赖：(S1并S2)的闭包 =  S的闭包<p></p>
-<p></p><h4>BCNF</h4><br>关系R是BCNF 当且仅当 非平凡函数依赖A1,A2,…,An-&gt;B    ,箭头左边是超键<br><br>根据违反BCNF的函数依赖拆表：Replace R  by relations with schemas:<br> R1 = X +.<br> R2 = R – (X + - X ).<br><br> 任何只有两个属性的表都是BCNF的<br><br> 有时找不到<b>保持函数依赖</b>分解到BCNF的方法,这时就需要3NF<br> <h4>3NF</h4><br> 违反3NF的函数依赖：左边不是superkey，右边不是主属性<br><br> 可以保证无损连接和函数依赖分到3NF，可以保证无损连接分到BCNF<br> <h4>第四范式(多值依赖)</h4><br> 多值函数依赖：（例如：一个人有多部手机）交换右边的属性，结果都要在R中<br><b>不能分裂箭头右边的属性</b><br><br> 如果每当 X -&gt;-&gt; Y 是<b>非平凡</b>(Y不是X的子集，而且<br>X和Y并不是所有的属性)的MVD(多值函数依赖)，则关系R在4NF中，那么X是superkey<br><br><b>在求key时还是要看FD</b><br><p></p>
-<p></p><h4>判断无损连接分解的算法</h4><br>参考网站：<a href="https://blog.csdn.net/lanshan1111/article/details/83961908" target="_blank" rel="noopener">https://blog.csdn.net/lanshan1111/article/details/83961908</a><p></p>
-<p></p><h4>最小函数依赖集</h4><br> F中任一函数依赖的右部仅含有一个属性<br> <h4>补充</h4><br> 2NF：每一个非主属性完全函数依赖于🐎，不属于2NF的关系模式会有插入异常、删除异常和修改困难<p></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库/" data-id="cjwxpccgs0029byfyp7upmskz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库2/" data-id="cjwyzkcmk002bpgshoac7ursp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -381,51 +446,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库3/" data-id="cjwxpccgt002cbyfyojslvpgl" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-06-08-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/08/2019-06-08-数据库/" class="article-date">
-  <time datetime="2019-06-08T14:09:28.000Z" itemprop="datePublished">2019-06-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/08/2019-06-08-数据库/">2019-06-08 数据库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h3>SQL语句</h3><br>建表：CREATE TABLE  PRIMARY KEY(属性A,属性B)<br><br>外键：REFERENCES relation ( attributes ) 或者 FOREIGN KEY ( list of attributes ) REFERENCES relation ( <attributes> )被参照的属性必须是primary key或unique<br><br>三种外键可能的操作：1、reject(default) 2、CASCADE(FOREIGN KEY(beer) REFERENCES     Beers(name)<br>        ON DELETE/UPDATE CASCADE) 3、Set NULL(FOREIGN KEY(beer) REFERENCES     Beers(name)<br>        ON DELETE SET NULL);)<br><br>描述属性：NOT NULL,DEFAULT value(没有显式的给出时用默认，而不是NULL时用默认)<p></p>
-<p><b>修改columu(ADD/DROP)</b>:ALTER TABLE Bars ADD phone CHAR(16)<br>            DEFAULT ‘unlisted’;</p>
-<p>ALTER TABLE Bars DROP COLUMN license;</p>
-<p><b>CHECK</b>:Check occurs only when the ‘beer’ attribute of a ‘Sells’ tuple is inserted or updated.<br>Not when a ‘Beers’ tuple is deleted or updated. 添加到某个属性后面<br><br>也可以写成这种形式：CHECK (bar = ‘Joe’’s Bar’ OR<br>                 price &lt;= 5.00)<br><br>                 ALTER TABLE Sells ADD CHECK(…);</p>
-<p></p><h4>查询语句</h4><br>SELECT bar, beer, price*120 AS priceInYen<br>FROM    Sells;<br><br>SELECT  drinker, ‘likes Bud’ AS whoLikesBud<br>FROM     Likes<br>WHERE  beer = ‘Bud’;  –自己添一列<br><br>NULL和别的值比较 -&gt; UNKNOWN<br><br>判断一个值是否为空：is null<br><p></p>
-<p>INSERT INTO     relation     VALUES (list of values);<br><br>INSERT INTO     relation      (subquery);(批量插入)<br><br>DELETE FROM     relation     WHERE condition;<br><br>UPDATE               relation      SET assignments<br>                        WHERE condition;<br><br>Make the Likes relation empty:<b>DELETE FROM Likes;</b>(Different from <b>DROP TABLE Likes;</b>)<br></p>
-</attributes>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-数据库/" data-id="cjwxpccgq0022byfycxb3e26k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库3/" data-id="cjwyzkcml002dpgshasskrbgt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -472,7 +493,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-算法/" data-id="cjwxpccgv002ebyfyx0e7lwdb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-算法/" data-id="cjwyzkcmf0021pgsh9mcl06zg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -484,10 +505,10 @@
 
 
   
-    <article id="post-2019-06-07-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2019-06-08-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/06/07/2019-06-07-数据库/" class="article-date">
-  <time datetime="2019-06-07T14:09:28.000Z" itemprop="datePublished">2019-06-07</time>
+    <a href="/2019/06/08/2019-06-08-数据库/" class="article-date">
+  <time datetime="2019-06-08T14:09:28.000Z" itemprop="datePublished">2019-06-08</time>
 </a>
     
   </div>
@@ -498,7 +519,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/07/2019-06-07-数据库/">2019-06-07 数据库</a>
+      <a class="article-title" href="/2019/06/08/2019-06-08-数据库/">2019-06-08 数据库</a>
     </h1>
   
 
@@ -506,11 +527,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3>ER Model</h3><br>多对一关系：at most 1 箭头指向的一端是“唯一的”<br><br>圆箭头：有且只有一个<br><br>多端关系转换成双端：关系变实体，注意多对一的箭头<br><br>关系中的角色：只需要写一个实体<br><br>子类：1、三角形的尖指向父类 2、每种实体都是包含根节点的一棵子树 3、只有根有主键，并且充当所有实体的主键<br><br>模型约束：实体完整性（若属性A是基本关系R的<b>主属性</b>，则属性A不能取空值）、参照完整性（外键或者取参照关系中的某个主键值，或者取空值（表示还没有分配）<br>，外键可以由多个属性构成）、域约束、用户自定义约束<br><br>弱实体集合：双边矩形  多对一的sopporting relationship：双边菱形<br><h3>The Relational Data Model</h3><br>把子类转换成关系模式<br><br>OO方法：每个对象只属于一张表（按照子树转换）<br><br>ER方法：一个矩形转化为一张表，<b>子类要带上主键</b><br><br>NULL方法：把所有属性都放到一张表里<br><h3>SQL语句</h3>
+        <p></p><h3>SQL语句</h3><br>建表：CREATE TABLE  PRIMARY KEY(属性A,属性B)<br><br>外键：REFERENCES relation ( attributes ) 或者 FOREIGN KEY ( list of attributes ) REFERENCES relation ( <attributes> )被参照的属性必须是primary key或unique<br><br>三种外键可能的操作：1、reject(default) 2、CASCADE(FOREIGN KEY(beer) REFERENCES     Beers(name)<br>        ON DELETE/UPDATE CASCADE) 3、Set NULL(FOREIGN KEY(beer) REFERENCES     Beers(name)<br>        ON DELETE SET NULL);)<br><br>描述属性：NOT NULL,DEFAULT value(没有显式的给出时用默认，而不是NULL时用默认)<p></p>
+<p><b>修改columu(ADD/DROP)</b>:ALTER TABLE Bars ADD phone CHAR(16)<br>            DEFAULT ‘unlisted’;</p>
+<p>ALTER TABLE Bars DROP COLUMN license;</p>
+<p><b>CHECK</b>:Check occurs only when the ‘beer’ attribute of a ‘Sells’ tuple is inserted or updated.<br>Not when a ‘Beers’ tuple is deleted or updated. 添加到某个属性后面<br><br>也可以写成这种形式：CHECK (bar = ‘Joe’’s Bar’ OR<br>                 price &lt;= 5.00)<br><br>                 ALTER TABLE Sells ADD CHECK(…);</p>
+<p></p><h4>查询语句</h4><br>SELECT bar, beer, price*120 AS priceInYen<br>FROM    Sells;<br><br>SELECT  drinker, ‘likes Bud’ AS whoLikesBud<br>FROM     Likes<br>WHERE  beer = ‘Bud’;  –自己添一列<br><br>NULL和别的值比较 -&gt; UNKNOWN<br><br>判断一个值是否为空：is null<br><p></p>
+<p>INSERT INTO     relation     VALUES (list of values);<br><br>INSERT INTO     relation      (subquery);(批量插入)<br><br>DELETE FROM     relation     WHERE condition;<br><br>UPDATE               relation      SET assignments<br>                        WHERE condition;<br><br>Make the Likes relation empty:<b>DELETE FROM Likes;</b>(Different from <b>DROP TABLE Likes;</b>)<br></p>
+</attributes>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-数据库/" data-id="cjwxpccgp0020byfy1yb2tsst" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-数据库/" data-id="cjwyzkcmh0026pgshrczlzd8d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -526,7 +553,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -550,7 +577,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/计算机组成原理/" style="font-size: 12px;">计算机组成原理</a>
+      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
     </div>
   </div>
 
@@ -572,6 +599,10 @@
       <ul>
         
           <li>
+            <a href="/2019/06/16/2019-06-16-计组/">2019-06-16 计算机组成原理</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/15/2019-06-15-计组2/">2019-06-15 计算机组成原理</a>
           </li>
         
@@ -585,10 +616,6 @@
         
           <li>
             <a href="/2019/06/10/2019-06-10-数据库/">2019-06-10 数据库</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/09/2019-06-09-数据库2/">2019-06-09 数据库</a>
           </li>
         
       </ul>
