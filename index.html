@@ -62,6 +62,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Chrome插件" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/27/Chrome插件/" class="article-date">
+  <time datetime="2019-06-27T14:09:28.000Z" itemprop="datePublished">2019-06-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/27/Chrome插件/">出成绩提醒插件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>昨天老师演示了一下简单的谷歌插件，最近等成绩刷新的心烦，想写一个离散成绩出之后给我发消息的插件。遇到了很多问题，而且最后也没做出来😐但是还是要总结一下</p>
+<p></p><h5>总体思路</h5><br>Python爬虫模拟登录eamis -&gt; 在网页中插入插件（静态）-&gt; 服务器运行Python脚本<p></p>
+<p></p><h5>爬虫</h5><br>参考网站：<br><br><a href="https://baijiahao.baidu.com/s?id=1612319421218751139&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">https://baijiahao.baidu.com/s?id=1612319421218751139&amp;wfr=spider&amp;for=pc</a><br><br><a href="https://www.cnblogs.com/zhaof/p/7284312.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhaof/p/7284312.html</a><br><p></p>
+<p></p><h5>插件</h5><br>参考网站：<a href="https://github.com/sxei/chrome-plugin-demo" target="_blank" rel="noopener">https://github.com/sxei/chrome-plugin-demo</a><br><br>主要是写js文件(<b>jQuery</b>)<p></p>
+<p></p><h5>服务器</h5><br>终端登录服务器：ssh <a href="mailto:root@148.70.181.82" target="_blank" rel="noopener">root@148.70.181.82</a><br><br>服务器运行Python：需要配置Python环境，然后在终端运行即可<br><p></p>
+<p></p><h5>补充</h5><br>Python中有定时任务框架apscheduler，可以用来定时运行一段代码<br><br>参考网站：<a href="https://blog.csdn.net/somezz/article/details/83104368" target="_blank" rel="noopener">https://blog.csdn.net/somezz/article/details/83104368</a><p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/27/Chrome插件/" data-id="cjxecrcn700006vshe8waawou" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Chrome插件/">Chrome插件</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-06-16-计组" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/16/2019-06-16-计组/" class="article-date">
@@ -100,7 +144,50 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/16/2019-06-16-计组/" data-id="cjwyzkcmn002ipgshox0tx3wr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/16/2019-06-16-计组/" data-id="cjwzr39ux002txwshw050ak80" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-15-计组" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/15/2019-06-15-计组/" class="article-date">
+  <time datetime="2019-06-15T14:09:28.000Z" itemprop="datePublished">2019-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/15/2019-06-15-计组/">2019-06-15 计算机组成原理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h3>计算机概要与技术</h3><p></p>
+<p></p><h4>计算机的价值-算力</h4><br>数据、算法、算力（增长方式：分布式、并行、云计算、显卡）<p></p>
+<p></p><h4>八大原则</h4><br>面向摩尔定律（集成度翻倍）的设计<br><br>使用抽象（在高层次中看不到低层次的细节，只能看到一个简化的模型）简化设计<br><br>加速大概率事件<br><br>通过并行提高性能<br><br>通过流水线提高性能<br><br>通过预测提高性能（分支预测、指令预取）<br><br>存储器层次<br><br>通过冗余提高可靠性<br><p></p>
+<p></p><h4>评价标准：怎么衡量算力</h4><br>时间是关键，空间换时间（并行）<br><br>时间指标与速度比（CPU空转时间（没有程序运行时，CPU还在转））<br><br>执行时间：包括CPU时间、IO等<br><br>CPU执行时间 = 用户CPU时间 + 系统CPU时间<br><br>一个程序的CPU执行时间 = 一个程序的CPU时钟周期数 <em> 时钟周期时间<br><br>吞吐率（带宽）：单位时间内完成的任务数量<br>CPI,IPC-对于性能的影响的因素<br><br>MIPS(每秒百万条指令) = 指令数／（执行时间 </em> 10 6）<p></p>
+<p></p><h4>功耗墙</h4><br>功耗墙的产生：功耗正比于 1/2 <em> 负载电容 </em> 电压的平方 * 开关频率 解决方法：多核（提高吞吐率），光进铜退<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/15/2019-06-15-计组/" data-id="cjwzr39uu002lxwshwl7uihe6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
@@ -170,50 +257,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/15/2019-06-15-计组2/" data-id="cjwyzkcmo002lpgshp31va2p2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-06-15-计组" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/15/2019-06-15-计组/" class="article-date">
-  <time datetime="2019-06-15T14:09:28.000Z" itemprop="datePublished">2019-06-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/15/2019-06-15-计组/">2019-06-15 计算机组成原理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h3>计算机概要与技术</h3><p></p>
-<p></p><h4>计算机的价值-算力</h4><br>数据、算法、算力（增长方式：分布式、并行、云计算、显卡）<p></p>
-<p></p><h4>八大原则</h4><br>面向摩尔定律（集成度翻倍）的设计<br><br>使用抽象（在高层次中看不到低层次的细节，只能看到一个简化的模型）简化设计<br><br>加速大概率事件<br><br>通过并行提高性能<br><br>通过流水线提高性能<br><br>通过预测提高性能（分支预测、指令预取）<br><br>存储器层次<br><br>通过冗余提高可靠性<br><p></p>
-<p></p><h4>评价标准：怎么衡量算力</h4><br>时间是关键，空间换时间（并行）<br><br>时间指标与速度比（CPU空转时间（没有程序运行时，CPU还在转））<br><br>执行时间：包括CPU时间、IO等<br><br>CPU执行时间 = 用户CPU时间 + 系统CPU时间<br><br>一个程序的CPU执行时间 = 一个程序的CPU时钟周期数 <em> 时钟周期时间<br><br>吞吐率（带宽）：单位时间内完成的任务数量<br>CPI,IPC-对于性能的影响的因素<br><br>MIPS(每秒百万条指令) = 指令数／（执行时间 </em> 10 6）<p></p>
-<p></p><h4>功耗墙</h4><br>功耗墙的产生：功耗正比于 1/2 <em> 负载电容 </em> 电压的平方 * 开关频率 解决方法：多核（提高吞吐率），光进铜退<p></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/15/2019-06-15-计组/" data-id="cjwyzkcmr002spgsh8g6mzmpa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/15/2019-06-15-计组2/" data-id="cjwzr39uw002qxwshrsupschn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
@@ -261,7 +305,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/11/2019-06-11-数据库/" data-id="cjwyzkcmp002npgshhd2861r6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/11/2019-06-11-数据库/" data-id="cjwzr39ut002jxwshq2wcst7w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -312,7 +356,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/10/2019-06-10-数据库/" data-id="cjwyzkcmm002gpgshjllqjk21" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/10/2019-06-10-数据库/" data-id="cjwzr39uq002bxwshepbqb24l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -356,7 +400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库/" data-id="cjwyzkcmj0028pgshx3fg8zri" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库/" data-id="cjwzr39uo0027xwshty8nio8w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -407,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库2/" data-id="cjwyzkcmk002bpgshoac7ursp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库2/" data-id="cjwzr39ur002exwshlbsyeotj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -446,57 +490,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库3/" data-id="cjwyzkcml002dpgshasskrbgt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库3/" data-id="cjwzr39us002gxwshs28o657g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-06-08-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/08/2019-06-08-算法/" class="article-date">
-  <time datetime="2019-06-08T14:09:28.000Z" itemprop="datePublished">2019-06-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/08/2019-06-08-算法/">2019-06-08 算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h4>图中的最短路径</h4><br>⚠️时间复杂度可以改进到O(mn)时间<br><br>空间复杂度的改进：我们不对每个值i记录M[i,v],而是对每个 结点v更新一个值M[v]，M[v]=min(M[v],min(cvw +M[w]))（多加一条边） 这样空间复杂度改进到O(n)<br><br>复原最短路径：记录每个结点通向终点t的路径上 它后面的第一个结点；只要距离M[v]更新，我们就更新这个值（first[v]）<br><br>如果指针图P包含一个圈C，那么这个圈一定有负费用<br><br>算法终止信号：某一次迭代中所有的M[v]值都保持不变<br><p></p>
-<p></p><h4>图中的负圈</h4><br>n-1步还停不下来，就说明有一个负圈<br><br>存在O(mn)时间的算法找到一个负圈（增加一个终点）<p></p>
-<p></p><h3>网络流</h3><p></p>
-<p></p><h4>最大流问题</h4><br>问题描述：有向图G,存在单一源点和单一汇点，每条边关联一个容量，非负数C<br><br>解决思路：引出原始边（前向边）和剩余边（后向边）的概念；bottleneck(P,f)是P上任何边关于流f的 最小剩余容量；把剩余图中的任何一条s-t路径认为是一条<b>增广路径</b><br>算法：Ford-Fulkerson算法<br><br>算法分析：因为有一个上界，我们知道 Ford-Fulkerson算法 一定会终止,算法时间复杂度：O(mC)<p></p>
-<p></p><h4>最大流和最小割</h4><br>最大流的值等于最小割<p></p>
-<p></p><h4>选择好的增广路径</h4><br>算法时间复杂度O(mC)，有些时候算法的执行会非常没有效率（因为选择了一条瓶颈容量很小的增广路径，导致收敛很慢）<br><br>算法改进：选择具有大的瓶颈容量的路径，那么算法进展会更快些<br><br>算法分析：外层While循环的迭代次数至多是 1 + ⎡log2 C⎤， ∆每次缩小一半<p></p>
-<p></p><h4>二分匹配问题</h4><br>将s连到L中的每个点，并赋流值为1；R中的每个点连到t,并赋流值为1;图中的<b>最大s-t流的值</b>等于G中<b>最大匹配的大小</b><p></p>
-<p></p><h3>NP与计算的难解性</h3><br>可行性的定义：存在多项式时间的算法<br><br>定义X至少和Y一样难：如果对于问题Y，能够用多项式个标准的计算步骤+多项式次调用解问题X的黑盒子来解问题Y。那么记作 Y &lt;= X;”Y多项式时间可归约到X“或”X至少像Y一样难“<p></p>
-<p></p><h4>多项式时间归约</h4><br>几个基本问题：独立集问题，顶点覆盖问题（S是一个独立集当且仅当它的补V-S是一个顶点覆盖）<br><br>集合覆盖：试图用一组较小的集合覆盖一个任意的对象集合（顶点覆盖&lt;=集合覆盖）<br><br>SAT问题：是否存在满足的真值赋值（3-SAY&lt;=独立集）<br><br><b>3-SAT &lt;= 独立集 &lt;= 顶点覆盖 &lt;= 集合覆盖<br><br>自归约问题:寻找问题 &lt;= 判别问题<br><br>P类问题</b>：存在多项式时间解法的问题的集合P(判定素数的问题：AKS算法;X和Y有没有公因数;编辑距离;高斯解方程)<br><br><b>NP</b>：是所有存在有效验证程序的问题的集合<br><br><b>NP完全</b>:(电路可满足性)如果Y是一个NP完全问题，X属于NP且Y&lt;=X，则X是NP完全的<br><br>一般经验是：NP问题要么是P，要么是NP完全<p></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-算法/" data-id="cjwyzkcmf0021pgsh9mcl06zg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
 
     </footer>
   </div>
@@ -537,7 +534,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-数据库/" data-id="cjwyzkcmh0026pgshrczlzd8d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-数据库/" data-id="cjwzr39um0022xwshnetruswq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -567,7 +564,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome插件/">Chrome插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
     </div>
   </div>
 
@@ -577,7 +574,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
+      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Chrome插件/" style="font-size: 10px;">Chrome插件</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
     </div>
   </div>
 
@@ -599,11 +596,11 @@
       <ul>
         
           <li>
-            <a href="/2019/06/16/2019-06-16-计组/">2019-06-16 计算机组成原理</a>
+            <a href="/2019/06/27/Chrome插件/">出成绩提醒插件</a>
           </li>
         
           <li>
-            <a href="/2019/06/15/2019-06-15-计组2/">2019-06-15 计算机组成原理</a>
+            <a href="/2019/06/16/2019-06-16-计组/">2019-06-16 计算机组成原理</a>
           </li>
         
           <li>
@@ -611,11 +608,11 @@
           </li>
         
           <li>
-            <a href="/2019/06/11/2019-06-11-数据库/">2019-06-11 数据库</a>
+            <a href="/2019/06/15/2019-06-15-计组2/">2019-06-15 计算机组成原理</a>
           </li>
         
           <li>
-            <a href="/2019/06/10/2019-06-10-数据库/">2019-06-10 数据库</a>
+            <a href="/2019/06/11/2019-06-11-数据库/">2019-06-11 数据库</a>
           </li>
         
       </ul>

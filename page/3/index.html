@@ -62,10 +62,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-2019-05-29-SQL" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2019-05-30-SQL" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/05/29/2019-05-29-SQL/" class="article-date">
-  <time datetime="2019-05-29T14:09:28.000Z" itemprop="datePublished">2019-05-29</time>
+    <a href="/2019/05/30/2019-05-30-SQL/" class="article-date">
+  <time datetime="2019-05-30T14:09:28.000Z" itemprop="datePublished">2019-05-30</time>
 </a>
     
   </div>
@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/29/2019-05-29-SQL/">2019-05-29 SQL</a>
+      <a class="article-title" href="/2019/05/30/2019-05-30-SQL/">2019-05-30 SQL</a>
     </h1>
   
 
@@ -84,27 +84,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>周五要数据库上机，复习一下SQL🐟句</p>
-<p></p><h4>JOIN的用法</h4><p></p>
-<p><ul></ul></p>
-<p><li>inner join</li></p>
-<p><li>left join:将左表的所有记录列出，右表中只要符合on条件的，与左表记录相拼合，不符合条件的，填以null值</li></p>
-<p><li>将右表的所有记录列出，左表中只要符合on条件的，与右表记录相拼合，不符合条件的，填以null值</li></p>
-<p><li>full join:综合left和right（但是在mysql中没有这个操作，需要用Union）<br></li></p>
-<p></p><h4>数据库查询中的函数</h4><br>参考网站：<a href="https://blog.csdn.net/qq_43501509/article/details/84933178" target="_blank" rel="noopener">https://blog.csdn.net/qq_43501509/article/details/84933178</a><p></p>
-<p>IF(expr,v1,v2)    如果expr表达式为true返回v1,否则返回v2<br><br>IFNULL(v1,v2)    如果v1不为NULL返回v1,否则返回v2<br></p>
-<p>⚠️1、是count还是count* 如果是count的话要count哪个字段<br>     2、注意join的格式</p>
-<pre><code>SELECT distinct Category.catid,count(Workson.proid) as proNum
-from Category LEFT outer JOIN Project on Project.catid=Category.catid 
-LEFT outer JOIN Workson on Project.proid = Workson.proid
-AND empid=&apos;10102&apos;
-GROUP BY Category.catid;
-</code></pre><p>⚠️对于多对多的关系进行多表连接的时候要注意，可以先select*查看一下结果</p>
+        <p>明天要数据库上机，继续复习SQL🐟句<br><br><b>一定要看清题目要求啊！！不要忘记改列名和排序！！</b></p>
+<p></p><h4>top语句</h4><br>SELECT TOP number|percent column_name(s)<br>FROM table_name<br><p></p>
+<p></p><h4>limit语句</h4><br>select <em> from Customer LIMIT 10 ;–检索前10行数据，显示1-10条数据<br><br>select </em> from Customer limit 5,10 ;–检索从第6行开始向前加10条数据，共显示id为6,7….15<br><br>SELECT * FROM table LIMIT 4,-1;从第5个数据查询，到最后一个数据<p></p>
+<p></p><h4>case when</h4><br>case..when..then..else..end<br><br>🌰case catname when ‘计算机’ then 3price else 2*price end<p></p>
+<p></p><h4>计数distinct的列</h4><br>使用group by<p></p>
+<p></p><h4>找最大的几条记录</h4><br>内层：top 1 外层循环：看一下谁等于top 1<p></p>
+<p></p><h4>日期📅</h4><br>DATEADD()    在日期中添加或减去指定的时间间隔<br><br>DATEDIFF() 返回两个日期之间的时间<p></p>
+<p></p><h4>SQL 函数</h4><br>first():SELECT FIRST(OrderPrice) AS FirstOrderPrice FROM Orders 结果返回”OrderPrice” 列的第一个值<br><br>ucase() lcase():把字段转化成大、小写<br><br>mid():SELECT MID(City,1,3) as SmallCity FROM Persons<br>结果：”City” 列中提取前 3 个字符<br><br>round():SELECT ProductName, ROUND(UnitPrice,0) as UnitPrice FROM Products 结果：把名称和价格舍入为最接近的整数<p></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjwyzkcm4001cpgshhaxy5wn8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjwzr39ue001jxwshqn4yx1md" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -176,10 +168,64 @@ GO
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjwyzkcm5001epgshikvvxmiz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjwzr39u80017xwshbd9olza8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-05-29-SQL" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/29/2019-05-29-SQL/" class="article-date">
+  <time datetime="2019-05-29T14:09:28.000Z" itemprop="datePublished">2019-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/29/2019-05-29-SQL/">2019-05-29 SQL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>周五要数据库上机，复习一下SQL🐟句</p>
+<p></p><h4>JOIN的用法</h4><p></p>
+<p><ul></ul></p>
+<p><li>inner join</li></p>
+<p><li>left join:将左表的所有记录列出，右表中只要符合on条件的，与左表记录相拼合，不符合条件的，填以null值</li></p>
+<p><li>将右表的所有记录列出，左表中只要符合on条件的，与右表记录相拼合，不符合条件的，填以null值</li></p>
+<p><li>full join:综合left和right（但是在mysql中没有这个操作，需要用Union）<br></li></p>
+<p></p><h4>数据库查询中的函数</h4><br>参考网站：<a href="https://blog.csdn.net/qq_43501509/article/details/84933178" target="_blank" rel="noopener">https://blog.csdn.net/qq_43501509/article/details/84933178</a><p></p>
+<p>IF(expr,v1,v2)    如果expr表达式为true返回v1,否则返回v2<br><br>IFNULL(v1,v2)    如果v1不为NULL返回v1,否则返回v2<br></p>
+<p>⚠️1、是count还是count* 如果是count的话要count哪个字段<br>     2、注意join的格式</p>
+<pre><code>SELECT distinct Category.catid,count(Workson.proid) as proNum
+from Category LEFT outer JOIN Project on Project.catid=Category.catid 
+LEFT outer JOIN Workson on Project.proid = Workson.proid
+AND empid=&apos;10102&apos;
+GROUP BY Category.catid;
+</code></pre><p>⚠️对于多对多的关系进行多表连接的时候要注意，可以先select*查看一下结果</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjwzr39ud001hxwsh5nhdz2bu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
 
     </footer>
   </div>
@@ -372,7 +418,7 @@ public byte[] streamToArr(InputStream inputStream){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjwyzkcm3001apgshoqa6gh9g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjwzr39ua001bxwshik4p1g7u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -520,7 +566,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjwyzkcm6001gpgshuvoe9e8q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjwzr39ul0020xwshxnk54a49" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -559,7 +605,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="cjwyzkclz0014pgshgpihk3jw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="cjwzr39uk001wxwsh0zjtiy1a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -604,7 +650,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="cjwyzkcm10016pgshlgqp738f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="cjwzr39u60013xwshkfeijzvh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -646,7 +692,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="cjwyzkcly0012pgshybpljw1t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="cjwzr39u90019xwshyidv4rwx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -715,7 +761,7 @@ EXISTS (
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="cjwyzkcm20018pgshy06232yl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="cjwzr39u3000xxwshr4gk5ydd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -805,51 +851,7 @@ END IF;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjwyzkclx0010pgshjpxxc3jj" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-15-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/15/2019-05-15-数据库/" class="article-date">
-  <time datetime="2019-05-15T14:09:28.000Z" itemprop="datePublished">2019-05-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/15/2019-05-15-数据库/">2019-05-15 数据库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>先补充一下触发器的内容。需求时：当满足条件时插入，不满足时插入失败，系统报错<br><br>实现方法：在创建触发器时mysql抛出异常</p>
-<pre><code>else
-    signal sqlstate &apos;HY000&apos; set message_text=&apos;您暂时已被禁止发布文章！&apos;;
-END IF ;
-</code></pre><p>然后在php中try-catch就可以啦</p>
-<p></p><h3>MYSQL 存储过程</h3><br>存储过程是为了完成特定功能的SQL语句集，经编译创建并保存在数据库中，用户可通过指定存储过程的名字并给定参数(需要时)来调用执行。存储过程思想上很简单，就是数据库 SQL 语言层面的代码<b>封装</b>与<b>重用</b>。<p></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/15/2019-05-15-数据库/" data-id="cjwyzkclw000ypgshhffliful" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjwzr39u4000zxwshoolik2oj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -879,7 +881,7 @@ END IF ;
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome插件/">Chrome插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
     </div>
   </div>
 
@@ -889,7 +891,7 @@ END IF ;
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
+      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Chrome插件/" style="font-size: 10px;">Chrome插件</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
     </div>
   </div>
 
@@ -911,11 +913,11 @@ END IF ;
       <ul>
         
           <li>
-            <a href="/2019/06/16/2019-06-16-计组/">2019-06-16 计算机组成原理</a>
+            <a href="/2019/06/27/Chrome插件/">出成绩提醒插件</a>
           </li>
         
           <li>
-            <a href="/2019/06/15/2019-06-15-计组2/">2019-06-15 计算机组成原理</a>
+            <a href="/2019/06/16/2019-06-16-计组/">2019-06-16 计算机组成原理</a>
           </li>
         
           <li>
@@ -923,11 +925,11 @@ END IF ;
           </li>
         
           <li>
-            <a href="/2019/06/11/2019-06-11-数据库/">2019-06-11 数据库</a>
+            <a href="/2019/06/15/2019-06-15-计组2/">2019-06-15 计算机组成原理</a>
           </li>
         
           <li>
-            <a href="/2019/06/10/2019-06-10-数据库/">2019-06-10 数据库</a>
+            <a href="/2019/06/11/2019-06-11-数据库/">2019-06-11 数据库</a>
           </li>
         
       </ul>

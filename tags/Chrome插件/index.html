@@ -5,20 +5,15 @@
   
 
   
-  <title>2019-06-11 数据库 | Hexo</title>
+  <title>Tag: Chrome插件 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="并发控制transactions see values in buffers, not on disk =&amp;gt; this time ignore INPUT/OUTPUT 冲突调换后影响语义(1)any two actions of a single transaction (2)two actions on a common DB element A, one of which is WRI">
-<meta name="keywords" content="数据库">
-<meta property="og:type" content="article">
-<meta property="og:title" content="2019-06-11 数据库">
-<meta property="og:url" content="http://yoursite.com/2019/06/11/2019-06-11-数据库/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/tags/Chrome插件/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="并发控制transactions see values in buffers, not on disk =&amp;gt; this time ignore INPUT/OUTPUT 冲突调换后影响语义(1)any two actions of a single transaction (2)two actions on a common DB element A, one of which is WRI">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-13T08:39:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019-06-11 数据库">
-<meta name="twitter:description" content="并发控制transactions see values in buffers, not on disk =&amp;gt; this time ignore INPUT/OUTPUT 冲突调换后影响语义(1)any two actions of a single transaction (2)two actions on a common DB element A, one of which is WRI">
+<meta name="twitter:title" content="Hexo">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -65,72 +60,40 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2019-06-11-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/11/2019-06-11-数据库/" class="article-date">
-  <time datetime="2019-06-11T14:09:28.000Z" itemprop="datePublished">2019-06-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      2019-06-11 数据库
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2019/06/27/Chrome插件/" class="archive-article-date">
+  <time datetime="2019-06-27T14:09:28.000Z" itemprop="datePublished">Jun 27</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/06/27/Chrome插件/">出成绩提醒插件</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h3>并发控制</h3><br>transactions see values in buffers, not on disk =&gt; this time <b>ignore INPUT/OUTPUT</b><p></p>
-<p></p><h4>冲突</h4><br>调换后影响语义<br><br>(1)any two actions of a single transaction <br><br>(2)two actions on a common DB element A, one of which is WRITE(A) <br><br><b>如果有冲突的话，就能确定一个优先执行顺序</b><p></p>
-<p></p><h4>优先图</h4><br>画优先图的步骤：分别画出每个元素（A、B…）的优先图，然后合并到一起！！<br><br>证明不可串行化：一个调度中有环<br><br>证明可串行化：写出等价的可串行化调度<br><br>如果两个调度冲突等价 =&gt; 优先图等价<br>但是反过来不成立：优先图等价+没有环 =&gt; 两个调度冲突等价<p></p>
-<p></p><h4>如何做可串行化调度</h4><p></p>
-<p></p><h5>乐观的方式</h5><br>假定一个可串行的序（按照时间戳）🌰假设 T1:5,T2:3,T3:7 那么序就是 T2-&gt;T1-&gt;T3 每次进来都要比对序<p></p>
-<p></p><h5>悲观的方式</h5><br>按一套机制一定是可串行的（lock）<br><br>规则1（对事务）:事务在读写某个元素之前必须先加锁，该事务所有动作都完成之后再解锁<br><br>规则2（对元素）：每个元素只能持有一把锁<br><br>规则3（两段锁协议）（不解决死锁问题，但保证冲突可串行化）（对事务）：开始解锁后不能再加锁<p></p>
-<p></p><h4>一些增加并行度的方法</h4><br>Shared locks:使用共享锁读 S=… ls1(A) r1(A) ls2(A) r2(A) … u1(A)u2(A)  此时，lx1(A)排他锁用来写操作（读锁可以被写锁替换）（<b>只有读锁和读锁是共享的</b>，一个元素一旦加了写锁，别的事务不能对它进行读写）<br><p></p>
-<p></p><h4>活锁和死锁</h4><br>封锁技术可以有效的解决并行操作的一致性问题，但也会带来新的问题<br><br>活锁：某个事务可能处于永久的等待中（先来先服务）<br><p></p>
-<p></p><h5>死锁</h5><br>产生条件：几个事务都封锁了一些对象，然后又请求给已经被封锁的对象加锁<br><br>解决办法：顺序封锁法（预先对数据对象规定一个封锁顺序，所有事务都按这个顺序实行封锁，这个顺序是随机的）<p></p>
-<p></p><h4>多粒度锁</h4><br>层次嵌套元素(例如关系/块/元组)可以用意图锁IS和IX锁定的想法<br><br><b>从根(关系)级别开始锁定</b><br><br>要在子元素上放置一个S或X锁，首先放置一个对应的意图锁是或IX元素本身<br>,警告其他人:“我将读取/写入这个元素的一些子元素”<p></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/11/2019-06-11-数据库/" data-id="cjwzr39ut002jxwshq2wcst7w" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019/06/15/2019-06-15-计组2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          2019-06-15 计算机组成原理
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/06/10/2019-06-10-数据库/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">2019-06-10 数据库</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
+
 
 </section>
         
