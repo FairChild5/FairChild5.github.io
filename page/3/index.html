@@ -96,61 +96,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjxegtws4001itmsh43w8g7nc" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-29-SQL" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/29/2019-05-29-SQL/" class="article-date">
-  <time datetime="2019-05-29T14:09:28.000Z" itemprop="datePublished">2019-05-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/29/2019-05-29-SQL/">2019-05-29 SQL</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>周五要数据库上机，复习一下SQL🐟句</p>
-<p></p><h4>JOIN的用法</h4><p></p>
-<p><ul></ul></p>
-<p><li>inner join</li></p>
-<p><li>left join:将左表的所有记录列出，右表中只要符合on条件的，与左表记录相拼合，不符合条件的，填以null值</li></p>
-<p><li>将右表的所有记录列出，左表中只要符合on条件的，与右表记录相拼合，不符合条件的，填以null值</li></p>
-<p><li>full join:综合left和right（但是在mysql中没有这个操作，需要用Union）<br></li></p>
-<p></p><h4>数据库查询中的函数</h4><br>参考网站：<a href="https://blog.csdn.net/qq_43501509/article/details/84933178" target="_blank" rel="noopener">https://blog.csdn.net/qq_43501509/article/details/84933178</a><p></p>
-<p>IF(expr,v1,v2)    如果expr表达式为true返回v1,否则返回v2<br><br>IFNULL(v1,v2)    如果v1不为NULL返回v1,否则返回v2<br></p>
-<p>⚠️1、是count还是count* 如果是count的话要count哪个字段<br>     2、注意join的格式</p>
-<pre><code>SELECT distinct Category.catid,count(Workson.proid) as proNum
-from Category LEFT outer JOIN Project on Project.catid=Category.catid 
-LEFT outer JOIN Workson on Project.proid = Workson.proid
-AND empid=&apos;10102&apos;
-GROUP BY Category.catid;
-</code></pre><p>⚠️对于多对多的关系进行多表连接的时候要注意，可以先select*查看一下结果</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjxegtws0001btmshoude6obm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="cjxg2rd60001m75mn7tb6cvt3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -222,10 +168,64 @@ GO
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjxegtws6001mtmsh9mdwpbu4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="cjxg2rd5w001e75mn0xwetp3u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-05-29-SQL" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/29/2019-05-29-SQL/" class="article-date">
+  <time datetime="2019-05-29T14:09:28.000Z" itemprop="datePublished">2019-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/29/2019-05-29-SQL/">2019-05-29 SQL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>周五要数据库上机，复习一下SQL🐟句</p>
+<p></p><h4>JOIN的用法</h4><p></p>
+<p><ul></ul></p>
+<p><li>inner join</li></p>
+<p><li>left join:将左表的所有记录列出，右表中只要符合on条件的，与左表记录相拼合，不符合条件的，填以null值</li></p>
+<p><li>将右表的所有记录列出，左表中只要符合on条件的，与右表记录相拼合，不符合条件的，填以null值</li></p>
+<p><li>full join:综合left和right（但是在mysql中没有这个操作，需要用Union）<br></li></p>
+<p></p><h4>数据库查询中的函数</h4><br>参考网站：<a href="https://blog.csdn.net/qq_43501509/article/details/84933178" target="_blank" rel="noopener">https://blog.csdn.net/qq_43501509/article/details/84933178</a><p></p>
+<p>IF(expr,v1,v2)    如果expr表达式为true返回v1,否则返回v2<br><br>IFNULL(v1,v2)    如果v1不为NULL返回v1,否则返回v2<br></p>
+<p>⚠️1、是count还是count* 如果是count的话要count哪个字段<br>     2、注意join的格式</p>
+<pre><code>SELECT distinct Category.catid,count(Workson.proid) as proNum
+from Category LEFT outer JOIN Project on Project.catid=Category.catid 
+LEFT outer JOIN Workson on Project.proid = Workson.proid
+AND empid=&apos;10102&apos;
+GROUP BY Category.catid;
+</code></pre><p>⚠️对于多对多的关系进行多表连接的时候要注意，可以先select*查看一下结果</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="cjxg2rd5x001g75mnq3cfg24l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
 
     </footer>
   </div>
@@ -418,7 +418,7 @@ public byte[] streamToArr(InputStream inputStream){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjxegtws2001dtmshbi432tt5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="cjxg2rd5u001a75mnjk9279zk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -566,7 +566,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjxegtws3001ftmshbbe6lfq1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="cjxg2rd5t001875mnsvkz0ato" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -605,7 +605,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="cjxegtwrx0015tmshxqbzuard" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="cjxg2rd5v001c75mntddkmhdx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -650,7 +650,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="cjxegtwrz0019tmshdf3m893n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="cjxg2rd5o001075mnkurph0o3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -692,7 +692,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="cjxegtwrw0013tmsh6svwq4pj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="cjxg2rd5r001475mn0gj9dvz1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -761,7 +761,7 @@ EXISTS (
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="cjxegtwry0017tmsh3xk44lxf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="cjxg2rd5p001275mnc58qm4mh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -851,7 +851,7 @@ END IF;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjxegtwrv0011tmshjdcnicn2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="cjxg2rd5s001675mncayxhgve" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
