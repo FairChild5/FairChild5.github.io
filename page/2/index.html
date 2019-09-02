@@ -62,6 +62,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-06-08-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/08/2019-06-08-数据库/" class="article-date">
+  <time datetime="2019-06-08T14:09:28.000Z" itemprop="datePublished">2019-06-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/08/2019-06-08-数据库/">2019-06-08 数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h3>SQL语句</h3><br>建表：CREATE TABLE  PRIMARY KEY(属性A,属性B)<br><br>外键：REFERENCES relation ( attributes ) 或者 FOREIGN KEY ( list of attributes ) REFERENCES relation ( <attributes> )被参照的属性必须是primary key或unique<br><br>三种外键可能的操作：1、reject(default) 2、CASCADE(FOREIGN KEY(beer) REFERENCES     Beers(name)<br>        ON DELETE/UPDATE CASCADE) 3、Set NULL(FOREIGN KEY(beer) REFERENCES     Beers(name)<br>        ON DELETE SET NULL);)<br><br>描述属性：NOT NULL,DEFAULT value(没有显式的给出时用默认，而不是NULL时用默认)<p></p>
+<p><b>修改columu(ADD/DROP)</b>:ALTER TABLE Bars ADD phone CHAR(16)<br>            DEFAULT ‘unlisted’;</p>
+<p>ALTER TABLE Bars DROP COLUMN license;</p>
+<p><b>CHECK</b>:Check occurs only when the ‘beer’ attribute of a ‘Sells’ tuple is inserted or updated.<br>Not when a ‘Beers’ tuple is deleted or updated. 添加到某个属性后面<br><br>也可以写成这种形式：CHECK (bar = ‘Joe’’s Bar’ OR<br>                 price &lt;= 5.00)<br><br>                 ALTER TABLE Sells ADD CHECK(…);</p>
+<p></p><h4>查询语句</h4><br>SELECT bar, beer, price*120 AS priceInYen<br>FROM    Sells;<br><br>SELECT  drinker, ‘likes Bud’ AS whoLikesBud<br>FROM     Likes<br>WHERE  beer = ‘Bud’;  –自己添一列<br><br>NULL和别的值比较 -&gt; UNKNOWN<br><br>判断一个值是否为空：is null<br><p></p>
+<p>INSERT INTO     relation     VALUES (list of values);<br><br>INSERT INTO     relation      (subquery);(批量插入)<br><br>DELETE FROM     relation     WHERE condition;<br><br>UPDATE               relation      SET assignments<br>                        WHERE condition;<br><br>Make the Likes relation empty:<b>DELETE FROM Likes;</b>(Different from <b>DROP TABLE Likes;</b>)<br></p>
+</attributes>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-数据库/" data-id="ck02ig904001z20she2h88901" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-06-08-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/08/2019-06-08-算法/" class="article-date">
@@ -97,10 +141,48 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-算法/" data-id="cjxg2rd6a002675mn46hf7yjv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-算法/" data-id="ck02ig909002b20shrhb7t3wl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-07-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/07/2019-06-07-数据库/" class="article-date">
+  <time datetime="2019-06-07T14:09:28.000Z" itemprop="datePublished">2019-06-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/07/2019-06-07-数据库/">2019-06-07 数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3>ER Model</h3><br>多对一关系：at most 1 箭头指向的一端是“唯一的”<br><br>圆箭头：有且只有一个<br><br>多端关系转换成双端：关系变实体，注意多对一的箭头<br><br>关系中的角色：只需要写一个实体<br><br>子类：1、三角形的尖指向父类 2、每种实体都是包含根节点的一棵子树 3、只有根有主键，并且充当所有实体的主键<br><br>模型约束：实体完整性（若属性A是基本关系R的<b>主属性</b>，则属性A不能取空值）、参照完整性（外键或者取参照关系中的某个主键值，或者取空值（表示还没有分配）<br>，外键可以由多个属性构成）、域约束、用户自定义约束<br><br>弱实体集合：双边矩形  多对一的sopporting relationship：双边菱形<br><h3>The Relational Data Model</h3><br>把子类转换成关系模式<br><br>OO方法：每个对象只属于一张表（按照子树转换）<br><br>ER方法：一个矩形转化为一张表，<b>子类要带上主键</b><br><br>NULL方法：把所有属性都放到一张表里<br><h3>SQL语句</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-数据库/" data-id="ck02ig905002120shjlzr83nl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
 
     </footer>
   </div>
@@ -142,48 +224,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-算法/" data-id="cjxg2rd67001z75mnshvx7is5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-算法/" data-id="ck02ig906002320sh1mwz8jd8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-06-07-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/07/2019-06-07-数据库/" class="article-date">
-  <time datetime="2019-06-07T14:09:28.000Z" itemprop="datePublished">2019-06-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/07/2019-06-07-数据库/">2019-06-07 数据库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3>ER Model</h3><br>多对一关系：at most 1 箭头指向的一端是“唯一的”<br><br>圆箭头：有且只有一个<br><br>多端关系转换成双端：关系变实体，注意多对一的箭头<br><br>关系中的角色：只需要写一个实体<br><br>子类：1、三角形的尖指向父类 2、每种实体都是包含根节点的一棵子树 3、只有根有主键，并且充当所有实体的主键<br><br>模型约束：实体完整性（若属性A是基本关系R的<b>主属性</b>，则属性A不能取空值）、参照完整性（外键或者取参照关系中的某个主键值，或者取空值（表示还没有分配）<br>，外键可以由多个属性构成）、域约束、用户自定义约束<br><br>弱实体集合：双边矩形  多对一的sopporting relationship：双边菱形<br><h3>The Relational Data Model</h3><br>把子类转换成关系模式<br><br>OO方法：每个对象只属于一张表（按照子树转换）<br><br>ER方法：一个矩形转化为一张表，<b>子类要带上主键</b><br><br>NULL方法：把所有属性都放到一张表里<br><h3>SQL语句</h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-数据库/" data-id="cjxg2rd68002175mnq0xzg7so" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
 
     </footer>
   </div>
@@ -256,7 +300,7 @@ return T
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法/" data-id="cjxg2rd64001u75mnss3gt78p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法/" data-id="ck02ig900001r20shzge5q725" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -333,7 +377,7 @@ return δ.
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法2/" data-id="cjxg2rd66001y75mn0xa4h4tx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法2/" data-id="ck02ig903001y20shywnpe3h6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -398,7 +442,7 @@ output intervals [sj, fj]
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="cjxg2rd62001p75mnl5aca97o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="ck02ig901001u20sh9wcfbk2p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -438,7 +482,46 @@ output intervals [sj, fj]
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="cjxg2rd5y001i75mnj58l9kvt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="ck02ig8zx001m20shgzttpz00" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-04-算法2" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/04/2019-06-04-算法2/" class="article-date">
+  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/04/2019-06-04-算法2/">2019-06-04 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h4>算法分析基础</h4><br>寻找效率的定义：与平台无关，实例无关，并且随着输入规模的增长是可以预测的<br><br>O(upper),Ω(lower),Θ(tight)<br><br>O(nlogn)阶时间:快排、堆排、归并、FFT（快速傅立叶变换）<br><br>O(n^k)时间:对某个固定常数k, 我们想知道给定的n个结点的输入图是否有一个大小为k的独立集(方法：枚举) 判断k个结点的子集是否独立：O(k^2)<br><br>指数时间:假设给定一个图，需要找一个最大的独立集<br><br>n!时间：各种穷举搜索，TSP（巡回售货员问题）<br>              ⎛n⎞n<br>n→∞,n!≈ 2πn ⎝e⎠.<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="ck02ig8zz001p20shdd2runw5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -484,88 +567,10 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="cjxg2rd63001r75mnuyvdbybd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="ck02ig902001v20shm7igknrr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-06-04-算法2" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/04/2019-06-04-算法2/" class="article-date">
-  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/04/2019-06-04-算法2/">2019-06-04 算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h4>算法分析基础</h4><br>寻找效率的定义：与平台无关，实例无关，并且随着输入规模的增长是可以预测的<br><br>O(upper),Ω(lower),Θ(tight)<br><br>O(nlogn)阶时间:快排、堆排、归并、FFT（快速傅立叶变换）<br><br>O(n^k)时间:对某个固定常数k, 我们想知道给定的n个结点的输入图是否有一个大小为k的独立集(方法：枚举) 判断k个结点的子集是否独立：O(k^2)<br><br>指数时间:假设给定一个图，需要找一个最大的独立集<br><br>n!时间：各种穷举搜索，TSP（巡回售货员问题）<br>              ⎛n⎞n<br>n→∞,n!≈ 2πn ⎝e⎠.<p></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="cjxg2rd65001v75mncxpil93y" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-06-03-sxr" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/03/2019-06-03-sxr/" class="article-date">
-  <time datetime="2019-06-03T14:09:28.000Z" itemprop="datePublished">2019-06-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/03/2019-06-03-sxr/">2019-06-03 sxr</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近都没有发github，在忙着复习，🍐还挺大的。今天为什么要记一下博客呢？因为今天做了移动的展示，有一点点感悟。学长真的强，不仅是因为多学了一年。不管什么时候都要知道人外有人，自己只是一个laji，但是也不用太沮丧了，继续学习💪。<br><br>有一个挺重要的就是如何展示，本来我们做的也挺多的，但是界面就不太好看，展示形式也有点单调，这方面以后一定要改进。我甚至觉得展示比代码还要重要一点。今天有几个app给我印象挺深刻的：多线程下载视频，界面很简单很实用，我很喜欢。还有一个做游戏的，一个小人闯关，游戏这方面一点也没接触过，觉得技术挺难的。<br><br>复习加油！！！🌈</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="cjxg2rd5z001k75mnkdvpfn3x" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
 
     </footer>
   </div>
@@ -592,7 +597,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome插件/">Chrome插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome插件/">Chrome插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
     </div>
   </div>
 
@@ -602,7 +607,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Chrome插件/" style="font-size: 10px;">Chrome插件</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
+      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Chrome插件/" style="font-size: 10px;">Chrome插件</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
     </div>
   </div>
 
@@ -611,7 +616,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
     </div>
   </div>
 
@@ -622,6 +627,10 @@ Recursively compute a topological ordering of G-{v} and append this order after 
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/09/02/2019-09-02/">今日学习总结</a>
+          </li>
         
           <li>
             <a href="/2019/06/27/Chrome插件/">出成绩提醒插件</a>
@@ -637,10 +646,6 @@ Recursively compute a topological ordering of G-{v} and append this order after 
         
           <li>
             <a href="/2019/06/15/2019-06-15-计组2/">2019-06-15 计算机组成原理</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/11/2019-06-11-数据库/">2019-06-11 数据库</a>
           </li>
         
       </ul>
