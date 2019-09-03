@@ -62,6 +62,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-06-04-算法3" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/04/2019-06-04-算法3/" class="article-date">
+  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/04/2019-06-04-算法3/">2019-06-04 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h3>图</h3><p></p>
+<h4>基本定义和应用</h4><br>图的表示：<br><br>领接矩阵：顶点之间有边就标1，主对角线是0（自己到自己是0）<br><br>领接链表：把与它有边相连的顶点接到一个链表上<br><br>定理：设G是一个具有n个结点的无向图。下面任意两条都可以推出第三条：1、G是连通的；2、G不包含一个圈；3、G有n-1条边<br><h4>图的连通性与图的遍历</h4><br>BFS：O(m+n)可以生成层     DFS：O(m+n)<br><h4>二部图(红蓝着色)</h4><br>定理：图G是二部图当且仅当图中没有奇圈<br><br>定理：设G是一个连通图,L0, …, Lk 是从顶点s由BFS 算法生成的层。那么下面两件事一定恰好成立其一:<br>i. G中没有边与同一层的两个结点相交。这种情况下G 是二部图，其中偶数层的结点可以着红色，奇数层结 点可以着蓝色。<br>ii. G中有一条边与同一层的两个结点相交。此种情形下， 存在一个奇圈，不可能是二部图。<br><h4>强连通性</h4><br>如果有向图中每对顶点是相互可达的，那么此图是强连通的<br><br><b>存在O(m + n)的有效算法判别图G是否强连通</b><br><br>    Pick any node s.<br>      Run BFS from s in G.<br>     Run BFS from s in Grev.<br>     Return true iff all nodes reached in both BFS executions.<br><h4>有向无圈图(DAG)和拓扑排序</h4>
+
+<pre><code>To compute a topological ordering of G:
+Find a node v with no incoming edges and order it first
+Delete v from G
+Recursively compute a topological ordering of G-{v} and append this order after v
+</code></pre><p>上面算法在 O(m + n) 时间内找到一个拓扑排序.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="ck02igotc001r2lshd4s4jcn5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-06-03-sxr" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/03/2019-06-03-sxr/" class="article-date">
@@ -89,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="ck02ig8zv001i20shr27wdhxm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="ck02igot9001k2lsh4s765lab" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
@@ -135,7 +181,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="ck02ig8zw001k20sh6tl7wb61" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="ck02igot8001i2lshcw83gsks" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -207,7 +253,7 @@ GO
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="ck02ig8zr001820shtr9rrvon" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="ck02igot7001e2lshfhwu4lry" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li></ul>
@@ -261,7 +307,7 @@ GROUP BY Category.catid;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="ck02ig8zu001g20shuw8x8coe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="ck02igot7001g2lsh0hupi8zu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -457,7 +503,7 @@ public byte[] streamToArr(InputStream inputStream){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="ck02ig8zt001c20shmecwh20t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="ck02igot6001c2lsh9li7hi1b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -605,7 +651,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="ck02ig8zu001e20sh99odaj14" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="ck02igot5001a2lshe76ekn2w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -644,7 +690,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="ck02ig8zs001a20shijp5z3ek" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="ck02igot400182lshx5fy7cfj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -689,7 +735,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="ck02ig8zo001020shwdkm3l49" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="ck02igot300162lshxb04lkxd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -731,76 +777,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="ck02ig8zp001420shh2cq7snc" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-17-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/17/2019-05-17-数据库/" class="article-date">
-  <time datetime="2019-05-17T14:09:28.000Z" itemprop="datePublished">2019-05-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/17/2019-05-17-数据库/">2019-05-17 数据库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天没有学一些课外知识，最近可能就一直备战考试了。</p>
-<p></p><h3>SQL中In和Exists的区别</h3><p></p>
-<p></p><h4>IN关键字</h4><br>　　确定给定的值是否与子查询或列表中的值相匹配。in在查询的时候，首先查询子查询的表，然后将内表和外表做一个笛卡尔积，然后按照条件进行筛选。所以相对内表比较小的时候，in的速度较快。<br>　　<br>具体sql语句如下：<p></p>
-<pre><code> SELECT
-*
-FROM
-`user`
-WHERE
-`user`.id IN (
-    SELECT
-        `order`.user_id
-    FROM
-        `order`
-)　
-</code></pre><p>  </p><h4>Exists关键字</h4><br>　  指定一个子查询，检测行的存在。遍历循环外表，然后看外表中的记录有没有和内表的数据一样的。匹配上就将结果放入结果集中。<p></p>
-<p>具体sql语句如下：</p>
-<pre><code> SELECT
-`user`.*
-FROM
-`user`
-WHERE
-EXISTS (
-    SELECT
-        `order`.user_id
-    FROM
-        `order`
-    WHERE
-        `user`.id = `order`.user_id
-)　　　　
-</code></pre><p>  这条sql语句的执行结果和上面的in的执行结果是一样;但是，不一样的是它们的执行流程完全不一样.</p>
-<p>参考网站：<a href="http://www.cnblogs.com/liyasong/p/sql_in_exists.html" target="_blank" rel="noopener">http://www.cnblogs.com/liyasong/p/sql_in_exists.html</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="ck02ig8zo001220shjfnxqiln" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="ck02igot200142lshj9embokl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -830,7 +807,7 @@ EXISTS (
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome插件/">Chrome插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome插件/">Chrome插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络技术与应用/">网络技术与应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
     </div>
   </div>
 
@@ -840,7 +817,7 @@ EXISTS (
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Chrome插件/" style="font-size: 10px;">Chrome插件</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
+      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Chrome插件/" style="font-size: 10px;">Chrome插件</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/网络技术与应用/" style="font-size: 10px;">网络技术与应用</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
     </div>
   </div>
 
@@ -862,6 +839,10 @@ EXISTS (
       <ul>
         
           <li>
+            <a href="/2019/09/03/2019-09-03一/">今日学习总结</a>
+          </li>
+        
+          <li>
             <a href="/2019/09/02/2019-09-02/">今日学习总结</a>
           </li>
         
@@ -875,10 +856,6 @@ EXISTS (
         
           <li>
             <a href="/2019/06/15/2019-06-15-计组/">2019-06-15 计算机组成原理</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/15/2019-06-15-计组2/">2019-06-15 计算机组成原理</a>
           </li>
         
       </ul>
