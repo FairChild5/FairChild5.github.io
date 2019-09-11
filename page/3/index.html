@@ -62,9 +62,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-2019-06-04-算法3" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2019-06-04-算法2" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/06/04/2019-06-04-算法3/" class="article-date">
+    <a href="/2019/06/04/2019-06-04-算法2/" class="article-date">
   <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
 </a>
     
@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/04/2019-06-04-算法3/">2019-06-04 算法</a>
+      <a class="article-title" href="/2019/06/04/2019-06-04-算法2/">2019-06-04 算法</a>
     </h1>
   
 
@@ -84,19 +84,52 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p></p><h3>图</h3><p></p>
-<h4>基本定义和应用</h4><br>图的表示：<br><br>领接矩阵：顶点之间有边就标1，主对角线是0（自己到自己是0）<br><br>领接链表：把与它有边相连的顶点接到一个链表上<br><br>定理：设G是一个具有n个结点的无向图。下面任意两条都可以推出第三条：1、G是连通的；2、G不包含一个圈；3、G有n-1条边<br><h4>图的连通性与图的遍历</h4><br>BFS：O(m+n)可以生成层     DFS：O(m+n)<br><h4>二部图(红蓝着色)</h4><br>定理：图G是二部图当且仅当图中没有奇圈<br><br>定理：设G是一个连通图,L0, …, Lk 是从顶点s由BFS 算法生成的层。那么下面两件事一定恰好成立其一:<br>i. G中没有边与同一层的两个结点相交。这种情况下G 是二部图，其中偶数层的结点可以着红色，奇数层结 点可以着蓝色。<br>ii. G中有一条边与同一层的两个结点相交。此种情形下， 存在一个奇圈，不可能是二部图。<br><h4>强连通性</h4><br>如果有向图中每对顶点是相互可达的，那么此图是强连通的<br><br><b>存在O(m + n)的有效算法判别图G是否强连通</b><br><br>    Pick any node s.<br>      Run BFS from s in G.<br>     Run BFS from s in Grev.<br>     Return true iff all nodes reached in both BFS executions.<br><h4>有向无圈图(DAG)和拓扑排序</h4>
-
-<pre><code>To compute a topological ordering of G:
-Find a node v with no incoming edges and order it first
-Delete v from G
-Recursively compute a topological ordering of G-{v} and append this order after v
-</code></pre><p>上面算法在 O(m + n) 时间内找到一个拓扑排序.</p>
+        <p></p><h4>算法分析基础</h4><br>寻找效率的定义：与平台无关，实例无关，并且随着输入规模的增长是可以预测的<br><br>O(upper),Ω(lower),Θ(tight)<br><br>O(nlogn)阶时间:快排、堆排、归并、FFT（快速傅立叶变换）<br><br>O(n^k)时间:对某个固定常数k, 我们想知道给定的n个结点的输入图是否有一个大小为k的独立集(方法：枚举) 判断k个结点的子集是否独立：O(k^2)<br><br>指数时间:假设给定一个图，需要找一个最大的独立集<br><br>n!时间：各种穷举搜索，TSP（巡回售货员问题）<br>              ⎛n⎞n<br>n→∞,n!≈ 2πn ⎝e⎠.<p></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="ck03rj94j001r7ushtzqsjbd4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="ck03rjlek001q89shmnsloalm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-04-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/04/2019-06-04-算法/" class="article-date">
+  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/04/2019-06-04-算法/">2019-06-04 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>开始复习算法啦⛽️</p>
+<p></p><h3>稳定匹配</h3><br>几个概念：<br>1、匹配: 每个男人和每个女人至多属于一个有序对。<br><br>2、完美匹配: 每个男人和每个女人都属于其中某个对的匹配。<br><br>3、稳定匹配：不存在不稳定因素<br><br>不稳定因素一定是<b>双方</b>的<p></p>
+<h4>问题讨论</h4><br>对每组优先表是否存在一个稳定匹配?<br><br>给定一组优先表,如果存在稳定匹配,我们能够有效的构造出来吗?<br><br>如果存在稳定匹配，会有很多吗?<br><h4>算法</h4><br>按照优先选择的思路<br><br>初始，每个人都是自由的。一个自由的男人m选择他的优先表上排名最高的女人w,发起邀请，那么 (m,w)进入中间状态:约会。<br>  如果又有另一个男人m’发起邀请，那么 女人w决定,选择m,还是m’. 如果m优先， 那么约会状态不变。否则(m’,w)变成约 会状态，m变成自由状态。<br><br>  循环往复;最后，当没有人处于自由状 态，那么所有的约会被定为最后的结果， 返回最终的完美匹配。<br><br>      Initialize each person to be free.<br>    while (some man is free and hasn’t proposed to every woman)<br>    {<br>    Choose such a man m<br>    w = 1st woman on m’s list to whom m has not yet     proposed if (w is free)<br>    assign m and w to be engaged<br>    else if (w prefers m to m’)<br>    assign m and w to be engaged, and m’ to be free<br>    else<br>    w rejects m<br>    }<br><h4>算法分析</h4><br>如果男人m在算法执行的某点是自由的，那么存在一个他还没有发出过邀请的女人<br><br>G-S算法返回一个完美匹配-&gt;稳定匹配<br><br>G-S算法在至多n2次While循环的迭代后终止。所以算法的复杂度是O(n2)<br><br>所有的执行得到同样的匹配!<br><h4>算法技巧</h4><br>女人对自己的优先表做预处理，反向变换<br><h5>拓展</h5><br>对于稳定室友匹配问题(更一般的情况)，可能会没有稳定匹配方案<br><h3>五个典型问题</h3><br><h4>区间调度问题:贪心算法</h4><br><h4>带权的区间调度问题:动态规划算法</h4><br><h4>二分匹配：网络流</h4><br><h4>独立集（NP完全问题中的一个）：验证和求解的难度相差很大</h4><br><h4>竞争的便利店选址问题: PSPACE完全问题类,严格难于NP完全问题，求解和验证都很难</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="ck03rjlej001o89shzzbd6q2u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -135,7 +168,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="ck03rj94f001k7ushdv1j582g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="ck03rjlei001l89shdmn2mgnf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
@@ -181,7 +214,61 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="ck03rj94e001i7ush1vu6x1d2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="ck03rjlef001j89shdacmkcri" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-05-29-SQL" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/29/2019-05-29-SQL/" class="article-date">
+  <time datetime="2019-05-29T14:09:28.000Z" itemprop="datePublished">2019-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/29/2019-05-29-SQL/">2019-05-29 SQL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>周五要数据库上机，复习一下SQL🐟句</p>
+<p></p><h4>JOIN的用法</h4><p></p>
+<p><ul></ul></p>
+<p><li>inner join</li></p>
+<p><li>left join:将左表的所有记录列出，右表中只要符合on条件的，与左表记录相拼合，不符合条件的，填以null值</li></p>
+<p><li>将右表的所有记录列出，左表中只要符合on条件的，与右表记录相拼合，不符合条件的，填以null值</li></p>
+<p><li>full join:综合left和right（但是在mysql中没有这个操作，需要用Union）<br></li></p>
+<p></p><h4>数据库查询中的函数</h4><br>参考网站：<a href="https://blog.csdn.net/qq_43501509/article/details/84933178" target="_blank" rel="noopener">https://blog.csdn.net/qq_43501509/article/details/84933178</a><p></p>
+<p>IF(expr,v1,v2)    如果expr表达式为true返回v1,否则返回v2<br><br>IFNULL(v1,v2)    如果v1不为NULL返回v1,否则返回v2<br></p>
+<p>⚠️1、是count还是count* 如果是count的话要count哪个字段<br>     2、注意join的格式</p>
+<pre><code>SELECT distinct Category.catid,count(Workson.proid) as proNum
+from Category LEFT outer JOIN Project on Project.catid=Category.catid 
+LEFT outer JOIN Workson on Project.proid = Workson.proid
+AND empid=&apos;10102&apos;
+GROUP BY Category.catid;
+</code></pre><p>⚠️对于多对多的关系进行多表连接的时候要注意，可以先select*查看一下结果</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="ck03rjlee001h89sheimmlrh1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -253,64 +340,10 @@ GO
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="ck03rj94d001e7usho4lnvne9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="ck03rjled001f89she8se88x5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-29-SQL" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/29/2019-05-29-SQL/" class="article-date">
-  <time datetime="2019-05-29T14:09:28.000Z" itemprop="datePublished">2019-05-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/29/2019-05-29-SQL/">2019-05-29 SQL</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>周五要数据库上机，复习一下SQL🐟句</p>
-<p></p><h4>JOIN的用法</h4><p></p>
-<p><ul></ul></p>
-<p><li>inner join</li></p>
-<p><li>left join:将左表的所有记录列出，右表中只要符合on条件的，与左表记录相拼合，不符合条件的，填以null值</li></p>
-<p><li>将右表的所有记录列出，左表中只要符合on条件的，与右表记录相拼合，不符合条件的，填以null值</li></p>
-<p><li>full join:综合left和right（但是在mysql中没有这个操作，需要用Union）<br></li></p>
-<p></p><h4>数据库查询中的函数</h4><br>参考网站：<a href="https://blog.csdn.net/qq_43501509/article/details/84933178" target="_blank" rel="noopener">https://blog.csdn.net/qq_43501509/article/details/84933178</a><p></p>
-<p>IF(expr,v1,v2)    如果expr表达式为true返回v1,否则返回v2<br><br>IFNULL(v1,v2)    如果v1不为NULL返回v1,否则返回v2<br></p>
-<p>⚠️1、是count还是count* 如果是count的话要count哪个字段<br>     2、注意join的格式</p>
-<pre><code>SELECT distinct Category.catid,count(Workson.proid) as proNum
-from Category LEFT outer JOIN Project on Project.catid=Category.catid 
-LEFT outer JOIN Workson on Project.proid = Workson.proid
-AND empid=&apos;10102&apos;
-GROUP BY Category.catid;
-</code></pre><p>⚠️对于多对多的关系进行多表连接的时候要注意，可以先select*查看一下结果</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="ck03rj94e001g7ush82txku15" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
 
     </footer>
   </div>
@@ -503,7 +536,7 @@ public byte[] streamToArr(InputStream inputStream){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="ck03rj94b001c7ushubajuwea" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="ck03rjleb001d89shc9iw5ho3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -651,7 +684,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="ck03rj94a001a7ushrwiovct0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="ck03rjlea001b89sh11l7cekt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -690,7 +723,7 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="ck03rj94900187ushwcjiv7tt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="ck03rjle9001989shs0y0hjlf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -735,52 +768,10 @@ private void openPDF(File file) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="ck03rj94800167ushu4zbwtn2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="ck03rjle7001789shtkcx95wl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-18-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/19/2019-05-18-数据库/" class="article-date">
-  <time datetime="2019-05-19T14:09:28.000Z" itemprop="datePublished">2019-05-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/19/2019-05-18-数据库/">2019-05-19 数据库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h3>数据库中的授权(grant)和收权(revoke)</h3><br>⚠️UPDATE ON R, UPDATE(a) on R, and UPDATE(b) ON R live in <b>different</b> nodes.<p></p>
-<p>⚠️SELECT ON R and SELECT ON R WITH GRANT OPTION live in <b>different</b> nodes.</p>
-<p></p><h4>收权</h4><br>CASCADE:当收回指定的权限时，也要收回那些仅仅由于要收回的权限而被授予的权限。操作方法：先删掉一条弧，然后删掉所有不能到达两颗✨节点的节点<p></p>
-<p>RESTRICT:由于要收回的权限传递给其他人而造成了任何权限收回，那么该收权语句将不被执行</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="ck03rj94700147ush1kgn43ya" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
 
     </footer>
   </div>
@@ -807,7 +798,7 @@ private void openPDF(File file) {
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome插件/">Chrome插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络技术与应用/">网络技术与应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome插件/">Chrome插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络技术与应用/">网络技术与应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
     </div>
   </div>
 
@@ -817,7 +808,7 @@ private void openPDF(File file) {
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Chrome插件/" style="font-size: 10px;">Chrome插件</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/网络技术与应用/" style="font-size: 10px;">网络技术与应用</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
+      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Chrome插件/" style="font-size: 10px;">Chrome插件</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/网络技术与应用/" style="font-size: 10px;">网络技术与应用</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
     </div>
   </div>
 
@@ -839,6 +830,10 @@ private void openPDF(File file) {
       <ul>
         
           <li>
+            <a href="/2019/09/11/2019-09-11/">今日学习总结</a>
+          </li>
+        
+          <li>
             <a href="/2019/09/03/2019-09-03一/">今日学习总结</a>
           </li>
         
@@ -852,10 +847,6 @@ private void openPDF(File file) {
         
           <li>
             <a href="/2019/06/16/2019-06-16-计组/">2019-06-16 计算机组成原理</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/15/2019-06-15-计组/">2019-06-15 计算机组成原理</a>
           </li>
         
       </ul>

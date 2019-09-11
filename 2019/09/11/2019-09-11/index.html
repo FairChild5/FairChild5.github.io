@@ -5,20 +5,20 @@
   
 
   
-  <title>2019-05-29 MAC上使用SQL Server | Hexo</title>
+  <title>今日学习总结 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="步骤: 打开Docker 打开终端  sudo docker stop sql1 sudo docker rm sql1  sudo docker run -e &amp;apos;ACCEPT_EULA=Y&amp;apos; -e &amp;apos;SA_PASSWORD=&amp;lt;Sxr878231&amp;apos; \        -p 1433:1433 --name sql1 \        -d mcr.mi">
-<meta name="keywords" content="SQL Server">
+  <meta name="description" content="今天太难受了，昨天和今天复习了一下Python的语法，下午学习flask框架进行web开发，但是flask怎么都安装不好，害得我把Python环境也卸载了。现在做不动了，明天继续。明天的内容：安装好Python（我怀疑时路径问题或者3.6没有卸载干净），学会使用PyCharm（这界面和AS太像了，想到我无数次重装AS，真的是很难受），安装好flask，完成web实战🌈">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2019-05-29 MAC上使用SQL Server">
-<meta property="og:url" content="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/index.html">
+<meta property="og:title" content="今日学习总结">
+<meta property="og:url" content="http://yoursite.com/2019/09/11/2019-09-11/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="步骤: 打开Docker 打开终端  sudo docker stop sql1 sudo docker rm sql1  sudo docker run -e &amp;apos;ACCEPT_EULA=Y&amp;apos; -e &amp;apos;SA_PASSWORD=&amp;lt;Sxr878231&amp;apos; \        -p 1433:1433 --name sql1 \        -d mcr.mi">
+<meta property="og:description" content="今天太难受了，昨天和今天复习了一下Python的语法，下午学习flask框架进行web开发，但是flask怎么都安装不好，害得我把Python环境也卸载了。现在做不动了，明天继续。明天的内容：安装好Python（我怀疑时路径问题或者3.6没有卸载干净），学会使用PyCharm（这界面和AS太像了，想到我无数次重装AS，真的是很难受），安装好flask，完成web实战🌈">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-29T04:36:15.000Z">
+<meta property="og:updated_time" content="2019-09-11T09:59:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019-05-29 MAC上使用SQL Server">
-<meta name="twitter:description" content="步骤: 打开Docker 打开终端  sudo docker stop sql1 sudo docker rm sql1  sudo docker run -e &amp;apos;ACCEPT_EULA=Y&amp;apos; -e &amp;apos;SA_PASSWORD=&amp;lt;Sxr878231&amp;apos; \        -p 1433:1433 --name sql1 \        -d mcr.mi">
+<meta name="twitter:title" content="今日学习总结">
+<meta name="twitter:description" content="今天太难受了，昨天和今天复习了一下Python的语法，下午学习flask框架进行web开发，但是flask怎么都安装不好，害得我把Python环境也卸载了。现在做不动了，明天继续。明天的内容：安装好Python（我怀疑时路径问题或者3.6没有卸载干净），学会使用PyCharm（这界面和AS太像了，想到我无数次重装AS，真的是很难受），安装好flask，完成web实战🌈">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2019-05-29-SQL Server" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2019-09-11" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/05/29/2019-05-29-SQL Server/" class="article-date">
-  <time datetime="2019-05-29T14:09:28.000Z" itemprop="datePublished">2019-05-29</time>
+    <a href="/2019/09/11/2019-09-11/" class="article-date">
+  <time datetime="2019-09-11T14:09:28.000Z" itemprop="datePublished">2019-09-11</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      2019-05-29 MAC上使用SQL Server
+      今日学习总结
     </h1>
   
 
@@ -87,48 +87,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>步骤:</p>
-<p>打开Docker</p>
-<p>打开终端 </p>
-<pre><code>sudo docker stop sql1
-sudo docker rm sql1
-
-sudo docker run -e &apos;ACCEPT_EULA=Y&apos; -e &apos;SA_PASSWORD=&lt;Sxr878231&apos; \
-       -p 1433:1433 --name sql1 \
-       -d mcr.microsoft.com/mssql/server:2017-latest
-
-       sudo docker exec -it sql1 &quot;bash&quot;
-       /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P &apos;Sxr878231&apos;
-</code></pre><p> 打开Navicat</p>
-<p> 连接localhost</p>
-<p> 执行查询</p>
-<pre><code> USE master;  
-GO  
-IF DB_ID (N&apos;MyOptionsTest&apos;) IS NOT NULL  
-DROP DATABASE MyOptionsTest;  
-GO  
-CREATE DATABASE MyOptionsTest  
-COLLATE Chinese_PRC_CS_AI_WS;  
-GO  
-
---Verify the collation setting.  
-SELECT name, collation_name  
-FROM sys.databases  
-WHERE name = N&apos;MyOptionsTest&apos;;  
-GO  
-</code></pre><p>插入表</p>
-<p>CREATE TABLE Department<br>(<br>depid    varchar(20)    not null    PRIMARY KEY,<br>depname    varchar(20)    not null,<br>location    varchar(20)    not null,<br>)<br>CREATE TABLE Employee<br>(<br>empid    varchar(20)    not null    PRIMARY KEY,<br>empname    varchar(20)    not null,<br>age int not null,<br>sex varchar(10) not null,<br>depid    varchar(20)    not null    foreign key(depid) references Department(depid)<br>)<br>CREATE TABLE Category<br>(<br>catid    varchar(20)    not null    PRIMARY KEY,<br>catname    varchar(20)    not null<br>)<br>CREATE TABLE Project<br>(<br>proid        varchar(20)    not null    PRIMARY KEY,<br>projectname varchar(20) not null,<br>budget    int    not null,<br>catid    varchar(20)    not null    foreign key(catid) references Category(catid)<br>)<br>CREATE TABLE Workson<br>(<br>empid    varchar(20)    not null    foreign key(empid) references Employee(empid),<br>proid        varchar(20)    not null    foreign key(proid) references Project(proid),<br>job    varchar(20)    ,<br>enterdate    date    not null,<br>PRIMARY KEY (empid,proid)<br>)<br>INSERT INTO Department<br>SELECT ‘d1’, ‘开发部’, ‘天津’ union<br>SELECT ‘d2’, ‘财务部’, ‘北京’ union<br>SELECT ‘d3’, ‘市场部’, ‘广州’ union<br>SELECT ‘d4’, ‘人才管理部’, ‘天津’<br>INSERT INTO Employee<br>SELECT ‘10102’, ‘张三’, 34, ‘男’,’d1’ union<br>SELECT ‘10211’, ‘李飞’, 24, ‘男’,’d2’ union<br>SELECT ‘18316’, ‘王玲’, 29, ‘女’,’d4’ union<br>SELECT ‘22020’, ‘周城’, 39, ‘男’,’d2’ union<br>SELECT ‘22135’, ‘徐晶’, 35, ‘女’,’d3’ union<br>SELECT ‘25348’, ‘冯昕’, 27, ‘男’,’d1’ union<br>SELECT ‘28559’, ‘李风’, 41, ‘女’,’d3’ union<br>SELECT ‘29346’, ‘王新’, 32, ‘男’,’d1’ union<br>SELECT ‘30678’, ‘孙浩文’, 28, ‘女’,’d4’ </p>
-<p>INSERT INTO Category<br>SELECT ‘c1’, ‘设计类’ union<br>SELECT ‘c2’, ‘采购类’ union<br>SELECT ‘c3’, ‘营销类’ union<br>SELECT ‘c4’, ‘软件类’ union<br>SELECT ‘c5’, ‘硬件类’</p>
-<p>INSERT INTO Project<br>SELECT ‘p1’,’产品推广’, 120000, ‘c3’ union<br>SELECT ‘p2’, ‘广告设计’,40000, ‘c1’ union<br>SELECT ‘p3’, ‘软件升级’, 185000, ‘c4’ union<br>SELECT ‘p4’, ‘服务器采购’,150000, ‘c2’ union<br>SELECT ‘p5’, ‘办公用品采购’,80000, ‘c2’ union<br>SELECT ‘p6’, ‘软件开发’,85000, ‘c4’ </p>
-<p>INSERT INTO Workson<br>SELECT ‘10211’, ‘p1’, ‘分析员’, ‘2017-01-01’ union<br>SELECT ‘25348’, ‘p6’, ‘职员’, ‘2018-02-01’ union<br>SELECT ‘10102’, ‘p3’, ‘管理员’, ‘2018-08-05’ union<br>SELECT ‘25348’, ‘p4’, ‘职员’, ‘2018-03-23’ union<br>SELECT ‘22020’, ‘p6’, ‘管理员’, ‘2019-03-01’ union<br>SELECT ‘28559’, ‘p5’, ‘职员’, ‘2019-02-20’ union<br>SELECT ‘29346’, ‘p5’,  null, ‘2018-04-12’ union<br>SELECT ‘25348’, ‘p1’,  null, ‘2017-06-04’ union<br>SELECT ‘25348’, ‘p2’,  null, ‘2018-11-15’ union<br>SELECT ‘22020’, ‘p3’, ‘职员’, ‘2017-07-16’ union<br>SELECT ‘22135’, ‘p2’, ‘管理员’, ‘2017-12-18’ union<br>SELECT ‘18316’, ‘p5’, ‘职员’, ‘2018-06-22’ union<br>SELECT ‘10102’, ‘p4’, ‘管理员’, ‘2018-10-29’ union<br>SELECT ‘28559’, ‘p1’, ‘管理员’, ‘2019-02-11’ union<br>SELECT ‘10102’, ‘p5’, ‘职员’, ‘2018-12-10’ union<br>SELECT ‘18316’, ‘p1’, ‘职员’, ‘2017-09-28’ union<br>SELECT ‘10211’, ‘p6’, ‘分析员’, ‘2018-05-27’ union<br>SELECT ‘10102’, ‘p2’, ‘职员’, ‘2018-11-27’ union<br>SELECT ‘29346’, ‘p2’, ‘职员’, ‘2018-02-03’ union<br>SELECT ‘18316’, ‘p6’, ‘职员’, ‘2018-05-01’ </p>
+        <p>今天太难受了，昨天和今天复习了一下Python的语法，下午学习flask框架进行web开发，但是flask怎么都安装不好，害得我把Python环境也卸载了。现在做不动了，明天继续。明天的内容：安装好Python（我怀疑时路径问题或者3.6没有卸载干净），学会使用PyCharm（这界面和AS太像了，想到我无数次重装AS，真的是很难受），安装好flask，完成web实战🌈</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="ck03rjled001f89she8se88x5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/11/2019-09-11/" data-id="ck0f3eoui0000zyshjp2z7ym9" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
 
     </footer>
   </div>
@@ -136,19 +103,10 @@ GO
     
 <nav id="article-nav">
   
-    <a href="/2019/05/29/2019-05-29-SQL/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          2019-05-29 SQL
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/05/24/2019-05-24-Android/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/09/03/2019-09-03一/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">2019-05-24 Android</div>
+      <div class="article-nav-title">今日学习总结</div>
     </a>
   
 </nav>
