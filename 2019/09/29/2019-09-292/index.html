@@ -5,20 +5,20 @@
   
 
   
-  <title>2019-05-10 yii | Hexo</title>
+  <title>Spring与Spring Boot | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="权限管理 ACF方式在controller代码中的behaviors()方法中添加如下代码：‘access’ =&amp;gt; [                ‘class’ =&amp;gt; AccessControl::className(),                ‘rules’ =&amp;gt;                [                    [">
-<meta name="keywords" content="yii">
+  <meta name="description" content="Spring框架目的：解决企业应用开发的复杂性功能：使用基本的JavaBean（Java的可重用软件组件）代替EJB（标准），并提供了更多的企业应用功能补充：JavaBean（1、所有属性为private；2、提供默认构造方法；3、提供getter和setter；4、实现serializable接口）接口是个规范 使用接口而不使用类 七个模块：核心容器、应用上下文模块（提供企业服务）、Spring">
+<meta name="keywords" content="Spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2019-05-10 yii">
-<meta property="og:url" content="http://yoursite.com/2019/05/10/2019-05-10-yii/index.html">
+<meta property="og:title" content="Spring与Spring Boot">
+<meta property="og:url" content="http://yoursite.com/2019/09/29/2019-09-292/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="权限管理 ACF方式在controller代码中的behaviors()方法中添加如下代码：‘access’ =&amp;gt; [                ‘class’ =&amp;gt; AccessControl::className(),                ‘rules’ =&amp;gt;                [                    [">
+<meta property="og:description" content="Spring框架目的：解决企业应用开发的复杂性功能：使用基本的JavaBean（Java的可重用软件组件）代替EJB（标准），并提供了更多的企业应用功能补充：JavaBean（1、所有属性为private；2、提供默认构造方法；3、提供getter和setter；4、实现serializable接口）接口是个规范 使用接口而不使用类 七个模块：核心容器、应用上下文模块（提供企业服务）、Spring">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-10T12:05:38.000Z">
+<meta property="og:updated_time" content="2019-09-29T13:50:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019-05-10 yii">
-<meta name="twitter:description" content="权限管理 ACF方式在controller代码中的behaviors()方法中添加如下代码：‘access’ =&amp;gt; [                ‘class’ =&amp;gt; AccessControl::className(),                ‘rules’ =&amp;gt;                [                    [">
+<meta name="twitter:title" content="Spring与Spring Boot">
+<meta name="twitter:description" content="Spring框架目的：解决企业应用开发的复杂性功能：使用基本的JavaBean（Java的可重用软件组件）代替EJB（标准），并提供了更多的企业应用功能补充：JavaBean（1、所有属性为private；2、提供默认构造方法；3、提供getter和setter；4、实现serializable接口）接口是个规范 使用接口而不使用类 七个模块：核心容器、应用上下文模块（提供企业服务）、Spring">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2019-05-10-yii" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2019-09-292" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/05/10/2019-05-10-yii/" class="article-date">
-  <time datetime="2019-05-10T14:09:28.000Z" itemprop="datePublished">2019-05-10</time>
+    <a href="/2019/09/29/2019-09-292/" class="article-date">
+  <time datetime="2019-09-29T14:09:28.000Z" itemprop="datePublished">2019-09-29</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      2019-05-10 yii
+      Spring与Spring Boot
     </h1>
   
 
@@ -87,16 +87,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p></p><h3>权限管理</h3><p></p>
-<h4>ACF方式</h4><br>在controller代码中的behaviors()方法中添加如下代码：<br>‘access’ =&gt; [<br>                ‘class’ =&gt; AccessControl::className(),<br>                ‘rules’ =&gt;<br>                [<br>                    [<br>                        ‘actions’ =&gt; [‘index’,’view’],<br>                        ‘allow’ =&gt; true,<br>                        ‘roles’ =&gt; [‘?’],<br>                    ],<br>                    [<br>                        ‘actions’ =&gt; [‘index’,’view’,’create’,’update’],<br>                        ‘allow’ =&gt; true,<br>                        ‘roles’ =&gt; [‘@’],<br>                    ],<br>                ],<br><br>问号表示游客，@表示登录用户<br><h4>RBAC方式：基于角色的权限管理方式</h4>
+        <p></p><h3>Spring框架</h3><br>目的：解决企业应用开发的复杂性<br><br>功能：使用基本的JavaBean（Java的可重用软件组件）代替EJB（标准），并提供了更多的企业应用功能<br><br>补充：JavaBean（1、所有属性为private；2、提供默认构造方法；3、提供getter和setter；4、实现serializable接口）<br><br><b>接口是个规范</b> 使用接口而不使用类<br><p></p>
+<p>七个模块：核心容器、应用上下文模块（提供企业服务）、Spring的AOP模块（面向切面的编程）、JDBC抽象和DAO模块、对象／关系映射集成模块、Spring的Web模块、Spring的MVC框架</p>
+<p>Spring MVC核心组件：DiapatcherServlet（前端控制器）、HandlerMapping（处理映射）、Controller、Model and View、ViewResolver</p>
+<p></p><h3>Spring Boot</h3><br>mac搭建spring boot环境：<a href="https://baijiahao.baidu.com/s?id=1590940914254795783&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">https://baijiahao.baidu.com/s?id=1590940914254795783&amp;wfr=spider&amp;for=pc</a><p></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/10/2019-05-10-yii/" data-id="ck0f3ey2r000r08shzupmsfbm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/29/2019-09-292/" data-id="ck151kinl00009rshwwo5ekeg" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yii/">yii</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
 
     </footer>
   </div>
@@ -104,19 +106,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/05/12/2019-05-12-sxr/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          2019-05-12 sxr
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/05/09/2019-05-09-yii/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/09/11/2019-09-29/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">2019-05-09 yii</div>
+      <div class="article-nav-title">今日感悟</div>
     </a>
   
 </nav>

@@ -62,10 +62,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-2019-06-09-数据库2" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2019-06-10-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/06/09/2019-06-09-数据库2/" class="article-date">
-  <time datetime="2019-06-09T14:09:28.000Z" itemprop="datePublished">2019-06-09</time>
+    <a href="/2019/06/10/2019-06-10-数据库/" class="article-date">
+  <time datetime="2019-06-10T14:09:28.000Z" itemprop="datePublished">2019-06-10</time>
 </a>
     
   </div>
@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/09/2019-06-09-数据库2/">2019-06-09 数据库</a>
+      <a class="article-title" href="/2019/06/10/2019-06-10-数据库/">2019-06-10 数据库</a>
     </h1>
   
 
@@ -84,24 +84,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p></p><h3>关系查询语言</h3><p></p>
-<p><ul></ul></p>
-<p><li>并（Union）、交（Intersection）、差（Difference） Operands must have the same schema</li></p>
-<p><li>笛卡尔积：总行数 = m*n</li></p>
-<p><li>选择</li></p>
-<p><li>投影</li></p>
-<p><li>join</li><br><br>运算优先级：（select,project,rename）&gt;(product,join) &gt;intersection &gt;union,difference<br></p>
-<p></p><h4>SQL is Bag language</h4><p></p>
-<p><ul></ul></p>
-<p><li>选择、投影、join等操作可以有相同的行</li></p>
-<p><li><b>Bag Union:</b>An element appears in the union of two bags the <b>sum</b> of the number of times it appears in each bag</li></p>
-<p><li><b>Bag Intersection:</b>An element appears in the intersection of two bags the <b>minimum</b> of the number of times it appears in either</li></p>
-<p><li><b>Bag Difference:</b>An element appears in the difference   A – B  of bags as many times as it appears in A,<b> minus </b>the number of times it appears in B.(But never less than 0 times.)<br></li><br><br>有些对于集合（Set）的操作不适用于Bag<br><br>人们证明了∪(并)、 (差)、 (笛卡儿积)、   (选择)、(投影)五种运算构成了关系运算的最小完备集<br>⚠️PPT上的题目还没有做</p>
-
+        <p></p><h3>故障恢复</h3><p></p>
+<p></p><h4>事务</h4><br>收集保持一致性的操作<br><br>每个查询或修改语句<br><br>嵌入式SQL：直到COMMIT或ROLLBACK的DB操作序列（“中止”）<br><p></p>
+<p>事务的四大特性ACID（事务的结束单元，提交和回来）<br><br>原子性：操作要不全成功，要不全回滚<br><br>一致性：当你执行一个正确的事务时，使数据库从一个正确的状态停在另一个正确的状态<br><br>隔离性：事务内部不受其他干扰<br><br>持续性：事务一旦提交，不能rollback<br></p>
+<p></p><h4>数据操作</h4><br>在内存中:read write<br><br>写盘:output(A) 读盘:input(A)<p></p>
+<p></p><h4>undo 日志</h4><br>Ti，start：事务已经开始<br><br>Ti，commit：成功完成<br><br>Ti，abort：无法成功完成<br><br>Ti，X，v：Ti更新了元素X， 旧价值是v<p></p>
+<p><b>undo 日志规则：</b><br><br>（1）为每个更新操作生成一个undo日志记录（使用旧值）<br><br>（2）在修改磁盘上的元素X之前，必须将任何X的日志记录刷新到磁盘（预写日志记录）<br><br>（3）在&lt;T，commit&gt;放在磁盘上的日志记录之前，事务T的所有WRITE都必须OUTPUT到磁盘<br></p>
+<p><b>恢复规则:（从后往前）</b><br><br>（1）S是日志里没有提交或者撤回的事务集合<br><br>（2）对于log中的每个事务，从后往前，如果该事务在S中，则①完成写操作，并将值输入到磁盘上<br><br>（3）对于每个在S中的事务，在log中加上&lt;Ti, abort&gt;<br></p>
+<p></p><h3>redo 日志</h3><br><b>redo 日志规则：</b><br><br>（1）redo 日志要求 commit 结束之后才能改数<br><br>（2）对于每个磁盘更新，生成一个重做日志记录（具有新值）<br><br>（3）在修改磁盘上的DB元素X之前，必须将所有（包括COMMIT）事务的日志记录刷新到磁盘<br><p></p>
+<p><b>恢复规则:（从前往后）</b><br><br>（1）S是日志文件里的“已提交事务”的集合<br><br>（2）对于日志里的每个事务，从前往后地做这些事：如果事务在S里，则重写，并且将数据一道磁盘上去</p>
+<p></p><h3>Checkpoint(simple)</h3><br>（1）停止接受新的事务<br><br>（2）等待所有事务完成（提交/中止）<br><br>（3）将所有日志记录刷新到磁盘（日志）<br><br>（4）将所有缓冲区清空到磁盘（DB）<br><br>（5）写入并刷新磁盘上的<ckpt>记录（日志）<br><br>（6）恢复事务处理<br><p></p>
+<p></p><h3>Undo/Redo log</h3><br>格式：Ti, X, Old-X-value, New-X-value<p></p>
+<p></p><h4>undo/redo 规则</h4><br>(1) Log record (Ti, X, old, new) <b>flushed to disk before writing X to disk </b><br><br>(2) Flush the log at commit,<br>Element X can be written to disk either before or after the commit of Ti<br>(commit变得很随意)<p></p>
+<p></p><h3>改进版的checkpoint</h3><br>不需要停止接收新的事务<br><br>Start ckpt Ti,T2,… 和 end ckpt 之间的buffer被flush<br><br>⚠️PPT上的题，要看清题目问的是什么<p></p>
+</ckpt>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库2/" data-id="ck03rjleu002b89shyml89mp1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/10/2019-06-10-数据库/" data-id="ck0f3ey3m002b08sh0rjxddm0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -145,7 +145,97 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库/" data-id="ck03rjlet002989sh2brpf4fz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库/" data-id="ck0f3ey3k002708shgzuktw1f" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-09-数据库2" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/09/2019-06-09-数据库2/" class="article-date">
+  <time datetime="2019-06-09T14:09:28.000Z" itemprop="datePublished">2019-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/09/2019-06-09-数据库2/">2019-06-09 数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h3>关系查询语言</h3><p></p>
+<p><ul></ul></p>
+<p><li>并（Union）、交（Intersection）、差（Difference） Operands must have the same schema</li></p>
+<p><li>笛卡尔积：总行数 = m*n</li></p>
+<p><li>选择</li></p>
+<p><li>投影</li></p>
+<p><li>join</li><br><br>运算优先级：（select,project,rename）&gt;(product,join) &gt;intersection &gt;union,difference<br></p>
+<p></p><h4>SQL is Bag language</h4><p></p>
+<p><ul></ul></p>
+<p><li>选择、投影、join等操作可以有相同的行</li></p>
+<p><li><b>Bag Union:</b>An element appears in the union of two bags the <b>sum</b> of the number of times it appears in each bag</li></p>
+<p><li><b>Bag Intersection:</b>An element appears in the intersection of two bags the <b>minimum</b> of the number of times it appears in either</li></p>
+<p><li><b>Bag Difference:</b>An element appears in the difference   A – B  of bags as many times as it appears in A,<b> minus </b>the number of times it appears in B.(But never less than 0 times.)<br></li><br><br>有些对于集合（Set）的操作不适用于Bag<br><br>人们证明了∪(并)、 (差)、 (笛卡儿积)、   (选择)、(投影)五种运算构成了关系运算的最小完备集<br>⚠️PPT上的题目还没有做</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库2/" data-id="ck0f3ey3l002908sh5fc31qjh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-09-数据库3" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/09/2019-06-09-数据库3/" class="article-date">
+  <time datetime="2019-06-09T14:09:28.000Z" itemprop="datePublished">2019-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/09/2019-06-09-数据库3/">2019-06-09 数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3>查询过程</h3><br>PPT上的图片；大体过程就是 SQL 查询语言 -&gt;（解析）解析树 -&gt;(转换)逻辑查询计划 -&gt;（使用一些规则）对逻辑查询计划进行优化 -&gt; 估计结果的大小(使用统计结果) -&gt;(根据逻辑查询计划和size)物理查询计划 -&gt; 估计花费 -&gt; 选择最优的计划 -&gt; 执行得到结果并丰富统计数据<br><h3>故障恢复</h3>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/09/2019-06-09-数据库3/" data-id="ck0f3ey3m002e08sh31e85e7q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -192,7 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-算法/" data-id="ck03rjles002689shwdsthegi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-算法/" data-id="ck0f3ey3j002508shgdwtbumi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -236,7 +326,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-数据库/" data-id="ck03rjler002489sh9m2q6c3t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/2019-06-08-数据库/" data-id="ck0f3ey3i002308shhrvzlb3q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -281,7 +371,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-算法/" data-id="ck03rjleq002289sh5akf98l0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-算法/" data-id="ck0f3ey3h002108shvrfao75v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -319,7 +409,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-数据库/" data-id="ck03rjleq002089shsblxxrzt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-数据库/" data-id="ck0f3ey3g001z08sh1hghxqfv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -396,7 +486,7 @@ return δ.
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法2/" data-id="ck03rjlep001y89sh75i954bm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法2/" data-id="ck0f3ey3g001y08sh2rlsuytq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -472,118 +562,7 @@ return T
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法/" data-id="ck03rjleo001x89sh11kgu4ij" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-06-05-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/05/2019-06-05-算法/" class="article-date">
-  <time datetime="2019-06-05T14:09:28.000Z" itemprop="datePublished">2019-06-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/05/2019-06-05-算法/">2019-06-05 算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h3>贪心算法</h3><br>直观上说，一个算法是贪心的，如果此算法是通过一些小的步骤来建立一个解，在每一步根据局部情况选择一个决定使得某些主要的指标能得到优化。存在一个局部判断规则可以用来构造问题的最优解。<br><br>两个基本的方法来证明一个贪心算法对一个问题能够提供一个最优解<br><br>1、贪心算法领先：每一步都比其他的算法好，从而证明产生了一个最优解<br><br>2、交换论证：考虑对这个问题的任何可能解，逐渐把它转换成由贪心算法找到的解，而且不影响解的质量。从而证明了贪心法找到了一个至少与其他解一样好的解。<p></p>
-<p></p><h4>区间调度</h4><br>算法：使资源尽可能早被释放<p></p>
-<pre><code>先按结束时间排序 O(nlogn)
-初始令R是所有需求的集合，设A为空 While R 非空
-选择一个最小结束时间的需求i∈R 
-把i加到A中 
-*从R中删除与需求i不相容的所有需求
-Endwhile 返回集合A作为被接受的需求集合
-</code></pre><p>算法分析（贪心算法领先）</p>
-<p></p><h4>区间划分</h4><br>算法：按开始时间排序<p></p>
-<pre><code>Sort intervals by starting time so that s1 ≤ s2 ≤ ... ≤ sn. d←0
-for j = 1 to n {
-   if (lecture j is compatible with some classroom k)
-schedule lecture j in classroom k
-else
-allocate a new classroom d + 1 schedule lecture j in classroom 
-d + 1 d←d+1
-}
-</code></pre><p></p><h4>最小延迟调度：最早截止时间优先</h4><br>算法：<p></p>
-<pre><code>Sortnjobsbydeadlinesothatd1 ≤ d2 ≤ ... ≤ dn
-t←0
-for j = 1 to n
-Assign job j to interval [t, t + tj] sj ← t, fj ← t + tj
-t ← t + tj
-output intervals [sj, fj]
-</code></pre><p>算法分析（⚠️交换论证）<br><br>补充：结构论证：发现一个所有解具有的界限，然后严格证明算法能够达到这个界</p>
-<p></p><h4>最优超高速缓存：最远将来规则</h4><br>⚠️简化调度？非简化调度？<br>⚠️FF算法<p></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="ck03rjlen001u89sho15yz9l0" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-06-04-算法3" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/04/2019-06-04-算法3/" class="article-date">
-  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/04/2019-06-04-算法3/">2019-06-04 算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h3>图</h3><p></p>
-<h4>基本定义和应用</h4><br>图的表示：<br><br>领接矩阵：顶点之间有边就标1，主对角线是0（自己到自己是0）<br><br>领接链表：把与它有边相连的顶点接到一个链表上<br><br>定理：设G是一个具有n个结点的无向图。下面任意两条都可以推出第三条：1、G是连通的；2、G不包含一个圈；3、G有n-1条边<br><h4>图的连通性与图的遍历</h4><br>BFS：O(m+n)可以生成层     DFS：O(m+n)<br><h4>二部图(红蓝着色)</h4><br>定理：图G是二部图当且仅当图中没有奇圈<br><br>定理：设G是一个连通图,L0, …, Lk 是从顶点s由BFS 算法生成的层。那么下面两件事一定恰好成立其一:<br>i. G中没有边与同一层的两个结点相交。这种情况下G 是二部图，其中偶数层的结点可以着红色，奇数层结 点可以着蓝色。<br>ii. G中有一条边与同一层的两个结点相交。此种情形下， 存在一个奇圈，不可能是二部图。<br><h4>强连通性</h4><br>如果有向图中每对顶点是相互可达的，那么此图是强连通的<br><br><b>存在O(m + n)的有效算法判别图G是否强连通</b><br><br>    Pick any node s.<br>      Run BFS from s in G.<br>     Run BFS from s in Grev.<br>     Return true iff all nodes reached in both BFS executions.<br><h4>有向无圈图(DAG)和拓扑排序</h4>
-
-<pre><code>To compute a topological ordering of G:
-Find a node v with no incoming edges and order it first
-Delete v from G
-Recursively compute a topological ordering of G-{v} and append this order after v
-</code></pre><p>上面算法在 O(m + n) 时间内找到一个拓扑排序.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="ck03rjlem001t89shc82ek2cu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法/" data-id="ck0f3ey3f001v08shnkvau94l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -613,7 +592,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome插件/">Chrome插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络技术与应用/">网络技术与应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome插件/">Chrome插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络技术与应用/">网络技术与应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
     </div>
   </div>
 
@@ -623,7 +602,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Chrome插件/" style="font-size: 10px;">Chrome插件</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/网络技术与应用/" style="font-size: 10px;">网络技术与应用</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
+      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Chrome插件/" style="font-size: 10px;">Chrome插件</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/网络技术与应用/" style="font-size: 10px;">网络技术与应用</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
     </div>
   </div>
 
@@ -645,6 +624,14 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       <ul>
         
           <li>
+            <a href="/2019/09/29/2019-09-292/">Spring与Spring Boot</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/11/2019-09-29/">今日感悟</a>
+          </li>
+        
+          <li>
             <a href="/2019/09/11/2019-09-11/">今日学习总结</a>
           </li>
         
@@ -654,14 +641,6 @@ Recursively compute a topological ordering of G-{v} and append this order after 
         
           <li>
             <a href="/2019/09/02/2019-09-02/">今日学习总结</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/27/Chrome插件/">出成绩提醒插件</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/16/2019-06-16-计组/">2019-06-16 计算机组成原理</a>
           </li>
         
       </ul>
