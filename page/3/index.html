@@ -62,6 +62,159 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-06-06-算法2" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/06/2019-06-06-算法2/" class="article-date">
+  <time datetime="2019-06-06T14:09:28.000Z" itemprop="datePublished">2019-06-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/06/2019-06-06-算法2/">2019-06-06 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h3>分治策略</h3><br>把一个问题分解成几个部分，递归(注意递归的出口)解决规模比较小的类似问题，把子问题的解合成完整的解<p></p>
+<p></p><h4>计数逆序</h4><br>穷举：Θ(n2) 排序:Θ(nlgn)<br><br>算法：O(nlogn)<p></p>
+<pre><code>Merge-and-Count(A,B) 维护一个Current指针指向每个表，初始化指向首元素
+维护一个变量Count用于逆序的计数，初始为0 
+While两个表都不空
+令ai与bj是由Current指针指向的元素 把这两个表中较小的元素加到输出表中 
+If bj是较小的元素 then
+把Count加上在A中剩余的元素数 
+Endif
+把较小元素选出的表中的Current指针前移
+Endwhile
+一旦一个表为空，把另一个表剩余的所有元素加到输出中 返回Count和合并后的表
+
+Sort-and-Count(L) 
+If这个表中有一个元素，
+then
+    没有逆序
+Else
+    把这个表划分成两半， A包含前⎡n/2⎤ 个元素
+    ⎣n/2⎦ B包含剩下的 个元素
+    (rA,A)=Sort-and-Count(A) (rB,B)=Sort-and-Count(B)
+    (r ,L)=Merge-and-Count(A,B)
+Endif 
+返回r=rA+rB+r以及排好序的表L
+</code></pre><p></p><h4>最邻近点对</h4><br>算法：O(nlog2n)<p></p>
+<pre><code>Closest-Pair(p1, ..., pn) {
+Compute separation line L such that half the points are on one side and half on the other side.
+
+δ1 = Closest-Pair(left half) 
+δ2 = Closest-Pair(right half) 
+δ = min(δ1, δ2)
+Delete all points further than δ from separation line L O(n)
+Sort remaining points by y-coordinate.
+Scan points in y-order and compare distance between each point and next 11 neighbors. If any of these distances is less than δ, update δ.
+return δ. 
+}
+</code></pre><p></p><h4>整数乘法</h4><br>采用分治的策略，每个整数分为高位和低位<br><p></p>
+<p></p><h4>矩阵乘法</h4><br>类Strassen算法上每获得一点理论上的改进， 实际上的可用性就会降低。(需要n达到一定规模)<p></p>
+<p></p><h4>卷积与快速傅立叶变换</h4><br>FFT. Fast way to convert between time-domain and frequency-domain.<br><br>Alternate viewpoint. Fast way to add, multiply, and evaluate polynomials.<br><p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法2/" data-id="ck1ipsols001yd1sholgrt41m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-06-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/06/2019-06-06-算法/" class="article-date">
+  <time datetime="2019-06-06T14:09:28.000Z" itemprop="datePublished">2019-06-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/06/2019-06-06-算法/">2019-06-06 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4>图的最短路径</h4>
+
+<pre><code>Dijkstra算法(G,l)
+设S是被探查的结点集合
+对每个S中的u,存储一个d(u);
+初始S={s}且d(s)=0
+While S!=V
+选择一个结点不在S中的结点v,使得从S到v至少有一条边连接并且d&apos;(v)=min_{e=(u,v), u in S}d(u)+le 最小 
+将v加入S并且定义d(v)=d&apos;(v)
+Endwhile
+</code></pre><p>算法分析：普通实现O(mn),优先队列实现O(mlogn)</p>
+<p></p><h4>最小生成树(MST)</h4><br>反向删除算法：删除权重最大的边，不破坏连通性<br><br>Prim算法：每次把与S对应的割中最小费用边加入T<p></p>
+<pre><code>Prim(G, c) {
+foreach (v ∈ V) a[v] ← ∞
+    Initialize an empty priority queue Q
+foreach (v ∈ V) insert v onto Q 
+    Initialize set of explored nodes S ← φ
+}
+while (Q is not empty) {
+    u ← delete min element from Q
+    S←S∪{u}
+foreach (edge e = (u, v) incident to u)
+    if ((v ∉ S) and (ce &lt; a[v])) 
+        decrease priority a[v] to ce
+</code></pre><p>算法分析：优先队列实现O(mlogn)<br><br>Kruskal算法：</p>
+<pre><code>Kruskal(G, c) {
+Sort edges weights so that c1 ≤ c2 ≤ ... ≤ cm. T←φ
+}
+foreach (u ∈ V)
+    make a set containing singleton u
+for i = 1 to m (u,v) = ei
+    if (u and v are in different sets) 
+    { T ← T ∪ {ei}
+    merge the sets containing u and v
+    } 
+return T
+</code></pre><p></p><h4>聚类</h4><br>运行Kruskal算法，但是就在它加最后的k-1条边之前停止。等价于取整棵最小生成树T,然后删除k-1条最贵的边，并且定义k聚类是所得到的 连通分支C1,C2,…,Ck.<p></p>
+<p></p><h4>Huffman树</h4><br>采用优先队列O(klogk)<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法/" data-id="ck1ipsolr001vd1shxej7mjnx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-06-05-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/05/2019-06-05-算法/" class="article-date">
@@ -115,7 +268,47 @@ output intervals [sj, fj]
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="ck0f3ey3b001u08sh0vihgxpw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="ck1ipsolq001ud1shghe6dgvp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-04-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/04/2019-06-04-算法/" class="article-date">
+  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/04/2019-06-04-算法/">2019-06-04 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>开始复习算法啦⛽️</p>
+<p></p><h3>稳定匹配</h3><br>几个概念：<br>1、匹配: 每个男人和每个女人至多属于一个有序对。<br><br>2、完美匹配: 每个男人和每个女人都属于其中某个对的匹配。<br><br>3、稳定匹配：不存在不稳定因素<br><br>不稳定因素一定是<b>双方</b>的<p></p>
+<h4>问题讨论</h4><br>对每组优先表是否存在一个稳定匹配?<br><br>给定一组优先表,如果存在稳定匹配,我们能够有效的构造出来吗?<br><br>如果存在稳定匹配，会有很多吗?<br><h4>算法</h4><br>按照优先选择的思路<br><br>初始，每个人都是自由的。一个自由的男人m选择他的优先表上排名最高的女人w,发起邀请，那么 (m,w)进入中间状态:约会。<br>  如果又有另一个男人m’发起邀请，那么 女人w决定,选择m,还是m’. 如果m优先， 那么约会状态不变。否则(m’,w)变成约 会状态，m变成自由状态。<br><br>  循环往复;最后，当没有人处于自由状 态，那么所有的约会被定为最后的结果， 返回最终的完美匹配。<br><br>      Initialize each person to be free.<br>    while (some man is free and hasn’t proposed to every woman)<br>    {<br>    Choose such a man m<br>    w = 1st woman on m’s list to whom m has not yet     proposed if (w is free)<br>    assign m and w to be engaged<br>    else if (w prefers m to m’)<br>    assign m and w to be engaged, and m’ to be free<br>    else<br>    w rejects m<br>    }<br><h4>算法分析</h4><br>如果男人m在算法执行的某点是自由的，那么存在一个他还没有发出过邀请的女人<br><br>G-S算法返回一个完美匹配-&gt;稳定匹配<br><br>G-S算法在至多n2次While循环的迭代后终止。所以算法的复杂度是O(n2)<br><br>所有的执行得到同样的匹配!<br><h4>算法技巧</h4><br>女人对自己的优先表做预处理，反向变换<br><h5>拓展</h5><br>对于稳定室友匹配问题(更一般的情况)，可能会没有稳定匹配方案<br><h3>五个典型问题</h3><br><h4>区间调度问题:贪心算法</h4><br><h4>带权的区间调度问题:动态规划算法</h4><br><h4>二分匹配：网络流</h4><br><h4>独立集（NP完全问题中的一个）：验证和求解的难度相差很大</h4><br><h4>竞争的便利店选址问题: PSPACE完全问题类,严格难于NP完全问题，求解和验证都很难</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="ck1ipsolo001qd1shlyxbbd8e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -161,7 +354,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="ck0f3ey3a001r08sh6ems7ixa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="ck1ipsolp001rd1shp6nf80ur" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -200,47 +393,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="ck0f3ey39001p08shd26zpkqx" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-06-04-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/04/2019-06-04-算法/" class="article-date">
-  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/04/2019-06-04-算法/">2019-06-04 算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>开始复习算法啦⛽️</p>
-<p></p><h3>稳定匹配</h3><br>几个概念：<br>1、匹配: 每个男人和每个女人至多属于一个有序对。<br><br>2、完美匹配: 每个男人和每个女人都属于其中某个对的匹配。<br><br>3、稳定匹配：不存在不稳定因素<br><br>不稳定因素一定是<b>双方</b>的<p></p>
-<h4>问题讨论</h4><br>对每组优先表是否存在一个稳定匹配?<br><br>给定一组优先表,如果存在稳定匹配,我们能够有效的构造出来吗?<br><br>如果存在稳定匹配，会有很多吗?<br><h4>算法</h4><br>按照优先选择的思路<br><br>初始，每个人都是自由的。一个自由的男人m选择他的优先表上排名最高的女人w,发起邀请，那么 (m,w)进入中间状态:约会。<br>  如果又有另一个男人m’发起邀请，那么 女人w决定,选择m,还是m’. 如果m优先， 那么约会状态不变。否则(m’,w)变成约 会状态，m变成自由状态。<br><br>  循环往复;最后，当没有人处于自由状 态，那么所有的约会被定为最后的结果， 返回最终的完美匹配。<br><br>      Initialize each person to be free.<br>    while (some man is free and hasn’t proposed to every woman)<br>    {<br>    Choose such a man m<br>    w = 1st woman on m’s list to whom m has not yet     proposed if (w is free)<br>    assign m and w to be engaged<br>    else if (w prefers m to m’)<br>    assign m and w to be engaged, and m’ to be free<br>    else<br>    w rejects m<br>    }<br><h4>算法分析</h4><br>如果男人m在算法执行的某点是自由的，那么存在一个他还没有发出过邀请的女人<br><br>G-S算法返回一个完美匹配-&gt;稳定匹配<br><br>G-S算法在至多n2次While循环的迭代后终止。所以算法的复杂度是O(n2)<br><br>所有的执行得到同样的匹配!<br><h4>算法技巧</h4><br>女人对自己的优先表做预处理，反向变换<br><h5>拓展</h5><br>对于稳定室友匹配问题(更一般的情况)，可能会没有稳定匹配方案<br><h3>五个典型问题</h3><br><h4>区间调度问题:贪心算法</h4><br><h4>带权的区间调度问题:动态规划算法</h4><br><h4>二分匹配：网络流</h4><br><h4>独立集（NP完全问题中的一个）：验证和求解的难度相差很大</h4><br><h4>竞争的便利店选址问题: PSPACE完全问题类,严格难于NP完全问题，求解和验证都很难</h4>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="ck0f3ey37001m08shf6lk33ea" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="ck1ipsoln001ld1sh1egdrmmh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -279,7 +432,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="ck0f3ey36001k08sh9phavpy9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="ck1ipsoln001nd1sh7vyzle0x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
@@ -325,7 +478,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="ck0f3ey36001i08sh7u5ccf5g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="ck1ipsolm001jd1shw1vc038w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -397,7 +550,7 @@ GO
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="ck0f3ey34001e08shg1cag1ba" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="ck1ipsolj001cd1shc9ue8pbf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li></ul>
@@ -451,354 +604,10 @@ GROUP BY Category.catid;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="ck0f3ey35001g08sh4vnwurm8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="ck1ipsolk001ed1shzgb9blwv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-24-Android" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/24/2019-05-24-Android/" class="article-date">
-  <time datetime="2019-05-24T14:09:28.000Z" itemprop="datePublished">2019-05-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/24/2019-05-24-Android/">2019-05-24 Android</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天写完了算法大作业😄基本完成了android端的学生界面🌈</p>
-<h3>根据url下载图片并显示</h3>
-
-<pre><code>private Button summitButton;
-private RadioButton ra,rb,rc,rd;
-private String answer;
-//设置提交次数
-private int count=0;
-
-public static final int DOWNLOAD_CODE = 10001;
-public static final int DOWNLOAD_FAIL = 300;
-public static final int CONNECT_TIMEOUT = 2000;
-private ImageView image_download;
-
-private Handler handler;
-private String path=&quot;http://47.95.200.233/search-homework/static/img/logo.b5d9053.png&quot;;
-
-private int fileLength;
-
-private Bitmap mBitmap;
-
-
-
-@Override
-protected void onCreate(@Nullable Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.question);
-    //下载并显示图片
-    image_download=findViewById(R.id.question_img);
-
-
-    new Thread(new GetPictThread(handler,path)).start();
-
-
-    //接收子线程的消息
-    handler=new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what){
-                case DOWNLOAD_CODE:
-                    /*
-                     * 更新UI
-                     * 提取消息中的bitmap,并设置ImageView
-                     * */
-                    Bitmap bitmap=(Bitmap) msg.obj;
-                    if (bitmap!=null){
-                        image_download.setImageBitmap(bitmap);//disPlay image
-                    }
-                    break;
-                case DOWNLOAD_FAIL:
-                    Toast.makeText(Answer.this,&quot;下载失败&quot;,Toast.LENGTH_SHORT).show();
-                    break;
-            }
-        }
-    };
-
-
-
-
-}
-
-
-private class GetPictThread implements Runnable{
-    //定义handler和path
-    public Handler handler;
-    public String path;
-
-    //带参构造
-    public GetPictThread(Handler handler, String path) {
-        this.handler = handler;
-        this.path = path;
-    }
-
-    //在run方法中实现图片下载
-    @Override
-    public void run() {
-        //通过Get方法请求获取网络图片
-        try {
-            URL url=new URL(path);
-            HttpURLConnection connection=(HttpURLConnection) url.openConnection();
-
-            //设置请求方式
-            connection.setRequestMethod(&quot;GET&quot;);
-            //设置超时时间
-            connection.setConnectTimeout(30*1000);
-            //发起连接
-            connection.connect();
-
-            //获取状态码
-            int requestCode=connection.getResponseCode();
-            System.out.println(requestCode);
-
-            if (requestCode==HttpURLConnection.HTTP_OK){
-                /*
-                 * 1.获得文件长度
-                 * 2.通过缓冲输入流
-                 * 3.将输入流转换成字节数组
-                 * 4.将字节数组转换成位图
-                 * */
-                fileLength=connection.getContentLength();
-
-                InputStream is=new BufferedInputStream(connection.getInputStream());
-
-                //获取到字节数组
-                byte[] arr=streamToArr(is);
-
-                //将字节数组转换成位图
-                mBitmap= BitmapFactory.decodeByteArray(arr,0,arr.length);
-
-                /*
-                 * 下载完成后将消息发送出去
-                 * 通知主线程，更新UI
-                 * */
-                Message message=Message.obtain();
-                message.what=DOWNLOAD_CODE;
-                message.obj=mBitmap;
-                handler.sendMessage(message);
-
-            }else {
-                Log.e(&quot;TAG&quot;, &quot;run:error &quot;+requestCode);
-            }
-        }catch (MalformedURLException e){
-            e.printStackTrace();
-            handler.sendEmptyMessage(DOWNLOAD_FAIL);
-        }catch (IOException e){
-            e.printStackTrace();
-            handler.sendEmptyMessage(DOWNLOAD_FAIL);
-        }
-    }
-}
-
-
-
-public byte[] streamToArr(InputStream inputStream){
-
-    try {
-        ByteArrayOutputStream baos=new ByteArrayOutputStream();
-        byte[] buffer=new byte[1024];
-        int len;
-
-        while ((len=inputStream.read(buffer))!=-1){
-            baos.write(buffer,0,len);
-        }
-
-        //关闭输出流
-        baos.close();
-        //关闭输入流
-        inputStream.close();
-        //返回字节数组
-        return baos.toByteArray();
-    }catch (IOException e){
-        e.printStackTrace();
-        //若失败，则返回空
-        return null;
-    }
-}
-</code></pre><p>参考网站：<a href="https://blog.csdn.net/cjhloveandroid/article/details/82811236" target="_blank" rel="noopener">https://blog.csdn.net/cjhloveandroid/article/details/82811236</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="ck0f3ey33001c08shm9z5kiyx" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-22-Android" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/23/2019-05-22-Android/" class="article-date">
-  <time datetime="2019-05-23T14:09:28.000Z" itemprop="datePublished">2019-05-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/23/2019-05-22-Android/">2019-05-23 Android</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天写了好久的安卓大作业，学到了好多东西🌈但是把shift键按坏了😷好不方便</p>
-<h4>给服务端发消息</h4>
-
-<pre><code>OkGo.&lt;String&gt;post(AppConst.BaseUrl + &quot;teacher/new-register&quot;)
-                            .params(&quot;token&quot;, token)
-                            .params(&quot;lid&quot;, 2)
-                            .params(&quot;gps&quot;,gps)
-                            .execute(new StringCallback() {
-                                @Override
-                                public void onSuccess(Response&lt;String&gt; response) {
-                                    String string = response.body();
-                                    try {
-                                        JSONObject object = new JSONObject(string);
-
-                                        Toast.makeText(MainActivity.this, &quot;提交成功&quot;, Toast.LENGTH_SHORT).show();
-
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-</code></pre><h4>关于pdf的下载和读取</h4>
-
-<pre><code>@Override
-protected void onCreate(@Nullable Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.question);
-    //下载并预览pdf
-    findViewById(R.id.buttonsummit).setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-
-            new Thread(){
-                @Override
-                public void run() {
-                    super.run();
-                    downFile();
-                }
-            }.start();
-        }
-    });
-        //发送答案
-    //init();
-}
-
-
-private void downFile(){
-    String urlString = &quot;http://47.95.200.233/search-homework/Documentation.pdf&quot;;
-    try {
-        URL url = new URL(urlString);
-        HttpURLConnection connection = (HttpURLConnection)
-                url.openConnection();
-        connection.setRequestMethod(&quot;GET&quot;);
-        connection.setDoInput(true);
-        connection.setDoOutput(true);
-        connection.setUseCaches(false);
-        connection.setConnectTimeout(5000);
-        connection.setReadTimeout(5000);
-        //实现连接
-        connection.connect();
-
-        if (connection.getResponseCode() == 200) {
-            InputStream is = connection.getInputStream();
-            //以下为下载操作
-            byte[] arr = new byte[1];
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            BufferedOutputStream bos = new BufferedOutputStream(baos);
-            int n = is.read(arr);
-            while (n &gt; 0) {
-                bos.write(arr);
-                n = is.read(arr);
-            }
-            bos.close();
-            String path = Environment.getExternalStorageDirectory()
-                    + &quot;/download/&quot;;
-            String[] name = urlString.split(&quot;/&quot;);
-            path = path + name[name.length - 1];
-            File file = new File(path);
-            FileOutputStream fos = new FileOutputStream(file);
-            fos.write(baos.toByteArray());
-            fos.close();
-            //关闭网络连接
-            connection.disconnect();
-            Log.d(&quot;下载完成&quot;,&quot;下载完成&quot;);
-            //openPDF(file);//打开PDF文件
-        }
-    } catch (Exception e) {
-        // TODO: handle exception
-        System.out.println(e.getMessage());
-    }
-
-}
-
-private void openPDF(File file) {
-    if (file.exists()) {
-        Log.d(&quot;打开&quot;,&quot;打开&quot;);
-        Uri path1 = Uri.fromFile(file);
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(path1, &quot;application/pdf&quot;);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-        try {
-            startActivity(intent);
-        }
-        catch (Exception e) {
-            Log.d(&quot;打开失败&quot;,&quot;打开失败&quot;);
-        }
-    }
-
-}
-</code></pre><h4>
-</h4>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="ck0f3ey32001a08shso84pg7d" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 
     </footer>
   </div>
@@ -825,7 +634,7 @@ private void openPDF(File file) {
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome插件/">Chrome插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络技术与应用/">网络技术与应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome插件/">Chrome插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络技术与应用/">网络技术与应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
     </div>
   </div>
 
@@ -835,7 +644,7 @@ private void openPDF(File file) {
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Chrome插件/" style="font-size: 10px;">Chrome插件</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/网络技术与应用/" style="font-size: 10px;">网络技术与应用</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
+      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Chrome插件/" style="font-size: 10px;">Chrome插件</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Spring-Boot/" style="font-size: 10px;">Spring Boot</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/网络技术与应用/" style="font-size: 10px;">网络技术与应用</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
     </div>
   </div>
 
@@ -844,7 +653,7 @@ private void openPDF(File file) {
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
     </div>
   </div>
 
@@ -857,7 +666,15 @@ private void openPDF(File file) {
       <ul>
         
           <li>
+            <a href="/2019/10/09/2019-10-09/">Latex</a>
+          </li>
+        
+          <li>
             <a href="/2019/09/29/2019-09-292/">Spring与Spring Boot</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/29/2019-09-292的副本/">Spring Boot</a>
           </li>
         
           <li>
@@ -866,14 +683,6 @@ private void openPDF(File file) {
         
           <li>
             <a href="/2019/09/11/2019-09-11/">今日学习总结</a>
-          </li>
-        
-          <li>
-            <a href="/2019/09/03/2019-09-03一/">今日学习总结</a>
-          </li>
-        
-          <li>
-            <a href="/2019/09/02/2019-09-02/">今日学习总结</a>
           </li>
         
       </ul>

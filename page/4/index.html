@@ -62,6 +62,350 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-05-24-Android" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/24/2019-05-24-Android/" class="article-date">
+  <time datetime="2019-05-24T14:09:28.000Z" itemprop="datePublished">2019-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/24/2019-05-24-Android/">2019-05-24 Android</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天写完了算法大作业😄基本完成了android端的学生界面🌈</p>
+<h3>根据url下载图片并显示</h3>
+
+<pre><code>private Button summitButton;
+private RadioButton ra,rb,rc,rd;
+private String answer;
+//设置提交次数
+private int count=0;
+
+public static final int DOWNLOAD_CODE = 10001;
+public static final int DOWNLOAD_FAIL = 300;
+public static final int CONNECT_TIMEOUT = 2000;
+private ImageView image_download;
+
+private Handler handler;
+private String path=&quot;http://47.95.200.233/search-homework/static/img/logo.b5d9053.png&quot;;
+
+private int fileLength;
+
+private Bitmap mBitmap;
+
+
+
+@Override
+protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.question);
+    //下载并显示图片
+    image_download=findViewById(R.id.question_img);
+
+
+    new Thread(new GetPictThread(handler,path)).start();
+
+
+    //接收子线程的消息
+    handler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what){
+                case DOWNLOAD_CODE:
+                    /*
+                     * 更新UI
+                     * 提取消息中的bitmap,并设置ImageView
+                     * */
+                    Bitmap bitmap=(Bitmap) msg.obj;
+                    if (bitmap!=null){
+                        image_download.setImageBitmap(bitmap);//disPlay image
+                    }
+                    break;
+                case DOWNLOAD_FAIL:
+                    Toast.makeText(Answer.this,&quot;下载失败&quot;,Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
+    };
+
+
+
+
+}
+
+
+private class GetPictThread implements Runnable{
+    //定义handler和path
+    public Handler handler;
+    public String path;
+
+    //带参构造
+    public GetPictThread(Handler handler, String path) {
+        this.handler = handler;
+        this.path = path;
+    }
+
+    //在run方法中实现图片下载
+    @Override
+    public void run() {
+        //通过Get方法请求获取网络图片
+        try {
+            URL url=new URL(path);
+            HttpURLConnection connection=(HttpURLConnection) url.openConnection();
+
+            //设置请求方式
+            connection.setRequestMethod(&quot;GET&quot;);
+            //设置超时时间
+            connection.setConnectTimeout(30*1000);
+            //发起连接
+            connection.connect();
+
+            //获取状态码
+            int requestCode=connection.getResponseCode();
+            System.out.println(requestCode);
+
+            if (requestCode==HttpURLConnection.HTTP_OK){
+                /*
+                 * 1.获得文件长度
+                 * 2.通过缓冲输入流
+                 * 3.将输入流转换成字节数组
+                 * 4.将字节数组转换成位图
+                 * */
+                fileLength=connection.getContentLength();
+
+                InputStream is=new BufferedInputStream(connection.getInputStream());
+
+                //获取到字节数组
+                byte[] arr=streamToArr(is);
+
+                //将字节数组转换成位图
+                mBitmap= BitmapFactory.decodeByteArray(arr,0,arr.length);
+
+                /*
+                 * 下载完成后将消息发送出去
+                 * 通知主线程，更新UI
+                 * */
+                Message message=Message.obtain();
+                message.what=DOWNLOAD_CODE;
+                message.obj=mBitmap;
+                handler.sendMessage(message);
+
+            }else {
+                Log.e(&quot;TAG&quot;, &quot;run:error &quot;+requestCode);
+            }
+        }catch (MalformedURLException e){
+            e.printStackTrace();
+            handler.sendEmptyMessage(DOWNLOAD_FAIL);
+        }catch (IOException e){
+            e.printStackTrace();
+            handler.sendEmptyMessage(DOWNLOAD_FAIL);
+        }
+    }
+}
+
+
+
+public byte[] streamToArr(InputStream inputStream){
+
+    try {
+        ByteArrayOutputStream baos=new ByteArrayOutputStream();
+        byte[] buffer=new byte[1024];
+        int len;
+
+        while ((len=inputStream.read(buffer))!=-1){
+            baos.write(buffer,0,len);
+        }
+
+        //关闭输出流
+        baos.close();
+        //关闭输入流
+        inputStream.close();
+        //返回字节数组
+        return baos.toByteArray();
+    }catch (IOException e){
+        e.printStackTrace();
+        //若失败，则返回空
+        return null;
+    }
+}
+</code></pre><p>参考网站：<a href="https://blog.csdn.net/cjhloveandroid/article/details/82811236" target="_blank" rel="noopener">https://blog.csdn.net/cjhloveandroid/article/details/82811236</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/24/2019-05-24-Android/" data-id="ck1ipsoll001gd1shwswd3q6n" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-05-22-Android" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/23/2019-05-22-Android/" class="article-date">
+  <time datetime="2019-05-23T14:09:28.000Z" itemprop="datePublished">2019-05-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/23/2019-05-22-Android/">2019-05-23 Android</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天写了好久的安卓大作业，学到了好多东西🌈但是把shift键按坏了😷好不方便</p>
+<h4>给服务端发消息</h4>
+
+<pre><code>OkGo.&lt;String&gt;post(AppConst.BaseUrl + &quot;teacher/new-register&quot;)
+                            .params(&quot;token&quot;, token)
+                            .params(&quot;lid&quot;, 2)
+                            .params(&quot;gps&quot;,gps)
+                            .execute(new StringCallback() {
+                                @Override
+                                public void onSuccess(Response&lt;String&gt; response) {
+                                    String string = response.body();
+                                    try {
+                                        JSONObject object = new JSONObject(string);
+
+                                        Toast.makeText(MainActivity.this, &quot;提交成功&quot;, Toast.LENGTH_SHORT).show();
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+</code></pre><h4>关于pdf的下载和读取</h4>
+
+<pre><code>@Override
+protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.question);
+    //下载并预览pdf
+    findViewById(R.id.buttonsummit).setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+            new Thread(){
+                @Override
+                public void run() {
+                    super.run();
+                    downFile();
+                }
+            }.start();
+        }
+    });
+        //发送答案
+    //init();
+}
+
+
+private void downFile(){
+    String urlString = &quot;http://47.95.200.233/search-homework/Documentation.pdf&quot;;
+    try {
+        URL url = new URL(urlString);
+        HttpURLConnection connection = (HttpURLConnection)
+                url.openConnection();
+        connection.setRequestMethod(&quot;GET&quot;);
+        connection.setDoInput(true);
+        connection.setDoOutput(true);
+        connection.setUseCaches(false);
+        connection.setConnectTimeout(5000);
+        connection.setReadTimeout(5000);
+        //实现连接
+        connection.connect();
+
+        if (connection.getResponseCode() == 200) {
+            InputStream is = connection.getInputStream();
+            //以下为下载操作
+            byte[] arr = new byte[1];
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            BufferedOutputStream bos = new BufferedOutputStream(baos);
+            int n = is.read(arr);
+            while (n &gt; 0) {
+                bos.write(arr);
+                n = is.read(arr);
+            }
+            bos.close();
+            String path = Environment.getExternalStorageDirectory()
+                    + &quot;/download/&quot;;
+            String[] name = urlString.split(&quot;/&quot;);
+            path = path + name[name.length - 1];
+            File file = new File(path);
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(baos.toByteArray());
+            fos.close();
+            //关闭网络连接
+            connection.disconnect();
+            Log.d(&quot;下载完成&quot;,&quot;下载完成&quot;);
+            //openPDF(file);//打开PDF文件
+        }
+    } catch (Exception e) {
+        // TODO: handle exception
+        System.out.println(e.getMessage());
+    }
+
+}
+
+private void openPDF(File file) {
+    if (file.exists()) {
+        Log.d(&quot;打开&quot;,&quot;打开&quot;);
+        Uri path1 = Uri.fromFile(file);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(path1, &quot;application/pdf&quot;);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        try {
+            startActivity(intent);
+        }
+        catch (Exception e) {
+            Log.d(&quot;打开失败&quot;,&quot;打开失败&quot;);
+        }
+    }
+
+}
+</code></pre><h4>
+</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/23/2019-05-22-Android/" data-id="ck1ipsolf001ad1sh0uvhk1yt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-05-21-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/21/2019-05-21-算法/" class="article-date">
@@ -89,7 +433,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="ck0f3ey31001808shf9466ya5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/21/2019-05-21-算法/" data-id="ck1ipsole0018d1shhdln7jgd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -134,7 +478,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="ck0f3ey30001608sh0hyokuc4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/20/2019-05-20-Android/" data-id="ck1ipsolc0014d1shn21nsa4v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -176,7 +520,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="ck0f3ey2y001408sh54l1cmt5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/19/2019-05-18-数据库/" data-id="ck1ipsold0016d1shisa2ua56" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -245,7 +589,7 @@ EXISTS (
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="ck0f3ey2x001208sh9olzi7ky" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/17/2019-05-17-数据库/" data-id="ck1ipsolb0012d1shfcdbrpu6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -335,7 +679,7 @@ END IF;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="ck0f3ey2w001008sh7nxyfkos" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/16/2019-05-16-数据库/" data-id="ck1ipsol9000wd1shfpquxj10" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -379,7 +723,7 @@ END IF ;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/15/2019-05-15-数据库/" data-id="ck0f3ey2v000z08shhkoscj6d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/15/2019-05-15-数据库/" data-id="ck1ipsola0010d1shjy7s5hho" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -474,7 +818,7 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/14/2019-05-14-数据库/" data-id="ck0f3ey2u000w08sh2ufx75w1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/14/2019-05-14-数据库/" data-id="ck1ipsola000zd1shk1hh77gj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -517,89 +861,10 @@ end;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/13/2019-05-13-Android/" data-id="ck0f3ey2t000v08sh4z7m50k6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/13/2019-05-13-Android/" data-id="ck1ipsol8000vd1shsu4u4fd9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-12-sxr" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/12/2019-05-12-sxr/" class="article-date">
-  <time datetime="2019-05-12T14:09:28.000Z" itemprop="datePublished">2019-05-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/12/2019-05-12-sxr/">2019-05-12 sxr</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>打一个假卡，今天早上不舒服，起来就10点半了。下午去听金融的讲座，顺便写完了离散作业，然后想到的算法问题（PPT文本框自适应文本）和老师讲的太雷同了被抛弃了。再想一个吧，总之今天挺不顺利的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/12/2019-05-12-sxr/" data-id="ck0f3ey2s000s08shhkz7oyb4" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-10-yii" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/10/2019-05-10-yii/" class="article-date">
-  <time datetime="2019-05-10T14:09:28.000Z" itemprop="datePublished">2019-05-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/10/2019-05-10-yii/">2019-05-10 yii</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h3>权限管理</h3><p></p>
-<h4>ACF方式</h4><br>在controller代码中的behaviors()方法中添加如下代码：<br>‘access’ =&gt; [<br>                ‘class’ =&gt; AccessControl::className(),<br>                ‘rules’ =&gt;<br>                [<br>                    [<br>                        ‘actions’ =&gt; [‘index’,’view’],<br>                        ‘allow’ =&gt; true,<br>                        ‘roles’ =&gt; [‘?’],<br>                    ],<br>                    [<br>                        ‘actions’ =&gt; [‘index’,’view’,’create’,’update’],<br>                        ‘allow’ =&gt; true,<br>                        ‘roles’ =&gt; [‘@’],<br>                    ],<br>                ],<br><br>问号表示游客，@表示登录用户<br><h4>RBAC方式：基于角色的权限管理方式</h4>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/10/2019-05-10-yii/" data-id="ck0f3ey2r000r08shzupmsfbm" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yii/">yii</a></li></ul>
 
     </footer>
   </div>
@@ -626,7 +891,7 @@ end;
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome插件/">Chrome插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络技术与应用/">网络技术与应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome插件/">Chrome插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络技术与应用/">网络技术与应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
     </div>
   </div>
 
@@ -636,7 +901,7 @@ end;
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Chrome插件/" style="font-size: 10px;">Chrome插件</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/网络技术与应用/" style="font-size: 10px;">网络技术与应用</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
+      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Chrome插件/" style="font-size: 10px;">Chrome插件</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Spring-Boot/" style="font-size: 10px;">Spring Boot</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/网络技术与应用/" style="font-size: 10px;">网络技术与应用</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
     </div>
   </div>
 
@@ -645,7 +910,7 @@ end;
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
     </div>
   </div>
 
@@ -658,7 +923,15 @@ end;
       <ul>
         
           <li>
+            <a href="/2019/10/09/2019-10-09/">Latex</a>
+          </li>
+        
+          <li>
             <a href="/2019/09/29/2019-09-292/">Spring与Spring Boot</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/29/2019-09-292的副本/">Spring Boot</a>
           </li>
         
           <li>
@@ -667,14 +940,6 @@ end;
         
           <li>
             <a href="/2019/09/11/2019-09-11/">今日学习总结</a>
-          </li>
-        
-          <li>
-            <a href="/2019/09/03/2019-09-03一/">今日学习总结</a>
-          </li>
-        
-          <li>
-            <a href="/2019/09/02/2019-09-02/">今日学习总结</a>
           </li>
         
       </ul>
