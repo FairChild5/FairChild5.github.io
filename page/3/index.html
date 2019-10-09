@@ -62,6 +62,44 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019-06-07-数据库" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/07/2019-06-07-数据库/" class="article-date">
+  <time datetime="2019-06-07T14:09:28.000Z" itemprop="datePublished">2019-06-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/07/2019-06-07-数据库/">2019-06-07 数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3>ER Model</h3><br>多对一关系：at most 1 箭头指向的一端是“唯一的”<br><br>圆箭头：有且只有一个<br><br>多端关系转换成双端：关系变实体，注意多对一的箭头<br><br>关系中的角色：只需要写一个实体<br><br>子类：1、三角形的尖指向父类 2、每种实体都是包含根节点的一棵子树 3、只有根有主键，并且充当所有实体的主键<br><br>模型约束：实体完整性（若属性A是基本关系R的<b>主属性</b>，则属性A不能取空值）、参照完整性（外键或者取参照关系中的某个主键值，或者取空值（表示还没有分配）<br>，外键可以由多个属性构成）、域约束、用户自定义约束<br><br>弱实体集合：双边矩形  多对一的sopporting relationship：双边菱形<br><h3>The Relational Data Model</h3><br>把子类转换成关系模式<br><br>OO方法：每个对象只属于一张表（按照子树转换）<br><br>ER方法：一个矩形转化为一张表，<b>子类要带上主键</b><br><br>NULL方法：把所有属性都放到一张表里<br><h3>SQL语句</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/07/2019-06-07-数据库/" data-id="ck1j9nmco001zr7shpwfuj2xh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019-06-06-算法2" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/06/2019-06-06-算法2/" class="article-date">
@@ -127,7 +165,7 @@ return δ.
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法2/" data-id="ck1ipsols001yd1sholgrt41m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法2/" data-id="ck1j9nmcn001xr7shk4jlhbu8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -203,7 +241,7 @@ return T
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法/" data-id="ck1ipsolr001vd1shxej7mjnx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/2019-06-06-算法/" data-id="ck1j9nmcn001vr7shakuvnkzn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -268,47 +306,7 @@ output intervals [sj, fj]
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="ck1ipsolq001ud1shghe6dgvp" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-06-04-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/04/2019-06-04-算法/" class="article-date">
-  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/04/2019-06-04-算法/">2019-06-04 算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>开始复习算法啦⛽️</p>
-<p></p><h3>稳定匹配</h3><br>几个概念：<br>1、匹配: 每个男人和每个女人至多属于一个有序对。<br><br>2、完美匹配: 每个男人和每个女人都属于其中某个对的匹配。<br><br>3、稳定匹配：不存在不稳定因素<br><br>不稳定因素一定是<b>双方</b>的<p></p>
-<h4>问题讨论</h4><br>对每组优先表是否存在一个稳定匹配?<br><br>给定一组优先表,如果存在稳定匹配,我们能够有效的构造出来吗?<br><br>如果存在稳定匹配，会有很多吗?<br><h4>算法</h4><br>按照优先选择的思路<br><br>初始，每个人都是自由的。一个自由的男人m选择他的优先表上排名最高的女人w,发起邀请，那么 (m,w)进入中间状态:约会。<br>  如果又有另一个男人m’发起邀请，那么 女人w决定,选择m,还是m’. 如果m优先， 那么约会状态不变。否则(m’,w)变成约 会状态，m变成自由状态。<br><br>  循环往复;最后，当没有人处于自由状 态，那么所有的约会被定为最后的结果， 返回最终的完美匹配。<br><br>      Initialize each person to be free.<br>    while (some man is free and hasn’t proposed to every woman)<br>    {<br>    Choose such a man m<br>    w = 1st woman on m’s list to whom m has not yet     proposed if (w is free)<br>    assign m and w to be engaged<br>    else if (w prefers m to m’)<br>    assign m and w to be engaged, and m’ to be free<br>    else<br>    w rejects m<br>    }<br><h4>算法分析</h4><br>如果男人m在算法执行的某点是自由的，那么存在一个他还没有发出过邀请的女人<br><br>G-S算法返回一个完美匹配-&gt;稳定匹配<br><br>G-S算法在至多n2次While循环的迭代后终止。所以算法的复杂度是O(n2)<br><br>所有的执行得到同样的匹配!<br><h4>算法技巧</h4><br>女人对自己的优先表做预处理，反向变换<br><h5>拓展</h5><br>对于稳定室友匹配问题(更一般的情况)，可能会没有稳定匹配方案<br><h3>五个典型问题</h3><br><h4>区间调度问题:贪心算法</h4><br><h4>带权的区间调度问题:动态规划算法</h4><br><h4>二分匹配：网络流</h4><br><h4>独立集（NP完全问题中的一个）：验证和求解的难度相差很大</h4><br><h4>竞争的便利店选址问题: PSPACE完全问题类,严格难于NP完全问题，求解和验证都很难</h4>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="ck1ipsolo001qd1shlyxbbd8e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/05/2019-06-05-算法/" data-id="ck1j9nmcl001rr7shdc2k04oa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -354,7 +352,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="ck1ipsolp001rd1shp6nf80ur" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法3/" data-id="ck1j9nmcm001ur7shb4q1e5g6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -393,7 +391,47 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="ck1ipsoln001ld1sh1egdrmmh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法2/" data-id="ck1j9nmck001pr7sh0x0jw8xb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-06-04-算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/04/2019-06-04-算法/" class="article-date">
+  <time datetime="2019-06-04T14:09:28.000Z" itemprop="datePublished">2019-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/04/2019-06-04-算法/">2019-06-04 算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>开始复习算法啦⛽️</p>
+<p></p><h3>稳定匹配</h3><br>几个概念：<br>1、匹配: 每个男人和每个女人至多属于一个有序对。<br><br>2、完美匹配: 每个男人和每个女人都属于其中某个对的匹配。<br><br>3、稳定匹配：不存在不稳定因素<br><br>不稳定因素一定是<b>双方</b>的<p></p>
+<h4>问题讨论</h4><br>对每组优先表是否存在一个稳定匹配?<br><br>给定一组优先表,如果存在稳定匹配,我们能够有效的构造出来吗?<br><br>如果存在稳定匹配，会有很多吗?<br><h4>算法</h4><br>按照优先选择的思路<br><br>初始，每个人都是自由的。一个自由的男人m选择他的优先表上排名最高的女人w,发起邀请，那么 (m,w)进入中间状态:约会。<br>  如果又有另一个男人m’发起邀请，那么 女人w决定,选择m,还是m’. 如果m优先， 那么约会状态不变。否则(m’,w)变成约 会状态，m变成自由状态。<br><br>  循环往复;最后，当没有人处于自由状 态，那么所有的约会被定为最后的结果， 返回最终的完美匹配。<br><br>      Initialize each person to be free.<br>    while (some man is free and hasn’t proposed to every woman)<br>    {<br>    Choose such a man m<br>    w = 1st woman on m’s list to whom m has not yet     proposed if (w is free)<br>    assign m and w to be engaged<br>    else if (w prefers m to m’)<br>    assign m and w to be engaged, and m’ to be free<br>    else<br>    w rejects m<br>    }<br><h4>算法分析</h4><br>如果男人m在算法执行的某点是自由的，那么存在一个他还没有发出过邀请的女人<br><br>G-S算法返回一个完美匹配-&gt;稳定匹配<br><br>G-S算法在至多n2次While循环的迭代后终止。所以算法的复杂度是O(n2)<br><br>所有的执行得到同样的匹配!<br><h4>算法技巧</h4><br>女人对自己的优先表做预处理，反向变换<br><h5>拓展</h5><br>对于稳定室友匹配问题(更一般的情况)，可能会没有稳定匹配方案<br><h3>五个典型问题</h3><br><h4>区间调度问题:贪心算法</h4><br><h4>带权的区间调度问题:动态规划算法</h4><br><h4>二分匹配：网络流</h4><br><h4>独立集（NP完全问题中的一个）：验证和求解的难度相差很大</h4><br><h4>竞争的便利店选址问题: PSPACE完全问题类,严格难于NP完全问题，求解和验证都很难</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/04/2019-06-04-算法/" data-id="ck1j9nmcj001mr7shwwwts3k9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -432,7 +470,7 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="ck1ipsoln001nd1sh7vyzle0x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/03/2019-06-03-sxr/" data-id="ck1j9nmcf001kr7shktrk4iks" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sxr/">sxr</a></li></ul>
@@ -478,82 +516,10 @@ Recursively compute a topological ordering of G-{v} and append this order after 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="ck1ipsolm001jd1shw1vc038w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/30/2019-05-30-SQL/" data-id="ck1j9nmcd001hr7shzpothny8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-29-SQL Server" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/29/2019-05-29-SQL Server/" class="article-date">
-  <time datetime="2019-05-29T14:09:28.000Z" itemprop="datePublished">2019-05-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/29/2019-05-29-SQL Server/">2019-05-29 MAC上使用SQL Server</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>步骤:</p>
-<p>打开Docker</p>
-<p>打开终端 </p>
-<pre><code>sudo docker stop sql1
-sudo docker rm sql1
-
-sudo docker run -e &apos;ACCEPT_EULA=Y&apos; -e &apos;SA_PASSWORD=&lt;Sxr878231&apos; \
-       -p 1433:1433 --name sql1 \
-       -d mcr.microsoft.com/mssql/server:2017-latest
-
-       sudo docker exec -it sql1 &quot;bash&quot;
-       /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P &apos;Sxr878231&apos;
-</code></pre><p> 打开Navicat</p>
-<p> 连接localhost</p>
-<p> 执行查询</p>
-<pre><code> USE master;  
-GO  
-IF DB_ID (N&apos;MyOptionsTest&apos;) IS NOT NULL  
-DROP DATABASE MyOptionsTest;  
-GO  
-CREATE DATABASE MyOptionsTest  
-COLLATE Chinese_PRC_CS_AI_WS;  
-GO  
-
---Verify the collation setting.  
-SELECT name, collation_name  
-FROM sys.databases  
-WHERE name = N&apos;MyOptionsTest&apos;;  
-GO  
-</code></pre><p>插入表</p>
-<p>CREATE TABLE Department<br>(<br>depid    varchar(20)    not null    PRIMARY KEY,<br>depname    varchar(20)    not null,<br>location    varchar(20)    not null,<br>)<br>CREATE TABLE Employee<br>(<br>empid    varchar(20)    not null    PRIMARY KEY,<br>empname    varchar(20)    not null,<br>age int not null,<br>sex varchar(10) not null,<br>depid    varchar(20)    not null    foreign key(depid) references Department(depid)<br>)<br>CREATE TABLE Category<br>(<br>catid    varchar(20)    not null    PRIMARY KEY,<br>catname    varchar(20)    not null<br>)<br>CREATE TABLE Project<br>(<br>proid        varchar(20)    not null    PRIMARY KEY,<br>projectname varchar(20) not null,<br>budget    int    not null,<br>catid    varchar(20)    not null    foreign key(catid) references Category(catid)<br>)<br>CREATE TABLE Workson<br>(<br>empid    varchar(20)    not null    foreign key(empid) references Employee(empid),<br>proid        varchar(20)    not null    foreign key(proid) references Project(proid),<br>job    varchar(20)    ,<br>enterdate    date    not null,<br>PRIMARY KEY (empid,proid)<br>)<br>INSERT INTO Department<br>SELECT ‘d1’, ‘开发部’, ‘天津’ union<br>SELECT ‘d2’, ‘财务部’, ‘北京’ union<br>SELECT ‘d3’, ‘市场部’, ‘广州’ union<br>SELECT ‘d4’, ‘人才管理部’, ‘天津’<br>INSERT INTO Employee<br>SELECT ‘10102’, ‘张三’, 34, ‘男’,’d1’ union<br>SELECT ‘10211’, ‘李飞’, 24, ‘男’,’d2’ union<br>SELECT ‘18316’, ‘王玲’, 29, ‘女’,’d4’ union<br>SELECT ‘22020’, ‘周城’, 39, ‘男’,’d2’ union<br>SELECT ‘22135’, ‘徐晶’, 35, ‘女’,’d3’ union<br>SELECT ‘25348’, ‘冯昕’, 27, ‘男’,’d1’ union<br>SELECT ‘28559’, ‘李风’, 41, ‘女’,’d3’ union<br>SELECT ‘29346’, ‘王新’, 32, ‘男’,’d1’ union<br>SELECT ‘30678’, ‘孙浩文’, 28, ‘女’,’d4’ </p>
-<p>INSERT INTO Category<br>SELECT ‘c1’, ‘设计类’ union<br>SELECT ‘c2’, ‘采购类’ union<br>SELECT ‘c3’, ‘营销类’ union<br>SELECT ‘c4’, ‘软件类’ union<br>SELECT ‘c5’, ‘硬件类’</p>
-<p>INSERT INTO Project<br>SELECT ‘p1’,’产品推广’, 120000, ‘c3’ union<br>SELECT ‘p2’, ‘广告设计’,40000, ‘c1’ union<br>SELECT ‘p3’, ‘软件升级’, 185000, ‘c4’ union<br>SELECT ‘p4’, ‘服务器采购’,150000, ‘c2’ union<br>SELECT ‘p5’, ‘办公用品采购’,80000, ‘c2’ union<br>SELECT ‘p6’, ‘软件开发’,85000, ‘c4’ </p>
-<p>INSERT INTO Workson<br>SELECT ‘10211’, ‘p1’, ‘分析员’, ‘2017-01-01’ union<br>SELECT ‘25348’, ‘p6’, ‘职员’, ‘2018-02-01’ union<br>SELECT ‘10102’, ‘p3’, ‘管理员’, ‘2018-08-05’ union<br>SELECT ‘25348’, ‘p4’, ‘职员’, ‘2018-03-23’ union<br>SELECT ‘22020’, ‘p6’, ‘管理员’, ‘2019-03-01’ union<br>SELECT ‘28559’, ‘p5’, ‘职员’, ‘2019-02-20’ union<br>SELECT ‘29346’, ‘p5’,  null, ‘2018-04-12’ union<br>SELECT ‘25348’, ‘p1’,  null, ‘2017-06-04’ union<br>SELECT ‘25348’, ‘p2’,  null, ‘2018-11-15’ union<br>SELECT ‘22020’, ‘p3’, ‘职员’, ‘2017-07-16’ union<br>SELECT ‘22135’, ‘p2’, ‘管理员’, ‘2017-12-18’ union<br>SELECT ‘18316’, ‘p5’, ‘职员’, ‘2018-06-22’ union<br>SELECT ‘10102’, ‘p4’, ‘管理员’, ‘2018-10-29’ union<br>SELECT ‘28559’, ‘p1’, ‘管理员’, ‘2019-02-11’ union<br>SELECT ‘10102’, ‘p5’, ‘职员’, ‘2018-12-10’ union<br>SELECT ‘18316’, ‘p1’, ‘职员’, ‘2017-09-28’ union<br>SELECT ‘10211’, ‘p6’, ‘分析员’, ‘2018-05-27’ union<br>SELECT ‘10102’, ‘p2’, ‘职员’, ‘2018-11-27’ union<br>SELECT ‘29346’, ‘p2’, ‘职员’, ‘2018-02-03’ union<br>SELECT ‘18316’, ‘p6’, ‘职员’, ‘2018-05-01’ </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL Server/" data-id="ck1ipsolj001cd1shc9ue8pbf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li></ul>
 
     </footer>
   </div>
@@ -604,7 +570,7 @@ GROUP BY Category.catid;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="ck1ipsolk001ed1shzgb9blwv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/2019-05-29-SQL/" data-id="ck1j9nmcd001gr7sh64ae4st5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -634,7 +600,7 @@ GROUP BY Category.catid;
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome插件/">Chrome插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络技术与应用/">网络技术与应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-yii/">Android yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome插件/">Chrome插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Guns/">Guns</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-yii/">git yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sxr/">sxr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络技术与应用/">网络技术与应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
     </div>
   </div>
 
@@ -644,7 +610,7 @@ GROUP BY Category.catid;
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Chrome插件/" style="font-size: 10px;">Chrome插件</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Spring-Boot/" style="font-size: 10px;">Spring Boot</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/网络技术与应用/" style="font-size: 10px;">网络技术与应用</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
+      <a href="/tags/Android/" style="font-size: 16px;">Android</a> <a href="/tags/Android-yii/" style="font-size: 14px;">Android yii</a> <a href="/tags/CSS/" style="font-size: 12px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/Chrome插件/" style="font-size: 10px;">Chrome插件</a> <a href="/tags/Guns/" style="font-size: 10px;">Guns</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SQL/" style="font-size: 14px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Spring-Boot/" style="font-size: 10px;">Spring Boot</a> <a href="/tags/git-yii/" style="font-size: 10px;">git yii</a> <a href="/tags/sxr/" style="font-size: 12px;">sxr</a> <a href="/tags/yii/" style="font-size: 14px;">yii</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 20px;">数据库</a> <a href="/tags/算法/" style="font-size: 18px;">算法</a> <a href="/tags/网络技术与应用/" style="font-size: 10px;">网络技术与应用</a> <a href="/tags/计算机组成原理/" style="font-size: 14px;">计算机组成原理</a>
     </div>
   </div>
 
@@ -666,6 +632,10 @@ GROUP BY Category.catid;
       <ul>
         
           <li>
+            <a href="/2019/10/09/2019-10-092/">Guns</a>
+          </li>
+        
+          <li>
             <a href="/2019/10/09/2019-10-09/">Latex</a>
           </li>
         
@@ -675,10 +645,6 @@ GROUP BY Category.catid;
         
           <li>
             <a href="/2019/09/29/2019-09-292的副本/">Spring Boot</a>
-          </li>
-        
-          <li>
-            <a href="/2019/09/11/2019-09-29/">今日感悟</a>
           </li>
         
           <li>
